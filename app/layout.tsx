@@ -12,6 +12,9 @@ const inter = Inter({ subsets: ['latin'] });
 //* fontawesome
 import '/FontAwesome.Pro.6.4.2/css/all.css';
 
+//* components
+import MenuContainer from '@/components/sidebars/menu/menu-container';
+
 //* metadata
 export const metadata: Metadata = {
     title: 'Create Next App',
@@ -27,8 +30,11 @@ export default function RootLayout({
         <html lang='en'>
             <body className={inter.className}>
                 <Providers>
+                    {/* menu section */}
+                    <MenuContainer />
+
                     {/* main section */}
-                    <main>{children}</main>
+                    <main className='main-section'>{children}</main>
                 </Providers>
             </body>
         </html>

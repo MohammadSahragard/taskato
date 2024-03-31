@@ -14,7 +14,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
         <NextUIProvider>
             <NextThemesProvider
                 attribute='class'
-                defaultTheme='dark'
+                defaultTheme='light'
             >
                 <Provider store={store}>{children}</Provider>
             </NextThemesProvider>

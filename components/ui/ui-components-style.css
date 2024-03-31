@@ -1,0 +1,16 @@
+.title {
+    @apply text-foreground;
+}
+
+.subtitle {
+    @apply text-primary-200 text-sm;
+}
+
+.heading {
+    @apply text-foreground font-bold text-lg;
+}
+
+.fw-btn {
+    /* full width buttons */
+    @apply w-full !justify-start;
+}
