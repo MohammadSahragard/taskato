@@ -1,10 +1,28 @@
+/* import other styles */
+@import '../components/ui/ui-components-style.css';
+
+/* tailwind plugins */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* public */
+body {
+    @apply bg-background;
+}
+
+/** menu section */
+.menu-container {
+    @apply fixed inset-[0_calc(100%-300px)_0_0] bg-primary-100 p-5;
+}
+
+/** main section */
+.main-section {
+    @apply fixed inset-[0_0_0_300px] bg-background p-5;
+}
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+    .text-balance {
+        text-wrap: balance;
+    }
 }

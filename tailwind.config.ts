@@ -18,6 +18,43 @@ const config: Config = {
         },
     },
     darkMode: 'class',
-    plugins: [nextui()],
+    plugins: [
+        nextui({
+            themes: {
+                light: {
+                    colors: {
+                        // main background
+                        background: '#FAFAFA',
+                        // important texts
+                        foreground: '#1E2023',
+                        primary: {
+                            // sidebars background
+                            100: '#F0F0F0',
+                            // subtexts
+                            200: '#999999',
+                            // dividers
+                            300: '#DDDDDD',
+                        },
+                    },
+                },
+                dark: {
+                    colors: {
+                        // main background
+                        background: '#111315',
+                        // important texts
+                        foreground: '#F0F0F0',
+                        primary: {
+                            // sidebars background
+                            100: '#151719',
+                            // subtexts
+                            200: '#999999',
+                            // dividers
+                            300: '#191B1D',
+                        },
+                    },
+                },
+            },
+        }),
+    ],
 };
 export default config;
