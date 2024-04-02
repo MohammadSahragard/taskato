@@ -1,5 +1,8 @@
 'use client';
 
+// public
+import { useEffect, useState } from 'react';
+
 //* components
 import { Button } from '@nextui-org/react';
 import Icon from '../texts/icon';
@@ -8,7 +11,14 @@ import Icon from '../texts/icon';
 import { useTheme } from 'next-themes';
 
 const ThemeToggleBtn = () => {
+    // states
+    const [hasMounted, setHasMounted] = useState(false);
     const { theme, setTheme } = useTheme();
+
+    useEffect(() => setHasMounted(true), []);
+    
+    // this line is the key to avoid the error.
+    if (!hasMounted) return null;
 
     return (
         <Button

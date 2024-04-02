@@ -10,7 +10,6 @@ import { setSearch } from '@/redux/features/optionsSlice';
 
 const Searchbar = () => {
     const searchValue = useSelector((state: any) => state.options.searchValue);
-    console.log('searchValue: ', searchValue);
     const dispatch = useDispatch();
 
     return (

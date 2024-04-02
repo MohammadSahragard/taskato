@@ -1,5 +1,6 @@
 //* components
 import MenuItem from '@/components/ui-kits/menu-item';
+import ProfileAccount from '@/components/ui-kits/profile-account';
 import Searchbar from '@/components/ui-kits/search-bar';
 import AddListBtn from '@/components/ui/buttons/add-list-btn';
 import MenuToggleBtn from '@/components/ui/buttons/menu-toggle-btn';
@@ -15,6 +16,7 @@ import Title from '@/components/ui/texts/title';
 const MenuContainer = () => {
     return (
         <aside className='menu-container'>
+            <ProfileAccount />
             {/* text components */}
             <Heading heading='Heading component' />
             <Title title='Title component' />
