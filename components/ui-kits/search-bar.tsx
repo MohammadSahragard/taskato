@@ -18,11 +18,14 @@ const Searchbar = () => {
             placeholder='Search'
             variant='bordered'
             radius='sm'
+            size='sm'
             classNames={{
-                inputWrapper: 'shadow-none',
+                inputWrapper: 'shadow-none border-2 dark:border-opacity-40',
             }}
             value={searchValue}
             onChange={({ target }: any) => dispatch(setSearch(target.value))}
+            isClearable
+            onClear={() => dispatch(setSearch(''))}
         />
     );
 };
