@@ -24,6 +24,10 @@ export type Icon = {
     color?: string;
 };
 
+export type BackForwardRoute = {
+    route: 'back' | 'forward';
+}
+
 // ui kits components
 export type MenuItemTypes = {
     href: string;

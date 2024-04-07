@@ -25,3 +25,14 @@ export const menuLinks = [
         href: '/sticky-notes',
     },
 ];
+
+// date format
+export const days = [
+    'Saturday',
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+];
