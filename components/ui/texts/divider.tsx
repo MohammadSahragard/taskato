@@ -7,7 +7,12 @@ const Divider = ({
     orientation?: 'vertical' | 'horizontal';
 }) => {
     // default orientation is horizontal
-    return <NextUiDivider orientation={orientation} />;
+    return (
+        <NextUiDivider
+            orientation={orientation}
+            className='opacity-40'
+        />
+    );
 };
 
 export default Divider;

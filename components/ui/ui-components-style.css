@@ -1,3 +1,4 @@
+/***** ui components */
 .title {
     @apply text-foreground;
 }
@@ -13,4 +14,14 @@
 .fw-btn {
     /* full width buttons */
     @apply w-full !justify-start;
+}
+
+#date-picker {
+    @apply absolute inset-0 opacity-0;
+}
+
+/***** kits components */
+.profile-account {
+    @apply grid grid-cols-[max-content_auto] gap-2 
+            leading-none items-center;
 }
