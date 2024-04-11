@@ -1,9 +1,5 @@
 'use client';
-
-// public
 import { useState } from 'react';
-
-//* components
 import {
     Dropdown,
     DropdownTrigger,
@@ -17,15 +13,9 @@ import {
 import Icon from '../texts/icon';
 import Subtitle from '../texts/subtitle';
 import Calendar from '@/components/ui-kits/calendar';
+import { getDayOfWeek, getLocalDateString } from '@/helper/functions/functions';
 
-//* functions
-import {
-    getDayOfWeek,
-    getLocalDateString,
-    wordsSeparator,
-} from '@/helper/functions/functions';
-
-const AddDateBtn = () => {
+export const AddDateBtn = () => {
     // hooks and variables
     const [isOpenDatePicker, setIsOpenDatePicker] = useState(false);
     const [selectedKey, setSelectedKey] = useState('');
@@ -62,7 +52,7 @@ const AddDateBtn = () => {
 
             <DropdownMenu
                 variant='flat'
-                onAction={(key: any) => setSelectedKey(wordsSeparator(key))}
+                onSelectionChange={setSelectedKey}
             >
                 <DropdownItem
                     startContent={<Icon iconName='calendar-day' />}
@@ -81,7 +71,7 @@ const AddDateBtn = () => {
                 <DropdownItem
                     startContent={<Icon iconName='calendar-week' />}
                     endContent={<Subtitle subtitle='Saturday' />}
-                    key='next_week'
+                    key='next-week'
                     showDivider
                 >
                     Next Week
@@ -128,5 +118,3 @@ const AddDateBtn = () => {
         </Dropdown>
     );
 };
-
-export default AddDateBtn;

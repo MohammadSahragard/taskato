@@ -1,0 +1,26 @@
+/***** kits components */
+.profile-account {
+    @apply grid grid-cols-[max-content_auto] gap-2 
+            leading-none items-center;
+}
+
+/* date time picker */
+.date-time-picker {
+    @apply w-max flex rounded-xl border;
+}
+.time-picker {
+    @apply w-[98px] max-h-full border-l relative
+            grid grid-cols-[1fr_max-content_1fr];
+}
+.time-section {
+    @apply !p-0 !absolute inset-2 !overflow-auto z-10;
+}
+.time-section::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+.selected-section {
+    @apply absolute inset-[4px_-40px_auto] left-2/4 -translate-x-2/4
+            h-10 border-2 border-foreground rounded grid place-content-center
+            snap-start snap-mandatory;
+}

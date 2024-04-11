@@ -9,7 +9,7 @@ import Divider from '@/components/ui/texts/divider';
 import Subtitle from '@/components/ui/texts/subtitle';
 
 //* data
-import { menuLinks } from '@/data/data';
+import { menuLinks } from '@/helper/data/data';
 
 const MenuContainer = () => {
     return (

@@ -1,5 +1,6 @@
 /* import other styles */
 @import '../components/ui/ui-components-style.css';
+@import '../components/ui-kits/ui-kits-style.css';
 
 /* tailwind plugins */
 @tailwind base;
