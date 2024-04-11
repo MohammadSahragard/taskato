@@ -1,4 +1,6 @@
 /***** ui components */
+
+/* texts */
 .title {
     @apply text-foreground;
 }
@@ -11,17 +13,19 @@
     @apply text-foreground font-bold text-lg;
 }
 
+#date-picker {
+    @apply absolute inset-0 opacity-0;
+}
+
+/* buttons */
 .fw-btn {
     /* full width buttons */
     @apply w-full !justify-start;
 }
 
-#date-picker {
-    @apply absolute inset-0 opacity-0;
+.time-btn {
+    @apply !text-small !rounded;
 }
-
-/***** kits components */
-.profile-account {
-    @apply grid grid-cols-[max-content_auto] gap-2 
-            leading-none items-center;
+.time-btn.active {
+    @apply !bg-foreground text-background;
 }
