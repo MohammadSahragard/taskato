@@ -2,6 +2,7 @@
 
 // public
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 //* components
 import {
@@ -27,17 +28,37 @@ import {
     dateToLocalDateString,
 } from '@/helper/functions/functions';
 
+//* redux
+import { setTodoReminder, setShowReminder } from '@/redux/features/todoSlice';
+
+//* types
+type saveReminderType = {
+    hour: number;
+    minute: number;
+    date: Date;
+};
+
 const AddReminderBtn = () => {
     // hooks and variables
+    const dispatch = useDispatch();
+    const todoReminder = useSelector(
+        (state: any) => state.todoContent.todoReminder
+    );
     const [isOpenPicker, setIsOpenPicker] = useState(false);
-    const [selectedKey, setSelectedKey] = useState({
-        time: {
-            hour: new Date().getHours(),
-            minute: new Date().getMinutes(),
-        },
-        date: new Date(),
-        showContent: false,
-    });
+
+    // functions
+    const saveReminder = ({ hour, minute, date }: saveReminderType) => {
+        dispatch(
+            setTodoReminder({
+                time: {
+                    hour: hour,
+                    minute: minute,
+                },
+                date: date,
+                isTrueReminder: true,
+            })
+        );
+    };
 
     return (
         <Dropdown
@@ -55,17 +76,17 @@ const AddReminderBtn = () => {
                             color='text-foreground'
                         />
                     }
-                    isIconOnly={selectedKey.showContent ? false : true}
+                    isIconOnly={todoReminder.isTrueReminder ? false : true}
                 >
-                    {selectedKey.showContent ? (
+                    {todoReminder.isTrueReminder ? (
                         <section>
                             <span>
-                                {zeroBeforeSingle(selectedKey.time.hour)}:
-                                {zeroBeforeSingle(selectedKey.time.minute)}
+                                {zeroBeforeSingle(todoReminder.time.hour)}:
+                                {zeroBeforeSingle(todoReminder.time.minute)}
                             </span>
                             <Subtitle
                                 subtitle={dateToLocalDateString(
-                                    selectedKey.date
+                                    todoReminder.date
                                 )}
                                 additionalClasses='text-xs'
                             />
@@ -84,13 +105,10 @@ const AddReminderBtn = () => {
                     }
                     key='today'
                     onClick={() =>
-                        setSelectedKey({
-                            ...selectedKey,
-                            time: {
-                                hour: laterTime(),
-                                minute: 0,
-                            },
-                            showContent: true,
+                        saveReminder({
+                            hour: laterTime(),
+                            minute: 0,
+                            date: getDate().today,
                         })
                     }
                 >
@@ -105,12 +123,9 @@ const AddReminderBtn = () => {
                     }
                     key='tomorrow'
                     onClick={() =>
-                        setSelectedKey({
-                            ...selectedKey,
-                            time: {
-                                hour: 9,
-                                minute: 0,
-                            },
+                        saveReminder({
+                            hour: 9,
+                            minute: 0,
                             date: getDate().tomorrow,
                         })
                     }
@@ -122,12 +137,9 @@ const AddReminderBtn = () => {
                     endContent={<Subtitle subtitle='Saturday, 09:00' />}
                     key='next-week'
                     onClick={() =>
-                        setSelectedKey({
-                            ...selectedKey,
-                            time: {
-                                hour: 9,
-                                minute: 0,
-                            },
+                        saveReminder({
+                            hour: 9,
+                            minute: 0,
                             date: getDate().nextWeek,
                         })
                     }
@@ -143,18 +155,12 @@ const AddReminderBtn = () => {
                     <Popover>
                         <PopoverTrigger>Pick a date & time</PopoverTrigger>
                         <PopoverContent className='p-0 bg-background'>
-                            <DateTimePicker
-                                getDateTime={selectedKey}
-                                changeDateTimePicked={setSelectedKey}
-                            />
+                            <DateTimePicker todoReminder={todoReminder} />
                             <Button
                                 size='sm'
                                 className='m-2 bg-foreground text-background self-end'
                                 onClick={() => {
-                                    setSelectedKey({
-                                        ...selectedKey,
-                                        showContent: true,
-                                    });
+                                    dispatch(setShowReminder(true));
                                     setIsOpenPicker(false);
                                 }}
                             >
@@ -171,18 +177,9 @@ const AddReminderBtn = () => {
                         />
                     }
                     className={
-                        selectedKey.showContent ? 'text-danger' : 'hidden'
+                        todoReminder.isTrueReminder ? 'text-danger' : 'hidden'
                     }
-                    onClick={() =>
-                        setSelectedKey({
-                            time: {
-                                hour: new Date().getHours(),
-                                minute: new Date().getMinutes(),
-                            },
-                            date: new Date(),
-                            showContent: false,
-                        })
-                    }
+                    onClick={() => dispatch(setShowReminder(false))}
                     color='danger'
                 >
                     Remove due date

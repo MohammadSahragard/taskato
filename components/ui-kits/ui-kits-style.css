@@ -24,3 +24,11 @@
             h-10 border-2 border-foreground rounded grid place-content-center
             snap-start snap-mandatory;
 }
+
+/* add todo bar */
+.todo-bar {
+    @apply bg-primary-100 border-none !px-1 !transition-all;
+}
+.todo-options {
+    @apply flex;
+}

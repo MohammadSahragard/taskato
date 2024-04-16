@@ -2,6 +2,7 @@
 
 // public
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 //* components
 import {
@@ -21,20 +22,22 @@ import Calendar from '@/components/ui-kits/calendar';
 //* functions
 import {
     getDayOfWeek,
+    getDate,
     getLocalDateString,
-    wordsSeparator,
 } from '@/helper/functions/functions';
+
+//* redux
+import { setTodoDate } from '@/redux/features/todoSlice';
 
 const AddDateBtn = () => {
     // hooks and variables
+    const dispatch = useDispatch();
+    const todoDate = useSelector((state: any) => state.todoContent.todoDate);
     const [isOpenDatePicker, setIsOpenDatePicker] = useState(false);
-    const [selectedKey, setSelectedKey] = useState('');
-    const [date, setDate] = useState<Date | undefined>();
 
     // functions
-    const confirmDatePicked = (date: Date | undefined) => {
-        setDate(date);
-        setSelectedKey(getLocalDateString(date));
+    const confirmDatePicked = (date: Date | null) => {
+        dispatch(setTodoDate(date));
         setIsOpenDatePicker(false);
     };
 
@@ -54,34 +57,31 @@ const AddDateBtn = () => {
                             color='text-foreground'
                         />
                     }
-                    isIconOnly={selectedKey ? false : true}
+                    isIconOnly={todoDate ? false : true}
                 >
-                    {selectedKey}
+                    {todoDate ? getLocalDateString(todoDate) : null}
                 </Button>
             </DropdownTrigger>
 
-            <DropdownMenu
-                variant='flat'
-                onAction={(key: any) => setSelectedKey(wordsSeparator(key))}
-            >
+            <DropdownMenu variant='flat'>
                 <DropdownItem
                     startContent={<Icon iconName='calendar-day' />}
                     endContent={<Subtitle subtitle={getDayOfWeek().today} />}
-                    key='today'
+                    onClick={() => confirmDatePicked(getDate().today)}
                 >
                     Today
                 </DropdownItem>
                 <DropdownItem
                     startContent={<Icon iconName='calendar-arrow-down' />}
                     endContent={<Subtitle subtitle={getDayOfWeek().tomorrow} />}
-                    key='tomorrow'
+                    onClick={() => confirmDatePicked(getDate().tomorrow)}
                 >
                     Tomorrow
                 </DropdownItem>
                 <DropdownItem
                     startContent={<Icon iconName='calendar-week' />}
                     endContent={<Subtitle subtitle='Saturday' />}
-                    key='next_week'
+                    onClick={() => confirmDatePicked(getDate().nextWeek)}
                     showDivider
                 >
                     Next Week
@@ -97,17 +97,12 @@ const AddDateBtn = () => {
                             <Calendar
                                 mode='single'
                                 className='rounded-md border'
-                                selected={date}
-                                onSelect={(date) => confirmDatePicked(date)}
+                                selected={todoDate}
+                                onSelect={(date: any) =>
+                                    confirmDatePicked(date)
+                                }
                                 disabled={{ before: new Date() }}
                             />
-                            <Button
-                                size='sm'
-                                className='self-start mb-4 ml-4 bg-foreground text-background'
-                                onClick={() => confirmDatePicked(new Date())}
-                            >
-                                Today
-                            </Button>
                         </PopoverContent>
                     </Popover>
                 </DropdownItem>
@@ -118,8 +113,8 @@ const AddDateBtn = () => {
                             color='text-danger'
                         />
                     }
-                    className={selectedKey ? 'text-danger' : 'hidden'}
-                    onClick={() => setSelectedKey('')}
+                    className={todoDate ? 'text-danger' : 'hidden'}
+                    onClick={() => confirmDatePicked(null)}
                     color='danger'
                 >
                     Remove due date

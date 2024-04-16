@@ -2,22 +2,23 @@
 
 // public
 import { useState, useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
 
 //* components
 import Calendar from './calendar';
 import { Button } from '@nextui-org/react';
 import Divider from '../ui/texts/divider';
 
-//* types
-import { DateTimePickerType } from '@/types/types';
-
 //* functions
 import { zeroBeforeSingle } from '@/helper/functions/functions';
 
-const DateTimePicker = (props: DateTimePickerType) => {
-    // props
-    const { getDateTime, changeDateTimePicked } = props;
+//* redux
+import { setTodoReminder } from '@/redux/features/todoSlice';
 
+//* types
+import { getDateTime } from '@/types/types';
+
+const DateTimePicker = ({todoReminder}: getDateTime) => {
     // refs
     const selectedHour = useRef<HTMLButtonElement | null>(null);
     const selectedMinute = useRef<HTMLButtonElement | null>(null);
@@ -27,6 +28,7 @@ const DateTimePicker = (props: DateTimePickerType) => {
     const [minutes, setMinutes] = useState<number[]>([]);
 
     // states and variables
+    const dispatch = useDispatch();
     const hour = 'hour';
     const minute = 'minute';
     const [mounted, setMounted] = useState(false);
@@ -38,21 +40,21 @@ const DateTimePicker = (props: DateTimePickerType) => {
         });
 
         if (type === 'hour') {
-            changeDateTimePicked({
-                ...getDateTime,
+            dispatch(setTodoReminder({
+                ...todoReminder,
                 time: {
-                    ...getDateTime.time,
+                    ...todoReminder.time,
                     hour: item,
                 },
-            });
+            }));
         } else {
-            changeDateTimePicked({
-                ...getDateTime,
+            dispatch(setTodoReminder({
+                ...todoReminder,
                 time: {
-                    ...getDateTime.time,
+                    ...todoReminder.time,
                     minute: item,
                 },
-            });
+            }));
         }
     };
 
@@ -80,12 +82,12 @@ const DateTimePicker = (props: DateTimePickerType) => {
         <div className='date-time-picker'>
             <Calendar
                 mode='single'
-                selected={getDateTime.date}
+                selected={todoReminder.date}
                 onSelect={(date: any) =>
-                    changeDateTimePicked({
-                        ...getDateTime,
+                    dispatch(setTodoReminder({
+                        ...todoReminder,
                         date: date,
-                    })
+                    }))
                 }
                 disabled={{ before: new Date() }}
             />
@@ -102,13 +104,13 @@ const DateTimePicker = (props: DateTimePickerType) => {
                                 size='sm'
                                 variant='light'
                                 className={`time-btn ${
-                                    item === getDateTime?.time?.hour && 'active'
+                                    item === todoReminder?.time?.hour && 'active'
                                 }`}
                                 onClick={(event: any) =>
                                     pickTime(event, item, hour)
                                 }
                                 ref={
-                                    item === getDateTime?.time?.hour
+                                    item === todoReminder?.time?.hour
                                         ? selectedHour
                                         : null
                                 }
@@ -132,14 +134,14 @@ const DateTimePicker = (props: DateTimePickerType) => {
                                 size='sm'
                                 variant='light'
                                 className={`time-btn ${
-                                    item === getDateTime?.time?.minute &&
+                                    item === todoReminder?.time?.minute &&
                                     'active'
                                 }`}
                                 onClick={(event: any) =>
                                     pickTime(event, item, minute)
                                 }
                                 ref={
-                                    item === getDateTime?.time?.minute
+                                    item === todoReminder?.time?.minute
                                         ? selectedMinute
                                         : null
                                 }
