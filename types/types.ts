@@ -36,14 +36,27 @@ export type MenuItemTypes = {
     iconName: string;
 };
 
-export type DateTimePickerType = {
-    changeDateTimePicked: Function;
-    getDateTime: {
+export type getDateTime = {
+    todoReminder: {
         time: {
             hour: number;
             minute: number;
         };
-        date: Date;
-        showContent: boolean;
+        date: Date | undefined;
+    };
+};
+
+// redux slices
+export type TodoContent = {
+    todoText: string;
+    todoList: string;
+    todoDate: Date | null;
+    todoReminder: {
+        time: {
+            hour: number;
+            minute: number;
+        };
+        date: Date | null;
+        isTrueReminder: boolean;
     };
 };

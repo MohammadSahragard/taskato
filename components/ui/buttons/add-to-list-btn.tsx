@@ -1,8 +1,9 @@
 'use client';
 
 // public
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import { useSelector, useDispatch } from 'react-redux';
 
 //* components
 import {
@@ -16,12 +17,16 @@ import Icon from '../texts/icon';
 
 //* functions
 import { wordsSeparator } from '@/helper/functions/functions';
+import { setSelectedList } from '@/redux/features/todoSlice';
 
 const AddToListBtn = () => {
     // hooks and variables
+    const dispatch = useDispatch();
+    const todoSelectedList = useSelector(
+        (state: any) => state.todoContent.todoList
+    );
+
     const pathname = usePathname();
-    const [isOpenListPicker, setIsOpenListPicker] = useState(false);
-    const [selectedKey, setSelectedKey] = useState('');
 
     // conditional rendering
     if (pathname === 'today') return null;
@@ -30,8 +35,6 @@ const AddToListBtn = () => {
     return (
         <Dropdown
             className='bg-primary-100'
-            isOpen={isOpenListPicker}
-            onOpenChange={() => setIsOpenListPicker(!isOpenListPicker)}
         >
             <DropdownTrigger>
                 <Button
@@ -43,15 +46,17 @@ const AddToListBtn = () => {
                             color='text-foreground'
                         />
                     }
-                    isIconOnly={selectedKey ? false : true}
+                    isIconOnly={todoSelectedList ? false : true}
                 >
-                    {selectedKey}
+                    {todoSelectedList}
                 </Button>
             </DropdownTrigger>
             <DropdownMenu
                 variant='flat'
                 selectionMode='single'
-                onAction={(key: any) => setSelectedKey(wordsSeparator(key))}
+                onAction={(key: any) =>
+                    dispatch(setSelectedList(wordsSeparator(key)))
+                }
             >
                 <DropdownItem
                     startContent={<Icon iconName='house-blank' />}
@@ -67,9 +72,9 @@ const AddToListBtn = () => {
                             color='text-danger'
                         />
                     }
-                    className={selectedKey ? 'text-danger' : 'hidden'}
-                    onClick={() => setSelectedKey('')}
+                    className={todoSelectedList ? 'text-danger' : 'hidden'}
                     color='danger'
+                    key=''
                 >
                     Remove due date
                 </DropdownItem>
