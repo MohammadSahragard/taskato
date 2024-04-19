@@ -6,10 +6,10 @@
 
 /* date time picker */
 .date-time-picker {
-    @apply w-max flex rounded-xl border;
+    @apply w-max flex rounded-xl border dark:border-default-300/20;
 }
 .time-picker {
-    @apply w-[98px] max-h-full border-l relative
+    @apply w-[98px] max-h-full border-l dark:border-default-300/20 relative
             grid grid-cols-[1fr_max-content_1fr];
 }
 .time-section {
@@ -31,4 +31,15 @@
 }
 .todo-options {
     @apply flex;
+}
+
+/* :todo item */
+.todo-item {
+    @apply grid grid-cols-[max-content_auto_max-content] p-1 hover:bg-primary-100 rounded-2xl transition-all cursor-pointer;
+}
+.todo-content {
+    @apply grid grid-rows-[40px_max-content];
+}
+.todo-sub-detail {
+    @apply flex gap-2 px-2 pb-2;
 }

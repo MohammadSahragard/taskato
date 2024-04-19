@@ -43,7 +43,7 @@ const AddToListBtn = () => {
                     startContent={
                         <Icon
                             iconName='list-check'
-                            color='text-foreground'
+                            color={todoSelectedList ? 'text-foreground' : ''}
                         />
                     }
                     isIconOnly={todoSelectedList ? false : true}

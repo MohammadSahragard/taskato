@@ -54,7 +54,7 @@ const AddDateBtn = () => {
                     startContent={
                         <Icon
                             iconName='calendar-days'
-                            color='text-foreground'
+                            color={todoDate ? 'text-foreground' : ''}
                         />
                     }
                     isIconOnly={todoDate ? false : true}

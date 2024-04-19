@@ -16,9 +16,9 @@ import { zeroBeforeSingle } from '@/helper/functions/functions';
 import { setTodoReminder } from '@/redux/features/todoSlice';
 
 //* types
-import { getDateTime } from '@/types/types';
+import { GetDateTime } from '@/types/types';
 
-const DateTimePicker = ({todoReminder}: getDateTime) => {
+const DateTimePicker = ({todoReminder}: GetDateTime) => {
     // refs
     const selectedHour = useRef<HTMLButtonElement | null>(null);
     const selectedMinute = useRef<HTMLButtonElement | null>(null);
