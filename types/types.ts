@@ -1,4 +1,3 @@
-import { getDate } from '@/helper/functions/functions';
 // public
 export type children = { children: React.ReactNode };
 
@@ -9,9 +8,10 @@ export type Title = {
     additionalClasses?: string;
 };
 
-export type Subtitle = {
-    subtitle: string;
+export type SubtitleTypes = {
+    subtitle?: string;
     additionalClasses?: string;
+    children?: React.ReactNode;
 };
 
 export type Heading = {
@@ -19,10 +19,11 @@ export type Heading = {
     additionalClasses?: string;
 };
 
-export type Icon = {
+export type IconTypes = {
     style?: 'fas' | 'far';
     iconName: string;
     color?: string;
+    size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 };
 
 export type BackForwardRoute = {
@@ -36,7 +37,7 @@ export type MenuItemTypes = {
     iconName: string;
 };
 
-export type getDateTime = {
+export type GetDateTime = {
     todoReminder: {
         time: {
             hour: number;
@@ -44,6 +45,13 @@ export type getDateTime = {
         };
         date: Date | undefined;
     };
+};
+
+export type TodoItemTypes = {
+    todoText: string;
+    isCompleted?: boolean;
+    isInFavorite?: boolean;
+    todoSubDetail?: boolean;
 };
 
 // redux slices

@@ -73,7 +73,11 @@ const AddReminderBtn = () => {
                     startContent={
                         <Icon
                             iconName='alarm-clock'
-                            color='text-foreground'
+                            color={
+                                todoReminder.isTrueReminder
+                                    ? 'text-foreground'
+                                    : ''
+                            }
                         />
                     }
                     isIconOnly={todoReminder.isTrueReminder ? false : true}

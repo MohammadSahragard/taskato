@@ -2,10 +2,21 @@
 import { Button } from '@nextui-org/react';
 import Icon from '../texts/icon';
 
-const AddToFavoriteBtn = () => {
+const AddToFavoriteBtn = ({
+    isInFavorite,
+}: {
+    isInFavorite: boolean | undefined;
+}) => {
+    const iconStyle = isInFavorite ? 'fas' : 'far';
+
     return (
         <Button
-            startContent={<Icon iconName='star' />}
+            startContent={
+                <Icon
+                    iconName='star'
+                    style={iconStyle}
+                />
+            }
             isIconOnly
             variant='light'
         />
