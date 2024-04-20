@@ -14,6 +14,7 @@ import '/FontAwesome.Pro.6.4.2/css/all.css';
 
 //* components
 import MenuContainer from '@/components/sidebars/menu/menu-container';
+import MainHeader from '@/components/ui-kits/main-header';
 
 //* metadata
 export const metadata: Metadata = {
@@ -32,6 +33,9 @@ export default function RootLayout({
                 <Providers>
                     {/* menu section */}
                     <MenuContainer />
+
+                    {/* main header */}
+                    <MainHeader />
 
                     {/* main section */}
                     <main className='main-section'>{children}</main>

@@ -35,7 +35,8 @@
 
 /* :todo item */
 .todo-item {
-    @apply grid grid-cols-[max-content_auto_max-content] p-1 hover:bg-primary-100 rounded-2xl transition-all cursor-pointer;
+    @apply grid grid-cols-[max-content_auto_max-content] p-1 
+            hover:bg-primary-100 rounded-2xl transition-all cursor-pointer;
 }
 .todo-content {
     @apply grid grid-rows-[40px_max-content];

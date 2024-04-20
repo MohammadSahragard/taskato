@@ -18,13 +18,12 @@ body {
             grid grid-rows-[repeat(2,max-content)_auto_max-content] gap-2;
 }
 
-/** main section */
-.main-section {
-    @apply fixed inset-[0_0_0_300px] bg-background p-5;
+/** main header */
+.main-header {
+    @apply fixed inset-[0_0_auto_300px] px-5 mt-5 h-10 flex items-center gap-5 z-30;
 }
 
-@layer utilities {
-    .text-balance {
-        text-wrap: balance;
-    }
+/** main section */
+.main-section {
+    @apply fixed inset-[0_0_0_300px] bg-background p-5 pt-[70px];
 }

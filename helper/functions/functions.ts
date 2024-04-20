@@ -9,8 +9,8 @@ export const dateToLocalDateString = (date: Date): string =>
 export const getDayOfWeek = () => {
     const day = new Date().getDay();
 
-    const today = days[day + 1];
-    const tomorrow = day + 1 > 5 ? days[0] : days[day + 2];
+    const today = days[day];
+    const tomorrow = day > 5 ? days[0] : days[day + 1];
 
     return {
         today,
@@ -27,7 +27,7 @@ export const getDate = () => {
 
     const restOfWeek = () => {
         const today = new Date().getDay() + 1;
-        return 7 - today === 0 ? 6 : 7 - today === 1 ? 14 : 7 - today;
+        return 7 - today === 0 ? 7 : 7 - today === 1 ? 14 : 7 - today;
     };
     const nextWeek = new Date(new Date());
     nextWeek.setDate(nextWeek.getDate() + restOfWeek());
