@@ -27,12 +27,12 @@ export const menuLinks = [
 ];
 
 // date format
-export const days = [
-    'Saturday',
+export const days: string[] = [
     'Sunday',
     'Monday',
     'Tuesday',
     'Wednesday',
     'Thursday',
     'Friday',
+    'Saturday',
 ];

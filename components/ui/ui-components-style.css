@@ -17,6 +17,10 @@
     @apply absolute inset-0 opacity-0;
 }
 
+.tab-heading {
+    @apply flex items-center gap-4;
+}
+
 /* buttons */
 .fw-btn {
     /* full width buttons */
