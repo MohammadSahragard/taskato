@@ -21,6 +21,10 @@
     @apply flex items-center gap-4;
 }
 
+.todo-details-subtask {
+    @apply !bg-transparent hover:!bg-primary-200/10 !shadow-none !transition-all;
+}
+
 /* buttons */
 .fw-btn {
     /* full width buttons */

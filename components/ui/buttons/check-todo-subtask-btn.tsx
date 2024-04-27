@@ -4,7 +4,7 @@
 import { Button } from '@nextui-org/react';
 import Icon from '../texts/icon';
 
-const CheckTodoBtn = ({
+const CheckTodoSubtaskBtn = ({
     isCompleted,
 }: {
     isCompleted?: boolean;
@@ -15,6 +15,7 @@ const CheckTodoBtn = ({
         <Button
             isIconOnly
             variant='light'
+            size='sm'
             startContent={
                 <Icon
                     iconName={iconName}
@@ -25,4 +26,4 @@ const CheckTodoBtn = ({
     );
 };
 
-export default CheckTodoBtn;
+export default CheckTodoSubtaskBtn;

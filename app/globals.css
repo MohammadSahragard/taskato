@@ -12,6 +12,13 @@ body {
     @apply bg-background;
 }
 
+::-webkit-scrollbar {
+    width: 2px;
+}
+::-webkit-scrollbar-thumb {
+    @apply bg-default-200;
+}
+
 /** menu section */
 .menu-container {
     @apply fixed inset-[0_calc(100%-300px)_0_0] bg-primary-100 p-5
@@ -20,10 +27,30 @@ body {
 
 /** main header */
 .main-header {
-    @apply fixed inset-[0_0_auto_300px] px-5 mt-5 h-10 flex items-center gap-5 z-30;
+    @apply fixed inset-[0_0_auto_300px] px-5 mt-5 h-10 flex items-center gap-5 z-30 transition-all;
 }
 
 /** main section */
 .main-section {
-    @apply fixed inset-[0_0_0_300px] bg-background p-5 pt-[70px];
+    @apply fixed inset-[0_0_0_300px] bg-background px-5 py-[80px] transition-all;
+}
+
+/** add todo bar section */
+.todo-bar-con {
+    @apply fixed inset-[auto_0_0_300px] p-5 transition-all;
+}
+
+/** todo detail section */
+.todo-details-bar {
+    @apply fixed inset-[20px_20px_20px_calc(100%-300px)] bg-primary-100 p-5 rounded-2xl z-50
+            translate-x-[150%] transition-all
+            grid grid-rows-[max-content_auto];
+}
+.isOpenedDetailsBar .todo-details-bar {
+    @apply translate-x-0;
+}
+
+/* panel toggle styles (todo details & menu) */
+.isOpenedDetailsBar :is(.main-header, .main-section, .todo-bar-con) {
+    @apply right-[300px];
 }

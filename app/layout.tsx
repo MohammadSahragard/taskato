@@ -15,6 +15,8 @@ import '/FontAwesome.Pro.6.4.2/css/all.css';
 //* components
 import MenuContainer from '@/components/sidebars/menu/menu-container';
 import MainHeader from '@/components/ui-kits/main-header';
+import AddTodoBar from '@/components/ui-kits/add-todo-bar';
+import TodoDetails from '@/components/sidebars/todo-detail/todo-details';
 
 //* metadata
 export const metadata: Metadata = {
@@ -29,7 +31,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang='en'>
-            <body className={inter.className}>
+            <body className={`${inter.className} isOpenedDetailsBar`}>
                 <Providers>
                     {/* menu section */}
                     <MenuContainer />
@@ -39,6 +41,14 @@ export default function RootLayout({
 
                     {/* main section */}
                     <main className='main-section'>{children}</main>
+
+                    {/* todo add bar section */}
+                    <div className='todo-bar-con'>
+                        <AddTodoBar />
+                    </div>
+
+                    {/* todo detail bar */}
+                    <TodoDetails />
                 </Providers>
             </body>
         </html>

@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 
 //* components
 import Heading from './heading';
-import ItemsCounter from './items-counter';
 import { wordsSeparator } from '@/helper/functions/functions';
 
 const TabHeading = () => {
@@ -18,7 +17,6 @@ const TabHeading = () => {
                 heading={wordsSeparator(tabName) || 'tasks'}
                 additionalClasses='capitalize'
             />
-            <ItemsCounter value={2} />
         </div>
     );
 };
