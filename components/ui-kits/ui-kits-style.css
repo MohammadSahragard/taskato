@@ -44,3 +44,20 @@
 .todo-sub-detail {
     @apply flex gap-2 px-2 pb-2;
 }
+
+/* :todo details section */
+.todo-details-header {
+    @apply flex justify-between items-center mb-3;
+}
+.todo-details-btn {
+    @apply !border-opacity-40 hover:!border-opacity-100 !justify-start;
+}
+.todo-details-main {
+    @apply grid grid-rows-[max-content_auto_max-content];
+}
+.todo-details-CTA {
+    @apply grid grid-cols-2 gap-2;
+}
+.subtasks-con {
+    @apply mt-3 space-y-2 grid grid-rows-[repeat(2,max-content)_auto];
+}

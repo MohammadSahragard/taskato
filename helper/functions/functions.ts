@@ -57,3 +57,14 @@ export const laterTime = () => {
 // words separation (word-word => word word)
 export const wordsSeparator = (content: string): string =>
     content.replace(/[^A-Za-z0-9]/g, ' ');
+
+// close-open todo details panel
+export const toggleTodoDetailPanel = () => {
+    const body = document.querySelector('body');
+
+    if (body?.className.includes('isOpenedDetailsBar')) {
+        body?.classList.remove('isOpenedDetailsBar');
+    } else {
+        body?.classList.add('isOpenedDetailsBar');
+    }
+};

@@ -1,5 +1,7 @@
+'use client';
+
 //* components
-import { Chip, Divider } from '@nextui-org/react';
+import Divider from '../ui/texts/divider';
 import AddToFavoriteBtn from '../ui/buttons/add-to-favorite-btn';
 import CheckTodoBtn from '../ui/buttons/check-todo-btn';
 import Icon from '../ui/texts/icon';
@@ -8,6 +10,9 @@ import Title from '../ui/texts/title';
 
 //* types
 import { TodoItemTypes } from '@/types/types';
+
+//* functions
+import { toggleTodoDetailPanel } from '@/helper/functions/functions';
 
 const TodoItem = ({
     todoText,
@@ -19,7 +24,10 @@ const TodoItem = ({
     const completedTodo = isCompleted ? completedStyles : '';
 
     return (
-        <div className='todo-item'>
+        <div
+            className='todo-item'
+            onClick={toggleTodoDetailPanel}
+        >
             <section>
                 <CheckTodoBtn isCompleted={isCompleted} />
             </section>
