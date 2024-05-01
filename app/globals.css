@@ -1,6 +1,7 @@
 /* import other styles */
 @import '../components/ui/ui-components-style.css';
 @import '../components/ui-kits/ui-kits-style.css';
+@import '../components/pages/pages-styles.css';
 
 /* tailwind plugins */
 @tailwind base;
@@ -27,12 +28,15 @@ body {
 
 /** main header */
 .main-header {
-    @apply fixed inset-[0_0_auto_300px] px-5 mt-5 h-10 flex items-center gap-5 z-30 transition-all;
+    @apply fixed inset-[0_0_auto_300px] px-5 mt-5 h-10 flex items-center gap-5 transition-all;
 }
 
 /** main section */
 .main-section {
-    @apply fixed inset-[0_0_0_300px] bg-background px-5 py-[80px] transition-all;
+    @apply fixed inset-[0_0_0_300px] bg-background px-5 py-[80px] transition-all z-50;
+}
+.main-section.auth-page {
+    @apply z-auto;
 }
 
 /** add todo bar section */
@@ -42,7 +46,7 @@ body {
 
 /** todo detail section */
 .todo-details-bar {
-    @apply fixed inset-[20px_20px_20px_calc(100%-300px)] bg-primary-100 p-5 rounded-2xl z-50
+    @apply fixed inset-[20px_20px_20px_calc(100%-300px)] bg-primary-100 p-5 rounded-2xl
             translate-x-[150%] transition-all
             grid grid-rows-[max-content_auto];
 }
@@ -50,7 +54,12 @@ body {
     @apply translate-x-0;
 }
 
-/* panel toggle styles (todo details & menu) */
+/** panel toggle styles (todo details & menu) */
 .isOpenedDetailsBar :is(.main-header, .main-section, .todo-bar-con) {
     @apply right-[300px];
+}
+
+/** sign up */
+.sign-up-page {
+    @apply fixed inset-0 bg-white grid place-items-center;
 }
