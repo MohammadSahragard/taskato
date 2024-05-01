@@ -36,11 +36,11 @@ export default function RootLayout({
                     {/* menu section */}
                     <MenuContainer />
 
-                    {/* main header */}
-                    <MainHeader />
-
                     {/* main section */}
                     <main className='main-section'>{children}</main>
+
+                    {/* main header */}
+                    <MainHeader />
 
                     {/* todo add bar section */}
                     <div className='todo-bar-con'>

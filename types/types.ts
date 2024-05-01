@@ -30,6 +30,11 @@ export type BackForwardRoute = {
     route: 'back' | 'forward';
 };
 
+export type PassVisibilityTypes = {
+    visibility: boolean;
+    setVisibility: Function;
+};
+
 // ui kits components
 export type MenuItemTypes = {
     href: string;
