@@ -1,4 +1,5 @@
 //* data needed
+import { SignupSubmitTypes } from '@/types/types';
 import { days } from '../data/data';
 
 // date to local date string
@@ -66,5 +67,15 @@ export const toggleTodoDetailPanel = () => {
         body?.classList.remove('isOpenedDetailsBar');
     } else {
         body?.classList.add('isOpenedDetailsBar');
+    }
+};
+
+// checking to page is a auth page or not (for z-indexing page)
+export const checkAuthPage = (pathname: string) => {
+    const mainSection = document.querySelector('main');
+    if (pathname.includes('auth')) {
+        mainSection?.classList.remove('auth-page');
+    } else {
+        mainSection?.classList.add('auth-page');
     }
 };

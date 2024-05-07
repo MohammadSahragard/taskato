@@ -7,4 +7,4 @@ const connectDB = async () => {
     console.log('connected to MongoDb');
 };
 
-export default connectDB();
+export default connectDB;
