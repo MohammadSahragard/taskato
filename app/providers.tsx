@@ -4,34 +4,32 @@
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
-// next ui provider
+//* next ui provider
 import { NextUIProvider } from '@nextui-org/react';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 
-// redux provider
+//* redux provider
 import { Provider } from 'react-redux';
 import store from '@/redux/app/store';
+
+//* functions
+import { checkAuthPage } from '@/helper/functions/functions';
 
 export function Providers({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
 
     useEffect(() => {
-        const mainSection = document.querySelector('main');
-        if (pathname.includes('auth')) {
-            mainSection?.classList.remove('auth-page');
-        } else {
-            mainSection?.classList.add('auth-page');
-        }
+        checkAuthPage(pathname);
     }, [pathname]);
 
     return (
-        <NextUIProvider>
-            <NextThemesProvider
-                attribute='class'
-                defaultTheme='light'
-            >
-                <Provider store={store}>{children}</Provider>
-            </NextThemesProvider>
-        </NextUIProvider>
+            <NextUIProvider>
+                <NextThemesProvider
+                    attribute='class'
+                    defaultTheme='light'
+                >
+                    <Provider store={store}>{children}</Provider>
+                </NextThemesProvider>
+            </NextUIProvider>
     );
 }
