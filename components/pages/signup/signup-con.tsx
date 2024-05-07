@@ -5,9 +5,12 @@ import SignupForm from './signup-form';
 
 const SignupCon = () => {
     return (
-        <div className='signup-con'>
-            <header className='signup-header'>
-                <Heading heading='Join us today!' />
+        <div className='form-con'>
+            <header className='form-header'>
+                <Heading
+                    heading='Join us today!'
+                    additionalClasses='text-black'
+                />
                 <Subtitle subtitle='Sign up now to become a member' />
             </header>
             <SignupForm />
