@@ -1,25 +1,24 @@
+'use client';
+
 //* components
-import { Avatar } from '@nextui-org/react';
-import Title from '../ui/texts/title';
-import Subtitle from '../ui/texts/subtitle';
+import ProfileName from '../ui/texts/profile-name';
+import ProfileEmail from '../ui/texts/profile-email';
+import ProfilePicture from '../ui/texts/profile-picture';
+
+//* hooks
+import { useUserLoggedIn } from '@/hooks/use-user-logged-in';
 
 const ProfileAccount = () => {
+    const getUser: any = useUserLoggedIn('/api/user');
+    const user = getUser?.message || null;
+
     return (
         <div className='profile-account'>
-            <Avatar
-                src='https://avatars.githubusercontent.com/u/77649975?v=4'
-                classNames={{ icon: 'text-primary-200' }}
-            />
+            <ProfilePicture email={user?.email ?? ''} />
 
             <section className='overflow-hidden'>
-                <Title
-                    title='Mohammad Sahragard'
-                    additionalClasses='font-medium'
-                />
-                <Subtitle
-                    subtitle='mohammadsahragard@gmail.com'
-                    additionalClasses='truncate'
-                />
+                <ProfileName name={user?.name ?? ''} />
+                <ProfileEmail email={user?.email ?? ''} />
             </section>
         </div>
     );

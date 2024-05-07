@@ -10,7 +10,7 @@ import Icon from '../ui/texts/icon';
 import PassVisibilityBtn from '../ui/buttons/pass-visibility-btn';
 
 //* redux
-import { setConfirmPassword } from '@/redux/features/formSlice';
+import { setPassword } from '@/redux/features/formSlice';
 
 const PassField = () => {
     const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const PassField = () => {
             startContent={<Icon iconName='lock' />}
             value={password}
             onChange={({ target }) =>
-                dispatch(setConfirmPassword(target.value))
+                dispatch(setPassword(target.value))
             }
             type={passVisibility ? 'text' : 'password'}
             endContent={
