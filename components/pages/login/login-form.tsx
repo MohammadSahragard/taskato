@@ -1,36 +1,29 @@
 'use client';
 
 // public
-import { useEffect, useState, useTransition } from 'react';
+import { useState, useTransition, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useRouter } from 'next/navigation';
 
 //* components
 import { Button } from '@nextui-org/react';
 import Link from 'next/link';
 import Subtitle from '@/components/ui/texts/subtitle';
 import PassField from '@/components/ui-kits/pass-field';
-import ConfirmPassField from '@/components/ui-kits/confirm-pass-field';
 import EmailField from '@/components/ui-kits/email-field';
-import NameField from '@/components/ui-kits/name-filed';
 import ResultSubmit from '@/components/ui/texts/result-submit';
-import { signupSubmit } from '@/helper/functions/auth-functions';
+
+//* functions
+import { loginSubmit } from '@/helper/functions/auth-functions';
 
 //* redux
 import { setClearFields } from '@/redux/features/formSlice';
 
-const SignupForm = () => {
+const LoginForm = () => {
     const dispatch = useDispatch();
-    const router = useRouter();
 
     // hooks, states and variables
-    const firstName = useSelector((state: any) => state.formValues.firstName);
-    const lastName = useSelector((state: any) => state.formValues.lastName);
     const email = useSelector((state: any) => state.formValues.email);
     const password = useSelector((state: any) => state.formValues.password);
-    const confirmPassword = useSelector(
-        (state: any) => state.formValues.confirmPassword
-    );
     const [isPending, startTransition] = useTransition();
     const [showResult, setShowResult] = useState(false);
     const [resultSubmit, setResultSubmit] = useState({
@@ -42,12 +35,9 @@ const SignupForm = () => {
     const formSubmit = async (event: any) => {
         event.preventDefault();
 
-        await signupSubmit({
-            firstName,
-            lastName,
+        await loginSubmit({
             email,
             password,
-            confirmPassword,
         }).then((res) => {
             setShowResult(true);
             setResultSubmit({
@@ -59,7 +49,7 @@ const SignupForm = () => {
                 setShowResult(false);
                 if (res.status === 200) {
                     dispatch(setClearFields());
-                    router.replace('/auth/login');
+                    window.location.href = '/';
                 }
             }, 5000);
         });
@@ -75,10 +65,8 @@ const SignupForm = () => {
             className='signup-form'
             onSubmit={(event: any) => startTransition(() => formSubmit(event))}
         >
-            <NameField />
             <EmailField />
             <PassField />
-            <ConfirmPassField />
 
             <section className='form-CTA'>
                 {showResult ? (
@@ -93,14 +81,14 @@ const SignupForm = () => {
                     color='primary'
                     isLoading={isPending}
                 >
-                    Sign up
+                    Login
                 </Button>
                 <Subtitle>
-                    Already a member? <Link href='/auth/login'>Login here</Link>
+                    Not a member? <Link href='/auth/signup'>Sign up here</Link>
                 </Subtitle>
             </section>
         </form>
     );
 };
 
-export default SignupForm;
+export default LoginForm;

@@ -73,3 +73,18 @@ export type TodoContent = {
         isTrueReminder: boolean;
     };
 };
+
+//* functions helper
+// signup submit
+export type SignupSubmitTypes = {
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+};
+
+export type LoginSubmitTypes = {
+    email: string;
+    password: string;
+};

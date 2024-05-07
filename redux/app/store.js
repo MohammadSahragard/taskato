@@ -10,7 +10,7 @@ const store = configureStore({
     reducer: {
         options: optionsSlice,
         todoContent: todoSlice,
-        formValues: formSlice
+        formValues: formSlice,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
 })

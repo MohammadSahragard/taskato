@@ -60,6 +60,6 @@ body {
 }
 
 /** sign up */
-.sign-up-page {
+.form-page {
     @apply fixed inset-0 bg-white grid place-items-center;
 }
