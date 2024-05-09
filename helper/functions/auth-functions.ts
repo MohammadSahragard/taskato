@@ -1,11 +1,13 @@
 // public
 import { hash, compare } from 'bcryptjs';
 import { verify } from 'jsonwebtoken';
-import User from '@/models/user';
-import connectDB from '@/utils/connectDB';
 
 //& types
-import { LoginSubmitTypes, SignupSubmitTypes } from '@/types/types';
+import {
+    IsUserLoggedInTypes,
+    LoginSubmitTypes,
+    SignupSubmitTypes,
+} from '@/types/types';
 
 //* create hashed password
 export const hashPassword = async (password: string) => {
@@ -48,16 +50,7 @@ export const checkingAuth = async (cookies: any) => {
     if (!verifiedToken) {
         return false;
     } else {
-        try {
-            await connectDB();
-            const foundUser = await User.findOne({ verifiedToken });
-            return {
-                name: `${foundUser.firstName} ${foundUser.lastName}`,
-                email: foundUser.email,
-            };
-        } catch {
-            return false;
-        }
+        return true;
     }
 };
 
@@ -167,15 +160,19 @@ export const loginSubmit = async (loginProps: LoginSubmitTypes) => {
 };
 
 //* user checking for redirect to login page
-export const isUserLoggedIn = (
-    isLoggedIn: any,
-    url: string,
-    redirectUrl: Function
-) => {
-    if (!isLoggedIn) {
-        if (!url.includes('login') || !url.includes('signup')) {
-            console.log('url: ', url);
-            // redirectUrl('/auth/signup');
+export const isUserLoggedIn = ({
+    condition,
+    pathname,
+    router,
+}: IsUserLoggedInTypes) => {
+    if (!condition) {
+        if (pathname.includes('login') || pathname.includes('signup')) {
+        } else {
+            router?.replace('/auth/login');
+        }
+    } else {
+        if (pathname.includes('login') || pathname.includes('signup')) {
+            router?.replace('/');
         }
     }
 };
