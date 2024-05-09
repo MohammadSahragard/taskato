@@ -71,8 +71,7 @@ export const POST = async (req: any) => {
             password: hashedPass,
         });
         return NextResponse.json({
-            message:
-                'Thanks for signing up. Welcome to our application.',
+            message: `Thanks for signing up, ${firstName}. Welcome to our application.`,
             status: 200,
         });
     } catch (err: any) {

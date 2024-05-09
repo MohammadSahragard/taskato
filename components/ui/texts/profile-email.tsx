@@ -7,7 +7,7 @@ const ProfileEmail = ({email}: {email: string}) => {
     return (
         <Subtitle
             subtitle={email || 'Not Found'}
-            additionalClasses='truncate'
+            additionalClasses='truncate lowercase'
         />
     );
 };
