@@ -7,7 +7,7 @@ const ProfileName = ({name}:{name: string}) => {
     return (
         <Title
             title={name || 'Not Found'}
-            additionalClasses='font-medium'
+            additionalClasses='font-medium capitalize'
         />
     );
 };
