@@ -84,7 +84,15 @@ export type SignupSubmitTypes = {
     confirmPassword: string;
 };
 
+// login submit
 export type LoginSubmitTypes = {
     email: string;
     password: string;
+};
+
+// types for isUserLoggedIn function
+export type IsUserLoggedInTypes = {
+    condition: boolean;
+    pathname: string;
+    router: any;
 };

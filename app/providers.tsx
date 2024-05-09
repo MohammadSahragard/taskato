@@ -23,13 +23,13 @@ export function Providers({ children }: { children: React.ReactNode }) {
     }, [pathname]);
 
     return (
-            <NextUIProvider>
-                <NextThemesProvider
-                    attribute='class'
-                    defaultTheme='light'
-                >
-                    <Provider store={store}>{children}</Provider>
-                </NextThemesProvider>
-            </NextUIProvider>
+        <NextUIProvider>
+            <NextThemesProvider
+                attribute='class'
+                defaultTheme='light'
+            >
+                <Provider store={store}>{children}</Provider>
+            </NextThemesProvider>
+        </NextUIProvider>
     );
 }
