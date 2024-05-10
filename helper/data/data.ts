@@ -36,3 +36,15 @@ export const days: string[] = [
     'Friday',
     'Saturday',
 ];
+
+// list color
+export const listColorItems: string[] = [
+    '#e11d48',
+    '#c026d3',
+    '#7c3aed',
+    '#2563eb',
+    '#14b8a6',
+    '#84cc16',
+    '#fcd34d',
+    '#f97316',
+];

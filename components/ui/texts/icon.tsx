@@ -1,7 +1,7 @@
 //* types
 import { IconTypes } from '@/types/types';
 
-const Icon = ({ iconName, style, color, size }: IconTypes) => {
+const Icon = ({ iconName, style, color, size, forceColor }: IconTypes) => {
     return (
         <i
             className={`
@@ -10,6 +10,7 @@ const Icon = ({ iconName, style, color, size }: IconTypes) => {
                     ${color ? color : 'text-primary-200'}
                     ${size ? `text-${size}` : 'text-xl'}
             `}
+            style={{ color: forceColor }}
         ></i>
     );
 };
