@@ -2,7 +2,7 @@
 
 // public
 import { useState, useTransition } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 //* components
 import {
@@ -21,6 +21,7 @@ import {
 import { listColorItems } from '@/helper/data/data';
 import { addTaskList } from '@/helper/functions/todo-functions';
 import ResultSubmit from '../ui/texts/result-submit';
+import { getListsByEmail } from '@/redux/features/taskListsSlice';
 
 const AddListModal = ({
     isOpen,
@@ -29,9 +30,11 @@ const AddListModal = ({
     isOpen: boolean;
     onOpenChange: (isOpen: boolean) => void;
 }) => {
+    const dispatch = useDispatch();
     // states and variables
     const userEmail = useSelector((state: any) => state.options.userEmail);
     const [listColor, setListColor] = useState('#e11d48');
+    console.log('listColor: ', listColor);
     const [listTitle, setListTitle] = useState('Untitled list');
     const [isPending, startTransition] = useTransition();
     const [showResult, setShowResult] = useState(false);
@@ -64,6 +67,7 @@ const AddListModal = ({
                         setListTitle('Untitled list');
                         setListColor('#e11d48');
                     }
+                    dispatch(getListsByEmail(userEmail));
                 }, 3000);
             }
         );
@@ -103,13 +107,15 @@ const AddListModal = ({
                                             'bg-transparent justify-center',
                                         cursor: 'outline outline-primary outline-offset-2 !bg-transparent',
                                     }}
+                                    onSelectionChange={(key: any) =>
+                                        setListColor(key)
+                                    }
                                 >
                                     {listColorItems.map((color: string) => (
                                         <Tab
                                             key={color}
                                             style={{ backgroundColor: color }}
                                             className={`h-8 w-8`}
-                                            onClick={() => setListColor(color)}
                                         />
                                     ))}
                                 </Tabs>

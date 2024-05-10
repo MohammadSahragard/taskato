@@ -24,6 +24,7 @@ export type IconTypes = {
     iconName: string;
     color?: string;
     size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+    forceColor?: string;
 };
 
 export type BackForwardRoute = {
@@ -40,6 +41,12 @@ export type MenuItemTypes = {
     href: string;
     label: string;
     iconName: string;
+};
+
+export type TaskListTypes = {
+    href: string;
+    label: string;
+    listColor: string;
 };
 
 export type GetDateTime = {
@@ -95,4 +102,11 @@ export type IsUserLoggedInTypes = {
     condition: boolean;
     pathname: string;
     router: any;
+};
+
+// types for add task list
+export type AddTaskListTypes = {
+    email: string;
+    listTitle: string;
+    listColor: string;
 };

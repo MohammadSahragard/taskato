@@ -2,6 +2,7 @@
 import MenuItem from '@/components/ui-kits/menu-item';
 import ProfileAccount from '@/components/ui-kits/profile-account';
 import Searchbar from '@/components/ui-kits/search-bar';
+import TaskListCon from '@/components/ui-kits/task-list-con';
 import AddListBtn from '@/components/ui/buttons/add-list-btn';
 import SignOutBtn from '@/components/ui/buttons/sign-out-btn';
 import ThemeToggleBtn from '@/components/ui/buttons/theme-toggle-btn';
@@ -44,6 +45,8 @@ const MenuContainer = () => {
                         subtitle='LISTS'
                         additionalClasses='text-xs my-2'
                     />
+
+                    <TaskListCon />
 
                     <AddListBtn />
                 </section>
