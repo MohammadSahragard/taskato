@@ -29,3 +29,24 @@ export const addTaskList = async ({
 
     return data;
 };
+
+//* rename task list
+export const renameTaskList = async (id: string, listTitle: string) => {
+    // form validation
+    if (!id || !listTitle) {
+        return {
+            message: 'Something went wrong. Please try again later.',
+            status: 401,
+        };
+    }
+
+    // post form data
+    const res = await fetch('/api/task-lists/list', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ _id: id, list_title: listTitle }),
+    });
+    const data = await res.json();
+
+    return data;
+};

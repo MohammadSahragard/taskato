@@ -22,7 +22,7 @@ body {
 
 /** menu section */
 .menu-container {
-    @apply fixed inset-[0_calc(100%-300px)_0_0] bg-primary-100 p-5
+    @apply fixed inset-[0_calc(100%-300px)_0_0] bg-primary-100 p-5 overflow-auto
             grid grid-rows-[repeat(2,max-content)_auto_max-content] gap-2;
 }
 

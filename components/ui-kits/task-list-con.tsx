@@ -1,7 +1,7 @@
 'use client';
 
 // public
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 //* redux
@@ -14,6 +14,7 @@ const TaskListCon = () => {
     // states and variables
     const taskLists = useSelector((state: any) => state.taskLists);
     const userEmail = useSelector((state: any) => state.options.userEmail);
+    const cachedLists = useMemo(() => taskLists.data, [taskLists.data]);
 
     useEffect(() => {
         if (userEmail) {
@@ -26,10 +27,12 @@ const TaskListCon = () => {
     return (
         <div>
             {!taskLists.error ? (
-                taskLists?.data?.map((taskList: any) => (
+                cachedLists?.map((taskList: any) => (
                     <TaskList
                         key={taskList._id}
-                        href=''
+                        id={taskList._id}
+                        userEmail={userEmail}
+                        href='/hey'
                         label={taskList.list_title}
                         listColor={taskList.list_color}
                     />

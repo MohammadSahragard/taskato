@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 // public
 export type children = { children: React.ReactNode };
 
@@ -44,6 +46,8 @@ export type MenuItemTypes = {
 };
 
 export type TaskListTypes = {
+    id: string;
+    userEmail: string;
     href: string;
     label: string;
     listColor: string;
@@ -64,6 +68,15 @@ export type TodoItemTypes = {
     isCompleted?: boolean;
     isInFavorite?: boolean;
     todoSubDetail?: boolean;
+};
+
+export type ListItemOptionsTypes = {
+    listId: string;
+    listTitle: string;
+    userEmail: string;
+    isOpenOptions: boolean;
+    closeOptionsMenu: (isOpen: boolean) => void;
+    children: ReactNode;
 };
 
 // redux slices
