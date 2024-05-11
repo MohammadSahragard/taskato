@@ -18,27 +18,27 @@ import {
 } from '@nextui-org/react';
 import ResultSubmit from '../ui/texts/result-submit';
 
-//* data
-import { listColorItems } from '@/helper/data/data';
-
-//* functions
-import { addTaskList } from '@/helper/functions/todo-functions';
-
 //* redux
 import { getListsByEmail } from '@/redux/features/taskListsSlice';
 
-const AddListModal = ({
+//* functions
+import { renameTaskList } from '@/helper/functions/todo-functions';
+
+const RenameListModal = ({
+    listId,
+    listTitle,
     isOpen,
     onOpenChange,
 }: {
+    listId: string;
+    listTitle: string;
     isOpen: boolean;
     onOpenChange: (isOpen: boolean) => void;
 }) => {
     const dispatch = useDispatch();
     // states and variables
     const userEmail = useSelector((state: any) => state.options.userEmail);
-    const [listColor, setListColor] = useState('#e11d48');
-    const [listTitle, setListTitle] = useState('Untitled list');
+    const [newListTitle, setNewListTitle] = useState(listTitle);
     const [isPending, startTransition] = useTransition();
     const [showResult, setShowResult] = useState(false);
     const [resultSubmit, setResultSubmit] = useState({
@@ -48,32 +48,28 @@ const AddListModal = ({
 
     // functions
     const openModal = () => {
-        setListTitle('Untitled list');
+        setNewListTitle('Untitled list');
         onOpenChange(isOpen);
     };
 
     const submitList = async (event: any) => {
         event.preventDefault();
 
-        await addTaskList({ email: userEmail, listTitle, listColor }).then(
-            (res: any) => {
-                setShowResult(true);
-                setResultSubmit({
-                    message: res.message,
-                    status: res.status,
-                });
+        await renameTaskList(listId, newListTitle).then((res: any) => {
+            setShowResult(true);
+            setResultSubmit({
+                message: res.message,
+                status: res.status,
+            });
 
-                setTimeout(() => {
-                    setShowResult(false);
-                    if (res.status === 200) {
-                        onOpenChange(!isOpen);
-                        setListTitle('Untitled list');
-                        setListColor('#e11d48');
-                    }
-                    dispatch(getListsByEmail(userEmail));
-                }, 3000);
-            }
-        );
+            setTimeout(() => {
+                setShowResult(false);
+                if (res.status === 200) {
+                    onOpenChange(!isOpen);
+                }
+                dispatch(getListsByEmail(userEmail));
+            }, 3000);
+        });
     };
 
     return (
@@ -91,37 +87,18 @@ const AddListModal = ({
                 <ModalContent>
                     {(onClose) => (
                         <>
-                            <ModalHeader>Add List</ModalHeader>
+                            <ModalHeader>Rename List</ModalHeader>
 
                             <ModalBody className='py-6'>
                                 <Input
                                     variant='bordered'
                                     radius='sm'
                                     placeholder='List Title'
-                                    value={listTitle}
+                                    value={newListTitle}
                                     onChange={({ target }) =>
-                                        setListTitle(target.value)
+                                        setNewListTitle(target.value)
                                     }
                                 />
-                                <Tabs
-                                    fullWidth
-                                    classNames={{
-                                        tabList:
-                                            'bg-transparent justify-center',
-                                        cursor: 'outline outline-primary outline-offset-2 !bg-transparent',
-                                    }}
-                                    onSelectionChange={(key: any) =>
-                                        setListColor(key)
-                                    }
-                                >
-                                    {listColorItems.map((color: string) => (
-                                        <Tab
-                                            key={color}
-                                            style={{ backgroundColor: color }}
-                                            className={`h-8 w-8`}
-                                        />
-                                    ))}
-                                </Tabs>
                             </ModalBody>
 
                             <ModalFooter className='flex items-center flex-col p-2'>
@@ -145,7 +122,7 @@ const AddListModal = ({
                                         type='submit'
                                         isLoading={isPending}
                                     >
-                                        Add
+                                        Save
                                     </Button>
                                 </section>
                             </ModalFooter>
@@ -157,4 +134,4 @@ const AddListModal = ({
     );
 };
 
-export default AddListModal;
+export default RenameListModal;
