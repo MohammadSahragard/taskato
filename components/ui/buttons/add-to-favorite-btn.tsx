@@ -18,6 +18,7 @@ const AddToFavoriteBtn = ({
                 />
             }
             isIconOnly
+            radius='sm'
             variant='light'
         />
     );

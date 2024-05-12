@@ -6,14 +6,14 @@ import Icon from '../texts/icon';
 import AddListModal from '@/components/modals/add-list-modal';
 
 const AddListBtn = () => {
-    const {isOpen, onOpen, onOpenChange} = useDisclosure();
-    
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
     return (
         <>
             <Button
                 radius='sm'
                 variant='light'
-                className='fw-btn'
+                className='fw-btn p-3'
                 onPress={onOpen}
                 startContent={
                     <Icon
@@ -24,7 +24,10 @@ const AddListBtn = () => {
             >
                 Add New List
             </Button>
-            <AddListModal isOpen={isOpen} onOpenChange={onOpenChange}/>
+            <AddListModal
+                isOpen={isOpen}
+                onOpenChange={onOpenChange}
+            />
         </>
     );
 };

@@ -36,7 +36,7 @@ const TaskList = ({ id, userEmail, href, label, listColor }: TaskListTypes) => {
                 <Button
                     radius='sm'
                     variant={pathname === href ? 'solid' : 'light'}
-                    className={`fw-btn ${
+                    className={`fw-btn pr-2 pl-3 ${
                         pathname === href ? 'bg-background' : ''
                     }`}
                     startContent={

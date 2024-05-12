@@ -70,6 +70,7 @@ const AddReminderBtn = () => {
                 <Button
                     variant='light'
                     className='text-start leading-none'
+                    radius='sm'
                     startContent={
                         <Icon
                             iconName='alarm-clock'

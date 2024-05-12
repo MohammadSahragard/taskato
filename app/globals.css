@@ -46,7 +46,7 @@ body {
 
 /** todo detail section */
 .todo-details-bar {
-    @apply fixed inset-[20px_20px_20px_calc(100%-300px)] bg-primary-100 p-5 rounded-2xl
+    @apply fixed inset-[20px_20px_20px_calc(100%-300px)] bg-primary-100 p-3 rounded-xl
             translate-x-[150%] transition-all
             grid grid-rows-[max-content_auto];
 }

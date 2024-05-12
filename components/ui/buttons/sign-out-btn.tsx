@@ -25,7 +25,7 @@ const SignOutBtn = () => {
         <Button
             radius='sm'
             variant='light'
-            className='fw-btn'
+            className='fw-btn p-3'
             isLoading={isPending}
             onClick={() => startTransition(() => signoutHandler())}
             startContent={

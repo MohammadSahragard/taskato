@@ -24,7 +24,7 @@ const ThemeToggleBtn = () => {
         <Button
             radius='sm'
             variant='light'
-            className='fw-btn'
+            className='fw-btn p-3'
             startContent={
                 <Icon
                     iconName={theme === 'light' ? 'sun-bright' : 'moon'}

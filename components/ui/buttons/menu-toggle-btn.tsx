@@ -7,6 +7,7 @@ const MenuToggleBtn = () => {
         <Button
             size='sm'
             isIconOnly
+            radius='sm'
             variant='light'
         >
             <Icon iconName='bars' />

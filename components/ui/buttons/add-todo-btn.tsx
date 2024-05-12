@@ -12,6 +12,7 @@ const AddTodoBtn = () => {
             variant='light'
             startContent={<Icon iconName='plus' />}
             isIconOnly
+            radius='sm'
         />
     );
 };

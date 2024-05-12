@@ -40,6 +40,7 @@ const AddToListBtn = () => {
                 <Button
                     variant='light'
                     className='capitalize'
+                    radius='sm'
                     startContent={
                         <Icon
                             iconName='list-check'

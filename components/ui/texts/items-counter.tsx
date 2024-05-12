@@ -5,8 +5,7 @@ const ItemsCounter = ({ value }: { value: number }) => {
     return (
         <Chip
             size='sm'
-            radius='sm'
-            className='items-counter'
+            className='rounded'
         >
             {value}
         </Chip>

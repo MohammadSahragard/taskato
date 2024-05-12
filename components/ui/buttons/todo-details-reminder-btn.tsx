@@ -70,6 +70,7 @@ const TodoDetailsReminderBtn = () => {
                     variant='bordered'
                     className='todo-details-btn text-start leading-none'
                     fullWidth
+                    radius='sm'
                     startContent={
                         <Icon
                             iconName='alarm-clock'
