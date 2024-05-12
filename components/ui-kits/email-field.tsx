@@ -22,6 +22,7 @@ const EmailField = () => {
             startContent={<Icon iconName='envelope' />}
             value={email}
             onChange={({ target }) => dispatch(setEmail(target.value))}
+            isRequired
         />
     );
 };
