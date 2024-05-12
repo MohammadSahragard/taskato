@@ -25,6 +25,7 @@ const NameField = () => {
                 onChange={({ target }) =>
                     dispatch(setFirstName(target.value))
                 }
+                isRequired
             />
             <Input
                 placeholder='Last name'
@@ -33,6 +34,7 @@ const NameField = () => {
                 onChange={({ target }) =>
                     dispatch(setLastName(target.value))
                 }
+                isRequired
             />
         </section>
     );

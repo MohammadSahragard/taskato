@@ -5,6 +5,7 @@ const TodoDetailsDeleteBtn = () => {
         <Button
             variant='faded'
             color='danger'
+            radius='sm'
         >
             Delete task
         </Button>

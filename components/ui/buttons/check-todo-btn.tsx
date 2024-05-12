@@ -15,6 +15,7 @@ const CheckTodoBtn = ({
         <Button
             isIconOnly
             variant='light'
+            radius='sm'
             startContent={
                 <Icon
                     iconName={iconName}

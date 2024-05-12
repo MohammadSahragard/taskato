@@ -27,6 +27,7 @@ const PassField = () => {
             onChange={({ target }) =>
                 dispatch(setPassword(target.value))
             }
+            isRequired
             type={passVisibility ? 'text' : 'password'}
             endContent={
                 <PassVisibilityBtn

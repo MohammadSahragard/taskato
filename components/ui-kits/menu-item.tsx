@@ -18,7 +18,7 @@ const MenuItem = ({ href, label, iconName }: MenuItemTypes) => {
             <Button
                 radius='sm'
                 variant={pathname === href ? 'solid' : 'light'}
-                className={`fw-btn ${pathname === href ? 'bg-background' : ''}`}
+                className={`fw-btn pr-2 pl-3 ${pathname === href ? 'bg-background' : ''}`}
                 startContent={
                     <Icon
                         iconName={iconName}

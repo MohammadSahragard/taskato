@@ -51,6 +51,7 @@ const AddDateBtn = () => {
                 <Button
                     variant='light'
                     className='capitalize'
+                    radius='sm'
                     startContent={
                         <Icon
                             iconName='calendar-days'

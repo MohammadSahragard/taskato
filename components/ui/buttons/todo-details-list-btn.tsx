@@ -35,6 +35,7 @@ const TodoDetailsListBtn = () => {
                     variant='bordered'
                     className='todo-details-btn'
                     fullWidth
+                    radius='sm'
                     startContent={
                         <Icon
                             iconName='list-check'

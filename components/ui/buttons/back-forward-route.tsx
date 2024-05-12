@@ -24,6 +24,7 @@ const BackForwardRoutBtn = ({ route }: BackForwardRoute) => {
         <Button
             startContent={<Icon iconName={icon[route]} />}
             isIconOnly
+            radius='sm'
             variant='light'
             onClick={go}
         />

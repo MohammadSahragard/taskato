@@ -12,6 +12,7 @@ const CloseTodoDetail = () => {
         <Button
             isIconOnly
             size='sm'
+            radius='sm'
             variant='light'
             startContent={<Icon iconName='close' />}
             onClick={toggleTodoDetailPanel}

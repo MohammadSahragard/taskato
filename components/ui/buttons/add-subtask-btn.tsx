@@ -7,6 +7,7 @@ const AddSubtaskBtn = () => {
             className='todo-details-btn'
             variant='bordered'
             fullWidth
+            radius='sm'
             startContent={<Icon iconName='plus' />}
         >
             Add new subtask
