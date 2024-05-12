@@ -29,7 +29,7 @@ export const POST = async (req: any) => {
     }
 
     // check if list already exists
-    const list = await List.findOne({ list_title });
+    const list = await List.findOne({ list_title, email });
     if (list) {
         return NextResponse.json({
             message: 'List already exists!',
