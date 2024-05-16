@@ -9,7 +9,7 @@ const CheckTodoBtn = ({
 }: {
     isCompleted?: boolean;
 }) => {
-    const iconName = isCompleted ? 'check-circle' : 'circle';
+    const iconName = isCompleted ? 'check-square' : 'square';
     const iconStyle = isCompleted ? 'fas' : 'far';
     return (
         <Button
