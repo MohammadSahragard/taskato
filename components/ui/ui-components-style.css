@@ -22,7 +22,7 @@
 }
 
 .todo-details-subtask {
-    @apply !bg-transparent hover:!bg-primary-200/10 !shadow-none !transition-all;
+    @apply !bg-transparent hover:!bg-primary-200/10 !justify-start;
 }
 
 /* buttons */

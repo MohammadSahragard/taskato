@@ -134,7 +134,7 @@ const AddListModal = ({
 
                                 <section className='self-end space-x-2'>
                                     <Button
-                                        variant='faded'
+                                        variant='ghost'
                                         color='danger'
                                         onPress={onClose}
                                     >

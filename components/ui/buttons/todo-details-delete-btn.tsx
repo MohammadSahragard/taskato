@@ -3,7 +3,7 @@ import { Button } from '@nextui-org/react';
 const TodoDetailsDeleteBtn = () => {
     return (
         <Button
-            variant='faded'
+            variant='ghost'
             color='danger'
             radius='sm'
         >
