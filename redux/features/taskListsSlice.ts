@@ -20,7 +20,7 @@ const getListsByEmail: any = createAsyncThunk(
             body: JSON.stringify({ email }),
         });
         const data = await res.json();
-        return data?.data ?? 'Not found';
+        return data?.data;
     }
 );
 

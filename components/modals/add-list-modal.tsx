@@ -69,11 +69,16 @@ const AddListModal = ({
                         onOpenChange(!isOpen);
                         setListTitle('Untitled list');
                         setListColor('#e11d48');
+                        dispatch(getListsByEmail(userEmail));
                     }
-                    dispatch(getListsByEmail(userEmail));
-                }, 3000);
+                }, 1800);
             }
         );
+    };
+    const onEnterDown = (event: any) => {
+        if (event.key === 'Enter') {
+            startTransition(() => submitList(event));
+        }
     };
 
     return (
@@ -87,6 +92,7 @@ const AddListModal = ({
                 onSubmit={(event: any) =>
                     startTransition(() => submitList(event))
                 }
+                onKeyDown={(event: any) => onEnterDown(event)}
             >
                 <ModalContent>
                     {(onClose) => (
@@ -101,6 +107,10 @@ const AddListModal = ({
                                     value={listTitle}
                                     onChange={({ target }) =>
                                         setListTitle(target.value)
+                                    }
+                                    autoFocus
+                                    onFocus={(event: any) =>
+                                        event.target.select()
                                     }
                                 />
                                 <Tabs
