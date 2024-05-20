@@ -1,0 +1,11 @@
+{
+    "filesize.showGzipInStatusBar": false,
+    "todo-tree.general.showActivityBarBadge": false,
+    "workbench.editor.wrapTabs": false,
+    "editor.stickyTabStops": false,
+    "editor.tabFocusMode": false,
+    "workbench.editor.highlightModifiedTabs": false,
+    "workbench.editor.pinnedTabsOnSeparateRow": false,
+    "files.autoGuessEncoding": false,
+    "workbench.editor.enablePreviewFromCodeNavigation": false
+}

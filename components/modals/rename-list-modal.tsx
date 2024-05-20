@@ -1,7 +1,7 @@
 'use client';
 
 // public
-import { useState, useTransition } from 'react';
+import { useState, useTransition, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 //* components
@@ -66,10 +66,15 @@ const RenameListModal = ({
                 setShowResult(false);
                 if (res.status === 200) {
                     onOpenChange(!isOpen);
+                    dispatch(getListsByEmail(userEmail));
                 }
-                dispatch(getListsByEmail(userEmail));
-            }, 3000);
+            }, 1800);
         });
+    };
+    const onEnterDown = (event: any) => {
+        if (event.key === 'Enter') {
+            startTransition(() => submitList(event));
+        }
     };
 
     return (
@@ -83,6 +88,7 @@ const RenameListModal = ({
                 onSubmit={(event: any) =>
                     startTransition(() => submitList(event))
                 }
+                onKeyDown={(event: any) => onEnterDown(event)}
             >
                 <ModalContent>
                     {(onClose) => (
@@ -97,6 +103,10 @@ const RenameListModal = ({
                                     value={newListTitle}
                                     onChange={({ target }) =>
                                         setNewListTitle(target.value)
+                                    }
+                                    autoFocus
+                                    onFocus={(event: any) =>
+                                        event.target.select()
                                     }
                                 />
                             </ModalBody>

@@ -22,7 +22,7 @@ export type Heading = {
 };
 
 export type IconTypes = {
-    style?: 'fas' | 'far';
+    style?: 'fas' | 'far' | 'fad';
     iconName: string;
     color?: string;
     size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';

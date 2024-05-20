@@ -28,8 +28,8 @@ const DeleteListOption = ({
             },
             body: JSON.stringify({ id }),
         });
-        const result = await res.json();
-        if (result.status === 200) {
+        const data = await res.json();
+        if (data.status === 200) {
             dispatch(getListsByEmail(userEmail));
         }
     };
