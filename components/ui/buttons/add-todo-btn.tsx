@@ -6,13 +6,14 @@
 import { Button } from '@nextui-org/react';
 import Icon from '../texts/icon';
 
-const AddTodoBtn = () => {
+const AddTodoBtn = ({ submitTask }: { submitTask: any }) => {
     return (
         <Button
             variant='light'
             startContent={<Icon iconName='plus' />}
             isIconOnly
             radius='sm'
+            onClick={submitTask}
         />
     );
 };

@@ -27,17 +27,17 @@ import {
 } from '@/helper/functions/functions';
 
 //* redux
-import { setTodoDate } from '@/redux/features/todoSlice';
+import { setTaskDate } from '@/redux/features/todoSlice';
 
 const AddDateBtn = () => {
     // hooks and variables
     const dispatch = useDispatch();
-    const todoDate = useSelector((state: any) => state.todoContent.todoDate);
+    const taskDate = useSelector((state: any) => state.taskData.taskDate);
     const [isOpenDatePicker, setIsOpenDatePicker] = useState(false);
 
     // functions
     const confirmDatePicked = (date: Date | null) => {
-        dispatch(setTodoDate(date));
+        dispatch(setTaskDate(date));
         setIsOpenDatePicker(false);
     };
 
@@ -55,12 +55,12 @@ const AddDateBtn = () => {
                     startContent={
                         <Icon
                             iconName='calendar-days'
-                            color={todoDate ? 'text-foreground' : ''}
+                            color={taskDate ? 'text-foreground' : ''}
                         />
                     }
-                    isIconOnly={todoDate ? false : true}
+                    isIconOnly={taskDate ? false : true}
                 >
-                    {todoDate ? getLocalDateString(todoDate) : null}
+                    {taskDate ? getLocalDateString(taskDate) : null}
                 </Button>
             </DropdownTrigger>
 
@@ -98,7 +98,7 @@ const AddDateBtn = () => {
                             <Calendar
                                 mode='single'
                                 className='rounded-md border'
-                                selected={todoDate}
+                                selected={taskDate}
                                 onSelect={(date: any) =>
                                     confirmDatePicked(date)
                                 }
@@ -114,7 +114,7 @@ const AddDateBtn = () => {
                             color='text-danger'
                         />
                     }
-                    className={todoDate ? 'text-danger' : 'hidden'}
+                    className={taskDate ? 'text-danger' : 'hidden'}
                     onClick={() => confirmDatePicked(null)}
                     color='danger'
                 >

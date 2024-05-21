@@ -29,7 +29,7 @@ import {
 } from '@/helper/functions/functions';
 
 //* redux
-import { setTodoReminder, setShowReminder } from '@/redux/features/todoSlice';
+import { setTaskReminder, setShowReminder } from '@/redux/features/todoSlice';
 
 //* types
 type saveReminderType = {
@@ -41,15 +41,15 @@ type saveReminderType = {
 const AddReminderBtn = () => {
     // hooks and variables
     const dispatch = useDispatch();
-    const todoReminder = useSelector(
-        (state: any) => state.todoContent.todoReminder
+    const taskReminder = useSelector(
+        (state: any) => state.taskData.taskReminder
     );
     const [isOpenPicker, setIsOpenPicker] = useState(false);
 
     // functions
     const saveReminder = ({ hour, minute, date }: saveReminderType) => {
         dispatch(
-            setTodoReminder({
+            setTaskReminder({
                 time: {
                     hour: hour,
                     minute: minute,
@@ -75,23 +75,23 @@ const AddReminderBtn = () => {
                         <Icon
                             iconName='alarm-clock'
                             color={
-                                todoReminder.isTrueReminder
+                                taskReminder.isTrueReminder
                                     ? 'text-foreground'
                                     : ''
                             }
                         />
                     }
-                    isIconOnly={todoReminder.isTrueReminder ? false : true}
+                    isIconOnly={taskReminder.isTrueReminder ? false : true}
                 >
-                    {todoReminder.isTrueReminder ? (
+                    {taskReminder.isTrueReminder ? (
                         <section>
                             <span>
-                                {zeroBeforeSingle(todoReminder.time.hour)}:
-                                {zeroBeforeSingle(todoReminder.time.minute)}
+                                {zeroBeforeSingle(taskReminder.time.hour)}:
+                                {zeroBeforeSingle(taskReminder.time.minute)}
                             </span>
                             <Subtitle
                                 subtitle={dateToLocalDateString(
-                                    todoReminder.date
+                                    taskReminder.date
                                 )}
                                 additionalClasses='text-xs'
                             />
@@ -160,7 +160,7 @@ const AddReminderBtn = () => {
                     <Popover>
                         <PopoverTrigger>Pick a date & time</PopoverTrigger>
                         <PopoverContent className='p-0 bg-background'>
-                            <DateTimePicker todoReminder={todoReminder} />
+                            <DateTimePicker taskReminder={taskReminder} />
                             <Button
                                 size='sm'
                                 className='m-2 bg-foreground text-background self-end'
@@ -182,7 +182,7 @@ const AddReminderBtn = () => {
                         />
                     }
                     className={
-                        todoReminder.isTrueReminder ? 'text-danger' : 'hidden'
+                        taskReminder.isTrueReminder ? 'text-danger' : 'hidden'
                     }
                     onClick={() => dispatch(setShowReminder(false))}
                     color='danger'
