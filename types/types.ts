@@ -54,7 +54,7 @@ export type TaskListTypes = {
 };
 
 export type GetDateTime = {
-    todoReminder: {
+    taskReminder: {
         time: {
             hour: number;
             minute: number;
@@ -80,11 +80,16 @@ export type ListItemOptionsTypes = {
 };
 
 // redux slices
+type TodoSubtask = {
+    subtaskTitle: string;
+    subtaskIsCompleted: boolean;
+};
 export type TodoContent = {
-    todoText: string;
-    todoList: string;
-    todoDate: Date | null;
-    todoReminder: {
+    taskTitle: string;
+    taskDescription: string;
+    taskList: string;
+    taskDate: Date | null;
+    taskReminder: {
         time: {
             hour: number;
             minute: number;
@@ -92,6 +97,7 @@ export type TodoContent = {
         date: Date | null;
         isTrueReminder: boolean;
     };
+    taskSubtasks: TodoSubtask[];
 };
 
 //* functions helper

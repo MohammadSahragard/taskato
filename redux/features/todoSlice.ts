@@ -8,10 +8,11 @@ import { createSlice } from '@reduxjs/toolkit';
 
 //* initial state
 const initialState: TodoContent = {
-    todoText: '',
-    todoList: '',
-    todoDate: null,
-    todoReminder: {
+    taskTitle: '',
+    taskDescription: '',
+    taskList: '',
+    taskDate: null,
+    taskReminder: {
         time: {
             hour: new Date().getHours(),
             minute: new Date().getMinutes(),
@@ -19,36 +20,45 @@ const initialState: TodoContent = {
         date: new Date(),
         isTrueReminder: false,
     },
+    taskSubtasks: [],
 };
 
 //* reducer
 const todoSlice = createSlice({
-    name: 'todoContent',
+    name: 'taskData',
     initialState,
     reducers: {
-        setTodoText: (state, action) => {
-            state.todoText = action.payload;
+        setTaskTitle: (state, action) => {
+            state.taskTitle = action.payload;
+        },
+        setTaskDescription: (state, action) => {
+            state.taskDescription = action.payload;
         },
         setSelectedList: (state, action) => {
-            state.todoList = action.payload;
+            state.taskList = action.payload;
         },
-        setTodoDate: (state, action) => {
-            state.todoDate = action.payload;
+        setTaskDate: (state, action) => {
+            state.taskDate = action.payload;
         },
-        setTodoReminder: (state, action) => {
-            state.todoReminder = action.payload;
+        setTaskReminder: (state, action) => {
+            state.taskReminder = action.payload;
         },
         setShowReminder: (state, action) => {
-            state.todoReminder.isTrueReminder = action.payload;
+            state.taskReminder.isTrueReminder = action.payload;
+        },
+        setTaskSubtasks: (state, action) => {
+            state.taskSubtasks.push(action.payload);
         },
     },
 });
 
 export const {
-    setTodoText,
+    setTaskTitle,
+    setTaskDescription,
     setSelectedList,
-    setTodoDate,
-    setTodoReminder,
+    setTaskDate,
+    setTaskReminder,
     setShowReminder,
+    setTaskSubtasks,
 } = todoSlice.actions;
 export default todoSlice.reducer;

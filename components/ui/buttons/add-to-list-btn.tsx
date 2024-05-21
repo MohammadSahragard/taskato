@@ -17,25 +17,28 @@ import Icon from '../texts/icon';
 
 //* functions
 import { wordsSeparator } from '@/helper/functions/functions';
+
+//* redux
 import { setSelectedList } from '@/redux/features/todoSlice';
+
+//* hooks
+import useUserLists from '@/hooks/use-user-lists';
 
 const AddToListBtn = () => {
     // hooks and variables
     const dispatch = useDispatch();
-    const todoSelectedList = useSelector(
-        (state: any) => state.todoContent.todoList
-    );
-
     const pathname = usePathname();
+    const taskSelectedList = useSelector(
+        (state: any) => state.taskData.taskList
+    );
+    const lists = useUserLists();
 
     // conditional rendering
     if (pathname === 'today') return null;
     if (pathname === 'important') return null;
 
     return (
-        <Dropdown
-            className='bg-primary-100'
-        >
+        <Dropdown className='bg-primary-100'>
             <DropdownTrigger>
                 <Button
                     variant='light'
@@ -44,12 +47,12 @@ const AddToListBtn = () => {
                     startContent={
                         <Icon
                             iconName='list-check'
-                            color={todoSelectedList ? 'text-foreground' : ''}
+                            color={taskSelectedList ? 'text-foreground' : ''}
                         />
                     }
-                    isIconOnly={todoSelectedList ? false : true}
+                    isIconOnly={taskSelectedList ? false : true}
                 >
-                    {todoSelectedList}
+                    {taskSelectedList}
                 </Button>
             </DropdownTrigger>
             <DropdownMenu
@@ -59,12 +62,20 @@ const AddToListBtn = () => {
                     dispatch(setSelectedList(wordsSeparator(key)))
                 }
             >
-                <DropdownItem
-                    startContent={<Icon iconName='house-blank' />}
-                    key='tasks'
-                >
-                    tasks
-                </DropdownItem>
+                {lists?.data?.map((list: any) => (
+                    <DropdownItem
+                        startContent={
+                            <Icon
+                                iconName='square'
+                                style='fas'
+                                forceColor={list?.list_color ?? '#ff0'}
+                            />
+                        }
+                        key={list?.list_title}
+                    >
+                        {list?.list_title ?? 'List item'}
+                    </DropdownItem>
+                )) ?? null}
 
                 <DropdownItem
                     startContent={
@@ -73,11 +84,11 @@ const AddToListBtn = () => {
                             color='text-danger'
                         />
                     }
-                    className={todoSelectedList ? 'text-danger' : 'hidden'}
+                    className={taskSelectedList ? 'text-danger' : 'hidden'}
                     color='danger'
                     key=''
                 >
-                    Remove due date
+                    Remove from list
                 </DropdownItem>
             </DropdownMenu>
         </Dropdown>

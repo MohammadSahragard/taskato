@@ -10,7 +10,7 @@ import taskListsSlice from '../features/taskListsSlice';
 const store = configureStore({
     reducer: {
         options: optionsSlice,
-        todoContent: todoSlice,
+        taskData: todoSlice,
         formValues: formSlice,
         taskLists: taskListsSlice,
     },

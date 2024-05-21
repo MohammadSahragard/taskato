@@ -13,12 +13,12 @@ import Divider from '../ui/texts/divider';
 import { zeroBeforeSingle } from '@/helper/functions/functions';
 
 //* redux
-import { setTodoReminder } from '@/redux/features/todoSlice';
+import { setTaskReminder } from '@/redux/features/todoSlice';
 
 //* types
 import { GetDateTime } from '@/types/types';
 
-const DateTimePicker = ({todoReminder}: GetDateTime) => {
+const DateTimePicker = ({taskReminder}: GetDateTime) => {
     // refs
     const selectedHour = useRef<HTMLButtonElement | null>(null);
     const selectedMinute = useRef<HTMLButtonElement | null>(null);
@@ -40,18 +40,18 @@ const DateTimePicker = ({todoReminder}: GetDateTime) => {
         });
 
         if (type === 'hour') {
-            dispatch(setTodoReminder({
-                ...todoReminder,
+            dispatch(setTaskReminder({
+                ...taskReminder,
                 time: {
-                    ...todoReminder.time,
+                    ...taskReminder.time,
                     hour: item,
                 },
             }));
         } else {
-            dispatch(setTodoReminder({
-                ...todoReminder,
+            dispatch(setTaskReminder({
+                ...taskReminder,
                 time: {
-                    ...todoReminder.time,
+                    ...taskReminder.time,
                     minute: item,
                 },
             }));
@@ -82,10 +82,10 @@ const DateTimePicker = ({todoReminder}: GetDateTime) => {
         <div className='date-time-picker'>
             <Calendar
                 mode='single'
-                selected={todoReminder.date}
+                selected={taskReminder.date}
                 onSelect={(date: any) =>
-                    dispatch(setTodoReminder({
-                        ...todoReminder,
+                    dispatch(setTaskReminder({
+                        ...taskReminder,
                         date: date,
                     }))
                 }
@@ -104,13 +104,13 @@ const DateTimePicker = ({todoReminder}: GetDateTime) => {
                                 size='sm'
                                 variant='light'
                                 className={`time-btn ${
-                                    item === todoReminder?.time?.hour && 'active'
+                                    item === taskReminder?.time?.hour && 'active'
                                 }`}
                                 onClick={(event: any) =>
                                     pickTime(event, item, hour)
                                 }
                                 ref={
-                                    item === todoReminder?.time?.hour
+                                    item === taskReminder?.time?.hour
                                         ? selectedHour
                                         : null
                                 }
@@ -134,14 +134,14 @@ const DateTimePicker = ({todoReminder}: GetDateTime) => {
                                 size='sm'
                                 variant='light'
                                 className={`time-btn ${
-                                    item === todoReminder?.time?.minute &&
+                                    item === taskReminder?.time?.minute &&
                                     'active'
                                 }`}
                                 onClick={(event: any) =>
                                     pickTime(event, item, minute)
                                 }
                                 ref={
-                                    item === todoReminder?.time?.minute
+                                    item === taskReminder?.time?.minute
                                         ? selectedMinute
                                         : null
                                 }
