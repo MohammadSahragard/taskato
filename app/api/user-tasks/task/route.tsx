@@ -4,7 +4,7 @@ import connectDB from '@/utils/connectDB';
 import { NextResponse } from 'next/server';
 
 export const POST = async (req: Request) => {
-    const {reqData, userEmail} = await req.json();
+    const { reqData, userEmail } = await req.json();
 
     if (req.method !== 'POST') return;
 
@@ -30,7 +30,7 @@ export const POST = async (req: Request) => {
     try {
         await Task.create({
             email: userEmail,
-            ...reqData
+            ...reqData,
         });
         return NextResponse.json({
             message: `The task was created successfully.`,

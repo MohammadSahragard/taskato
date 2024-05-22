@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 //* redux
 import { getTasksByEmail } from '@/redux/features/tasksSlice';
 
-const useUserLists = () => {
+const useUserTasks = () => {
     const dispatch = useDispatch();
     // states and variables
     const userEmail = useSelector((state: any) => state.options.userEmail);
@@ -23,4 +23,4 @@ const useUserLists = () => {
     return tasks;
 };
 
-export default useUserLists;
+export default useUserTasks;

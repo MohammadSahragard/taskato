@@ -10,19 +10,26 @@ const taskSchema = new Schema({
         type: String,
         required: true,
     },
-    task_description: {
-        type: String,
-    },
-    task_due_date: {
-        type: Date,
-    },
+    task_description: String,
+    task_due_date: Date,
     task_list: {
-        type: String,
+        list_title: String,
+        list_color: String,
     },
     task_reminder_date: {
-        type: Date,
+        time: {
+            hour: Number,
+            minute: Number,
+        },
+        date: Date,
+        isTrueReminder: Boolean,
     },
     task_complete: {
+        type: Boolean,
+        required: true,
+        default: false,
+    },
+    is_in_favorite: {
         type: Boolean,
         required: true,
         default: false,

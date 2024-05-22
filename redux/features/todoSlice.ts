@@ -10,7 +10,10 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState: TodoContent = {
     taskTitle: '',
     taskDescription: '',
-    taskList: '',
+    taskList: {
+        list_title: '',
+        list_color: '',
+    },
     taskDate: null,
     taskReminder: {
         time: {
@@ -35,7 +38,10 @@ const todoSlice = createSlice({
             state.taskDescription = action.payload;
         },
         setSelectedList: (state, action) => {
-            state.taskList = action.payload;
+            state.taskList = {
+                list_title: action.payload.title,
+                list_color: action.payload.color,
+            };
         },
         setTaskDate: (state, action) => {
             state.taskDate = action.payload;
@@ -49,6 +55,24 @@ const todoSlice = createSlice({
         setTaskSubtasks: (state, action) => {
             state.taskSubtasks.push(action.payload);
         },
+        setClearFields: (state) => {
+            state.taskTitle = '';
+            state.taskDescription = '';
+            state.taskList = {
+                list_title: '',
+                list_color: '',
+            };
+            state.taskDate = null;
+            state.taskReminder = {
+                time: {
+                    hour: new Date().getHours(),
+                    minute: new Date().getMinutes(),
+                },
+                date: new Date(),
+                isTrueReminder: false,
+            };
+            state.taskSubtasks = [];
+        },
     },
 });
 
@@ -60,5 +84,6 @@ export const {
     setTaskReminder,
     setShowReminder,
     setTaskSubtasks,
+    setClearFields,
 } = todoSlice.actions;
 export default todoSlice.reducer;

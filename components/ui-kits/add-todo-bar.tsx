@@ -12,8 +12,9 @@ import AddReminderBtn from '../ui/buttons/add-reminder-btn';
 import AddTodoBtn from '../ui/buttons/add-todo-btn';
 
 //* redux
-import { setTaskTitle } from '@/redux/features/todoSlice';
+import { setTaskTitle, setClearFields } from '@/redux/features/todoSlice';
 import { addTask } from '@/helper/functions/todo-functions';
+import { getTasksByEmail } from '@/redux/features/tasksSlice';
 
 //* toastify
 import { ToastContainer, toast } from 'react-toastify';
@@ -32,9 +33,13 @@ const AddTodoBar = () => {
         event.preventDefault();
 
         const task = await addTask(taskData, userEmail);
+        console.log('task: ', task.error);
         const messageStatus = task.status === 200 ? 'success' : 'error';
         toast[messageStatus](task.message);
-        if (task.status === 200) dispatch(setTaskTitle(''));
+        if (task.status === 200) {
+            dispatch(setClearFields());
+            dispatch(getTasksByEmail(userEmail));
+        }
     };
 
     return (
@@ -52,6 +57,7 @@ const AddTodoBar = () => {
                 startContent={
                     <AddTodoBtn
                         submitTask={submitTask}
+                        startTransition={startTransition}
                         isPending={isPending}
                     />
                 }
