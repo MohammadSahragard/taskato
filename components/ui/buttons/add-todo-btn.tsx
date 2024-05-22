@@ -8,9 +8,11 @@ import Icon from '../texts/icon';
 
 const AddTodoBtn = ({
     submitTask,
+    startTransition,
     isPending,
 }: {
     submitTask: any;
+    startTransition: any;
     isPending: boolean;
 }) => {
     return (
@@ -21,7 +23,7 @@ const AddTodoBtn = ({
             isDisabled={isPending}
             isIconOnly
             radius='sm'
-            onClick={submitTask}
+            onClick={(event) => startTransition(() => submitTask(event))}
         />
     );
 };

@@ -87,7 +87,10 @@ type TodoSubtask = {
 export type TodoContent = {
     taskTitle: string;
     taskDescription: string;
-    taskList: string;
+    taskList: {
+        list_title: string;
+        list_color: string;
+    };
     taskDate: Date | null;
     taskReminder: {
         time: {

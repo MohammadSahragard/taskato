@@ -1,18 +1,10 @@
 //* components
-import TodoItem from '@/components/ui-kits/todo-item';
+import TasksCon from '@/components/ui-kits/tasks-con';
 
 export default function Home() {
     return (
         <div>
-            <TodoItem
-                todoText='This is a Todo item'
-                isInFavorite
-                todoSubDetail
-            />
-            <TodoItem
-                todoText='This is a Todo item 2'
-                isCompleted
-            />
+            <TasksCon />
         </div>
     );
 }

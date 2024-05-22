@@ -47,20 +47,21 @@ const AddToListBtn = () => {
                     startContent={
                         <Icon
                             iconName='list-check'
-                            color={taskSelectedList ? 'text-foreground' : ''}
+                            color={
+                                taskSelectedList.list_title
+                                    ? 'text-foreground'
+                                    : ''
+                            }
                         />
                     }
-                    isIconOnly={taskSelectedList ? false : true}
+                    isIconOnly={taskSelectedList.list_title ? false : true}
                 >
-                    {taskSelectedList}
+                    {taskSelectedList.list_title}
                 </Button>
             </DropdownTrigger>
             <DropdownMenu
                 variant='flat'
                 selectionMode='single'
-                onAction={(key: any) =>
-                    dispatch(setSelectedList(wordsSeparator(key)))
-                }
             >
                 {lists?.data?.map((list: any) => (
                     <DropdownItem
@@ -72,6 +73,14 @@ const AddToListBtn = () => {
                             />
                         }
                         key={list?.list_title}
+                        onClick={() =>
+                            dispatch(
+                                setSelectedList({
+                                    title: list?.list_title,
+                                    color: list?.list_color,
+                                })
+                            )
+                        }
                     >
                         {list?.list_title ?? 'List item'}
                     </DropdownItem>
@@ -84,9 +93,18 @@ const AddToListBtn = () => {
                             color='text-danger'
                         />
                     }
-                    className={taskSelectedList ? 'text-danger' : 'hidden'}
+                    className={
+                        taskSelectedList.list_title ? 'text-danger' : 'hidden'
+                    }
                     color='danger'
-                    key=''
+                    onClick={() =>
+                        dispatch(
+                            setSelectedList({
+                                title: '',
+                                color: '',
+                            })
+                        )
+                    }
                 >
                     Remove from list
                 </DropdownItem>
