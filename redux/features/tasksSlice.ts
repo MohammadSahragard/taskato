@@ -9,10 +9,10 @@ const initialState = {
 };
 
 //* async functions
-const getListsByEmail: any = createAsyncThunk(
-    'lists/getListsByEmail',
+const getTasksByEmail: any = createAsyncThunk(
+    'lists/getTasksByEmail',
     async (email: string) => {
-        const res = await fetch('/api/task-lists/lists', {
+        const res = await fetch('/api/user-tasks/tasks', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -25,23 +25,23 @@ const getListsByEmail: any = createAsyncThunk(
 );
 
 //* reducer
-const taskListsSlice = createSlice({
+const tasksSlice = createSlice({
     name: 'taskLists',
     initialState,
     reducers: {},
     extraReducers: (builder: any) => {
-        builder.addCase(getListsByEmail.pending, (state: any) => {
+        builder.addCase(getTasksByEmail.pending, (state: any) => {
             state.loading = true;
         });
         builder.addCase(
-            getListsByEmail.fulfilled,
+            getTasksByEmail.fulfilled,
             (state: any, action: any) => {
                 state.loading = false;
                 state.data = action.payload;
                 state.error = '';
             }
         );
-        builder.addCase(getListsByEmail.rejected, (state: any) => {
+        builder.addCase(getTasksByEmail.rejected, (state: any) => {
             state.loading = false;
             state.data = [];
             state.error = 'Something went wrong. Please try again later.';
@@ -49,5 +49,5 @@ const taskListsSlice = createSlice({
     },
 });
 
-export default taskListsSlice.reducer;
-export { getListsByEmail };
+export default tasksSlice.reducer;
+export { getTasksByEmail };
