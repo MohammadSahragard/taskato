@@ -1,6 +1,7 @@
 'use client';
 
 // public
+import { useTransition } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 //* components
@@ -21,6 +22,8 @@ import 'react-toastify/dist/ReactToastify.css';
 const AddTodoBar = () => {
     // states and variables
     const dispatch = useDispatch();
+    const [isPending, startTransition] = useTransition();
+    const userEmail = useSelector((state: any) => state.options.userEmail);
     const taskTitle = useSelector((state: any) => state.taskData.taskTitle);
     const taskData = useSelector((state: any) => state.taskData);
 
@@ -28,19 +31,30 @@ const AddTodoBar = () => {
     const submitTask = async (event: any) => {
         event.preventDefault();
 
-        const task = await addTask(taskData);
-        toast.success('Wow so easy !');
+        const task = await addTask(taskData, userEmail);
+        const messageStatus = task.status === 200 ? 'success' : 'error';
+        toast[messageStatus](task.message);
+        if (task.status === 200) dispatch(setTaskTitle(''));
     };
 
     return (
-        <form onSubmit={(event: any) => submitTask(event)}>
+        <form
+            onSubmit={(event: any) => startTransition(() => submitTask(event))}
+        >
             <Input
                 size='lg'
                 variant='bordered'
                 placeholder='Type here'
                 value={taskTitle}
+                autoComplete='off'
+                isDisabled={isPending}
                 onChange={(event) => dispatch(setTaskTitle(event.target.value))}
-                startContent={<AddTodoBtn submitTask={submitTask} />}
+                startContent={
+                    <AddTodoBtn
+                        submitTask={submitTask}
+                        isPending={isPending}
+                    />
+                }
                 classNames={{
                     inputWrapper: 'todo-bar',
                 }}
