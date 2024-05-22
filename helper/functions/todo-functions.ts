@@ -1,5 +1,5 @@
 // public
-import { AddTaskListTypes } from '@/types/types';
+import { AddTaskListTypes, TodoContent } from '@/types/types';
 
 //* add task list
 export const addTaskList = async ({
@@ -45,6 +45,46 @@ export const renameTaskList = async (id: string, listTitle: string) => {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ _id: id, list_title: listTitle }),
+    });
+    const data = await res.json();
+
+    return data;
+};
+
+//* add task
+export const addTask = async (taskData: TodoContent, userEmail: string) => {
+    // data
+    const {
+        taskTitle,
+        taskDescription,
+        taskDate,
+        taskList,
+        taskReminder,
+        taskSubtasks,
+    } = taskData;
+
+    const reqData: any = {
+        task_title: taskTitle,
+    };
+
+    // form validation
+    if (!taskTitle) {
+        return {
+            message: `Please enter a task title!`,
+            status: 401,
+        };
+    }
+
+    // to complete request body
+    taskDate && (reqData.task_due_date = taskDate);
+    taskList && (reqData.task_list = taskList);
+    taskReminder?.isTrueReminder && (reqData.task_reminder_date = taskReminder);
+
+    // post form data
+    const res = await fetch('/api/user-tasks/task', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reqData, userEmail }),
     });
     const data = await res.json();
 

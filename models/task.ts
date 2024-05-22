@@ -25,6 +25,7 @@ const taskSchema = new Schema({
     task_complete: {
         type: Boolean,
         required: true,
+        default: false,
     },
     createdAt: {
         type: Date,

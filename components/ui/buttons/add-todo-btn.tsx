@@ -6,11 +6,19 @@
 import { Button } from '@nextui-org/react';
 import Icon from '../texts/icon';
 
-const AddTodoBtn = ({ submitTask }: { submitTask: any }) => {
+const AddTodoBtn = ({
+    submitTask,
+    isPending,
+}: {
+    submitTask: any;
+    isPending: boolean;
+}) => {
     return (
         <Button
             variant='light'
-            startContent={<Icon iconName='plus' />}
+            startContent={!isPending ? <Icon iconName='plus' /> : null}
+            isLoading={isPending}
+            isDisabled={isPending}
             isIconOnly
             radius='sm'
             onClick={submitTask}
