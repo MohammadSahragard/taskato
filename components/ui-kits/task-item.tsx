@@ -28,7 +28,10 @@ const TaskItem = ({ taskData }: { taskData: any }) => {
             onClick={toggleTodoDetailPanel}
         >
             <section>
-                <CheckTodoBtn isCompleted={taskData?.task_complete} />
+                <CheckTodoBtn
+                    isCompleted={taskData?.task_complete}
+                    taskId={taskData?._id}
+                />
             </section>
 
             <div className='todo-content'>
