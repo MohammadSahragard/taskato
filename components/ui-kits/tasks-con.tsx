@@ -34,7 +34,7 @@ const TasksCon = () => {
                     ))
                 ) : <p>{'Not found :('}</p>
             ) : (
-                <p>{'Not found :('}</p>
+                <p>{tasks.error}</p>
             )}
         </div>
     );
