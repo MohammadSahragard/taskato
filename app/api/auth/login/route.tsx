@@ -20,7 +20,11 @@ export const POST = async (req: any) => {
         });
     }
 
-    if (req.method !== 'POST') return;
+    if (req.method !== 'POST')
+        return NextResponse.json({
+            message: 'Something went wrong. Please try again later.',
+            status: 401,
+        });
 
     // form validation
     if (!email || !password) {

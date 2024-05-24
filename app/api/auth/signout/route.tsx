@@ -9,5 +9,10 @@ export const GET = (req: any) => {
         });
         response.cookies.delete('token');
         return response;
-    } else return;
+    } else {
+        return NextResponse.json({
+            message: 'Something went wrong. Please try again later.',
+            status: 401,
+        });
+    }
 };
