@@ -2,7 +2,6 @@
 
 // public
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 
 //* components
 import {
@@ -157,7 +156,7 @@ const TodoDetailsReminderBtn = () => {
                     <Popover>
                         <PopoverTrigger>Pick a date & time</PopoverTrigger>
                         <PopoverContent className='p-0 bg-background'>
-                            <DateTimePicker todoReminder={reminder} />
+                            <DateTimePicker taskReminder={reminder} />
                             <Button
                                 size='sm'
                                 className='m-2 bg-foreground text-background self-end'
