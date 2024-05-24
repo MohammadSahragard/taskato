@@ -61,3 +61,8 @@
 .subtasks-con {
     @apply mt-3 space-y-2 grid grid-rows-[repeat(2,max-content)_auto];
 }
+
+/* empty state tasks */
+.empty-state-tasks {
+    @apply absolute inset-0 flex flex-col items-center justify-center text-center;
+}
