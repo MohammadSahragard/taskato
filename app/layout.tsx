@@ -31,7 +31,7 @@ const RootLayout = async ({
 }>) => {
     return (
         <html lang='en'>
-            <body className={inter.className}>
+            <body className={`${inter.className} isOpenedDetailsBar`}>
                 <Providers>
                     {/* menu section */}
                     <MenuContainer />
@@ -42,13 +42,13 @@ const RootLayout = async ({
                     {/* main header */}
                     <MainHeader />
 
+                    {/* todo detail bar */}
+                    <TodoDetails />
+
                     {/* todo add bar section */}
                     <div className='todo-bar-con'>
                         <AddTodoBar />
                     </div>
-
-                    {/* todo detail bar */}
-                    <TodoDetails />
                 </Providers>
             </body>
         </html>
