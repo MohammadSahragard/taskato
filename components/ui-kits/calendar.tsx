@@ -3,7 +3,6 @@
 //* components
 import { DayPicker } from 'react-day-picker';
 import Icon from '../ui/texts/icon';
-import { Button } from '@nextui-org/react';
 
 //* types
 export type CalendarProps = React.ComponentProps<typeof DayPicker>;
