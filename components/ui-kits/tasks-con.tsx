@@ -1,7 +1,9 @@
 'use client';
 
+import Divider from '../ui/texts/divider';
 //* components
 import Icon from '../ui/texts/icon';
+import Subtitle from '../ui/texts/subtitle';
 import TaskItem from './task-item';
 
 //* hooks
@@ -25,13 +27,25 @@ const TasksCon = () => {
         <div>
             {!tasks.error ? (
                 tasks?.data?.length ? (
-                    tasks?.data?.map((task: any) => (
-                        <TaskItem
-                            key={task._id}
-                            taskData={task}
-                        />
-                    ))
-                ) : <p>{'Not found :('}</p>
+                    tasks?.data?.map((task: any) =>
+                        task?.task_complete ? (
+                            <div key={task._id}>
+                                <TaskItem taskData={task} />
+                            </div>
+                        ) : (
+                            <div key={task._id}>
+                                <Subtitle
+                                    subtitle='COMPLETED'
+                                    additionalClasses='text-xs my-2'
+                                />
+                                <Divider />
+                                <TaskItem taskData={task} />
+                            </div>
+                        )
+                    )
+                ) : (
+                    <p>{'Not found :('}</p>
+                )
             ) : (
                 <p>{tasks.error}</p>
             )}
