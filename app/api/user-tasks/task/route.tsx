@@ -50,8 +50,12 @@ export const PUT = async (req: any) => {
     // variables
     const { _id, reqData } = await req.json();
 
-    if (req.method !== 'PUT') return;
-    
+    if (req.method !== 'PUT')
+        return NextResponse.json({
+            message: 'Something went wrong. Please try again later.',
+            status: 401,
+        });
+
     // database connection
     try {
         await connectDB();

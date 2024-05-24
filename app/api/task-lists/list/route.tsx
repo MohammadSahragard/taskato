@@ -120,14 +120,18 @@ export const PUT = async (req: any) => {
         });
     }
 
-    if (req.method !== 'PUT') return;
+    if (req.method !== 'PUT')
+        return NextResponse.json({
+            message: 'Something went wrong. Please try again later.',
+            status: 401,
+        });
 
     // form validation
     if (!_id || !list_title) {
-        return {
+        return NextResponse.json({
             message: 'Something went wrong. Please try again later.',
             status: 401,
-        };
+        });
     }
 
     // check if list don't exists
@@ -143,7 +147,7 @@ export const PUT = async (req: any) => {
     try {
         await List.updateOne({ _id }, { list_title });
         return NextResponse.json({
-            message: `The list was updated successfully.`,
+            message: 'The list was updated successfully.',
             status: 200,
         });
     } catch (err: any) {
