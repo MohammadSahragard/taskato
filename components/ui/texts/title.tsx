@@ -1,7 +1,7 @@
 //* types
-import { Title } from '@/types/types';
+import { TitleTypes } from '@/types/types';
 
-const Title = ({ title, additionalClasses }: Title) => {
+const Title = ({ title, additionalClasses }: TitleTypes) => {
     return <h3 className={`title ${additionalClasses}`}>{title}</h3>;
 };
 

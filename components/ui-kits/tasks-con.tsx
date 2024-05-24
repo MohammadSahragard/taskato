@@ -3,7 +3,6 @@
 //* components
 import Icon from '../ui/texts/icon';
 import TaskItem from './task-item';
-import TaskList from './task-list';
 
 //* hooks
 import useUserTasks from '@/hooks/use-user-tasks';

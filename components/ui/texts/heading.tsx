@@ -1,7 +1,7 @@
 //* types
-import { Heading } from '@/types/types';
+import { HeadingTypes } from '@/types/types';
 
-const Heading = ({ heading, additionalClasses }: Heading) => {
+const Heading = ({ heading, additionalClasses }: HeadingTypes) => {
     return <h3 className={`heading ${additionalClasses}`}>{heading}</h3>;
 };
 

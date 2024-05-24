@@ -5,7 +5,7 @@ export type children = { children: React.ReactNode };
 
 //*------ specials (components and ...)
 // ui components
-export type Title = {
+export type TitleTypes = {
     title: string;
     additionalClasses?: string;
 };
@@ -16,7 +16,7 @@ export type SubtitleTypes = {
     children?: React.ReactNode;
 };
 
-export type Heading = {
+export type HeadingTypes = {
     heading: string;
     additionalClasses?: string;
 };

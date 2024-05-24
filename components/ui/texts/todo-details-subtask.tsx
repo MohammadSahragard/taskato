@@ -1,5 +1,5 @@
 //* components
-import { Button, Input } from '@nextui-org/react';
+import { Button } from '@nextui-org/react';
 import CheckTodoSubtaskBtn from '../buttons/check-todo-subtask-btn';
 
 const TodoDetailsSubtask = () => {

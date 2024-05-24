@@ -15,9 +15,6 @@ import {
 } from '@nextui-org/react';
 import Icon from '../texts/icon';
 
-//* functions
-import { wordsSeparator } from '@/helper/functions/functions';
-
 //* redux
 import { setSelectedList } from '@/redux/features/todoSlice';
 
