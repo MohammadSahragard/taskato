@@ -53,14 +53,13 @@ export type TaskListTypes = {
     listColor: string;
 };
 
-export type GetDateTime = {
-    taskReminder: {
-        time: {
-            hour: number;
-            minute: number;
-        };
-        date: Date | undefined;
+export type TaskReminderTypes = {
+    time: {
+        hour: number;
+        minute: number;
     };
+    date: Date | undefined;
+    isTrueReminder: boolean;
 };
 
 export type TodoItemTypes = {

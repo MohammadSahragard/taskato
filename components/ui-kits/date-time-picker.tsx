@@ -16,9 +16,9 @@ import { zeroBeforeSingle } from '@/helper/functions/functions';
 import { setTaskReminder } from '@/redux/features/todoSlice';
 
 //* types
-import { GetDateTime } from '@/types/types';
+import { TaskReminderTypes } from '@/types/types';
 
-const DateTimePicker = ({taskReminder}: GetDateTime) => {
+const DateTimePicker = ({ taskReminder }: { taskReminder: TaskReminderTypes }) => {
     // refs
     const selectedHour = useRef<HTMLButtonElement | null>(null);
     const selectedMinute = useRef<HTMLButtonElement | null>(null);
@@ -40,21 +40,25 @@ const DateTimePicker = ({taskReminder}: GetDateTime) => {
         });
 
         if (type === 'hour') {
-            dispatch(setTaskReminder({
-                ...taskReminder,
-                time: {
-                    ...taskReminder.time,
-                    hour: item,
-                },
-            }));
+            dispatch(
+                setTaskReminder({
+                    ...taskReminder,
+                    time: {
+                        ...taskReminder.time,
+                        hour: item,
+                    },
+                })
+            );
         } else {
-            dispatch(setTaskReminder({
-                ...taskReminder,
-                time: {
-                    ...taskReminder.time,
-                    minute: item,
-                },
-            }));
+            dispatch(
+                setTaskReminder({
+                    ...taskReminder,
+                    time: {
+                        ...taskReminder.time,
+                        minute: item,
+                    },
+                })
+            );
         }
     };
 
@@ -84,10 +88,12 @@ const DateTimePicker = ({taskReminder}: GetDateTime) => {
                 mode='single'
                 selected={taskReminder.date}
                 onSelect={(date: any) =>
-                    dispatch(setTaskReminder({
-                        ...taskReminder,
-                        date: date,
-                    }))
+                    dispatch(
+                        setTaskReminder({
+                            ...taskReminder,
+                            date: date,
+                        })
+                    )
                 }
                 disabled={{ before: new Date() }}
             />
@@ -104,7 +110,8 @@ const DateTimePicker = ({taskReminder}: GetDateTime) => {
                                 size='sm'
                                 variant='light'
                                 className={`time-btn ${
-                                    item === taskReminder?.time?.hour && 'active'
+                                    item === taskReminder?.time?.hour &&
+                                    'active'
                                 }`}
                                 onClick={(event: any) =>
                                     pickTime(event, item, hour)
