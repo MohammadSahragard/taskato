@@ -1,10 +1,11 @@
 'use client';
 
-import Divider from '../ui/texts/divider';
 //* components
 import Icon from '../ui/texts/icon';
 import Subtitle from '../ui/texts/subtitle';
+import EmptyStateTasks from './empty-state-tasks';
 import TaskItem from './task-item';
+import Divider from '../ui/texts/divider';
 
 //* hooks
 import useUserTasks from '@/hooks/use-user-tasks';
@@ -39,12 +40,14 @@ const TasksCon = () => {
                                     )
                             )}
                         </div>
-                        <div>
-                            <Subtitle
-                                subtitle='COMPLETED'
-                                additionalClasses='text-xs my-2'
-                            />
-                            <Divider />
+                        <div className='mt-4'>
+                            <section className='mb-2'>
+                                <Subtitle
+                                    subtitle='COMPLETED'
+                                    additionalClasses='text-xs my-2'
+                                />
+                                <Divider />
+                            </section>
 
                             {tasks?.data?.map(
                                 (task: any) =>
@@ -58,7 +61,7 @@ const TasksCon = () => {
                         </div>
                     </>
                 ) : (
-                    <p>{'Not found :('}</p>
+                    <EmptyStateTasks />
                 )
             ) : (
                 <p>{tasks.error}</p>
