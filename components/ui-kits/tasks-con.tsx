@@ -27,22 +27,36 @@ const TasksCon = () => {
         <div>
             {!tasks.error ? (
                 tasks?.data?.length ? (
-                    tasks?.data?.map((task: any) =>
-                        task?.task_complete ? (
-                            <div key={task._id}>
-                                <TaskItem taskData={task} />
-                            </div>
-                        ) : (
-                            <div key={task._id}>
-                                <Subtitle
-                                    subtitle='COMPLETED'
-                                    additionalClasses='text-xs my-2'
-                                />
-                                <Divider />
-                                <TaskItem taskData={task} />
-                            </div>
-                        )
-                    )
+                    <>
+                        <div>
+                            {tasks?.data?.map(
+                                (task: any) =>
+                                    !task?.task_complete && (
+                                        <TaskItem
+                                            key={task._id}
+                                            taskData={task}
+                                        />
+                                    )
+                            )}
+                        </div>
+                        <div>
+                            <Subtitle
+                                subtitle='COMPLETED'
+                                additionalClasses='text-xs my-2'
+                            />
+                            <Divider />
+
+                            {tasks?.data?.map(
+                                (task: any) =>
+                                    task?.task_complete && (
+                                        <TaskItem
+                                            key={task._id}
+                                            taskData={task}
+                                        />
+                                    )
+                            )}
+                        </div>
+                    </>
                 ) : (
                     <p>{'Not found :('}</p>
                 )
