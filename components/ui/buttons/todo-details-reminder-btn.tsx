@@ -1,6 +1,7 @@
 'use client';
 
 // public
+import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 
 //* components
@@ -34,28 +35,29 @@ type saveReminderType = {
     date: Date;
 };
 
+//* redux
+import { setTaskReminderDate } from '@/redux/features/selectedTaskSlice';
+
 const TodoDetailsReminderBtn = () => {
+    const dispatch = useDispatch();
     // hooks and variables
-    const [reminder, setReminder] = useState({
-        time: {
-            hour: new Date().getHours(),
-            minute: new Date().getMinutes(),
-        },
-        date: new Date(),
-        isTrueReminder: false,
-    });
+    const reminder = useSelector(
+        (state: any) => state.selectedTask.task_reminder_date
+    );
     const [isOpenPicker, setIsOpenPicker] = useState(false);
 
     // functions
     const saveReminder = ({ hour, minute, date }: saveReminderType) => {
-        setReminder({
-            time: {
-                hour: hour,
-                minute: minute,
-            },
-            date: date,
-            isTrueReminder: true,
-        });
+        dispatch(
+            setTaskReminderDate({
+                time: {
+                    hour: hour,
+                    minute: minute,
+                },
+                date: date,
+                isTrueReminder: true,
+            })
+        );
     };
 
     return (
@@ -161,10 +163,12 @@ const TodoDetailsReminderBtn = () => {
                                 size='sm'
                                 className='m-2 bg-foreground text-background self-end'
                                 onClick={() => {
-                                    setReminder({
-                                        ...reminder,
-                                        isTrueReminder: true,
-                                    });
+                                    dispatch(
+                                        setTaskReminderDate({
+                                            ...reminder,
+                                            isTrueReminder: true,
+                                        })
+                                    );
                                     setIsOpenPicker(false);
                                 }}
                             >
@@ -184,7 +188,12 @@ const TodoDetailsReminderBtn = () => {
                         reminder.isTrueReminder ? 'text-danger' : 'hidden'
                     }
                     onClick={() =>
-                        setReminder({ ...reminder, isTrueReminder: false })
+                        dispatch(
+                            setTaskReminderDate({
+                                ...reminder,
+                                isTrueReminder: false,
+                            })
+                        )
                     }
                     color='danger'
                 >

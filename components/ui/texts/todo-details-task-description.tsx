@@ -1,10 +1,25 @@
+'use client';
+
+// public
+import { useSelector, useDispatch } from 'react-redux';
+
 //* components
 import { Textarea } from '@nextui-org/react';
 
+//* redux
+import { setTaskDescription } from '@/redux/features/selectedTaskSlice';
+
 const TodoDetailsTaskDescription = () => {
+    const dispatch = useDispatch();
+    // states and variables
+    const description = useSelector(
+        (state: any) => state.selectedTask.task_description
+    );
+
     return (
         <Textarea
             label='Description'
+            value={description ?? null}
             variant='bordered'
             radius='sm'
             size='sm'
@@ -12,6 +27,9 @@ const TodoDetailsTaskDescription = () => {
             classNames={{
                 inputWrapper: 'shadow-none border-2 dark:border-opacity-40',
             }}
+            onChange={({ target }) =>
+                dispatch(setTaskDescription(target.value))
+            }
         />
     );
 };

@@ -1,5 +1,8 @@
 'use client';
 
+// public
+import { useSelector, useDispatch } from 'react-redux';
+
 //* components
 import Divider from '../ui/texts/divider';
 import AddToFavoriteBtn from '../ui/buttons/add-to-favorite-btn';
@@ -15,6 +18,8 @@ import {
 } from '@/helper/functions/functions';
 
 const TaskItem = ({ taskData }: { taskData: any }) => {
+    const dispatch = useDispatch;
+    // state and variables
     const completedStyles = 'line-through text-primary-200';
     const completedTodo = taskData?.task_complete ? completedStyles : '';
     const haveSubDetails =
@@ -25,7 +30,7 @@ const TaskItem = ({ taskData }: { taskData: any }) => {
     return (
         <div
             className='todo-item'
-            onClick={toggleTodoDetailPanel}
+            onClick={() => toggleTodoDetailPanel(dispatch, taskData)}
         >
             <section>
                 <CheckTodoBtn
