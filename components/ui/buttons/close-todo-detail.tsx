@@ -5,7 +5,7 @@ import { Button } from '@nextui-org/react';
 import Icon from '../texts/icon';
 
 //* functions
-import { toggleTodoDetailPanel } from '@/helper/functions/functions';
+import { toggleTodoDetailPanelBtn } from '@/helper/functions/functions';
 
 const CloseTodoDetail = () => {
     return (
@@ -15,7 +15,7 @@ const CloseTodoDetail = () => {
             radius='sm'
             variant='light'
             startContent={<Icon iconName='close' />}
-            onClick={toggleTodoDetailPanel}
+            onClick={toggleTodoDetailPanelBtn}
         />
     );
 };
