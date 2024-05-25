@@ -34,6 +34,7 @@ const selectedTaskSlice = createSlice({
     initialState,
     reducers: {
         updateSelectedTask: (state, action) => {
+            console.log('action: ', action.payload);
             state._id = action.payload._id;
             state.email = action.payload.email;
             state.task_title = action.payload.task_title;
