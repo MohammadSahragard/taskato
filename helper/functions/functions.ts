@@ -69,6 +69,10 @@ export const toggleTodoDetailPanel = (dispatch: Function, data: any) => {
         dispatch(data);
     }
 };
+export const toggleTodoDetailPanelBtn = () => {
+    const body = document.querySelector('body');
+    body?.classList.remove('isOpenedDetailsBar');
+};
 
 // checking to page is a auth page or not (for z-indexing page)
 export const checkAuthPage = (pathname: string) => {
