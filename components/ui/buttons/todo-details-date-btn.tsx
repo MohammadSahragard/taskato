@@ -2,6 +2,7 @@
 
 // public
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 //* components
 import {
@@ -25,14 +26,18 @@ import {
     getLocalDateString,
 } from '@/helper/functions/functions';
 
+//* redux
+import { setTaskDueDate } from '@/redux/features/selectedTaskSlice';
+
 const TodoDetailsDateBtn = () => {
+    const dispatch = useDispatch();
     // hooks and variables
-    const [date, setDate] = useState<any>();
+    const date = useSelector((state: any) => state.selectedTask.task_due_date);
     const [isOpenDatePicker, setIsOpenDatePicker] = useState(false);
 
     // functions
     const changeDatePicked = (date: Date | null) => {
-        setDate(date);
+        dispatch(setTaskDueDate(date));
         setIsOpenDatePicker(false);
     }
 

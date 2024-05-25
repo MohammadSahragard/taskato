@@ -1,5 +1,4 @@
 //* data needed
-import { SignupSubmitTypes } from '@/types/types';
 import { days } from '../data/data';
 
 // date to local date string
@@ -60,13 +59,14 @@ export const wordsSeparator = (content: string): string =>
     content.replace(/[^A-Za-z0-9]/g, ' ');
 
 // close-open todo details panel
-export const toggleTodoDetailPanel = () => {
+export const toggleTodoDetailPanel = (dispatch: Function, data: any) => {
     const body = document.querySelector('body');
 
     if (body?.className.includes('isOpenedDetailsBar')) {
         body?.classList.remove('isOpenedDetailsBar');
     } else {
         body?.classList.add('isOpenedDetailsBar');
+        dispatch(data);
     }
 };
 

@@ -1,7 +1,6 @@
 'use client';
 
 // public
-import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -22,9 +21,9 @@ import { setSelectedList } from '@/redux/features/todoSlice';
 import useUserLists from '@/hooks/use-user-lists';
 
 const AddToListBtn = () => {
-    // hooks and variables
     const dispatch = useDispatch();
     const pathname = usePathname();
+    // hooks and variables
     const taskSelectedList = useSelector(
         (state: any) => state.taskData.taskList
     );
@@ -62,6 +61,7 @@ const AddToListBtn = () => {
             >
                 {lists?.data?.map((list: any) => (
                     <DropdownItem
+                        key={list?.list_title}
                         startContent={
                             <Icon
                                 iconName='square'
@@ -69,7 +69,6 @@ const AddToListBtn = () => {
                                 forceColor={list?.list_color ?? '#ff0'}
                             />
                         }
-                        key={list?.list_title}
                         onClick={() =>
                             dispatch(
                                 setSelectedList({
