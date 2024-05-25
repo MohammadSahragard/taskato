@@ -31,7 +31,7 @@ const RootLayout = async ({
 }>) => {
     return (
         <html lang='en'>
-            <body className={`${inter.className} isOpenedDetailsBar`}>
+            <body className={inter.className}>
                 <Providers>
                     {/* menu section */}
                     <MenuContainer />

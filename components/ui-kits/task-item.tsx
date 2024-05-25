@@ -18,7 +18,7 @@ import {
 } from '@/helper/functions/functions';
 
 const TaskItem = ({ taskData }: { taskData: any }) => {
-    const dispatch = useDispatch;
+    const dispatch = useDispatch();
     // state and variables
     const completedStyles = 'line-through text-primary-200';
     const completedTodo = taskData?.task_complete ? completedStyles : '';

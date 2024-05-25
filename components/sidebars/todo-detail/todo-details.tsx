@@ -1,8 +1,5 @@
 'use client';
 
-// public
-import { useSelector } from 'react-redux';
-
 //* components
 import AddSubtaskBtn from '@/components/ui/buttons/add-subtask-btn';
 import CloseTodoDetail from '@/components/ui/buttons/close-todo-detail';
@@ -17,9 +14,6 @@ import TodoDetailsTaskDescription from '@/components/ui/texts/todo-details-task-
 import TodoDetailsTaskTitle from '@/components/ui/texts/todo-details-task-title';
 
 const TodoDetails = () => {
-    // states and variables
-    const taskData = useSelector((state: any) => state.selectedTask);
-
     return (
         <div className='todo-details-bar'>
             {/* todo details header */}
