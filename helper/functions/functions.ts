@@ -1,6 +1,9 @@
 //* data needed
 import { days } from '../data/data';
 
+//* redux
+import { updateSelectedTask } from '@/redux/features/selectedTaskSlice';
+
 // date to local date string
 export const dateToLocalDateString = (date: Date): string =>
     date.toLocaleDateString().split('/').join('-');
@@ -66,7 +69,7 @@ export const toggleTodoDetailPanel = (dispatch: Function, data: any) => {
         body?.classList.remove('isOpenedDetailsBar');
     } else {
         body?.classList.add('isOpenedDetailsBar');
-        dispatch(data);
+        dispatch(updateSelectedTask(data));
     }
 };
 export const toggleTodoDetailPanelBtn = () => {
