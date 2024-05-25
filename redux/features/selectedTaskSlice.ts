@@ -34,19 +34,23 @@ const selectedTaskSlice = createSlice({
     initialState,
     reducers: {
         updateSelectedTask: (state, action) => {
-            console.log('action: ', action.payload);
             state._id = action.payload._id;
             state.email = action.payload.email;
             state.task_title = action.payload.task_title;
-            state.task_description &&
+            action.payload.task_description &&
                 (state.task_description = action.payload.task_description);
-            state.task_due_date &&
-                (state.task_due_date = action.payload.task_due_date);
-            state.task_list && (state.task_list = action.payload.task_list);
-            state.task_reminder_date &&
-                (state.task_reminder_date = action.payload.task_reminder_date);
-            state.task_complete &&
-                (state.task_complete = action.payload.task_complete);
+            action.payload.task_due_date &&
+                (state.task_due_date = new Date(action.payload.task_due_date));
+            action.payload.task_list &&
+                (state.task_list = action.payload.task_list);
+            action.payload.task_reminder_date &&
+                (state.task_reminder_date = {
+                    time: action.payload.task_reminder_date.time,
+                    date: new Date(action.payload.task_reminder_date.date),
+                    isTrueReminder:
+                        action.payload.task_reminder_date.isTrueReminder,
+                });
+            state.task_complete = action.payload.task_complete;
             state.is_in_favorite = action.payload.is_in_favorite;
             state.createdAt = action.payload.createdAt;
         },
