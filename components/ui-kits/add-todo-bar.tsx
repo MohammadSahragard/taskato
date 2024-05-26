@@ -18,7 +18,6 @@ import { getTasksByEmail } from '@/redux/features/tasksSlice';
 
 //* toastify
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const AddTodoBar = () => {
     // states and variables
@@ -33,7 +32,6 @@ const AddTodoBar = () => {
         event.preventDefault();
 
         const task = await addTask(taskData, userEmail);
-        console.log('task: ', task.error);
         const messageStatus = task.status === 200 ? 'success' : 'error';
         toast[messageStatus](task.message);
         if (task.status === 200) {

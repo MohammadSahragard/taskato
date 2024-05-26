@@ -12,6 +12,9 @@ const inter = Inter({ subsets: ['latin'] });
 //* fontawesome
 import '/FontAwesome.Pro.6.4.2/css/all.css';
 
+//* toastify styles
+import 'react-toastify/dist/ReactToastify.css';
+
 //* components
 import MenuContainer from '@/components/sidebars/menu/menu-container';
 import MainHeader from '@/components/ui-kits/main-header';

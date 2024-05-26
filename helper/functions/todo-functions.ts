@@ -1,5 +1,9 @@
 // public
-import { AddTaskListTypes, TodoContent } from '@/types/types';
+import {
+    AddTaskListTypes,
+    TodoContent,
+    selectedTaskTypes,
+} from '@/types/types';
 
 //* add task list
 export const addTaskList = async ({
@@ -56,11 +60,9 @@ export const addTask = async (taskData: TodoContent, userEmail: string) => {
     // data
     const {
         taskTitle,
-        taskDescription,
         taskDate,
         taskList,
         taskReminder,
-        taskSubtasks,
     } = taskData;
 
     const reqData: any = {
@@ -70,7 +72,7 @@ export const addTask = async (taskData: TodoContent, userEmail: string) => {
     // form validation
     if (!taskTitle) {
         return {
-            message: `Please enter a task title!`,
+            message: 'Please enter a task title!',
             status: 401,
         };
     }
@@ -89,4 +91,46 @@ export const addTask = async (taskData: TodoContent, userEmail: string) => {
     const data = await res.json();
 
     return data;
+};
+
+//* update task
+export const updateTask = async (taskData: selectedTaskTypes) => {
+    // data
+    const {
+        _id,
+        task_title,
+        task_description,
+        task_due_date,
+        task_list,
+        task_reminder_date,
+    } = taskData;
+
+    const reqData: any = {
+        task_title,
+    };
+
+    // form validation
+    if (!task_title) {
+        return {
+            message: 'Task title is required, please enter a title.',
+            status: 401,
+        };
+    }
+
+    // to complete request body
+    task_description && (reqData.task_description = task_description);
+    task_due_date && (reqData.task_due_date = task_due_date);
+    task_list && (reqData.task_list = task_list);
+    task_reminder_date?.isTrueReminder &&
+        (reqData.task_reminder_date = task_reminder_date);
+
+        // post form data
+        const res = await fetch('/api/user-tasks/task', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ _id, reqData }),
+        });
+        const data = await res.json();
+    
+        return data;
 };

@@ -55,7 +55,7 @@ const TodoDetailsListBtn = () => {
             >
                 {lists?.data?.map((list: any) => (
                     <DropdownItem
-                        key={list?.list_title}
+                        key={list?._id}
                         startContent={
                             <Icon
                                 iconName='square'
@@ -66,8 +66,8 @@ const TodoDetailsListBtn = () => {
                         onClick={() =>
                             dispatch(
                                 setTaskSelectedList({
-                                    title: list?.list_title,
-                                    color: list?.list_color,
+                                    list_title: list?.list_title,
+                                    list_color: list?.list_color,
                                 })
                             )
                         }
