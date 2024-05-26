@@ -65,12 +65,8 @@ export const wordsSeparator = (content: string): string =>
 export const toggleTodoDetailPanel = (dispatch: Function, data: any) => {
     const body = document.querySelector('body');
 
-    if (body?.className.includes('isOpenedDetailsBar')) {
-        body?.classList.remove('isOpenedDetailsBar');
-    } else {
-        body?.classList.add('isOpenedDetailsBar');
-        dispatch(updateSelectedTask(data));
-    }
+    body?.classList.add('isOpenedDetailsBar');
+    dispatch(updateSelectedTask(data));
 };
 export const toggleTodoDetailPanelBtn = () => {
     const body = document.querySelector('body');
