@@ -18,7 +18,11 @@ export const POST = async (req: any) => {
         });
     }
 
-    if (req.method !== 'POST') return;
+    if (req.method !== 'POST')
+        return NextResponse.json({
+            message: 'Something went wrong. Please try again later.',
+            status: 401,
+        });
 
     // form validation
     if (!email || !list_title || !list_color) {
@@ -48,7 +52,7 @@ export const POST = async (req: any) => {
             message: `The list was created successfully.`,
             status: 200,
         });
-    } catch (err: any) {
+    } catch {
         return NextResponse.json({
             message: 'Something went wrong. Please try again later.',
             status: 500,
@@ -71,7 +75,11 @@ export const DELETE = async (req: any) => {
         });
     }
 
-    if (req.method !== 'DELETE') return;
+    if (req.method !== 'DELETE')
+        return NextResponse.json({
+            message: 'Something went wrong. Please try again later.',
+            status: 401,
+        });
 
     // id validation
     if (!id) {
@@ -94,10 +102,10 @@ export const DELETE = async (req: any) => {
     try {
         await List.deleteOne({ _id: id });
         return NextResponse.json({
-            message: `The list was deleted successfully.`,
+            message: 'The list was deleted successfully.',
             status: 200,
         });
-    } catch (err: any) {
+    } catch {
         return NextResponse.json({
             message: 'Something went wrong. Please try again later.',
             status: 500,
@@ -143,7 +151,7 @@ export const PUT = async (req: any) => {
         });
     }
 
-    // delete list
+    // update list
     try {
         await List.updateOne({ _id }, { list_title });
         return NextResponse.json({
