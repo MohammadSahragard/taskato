@@ -123,7 +123,7 @@ export const DELETE = async (req: any) => {
     const task = await Task.findOne({ _id });
     if (!task) {
         return NextResponse.json({
-            message: "List don't exists!",
+            message: "Task don't exists!",
             status: 400,
         });
     }
