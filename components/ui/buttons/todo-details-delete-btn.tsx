@@ -7,11 +7,8 @@ import { useSelector, useDispatch } from 'react-redux';
 //* components
 import { Button } from '@nextui-org/react';
 
-//* functions
-import { updateTask } from '@/helper/functions/todo-functions';
-
 //* toastify
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 //* redux
 import { getTasksByEmail } from '@/redux/features/tasksSlice';

@@ -61,7 +61,7 @@ const SignupForm = () => {
                     dispatch(setClearFields());
                     router.replace('/auth/login');
                 }
-            }, 5000);
+            }, 3000);
         });
     };
 

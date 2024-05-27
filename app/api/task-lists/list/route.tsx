@@ -27,7 +27,7 @@ export const POST = async (req: any) => {
     // form validation
     if (!email || !list_title || !list_color) {
         return NextResponse.json({
-            message: 'All fields are required!',
+            message: 'List title is required.',
             status: 401,
         });
     }
@@ -137,7 +137,7 @@ export const PUT = async (req: any) => {
     // form validation
     if (!_id || !list_title) {
         return NextResponse.json({
-            message: 'Something went wrong. Please try again later.',
+            message: 'List title is required.',
             status: 401,
         });
     }
