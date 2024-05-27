@@ -54,6 +54,7 @@ const AddSubtaskModal = ({
                 if (res.status === 200) {
                     onOpenChange(!isOpen);
                     dispatch(getTasksByEmail(userEmail));
+                    setSubtaskTitle('Untitled subtask');
                 }
             }, 1800);
         });

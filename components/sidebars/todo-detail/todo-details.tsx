@@ -1,7 +1,7 @@
 'use client';
 
-import SubtasksCon from '@/components/ui-kits/subtasks-con';
 //* components
+import SubtasksCon from '@/components/ui-kits/subtasks-con';
 import AddSubtaskBtn from '@/components/ui/buttons/add-subtask-btn';
 import CloseTodoDetail from '@/components/ui/buttons/close-todo-detail';
 import TodoDetailsDateBtn from '@/components/ui/buttons/todo-details-date-btn';
@@ -10,7 +10,6 @@ import TodoDetailsListBtn from '@/components/ui/buttons/todo-details-list-btn';
 import TodoDetailsReminderBtn from '@/components/ui/buttons/todo-details-reminder-btn';
 import TodoDetailsSaveBtn from '@/components/ui/buttons/todo-details-save-btn';
 import Heading from '@/components/ui/texts/heading';
-import TodoDetailsSubtask from '@/components/ui/texts/todo-details-subtask';
 import TodoDetailsTaskDescription from '@/components/ui/texts/todo-details-task-description';
 import TodoDetailsTaskTitle from '@/components/ui/texts/todo-details-task-title';
 
