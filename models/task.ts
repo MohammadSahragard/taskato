@@ -24,7 +24,20 @@ const taskSchema = new Schema({
         date: Date,
         isTrueReminder: Boolean,
     },
-    task_complete: {
+    subtasks: [
+        {
+            subtask_title: {
+                type: String,
+                required: true,
+            },
+            subtask_completion: {
+                type: Boolean,
+                required: true,
+                default: false,
+            },
+        },
+    ],
+    task_completion: {
         type: Boolean,
         required: true,
         default: false,
