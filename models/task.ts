@@ -1,5 +1,5 @@
 // public
-import { Schema, models, model } from 'mongoose';
+import mongoose, { Schema, models, model } from 'mongoose';
 
 const taskSchema = new Schema({
     email: {
@@ -26,6 +26,10 @@ const taskSchema = new Schema({
     },
     subtasks: [
         {
+            _id: {
+                type: mongoose.Types.ObjectId,
+                default: new mongoose.mongo.ObjectId(),
+            },
             subtask_title: {
                 type: String,
                 required: true,

@@ -58,12 +58,7 @@ export const renameTaskList = async (id: string, listTitle: string) => {
 //* add task
 export const addTask = async (taskData: TodoContent, userEmail: string) => {
     // data
-    const {
-        taskTitle,
-        taskDate,
-        taskList,
-        taskReminder,
-    } = taskData;
+    const { taskTitle, taskDate, taskList, taskReminder } = taskData;
 
     const reqData: any = {
         task_title: taskTitle,
@@ -124,13 +119,42 @@ export const updateTask = async (taskData: selectedTaskTypes) => {
     task_reminder_date?.isTrueReminder &&
         (reqData.task_reminder_date = task_reminder_date);
 
-        // post form data
-        const res = await fetch('/api/user-tasks/task', {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ _id, reqData }),
-        });
-        const data = await res.json();
-    
-        return data;
+    // post form data
+    const res = await fetch('/api/user-tasks/task', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ _id, reqData }),
+    });
+    const data = await res.json();
+
+    return data;
+};
+
+//* add subtask
+export const addSubtask = async (_id: string, subtask_title: string) => {
+    const reqData: any = {
+        $push: {
+            subtasks: {
+                subtask_title,
+            },
+        },
+    };
+
+    // form validation
+    if (!subtask_title) {
+        return {
+            message: 'Subtask title is required, please enter a title.',
+            status: 401,
+        };
+    }
+
+    // post form data
+    const res = await fetch('/api/user-tasks/task', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ _id, reqData }),
+    });
+    const data = await res.json();
+
+    return data;
 };

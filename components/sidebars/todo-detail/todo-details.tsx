@@ -1,5 +1,6 @@
 'use client';
 
+import SubtasksCon from '@/components/ui-kits/subtasks-con';
 //* components
 import AddSubtaskBtn from '@/components/ui/buttons/add-subtask-btn';
 import CloseTodoDetail from '@/components/ui/buttons/close-todo-detail';
@@ -43,9 +44,7 @@ const TodoDetails = () => {
                         additionalClasses='text-primary-200 font-medium'
                     />
                     <AddSubtaskBtn />
-                    <section className='overflow-auto'>
-                        <TodoDetailsSubtask />
-                    </section>
+                    <SubtasksCon />
                 </div>
 
                 {/* CTA section */}

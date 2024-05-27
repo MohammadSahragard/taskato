@@ -21,7 +21,7 @@ const TaskItem = ({ taskData }: { taskData: any }) => {
     const dispatch = useDispatch();
     // state and variables
     const completedStyles = 'line-through text-primary-200';
-    const completedTodo = taskData?.task_complete ? completedStyles : '';
+    const completedTodo = taskData?.task_completion ? completedStyles : '';
     const haveSubDetails =
         taskData?.task_due_date ||
         taskData?.subtasks?.length ||
@@ -34,7 +34,7 @@ const TaskItem = ({ taskData }: { taskData: any }) => {
         >
             <section>
                 <CheckTodoBtn
-                    isCompleted={taskData?.task_complete}
+                    isCompleted={taskData?.task_completion}
                     taskId={taskData?._id}
                 />
             </section>
@@ -62,33 +62,39 @@ const TaskItem = ({ taskData }: { taskData: any }) => {
                                         )}
                                     </span>
                                 </Subtitle>
-                                <Divider orientation='vertical' />
                             </>
                         ) : null}
 
                         {taskData?.subtasks?.length ? (
                             <>
-                                <Subtitle additionalClasses='text-xs items-center'>
-                                    <Icon
-                                        iconName='square-2'
-                                        size='sm'
-                                        style='fas'
-                                    />{' '}
+                                <Divider orientation='vertical' />
+                                <Subtitle additionalClasses='text-xs flex gap-px'>
+                                    <div className='subtask-counter'>
+                                        {taskData?.subtasks?.length > 9
+                                            ? '+9'
+                                            : taskData?.subtasks?.length}
+                                    </div>
                                     <span>Subtasks</span>
                                 </Subtitle>
-                                <Divider orientation='vertical' />
                             </>
                         ) : null}
-                        {taskData?.task_list ? (
-                            <Subtitle additionalClasses='text-xs'>
-                                <Icon
-                                    iconName='square'
-                                    size='sm'
-                                    style='fas'
-                                    forceColor={taskData?.task_list?.list_color}
-                                />{' '}
-                                <span>{taskData?.task_list?.list_title}</span>
-                            </Subtitle>
+                        {taskData?.task_list?.list_title ? (
+                            <>
+                                <Divider orientation='vertical' />
+                                <Subtitle additionalClasses='text-xs'>
+                                    <Icon
+                                        iconName='square'
+                                        size='sm'
+                                        style='fas'
+                                        forceColor={
+                                            taskData?.task_list?.list_color
+                                        }
+                                    />{' '}
+                                    <span>
+                                        {taskData?.task_list?.list_title}
+                                    </span>
+                                </Subtitle>
+                            </>
                         ) : null}
                     </div>
                 ) : null}

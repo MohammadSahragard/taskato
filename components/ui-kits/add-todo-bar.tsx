@@ -17,7 +17,7 @@ import { addTask } from '@/helper/functions/todo-functions';
 import { getTasksByEmail } from '@/redux/features/tasksSlice';
 
 //* toastify
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const AddTodoBar = () => {
     // states and variables

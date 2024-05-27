@@ -61,6 +61,9 @@
 .subtasks-con {
     @apply mt-3 space-y-2 grid grid-rows-[repeat(2,max-content)_auto];
 }
+.subtask-counter {
+    @apply w-[14px] h-[14px] bg-primary-200 dark:bg-primary-200/60 text-white rounded-[3px] grid place-items-center;
+}
 
 /* empty state tasks */
 .empty-state-tasks {

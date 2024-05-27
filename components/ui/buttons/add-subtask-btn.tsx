@@ -1,17 +1,31 @@
-import { Button } from '@nextui-org/react';
+'use client';
+
+//* components
+import { Button, useDisclosure } from '@nextui-org/react';
 import Icon from '../texts/icon';
+import AddSubtaskModal from '@/components/modals/add-subtask-modal';
 
 const AddSubtaskBtn = () => {
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
     return (
-        <Button
-            className='todo-details-btn'
-            variant='bordered'
-            fullWidth
-            radius='sm'
-            startContent={<Icon iconName='plus' />}
-        >
-            Add new subtask
-        </Button>
+        <>
+            <Button
+                className='todo-details-btn'
+                variant='bordered'
+                fullWidth
+                onPress={onOpen}
+                radius='sm'
+                startContent={<Icon iconName='plus' />}
+            >
+                Add new subtask
+            </Button>
+
+            <AddSubtaskModal
+                isOpen={isOpen}
+                onOpenChange={onOpenChange}
+            />
+        </>
     );
 };
 

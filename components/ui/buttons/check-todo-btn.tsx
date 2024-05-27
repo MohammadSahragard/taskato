@@ -29,7 +29,7 @@ const CheckTodoBtn = ({
     const changeCheck = async () => {
         // req body
         const reqBody = {
-            reqData: { task_complete: !isCompleted },
+            reqData: { task_completion: !isCompleted },
             _id: taskId,
         };
 

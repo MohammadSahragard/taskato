@@ -13,6 +13,7 @@ import useUserTasks from '@/hooks/use-user-tasks';
 const TasksCon = () => {
     // states and variables
     const tasks: any = useUserTasks();
+    const taskDone = tasks?.data?.find((task: any) => task.task_completion);
 
     if (tasks.loading)
         return (
@@ -32,7 +33,7 @@ const TasksCon = () => {
                         <div>
                             {tasks?.data?.map(
                                 (task: any) =>
-                                    !task?.task_complete && (
+                                    !task?.task_completion && (
                                         <TaskItem
                                             key={task._id}
                                             taskData={task}
@@ -41,17 +42,19 @@ const TasksCon = () => {
                             )}
                         </div>
                         <div className='mt-4'>
-                            <section className='mb-2'>
-                                <Subtitle
-                                    subtitle='COMPLETED'
-                                    additionalClasses='text-xs my-2'
-                                />
-                                <Divider />
-                            </section>
+                            {taskDone ? (
+                                <section className='mb-2'>
+                                    <Subtitle
+                                        subtitle='COMPLETED'
+                                        additionalClasses='text-xs my-2'
+                                    />
+                                    <Divider />
+                                </section>
+                            ) : null}
 
                             {tasks?.data?.map(
                                 (task: any) =>
-                                    task?.task_complete && (
+                                    task?.task_completion && (
                                         <TaskItem
                                             key={task._id}
                                             taskData={task}
