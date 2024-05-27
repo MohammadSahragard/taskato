@@ -3,8 +3,14 @@
 //* components
 import Icon from '../texts/icon';
 
-const CheckTodoSubtaskBtn = ({ isCompleted }: { isCompleted?: boolean }) => {
-    const iconName = isCompleted ? 'check-square' : 'square';
+const CheckTodoSubtaskBtn = ({
+    isCompleted,
+    isPending,
+}: {
+    isCompleted?: boolean;
+    isPending?: boolean;
+}) => {
+    const iconName = isPending ? '' : isCompleted ? 'check-square' : 'square';
     const iconStyle = isCompleted ? 'fas' : 'far';
     return (
         <Icon

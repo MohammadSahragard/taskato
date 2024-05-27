@@ -16,7 +16,7 @@ const SubtasksCon = () => {
                           key={subtask._id}
                           _id={subtask._id}
                           title={subtask.subtask_title}
-                          isCompleted={subtask.task_completion}
+                          isCompleted={subtask.subtask_completion}
                       />
                   ))
                 : null}
