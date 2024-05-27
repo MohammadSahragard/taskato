@@ -2,15 +2,24 @@
 import { Button } from '@nextui-org/react';
 import CheckTodoSubtaskBtn from '../buttons/check-todo-subtask-btn';
 
-const TodoDetailsSubtask = () => {
+const TodoDetailsSubtask = ({
+    _id,
+    title,
+    isCompleted,
+}: {
+    _id: string;
+    title: string;
+    isCompleted: boolean;
+}) => {
+    console.log('_id: ', _id);
     return (
         <Button
             className='todo-details-subtask'
             fullWidth
             radius='sm'
-            startContent={<CheckTodoSubtaskBtn />}
+            startContent={<CheckTodoSubtaskBtn isCompleted={isCompleted} />}
         >
-            Subtask one
+            {title}
         </Button>
     );
 };

@@ -23,6 +23,7 @@ const initialState: selectedTaskTypes = {
         date: null,
         isTrueReminder: false,
     },
+    subtasks: [],
     task_complete: false,
     is_in_favorite: false,
     createdAt: null,
@@ -50,6 +51,8 @@ const selectedTaskSlice = createSlice({
                     isTrueReminder:
                         action.payload.task_reminder_date.isTrueReminder,
                 });
+            action.payload.subtasks?.length &&
+                (state.subtasks = action.payload.subtasks);
             state.task_complete = action.payload.task_complete;
             state.is_in_favorite = action.payload.is_in_favorite;
             state.createdAt = action.payload.createdAt;
@@ -69,6 +72,9 @@ const selectedTaskSlice = createSlice({
         setTaskReminderDate: (state, action) => {
             state.task_reminder_date = action.payload;
         },
+        addSubtask: (state, action) => {
+            state.subtasks.push(action.payload);
+        },
         setTaskComplete: (state, action) => {
             state.task_complete = action.payload;
         },
@@ -82,6 +88,7 @@ export const {
     setTaskDueDate,
     setTaskSelectedList,
     setTaskReminderDate,
+    addSubtask,
     setTaskComplete,
 } = selectedTaskSlice.actions;
 export default selectedTaskSlice.reducer;

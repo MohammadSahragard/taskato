@@ -138,20 +138,24 @@ export type selectedTaskTypes = {
     email: string;
     task_title: string;
     task_description: string;
-    task_due_date: Date | null,
+    task_due_date: Date | null;
     task_list: {
-        list_title: string,
-        list_color: string,
-    },
+        list_title: string;
+        list_color: string;
+    };
     task_reminder_date: {
         time: {
-            hour: number,
-            minute: number,
-        },
-        date: Date | null,
-        isTrueReminder: boolean,
-    },
-    task_complete: boolean,
-    is_in_favorite: boolean,
-    createdAt: Date | null,
-}
+            hour: number;
+            minute: number;
+        };
+        date: Date | null;
+        isTrueReminder: boolean;
+    };
+    subtasks: {
+        subtask_title: string;
+        subtask_completion: boolean;
+    }[];
+    task_complete: boolean;
+    is_in_favorite: boolean;
+    createdAt: Date | null;
+};

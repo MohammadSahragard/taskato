@@ -14,7 +14,6 @@ const SignOutBtn = () => {
     const signoutHandler = async () => {
         const res = await fetch('/api/auth/signout');
         const data = await res.json();
-        console.log('data: ', data);
 
         if (data.status === 200) {
             window.location.href = '/auth/login';
