@@ -14,6 +14,7 @@ import store from '@/redux/app/store';
 
 //* functions
 import { checkAuthPage } from '@/helper/functions/functions';
+import { ToastContainer } from 'react-toastify';
 
 export function Providers({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
@@ -28,6 +29,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
                 attribute='class'
                 defaultTheme='light'
             >
+                <ToastContainer theme='colored' />
                 <Provider store={store}>{children}</Provider>
             </NextThemesProvider>
         </NextUIProvider>

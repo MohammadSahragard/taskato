@@ -70,7 +70,6 @@ const AddTodoBar = () => {
                     </div>
                 }
             />
-            <ToastContainer theme='colored' />
         </form>
     );
 };

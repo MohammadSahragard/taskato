@@ -23,6 +23,7 @@ import { getListsByEmail } from '@/redux/features/taskListsSlice';
 
 //* functions
 import { renameTaskList } from '@/helper/functions/todo-functions';
+import { toast } from 'react-toastify';
 
 const RenameListModal = ({
     listId,
@@ -40,11 +41,6 @@ const RenameListModal = ({
     const userEmail = useSelector((state: any) => state.options.userEmail);
     const [newListTitle, setNewListTitle] = useState(listTitle);
     const [isPending, startTransition] = useTransition();
-    const [showResult, setShowResult] = useState(false);
-    const [resultSubmit, setResultSubmit] = useState({
-        message: '',
-        status: 200,
-    });
 
     // functions
     const openModal = () => {
@@ -56,14 +52,11 @@ const RenameListModal = ({
         event.preventDefault();
 
         await renameTaskList(listId, newListTitle).then((res: any) => {
-            setShowResult(true);
-            setResultSubmit({
-                message: res.message,
-                status: res.status,
-            });
+            // set result message to toastify
+            const messageStatus = res.status === 200 ? 'success' : 'error';
+            toast[messageStatus](res.message);
 
             setTimeout(() => {
-                setShowResult(false);
                 if (res.status === 200) {
                     onOpenChange(!isOpen);
                     dispatch(getListsByEmail(userEmail));
@@ -111,30 +104,21 @@ const RenameListModal = ({
                                 />
                             </ModalBody>
 
-                            <ModalFooter className='flex items-center flex-col p-2'>
-                                {showResult ? (
-                                    <ResultSubmit
-                                        text={resultSubmit.message}
-                                        status={resultSubmit.status}
-                                    />
-                                ) : null}
-
-                                <section className='self-end space-x-2'>
-                                    <Button
-                                        variant='ghost'
-                                        color='danger'
-                                        onPress={onClose}
-                                    >
-                                        Discard
-                                    </Button>
-                                    <Button
-                                        color='primary'
-                                        type='submit'
-                                        isLoading={isPending}
-                                    >
-                                        Save
-                                    </Button>
-                                </section>
+                            <ModalFooter className='flex items-center justify-end gap-2 p-2'>
+                                <Button
+                                    variant='ghost'
+                                    color='danger'
+                                    onPress={onClose}
+                                >
+                                    Discard
+                                </Button>
+                                <Button
+                                    color='primary'
+                                    type='submit'
+                                    isLoading={isPending}
+                                >
+                                    Save
+                                </Button>
                             </ModalFooter>
                         </>
                     )}

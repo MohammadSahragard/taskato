@@ -51,7 +51,7 @@ const LoginForm = () => {
                     dispatch(setClearFields());
                     window.location.href = '/';
                 }
-            }, 5000);
+            }, 3000);
         });
     };
 
