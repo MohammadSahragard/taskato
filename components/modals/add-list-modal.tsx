@@ -57,14 +57,12 @@ const AddListModal = ({
                 const messageStatus = res.status === 200 ? 'success' : 'error';
                 toast[messageStatus](res.message);
 
-                setTimeout(() => {
-                    if (res.status === 200) {
-                        onOpenChange(!isOpen);
-                        setListTitle('Untitled list');
-                        setListColor('#e11d48');
-                        dispatch(getListsByEmail(userEmail));
-                    }
-                }, 1800);
+                if (res.status === 200) {
+                    onOpenChange(!isOpen);
+                    setListTitle('Untitled list');
+                    setListColor('#e11d48');
+                    dispatch(getListsByEmail(userEmail));
+                }
             }
         );
     };

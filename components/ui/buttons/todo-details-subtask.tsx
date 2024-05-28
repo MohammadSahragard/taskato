@@ -49,7 +49,7 @@ const TodoDetailsSubtask = ({
         const res = await req.json();
         if (res.status === 200) {
             dispatch(getTasksByEmail(userEmail));
-            dispatch(updateSubtasks(res?.data?.subtasks));
+            dispatch(updateSubtasks(res?.data));
         }
     };
 

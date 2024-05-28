@@ -56,12 +56,10 @@ const RenameListModal = ({
             const messageStatus = res.status === 200 ? 'success' : 'error';
             toast[messageStatus](res.message);
 
-            setTimeout(() => {
-                if (res.status === 200) {
-                    onOpenChange(!isOpen);
-                    dispatch(getListsByEmail(userEmail));
-                }
-            }, 1800);
+            if (res.status === 200) {
+                onOpenChange(!isOpen);
+                dispatch(getListsByEmail(userEmail));
+            }
         });
     };
     const onEnterDown = (event: any) => {

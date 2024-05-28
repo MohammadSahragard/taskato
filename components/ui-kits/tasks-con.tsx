@@ -15,7 +15,7 @@ const TasksCon = () => {
     const tasks: any = useUserTasks();
     const taskDone = tasks?.data?.find((task: any) => task.task_completion);
 
-    if (tasks.loading)
+    if (tasks.loading && !tasks.data.length)
         return (
             <p className='text-center'>
                 <Icon
