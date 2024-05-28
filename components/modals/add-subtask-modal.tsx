@@ -51,14 +51,12 @@ const AddSubtaskModal = ({
             const messageStatus = res.status === 200 ? 'success' : 'error';
             toast[messageStatus](res.message);
 
-            setTimeout(() => {
-                if (res.status === 200) {
-                    onOpenChange(!isOpen);
-                    dispatch(getTasksByEmail(userEmail));
-                    setSubtaskTitle('Untitled subtask');
-                    dispatch(updateSubtasks(res?.data?.subtasks));
-                }
-            }, 1800);
+            if (res.status === 200) {
+                onOpenChange(!isOpen);
+                dispatch(getTasksByEmail(userEmail));
+                setSubtaskTitle('Untitled subtask');
+                dispatch(updateSubtasks(res?.data?.subtasks));
+            }
         });
     };
     const onEnterDown = (event: any) => {

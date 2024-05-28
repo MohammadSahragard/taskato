@@ -2,7 +2,7 @@
 
 // public
 import { useSelector } from 'react-redux';
-import TodoDetailsSubtask from '../ui/texts/todo-details-subtask';
+import TodoDetailsSubtask from '../ui/buttons/todo-details-subtask';
 
 const SubtasksCon = () => {
     // states and variables

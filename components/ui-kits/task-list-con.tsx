@@ -11,7 +11,7 @@ const TaskListCon = () => {
     // states and variables
     const taskLists: any = useUserLists();
 
-    if (taskLists.loading)
+    if (taskLists.loading && !taskLists.data.length)
         return (
             <p className='text-center'>
                 <Icon
