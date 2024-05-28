@@ -19,7 +19,7 @@ export const addTaskList = async ({
         };
     }
 
-    // post form data
+    // post data
     const res = await fetch('/api/task-lists/list', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -44,7 +44,7 @@ export const renameTaskList = async (id: string, listTitle: string) => {
         };
     }
 
-    // post form data
+    // put data
     const res = await fetch('/api/task-lists/list', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -77,7 +77,7 @@ export const addTask = async (taskData: TodoContent, userEmail: string) => {
         task_reminder_date: taskReminder || {},
     };
 
-    // post form data
+    // post data
     const res = await fetch('/api/user-tasks/task', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -117,7 +117,7 @@ export const updateTask = async (taskData: selectedTaskTypes) => {
         };
     }
 
-    // post form data
+    // put data
     const res = await fetch('/api/user-tasks/task', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -146,9 +146,30 @@ export const addSubtask = async (_id: string, subtask_title: string) => {
         };
     }
 
-    // post form data
+    // post data
     const res = await fetch('/api/user-tasks/task', {
         method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ _id, reqData }),
+    });
+    const data = await res.json();
+
+    return data;
+};
+
+//* delete subtask
+export const deleteSubtask = async (_id: string) => {
+    const reqData: any = {
+        $pull: {
+            subtasks: {
+                _id,
+            },
+        },
+    };
+
+    // put data
+    const res = await fetch('/api/user-tasks/subtask', {
+        method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ _id, reqData }),
     });

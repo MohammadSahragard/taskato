@@ -78,6 +78,14 @@ export type ListItemOptionsTypes = {
     children: ReactNode;
 };
 
+export type SubtaskOptionsTypes = {
+    subtaskId: string;
+    isOpenOptions: boolean;
+    userEmail: string;
+    closeOptionsMenu: (isOpen: boolean) => void;
+    children: ReactNode;
+}
+
 // redux slices
 type TodoSubtask = {
     subtaskTitle: string;

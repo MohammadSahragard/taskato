@@ -1,16 +1,17 @@
 'use client';
 
 // public
-import { useTransition } from 'react';
+import { useState, useTransition } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 //* components
 import { Button } from '@nextui-org/react';
-import CheckTodoSubtaskBtn from '../buttons/check-todo-subtask-btn';
+import CheckTodoSubtaskBtn from './check-todo-subtask-btn';
 
 //* redux
 import { getTasksByEmail } from '@/redux/features/tasksSlice';
 import { updateSubtasks } from '@/redux/features/selectedTaskSlice';
+import SubtaskOptions from '@/components/ui-kits/subtask-options';
 
 const TodoDetailsSubtask = ({
     _id,
@@ -25,6 +26,7 @@ const TodoDetailsSubtask = ({
     // states and variables
     const userEmail = useSelector((state: any) => state.options.userEmail);
     const [isPending, startTransition] = useTransition();
+    const [isOpenOptions, setIsOpenOptions] = useState(false);
 
     // functions
     const changeCheck = async () => {
@@ -53,22 +55,38 @@ const TodoDetailsSubtask = ({
         }
     };
 
+    // context menu functions
+    const openOptions = (event: any) => {
+        event.preventDefault();
+        setIsOpenOptions(!isOpenOptions);
+    };
+
+    const closeOptionsMenu = () => setIsOpenOptions(false);
+
     return (
-        <Button
-            className='todo-details-subtask'
-            fullWidth
-            radius='sm'
-            startContent={
-                <CheckTodoSubtaskBtn
-                    isCompleted={isCompleted}
-                    isPending={isPending}
-                />
-            }
-            onClick={() => startTransition(() => changeCheck())}
-            isLoading={isPending}
+        <SubtaskOptions
+            userEmail={userEmail}
+            subtaskId={_id}
+            isOpenOptions={isOpenOptions}
+            closeOptionsMenu={closeOptionsMenu}
         >
-            {title}
-        </Button>
+            <Button
+                className='todo-details-subtask'
+                fullWidth
+                radius='sm'
+                startContent={
+                    <CheckTodoSubtaskBtn
+                        isCompleted={isCompleted}
+                        isPending={isPending}
+                    />
+                }
+                onClick={() => startTransition(() => changeCheck())}
+                onContextMenu={(event: any) => openOptions(event)}
+                isLoading={isPending}
+            >
+                {title}
+            </Button>
+        </SubtaskOptions>
     );
 };
 
