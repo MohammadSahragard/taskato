@@ -35,24 +35,38 @@ const selectedTaskSlice = createSlice({
     initialState,
     reducers: {
         updateSelectedTask: (state, action) => {
-            state._id = action.payload._id;
-            state.email = action.payload.email;
-            state.task_title = action.payload.task_title;
-            action.payload.task_description &&
-                (state.task_description = action.payload.task_description);
-            action.payload.task_due_date &&
-                (state.task_due_date = new Date(action.payload.task_due_date));
-            action.payload.task_list &&
-                (state.task_list = action.payload.task_list);
-            action.payload.task_reminder_date &&
-                (state.task_reminder_date = {
-                    time: action.payload.task_reminder_date.time,
-                    date: new Date(action.payload.task_reminder_date.date),
-                    isTrueReminder:
-                        action.payload.task_reminder_date.isTrueReminder,
-                });
-            action.payload.subtasks?.length &&
-                (state.subtasks = action.payload.subtasks);
+            // variables
+            const id = action.payload._id;
+            const email = action.payload.email;
+            const title = action.payload.task_title;
+            const description: any = action.payload.task_description || '';
+            const due_date: any = action?.payload?.task_due_date || null;
+            const list: any = action?.payload?.task_list || {
+                list_title: '',
+                list_color: '',
+            };
+            const reminder_date: any = {
+                time: action?.payload?.task_reminder_date?.time ?? {
+                    hour: 0,
+                    minute: 0,
+                },
+                date:
+                    new Date(action?.payload?.task_reminder_date?.date) ?? null,
+                isTrueReminder:
+                    action?.payload?.task_reminder_date?.isTrueReminder ??
+                    false,
+            };
+            const subtasks = action.payload.subtasks || [];
+
+            // update states
+            state._id = id;
+            state.email = email;
+            state.task_title = title;
+            state.task_description = description ? description : '';
+            state.task_due_date = due_date;
+            state.task_list = list;
+            state.task_reminder_date = reminder_date;
+            state.subtasks = subtasks;
             state.task_complete = action.payload.task_complete;
             state.is_in_favorite = action.payload.is_in_favorite;
             state.createdAt = action.payload.createdAt;
@@ -72,8 +86,8 @@ const selectedTaskSlice = createSlice({
         setTaskReminderDate: (state, action) => {
             state.task_reminder_date = action.payload;
         },
-        addSubtask: (state, action) => {
-            state.subtasks.push(action.payload);
+        updateSubtasks: (state, action) => {
+            state.subtasks = action.payload;
         },
         setTaskComplete: (state, action) => {
             state.task_complete = action.payload;
@@ -88,7 +102,7 @@ export const {
     setTaskDueDate,
     setTaskSelectedList,
     setTaskReminderDate,
-    addSubtask,
+    updateSubtasks,
     setTaskComplete,
 } = selectedTaskSlice.actions;
 export default selectedTaskSlice.reducer;

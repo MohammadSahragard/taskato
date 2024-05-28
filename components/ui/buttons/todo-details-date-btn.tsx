@@ -39,7 +39,7 @@ const TodoDetailsDateBtn = () => {
     const changeDatePicked = (date: Date | null) => {
         dispatch(setTaskDueDate(date));
         setIsOpenDatePicker(false);
-    }
+    };
 
     return (
         <Dropdown
@@ -60,7 +60,7 @@ const TodoDetailsDateBtn = () => {
                         />
                     }
                 >
-                    {date ? getLocalDateString(date) : 'Task date'}
+                    {date ? getLocalDateString(new Date(date)) : 'Task date'}
                 </Button>
             </DropdownTrigger>
 
@@ -99,9 +99,7 @@ const TodoDetailsDateBtn = () => {
                                 mode='single'
                                 className='rounded-md border'
                                 selected={date}
-                                onSelect={(date: any) =>
-                                    changeDatePicked(date)
-                                }
+                                onSelect={(date: any) => changeDatePicked(date)}
                                 disabled={{ before: new Date() }}
                             />
                         </PopoverContent>

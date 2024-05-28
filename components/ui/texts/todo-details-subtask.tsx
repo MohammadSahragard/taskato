@@ -10,6 +10,7 @@ import CheckTodoSubtaskBtn from '../buttons/check-todo-subtask-btn';
 
 //* redux
 import { getTasksByEmail } from '@/redux/features/tasksSlice';
+import { updateSubtasks } from '@/redux/features/selectedTaskSlice';
 
 const TodoDetailsSubtask = ({
     _id,
@@ -46,9 +47,9 @@ const TodoDetailsSubtask = ({
             body: JSON.stringify(reqBody),
         });
         const res = await req.json();
-        console.log('res: ', res);
         if (res.status === 200) {
             dispatch(getTasksByEmail(userEmail));
+            dispatch(updateSubtasks(res?.data?.subtasks));
         }
     };
 
