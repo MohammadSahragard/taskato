@@ -28,6 +28,7 @@ const TodoDetailsSaveBtn = () => {
         const messageStatus = res.status === 200 ? 'success' : 'error';
         toast[messageStatus](res.message);
         if (res.status === 200) {
+            console.log('res.data: ', res.data);
             dispatch(getTasksByEmail(taskData.email));
         }
     };

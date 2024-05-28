@@ -27,7 +27,7 @@ export const POST = async (req: Request) => {
         });
     }
 
-    // create new list
+    // create new task
     try {
         await Task.create({
             email: userEmail,
@@ -66,7 +66,7 @@ export const PUT = async (req: any) => {
         });
     }
 
-    // check if list don't exists
+    // check if task don't exists
     const task = await Task.findOne({ _id });
     if (!task) {
         return NextResponse.json({
@@ -75,12 +75,15 @@ export const PUT = async (req: any) => {
         });
     }
 
-    // update list
+    // update task
     try {
         await Task.updateOne({ _id }, { ...reqData });
+        const updatedTask = await Task.findOne({ _id });
+
         return NextResponse.json({
-            message: `The Task was updated successfully.`,
+            message: 'The Task was updated successfully.',
             status: 200,
+            data: updatedTask,
         });
     } catch {
         return NextResponse.json({

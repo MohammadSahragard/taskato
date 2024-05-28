@@ -28,12 +28,12 @@ body {
 
 /** main header */
 .main-header {
-    @apply fixed inset-[0_0_auto_300px] px-5 mt-5 h-10 flex items-center gap-5 transition-all;
+    @apply fixed inset-[0_0_auto_300px] bg-background/65 backdrop-blur-sm px-5 h-[80px] flex items-center gap-5 transition-all;
 }
 
 /** main section */
 .main-section {
-    @apply fixed inset-[0_0_0_300px] bg-background px-5 py-[80px] transition-all z-50;
+    @apply fixed inset-[0_0_0_300px] bg-background px-5 py-[80px] transition-all z-50 overflow-auto;
 }
 .main-section.auth-page {
     @apply z-auto;

@@ -25,8 +25,8 @@ export const PUT = async (req: any) => {
     }
 
     // check if subtask don't exists
-    const subtask = await Task.findOne({ 'subtasks._id': _id });
-    if (!subtask) {
+    const task = await Task.findOne({ 'subtasks._id': _id });
+    if (!task) {
         return NextResponse.json({
             message: "Subtask don't exists!",
             status: 400,
@@ -36,9 +36,11 @@ export const PUT = async (req: any) => {
     // update list
     try {
         await Task.updateOne({ 'subtasks._id': _id }, { ...reqData });
+        const updatedTask = await Task.findOne({ 'subtasks._id': _id });
         return NextResponse.json({
             message: 'The subtask was updated successfully.',
             status: 200,
+            data: updatedTask.subtasks,
         });
     } catch {
         return NextResponse.json({
@@ -78,8 +80,8 @@ export const DELETE = async (req: any) => {
     }
 
     // check if subtask don't exists
-    const subtask = await Task.findOne({ subtasks: { _id } });
-    if (!subtask) {
+    const task = await Task.findOne({ subtasks: { _id } });
+    if (!task) {
         return NextResponse.json({
             message: "Subtask don't exists!",
             status: 400,

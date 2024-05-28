@@ -27,7 +27,7 @@
 
 /* add todo bar */
 .todo-bar {
-    @apply bg-primary-100 border-none !rounded-xl !px-1 !transition-all;
+    @apply bg-primary-100/65 backdrop-blur-sm border-none !rounded-xl !px-1 !transition-all;
 }
 .todo-options {
     @apply flex;

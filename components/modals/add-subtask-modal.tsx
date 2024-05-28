@@ -1,7 +1,7 @@
 'use client';
 
 // public
-import { useState, useTransition, useRef, useEffect } from 'react';
+import { useState, useTransition } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 //* components
@@ -14,13 +14,14 @@ import {
     Button,
     Input,
 } from '@nextui-org/react';
+import { toast } from 'react-toastify';
 
 //* redux
 import { getTasksByEmail } from '@/redux/features/tasksSlice';
+import { updateSubtasks } from '@/redux/features/selectedTaskSlice';
 
 //* functions
 import { addSubtask } from '@/helper/functions/todo-functions';
-import { toast } from 'react-toastify';
 
 const AddSubtaskModal = ({
     isOpen,
@@ -55,6 +56,7 @@ const AddSubtaskModal = ({
                     onOpenChange(!isOpen);
                     dispatch(getTasksByEmail(userEmail));
                     setSubtaskTitle('Untitled subtask');
+                    dispatch(updateSubtasks(res?.data?.subtasks));
                 }
             }, 1800);
         });

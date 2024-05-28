@@ -60,10 +60,6 @@ export const addTask = async (taskData: TodoContent, userEmail: string) => {
     // data
     const { taskTitle, taskDate, taskList, taskReminder } = taskData;
 
-    const reqData: any = {
-        task_title: taskTitle,
-    };
-
     // form validation
     if (!taskTitle) {
         return {
@@ -72,10 +68,14 @@ export const addTask = async (taskData: TodoContent, userEmail: string) => {
         };
     }
 
-    // to complete request body
-    taskDate && (reqData.task_due_date = taskDate);
-    taskList && (reqData.task_list = taskList);
-    taskReminder?.isTrueReminder && (reqData.task_reminder_date = taskReminder);
+    // req data
+    const reqData: any = {
+        task_title: taskTitle || '',
+        task_description: '',
+        task_due_date: taskDate || null,
+        task_list: taskList || {},
+        task_reminder_date: taskReminder || {},
+    };
 
     // post form data
     const res = await fetch('/api/user-tasks/task', {
@@ -100,8 +100,13 @@ export const updateTask = async (taskData: selectedTaskTypes) => {
         task_reminder_date,
     } = taskData;
 
+    // req data
     const reqData: any = {
-        task_title,
+        task_title: task_title || '',
+        task_description: task_description || '',
+        task_due_date: task_due_date || null,
+        task_list: task_list || {},
+        task_reminder_date: task_reminder_date || {},
     };
 
     // form validation
@@ -111,13 +116,6 @@ export const updateTask = async (taskData: selectedTaskTypes) => {
             status: 401,
         };
     }
-
-    // to complete request body
-    task_description && (reqData.task_description = task_description);
-    task_due_date && (reqData.task_due_date = task_due_date);
-    task_list && (reqData.task_list = task_list);
-    task_reminder_date?.isTrueReminder &&
-        (reqData.task_reminder_date = task_reminder_date);
 
     // post form data
     const res = await fetch('/api/user-tasks/task', {
