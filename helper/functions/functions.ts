@@ -61,16 +61,13 @@ export const laterTime = () => {
 export const wordsSeparator = (content: string): string =>
     content.replace(/[^A-Za-z0-9]/g, ' ');
 
-// close-open todo details panel
-export const toggleTodoDetailPanel = (dispatch: Function, data: any) => {
-    const body = document.querySelector('body');
-
-    body?.classList.add('isOpenedDetailsBar');
+// close-open task details sidebar
+export const toggleTaskDetailsSidebar = (dispatch: Function, data: any) => {
+    document.body.classList.add('isOpenedDetailsSidebar');
     dispatch(updateSelectedTask(data));
 };
-export const toggleTodoDetailPanelBtn = () => {
-    const body = document.querySelector('body');
-    body?.classList.remove('isOpenedDetailsBar');
+export const toggleTaskDetailsSidebarBtn = () => {
+    document.body.classList.remove('isOpenedDetailsSidebar');
 };
 
 // checking to page is a auth page or not (for z-indexing page)
