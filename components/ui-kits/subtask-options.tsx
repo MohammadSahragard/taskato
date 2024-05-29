@@ -25,10 +25,17 @@ const SubtaskOptions = ({
     subtaskId,
     userEmail,
     isOpenOptions,
+    isCompleted,
+    checkHandler,
     closeOptionsMenu,
     children,
 }: SubtaskOptionsTypes) => {
     const dispatch = useDispatch();
+    // states and variables
+    const changeCheckTitle = isCompleted
+        ? 'Mark as not completed'
+        : 'Mark as completed';
+    const changeCheckIcon = isCompleted ? 'square' : 'square-check';
 
     // functions
     const deleteSubtask = async () => {
@@ -55,7 +62,15 @@ const SubtaskOptions = ({
 
             <DropdownMenu variant='flat'>
                 <DropdownItem
-                    className='rounded text-danger hover:!text-danger'
+                    className='p-1 rounded'
+                    startContent={<Icon iconName={changeCheckIcon} />}
+                    onClick={checkHandler}
+                >
+                    {changeCheckTitle}
+                </DropdownItem>
+
+                <DropdownItem
+                    className='p-1 rounded text-danger hover:!text-danger'
                     startContent={
                         <Icon
                             iconName='trash'

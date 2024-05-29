@@ -54,6 +54,7 @@ const TaskDetailsSubtask = ({
             dispatch(updateSubtasks(res?.data));
         }
     };
+    const checkHandler = () => startTransition(() => changeCheck());
 
     // context menu functions
     const openOptions = (event: any) => {
@@ -67,6 +68,8 @@ const TaskDetailsSubtask = ({
         <SubtaskOptions
             userEmail={userEmail}
             subtaskId={_id}
+            isCompleted={isCompleted}
+            checkHandler={checkHandler}
             isOpenOptions={isOpenOptions}
             closeOptionsMenu={closeOptionsMenu}
         >
@@ -80,7 +83,7 @@ const TaskDetailsSubtask = ({
                         isPending={isPending}
                     />
                 }
-                onClick={() => startTransition(() => changeCheck())}
+                onClick={checkHandler}
                 onContextMenu={(event: any) => openOptions(event)}
                 isLoading={isPending}
             >
