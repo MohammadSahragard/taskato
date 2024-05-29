@@ -9,17 +9,17 @@ import { Input } from '@nextui-org/react';
 import AddDateBtn from '../ui/buttons/add-date-btn';
 import AddToListBtn from '../ui/buttons/add-to-list-btn';
 import AddReminderBtn from '../ui/buttons/add-reminder-btn';
-import AddTodoBtn from '../ui/buttons/add-todo-btn';
+import AddTaskBtn from '../ui/buttons/add-task-btn';
 
 //* redux
 import { setTaskTitle, setClearFields } from '@/redux/features/todoSlice';
-import { addTask } from '@/helper/functions/todo-functions';
+import { addTask } from '@/helper/functions/task-functions';
 import { getTasksByEmail } from '@/redux/features/tasksSlice';
 
 //* toastify
 import { toast } from 'react-toastify';
 
-const AddTodoBar = () => {
+const AddTaskBar = () => {
     // states and variables
     const dispatch = useDispatch();
     const [isPending, startTransition] = useTransition();
@@ -53,17 +53,17 @@ const AddTodoBar = () => {
                 isDisabled={isPending}
                 onChange={(event) => dispatch(setTaskTitle(event.target.value))}
                 startContent={
-                    <AddTodoBtn
+                    <AddTaskBtn
                         submitTask={submitTask}
                         startTransition={startTransition}
                         isPending={isPending}
                     />
                 }
                 classNames={{
-                    inputWrapper: 'todo-bar',
+                    inputWrapper: 'task-bar',
                 }}
                 endContent={
-                    <div className='todo-options'>
+                    <div className='task-options'>
                         <AddDateBtn />
                         <AddToListBtn />
                         <AddReminderBtn />
@@ -74,4 +74,4 @@ const AddTodoBar = () => {
     );
 };
 
-export default AddTodoBar;
+export default AddTaskBar;

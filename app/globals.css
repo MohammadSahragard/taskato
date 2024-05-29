@@ -39,23 +39,23 @@ body {
     @apply z-auto;
 }
 
-/** add todo bar section */
-.todo-bar-con {
+/** add task bar section */
+.task-bar-con {
     @apply fixed inset-[auto_0_0_300px] p-5 transition-all;
 }
 
-/** todo detail section */
-.todo-details-bar {
+/** task detail section */
+.task-details-bar {
     @apply fixed inset-[20px_20px_20px_calc(100%-300px)] bg-primary-100 p-3 rounded-xl
             translate-x-[150%] transition-all
             grid grid-rows-[max-content_auto];
 }
-.isOpenedDetailsBar .todo-details-bar {
+.isOpenedDetailsSidebar .task-details-bar {
     @apply translate-x-0;
 }
 
-/** panel toggle styles (todo details & menu) */
-.isOpenedDetailsBar :is(.main-header, .main-section, .todo-bar-con) {
+/** sidebar toggle styles (task details & menu) */
+.isOpenedDetailsSidebar :is(.main-header, .main-section, .task-bar-con) {
     @apply right-[300px];
 }
 

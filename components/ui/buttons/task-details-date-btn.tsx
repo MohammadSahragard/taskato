@@ -18,6 +18,7 @@ import {
 import Icon from '../texts/icon';
 import Subtitle from '../texts/subtitle';
 import Calendar from '@/components/ui-kits/calendar';
+import TooltipElement from '../texts/tooltip-element';
 
 //* functions
 import {
@@ -29,7 +30,7 @@ import {
 //* redux
 import { setTaskDueDate } from '@/redux/features/selectedTaskSlice';
 
-const TodoDetailsDateBtn = () => {
+const TaskDetailsDateBtn = () => {
     const dispatch = useDispatch();
     // hooks and variables
     const date = useSelector((state: any) => state.selectedTask.task_due_date);
@@ -47,22 +48,28 @@ const TodoDetailsDateBtn = () => {
             isOpen={isOpenDatePicker}
             onOpenChange={() => setIsOpenDatePicker(!isOpenDatePicker)}
         >
-            <DropdownTrigger>
-                <Button
-                    variant='bordered'
-                    className='todo-details-btn'
-                    fullWidth
-                    radius='sm'
-                    startContent={
-                        <Icon
-                            iconName='calendar-days'
-                            color={date ? 'text-foreground' : ''}
-                        />
-                    }
-                >
-                    {date ? getLocalDateString(new Date(date)) : 'Task date'}
-                </Button>
-            </DropdownTrigger>
+            <TooltipElement title='Add due date'>
+                <div>
+                    <DropdownTrigger>
+                        <Button
+                            variant='bordered'
+                            className='task-details-btn'
+                            fullWidth
+                            radius='sm'
+                            startContent={
+                                <Icon
+                                    iconName='calendar-days'
+                                    color={date ? 'text-foreground' : ''}
+                                />
+                            }
+                        >
+                            {date
+                                ? getLocalDateString(new Date(date))
+                                : 'Task date'}
+                        </Button>
+                    </DropdownTrigger>
+                </div>
+            </TooltipElement>
 
             <DropdownMenu variant='flat'>
                 <DropdownItem
@@ -123,4 +130,4 @@ const TodoDetailsDateBtn = () => {
     );
 };
 
-export default TodoDetailsDateBtn;
+export default TaskDetailsDateBtn;

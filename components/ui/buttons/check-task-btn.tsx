@@ -5,13 +5,13 @@ import { useTransition } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 //* components
-import { Button } from '@nextui-org/react';
+import { Button, Tooltip } from '@nextui-org/react';
 import Icon from '../texts/icon';
 
 //* redux
 import { getTasksByEmail } from '@/redux/features/tasksSlice';
 
-const CheckTodoBtn = ({
+const CheckTaskBtn = ({
     isCompleted,
     taskId,
 }: {
@@ -24,6 +24,7 @@ const CheckTodoBtn = ({
     const userEmail = useSelector((state: any) => state.options.userEmail);
     const iconName = isCompleted ? 'check-square' : 'square';
     const iconStyle = isCompleted ? 'fas' : 'far';
+    const tooltipContent = isCompleted ? 'Incomplete task' : 'Complete task';
 
     // functions
     const changeCheck = async () => {
@@ -47,22 +48,24 @@ const CheckTodoBtn = ({
     };
 
     return (
-        <Button
-            isIconOnly
-            variant='light'
-            radius='sm'
-            startContent={
-                !isPending ? (
-                    <Icon
-                        iconName={iconName}
-                        style={iconStyle}
-                    />
-                ) : null
-            }
-            isLoading={isPending}
-            onClick={() => startTransition(() => changeCheck())}
-        />
+        <Tooltip content={tooltipContent}>
+            <Button
+                isIconOnly
+                variant='light'
+                radius='sm'
+                startContent={
+                    !isPending ? (
+                        <Icon
+                            iconName={iconName}
+                            style={iconStyle}
+                        />
+                    ) : null
+                }
+                isLoading={isPending}
+                onClick={() => startTransition(() => changeCheck())}
+            />
+        </Tooltip>
     );
 };
 
-export default CheckTodoBtn;
+export default CheckTaskBtn;

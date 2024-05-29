@@ -22,7 +22,7 @@ import ResultSubmit from '../ui/texts/result-submit';
 import { listColorItems } from '@/helper/data/data';
 
 //* functions
-import { addTaskList } from '@/helper/functions/todo-functions';
+import { addTaskList } from '@/helper/functions/task-functions';
 
 //* redux
 import { getListsByEmail } from '@/redux/features/taskListsSlice';

@@ -1,13 +1,13 @@
 'use client';
 
 // public
-import { TodoContent } from '@/types/types';
+import { TaskContent } from '@/types/types';
 
 //* types
 import { createSlice } from '@reduxjs/toolkit';
 
 //* initial state
-const initialState: TodoContent = {
+const initialState: TaskContent = {
     taskTitle: '',
     taskDescription: '',
     taskList: {

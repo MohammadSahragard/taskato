@@ -13,6 +13,7 @@ import {
     Button,
 } from '@nextui-org/react';
 import Icon from '../texts/icon';
+import TooltipElement from '../texts/tooltip-element';
 
 //* redux
 import { setTaskSelectedList } from '@/redux/features/selectedTaskSlice';
@@ -20,7 +21,7 @@ import { setTaskSelectedList } from '@/redux/features/selectedTaskSlice';
 //* hooks
 import useUserLists from '@/hooks/use-user-lists';
 
-const TodoDetailsListBtn = () => {
+const TaskDetailsListBtn = () => {
     const dispatch = useDispatch();
     const pathname = usePathname();
     // hooks and variables
@@ -33,22 +34,26 @@ const TodoDetailsListBtn = () => {
 
     return (
         <Dropdown className='bg-primary-100'>
-            <DropdownTrigger>
-                <Button
-                    variant='bordered'
-                    className='todo-details-btn'
-                    fullWidth
-                    radius='sm'
-                    startContent={
-                        <Icon
-                            iconName='list-check'
-                            color={list ? 'text-foreground' : ''}
-                        />
-                    }
-                >
-                    {list.list_title || 'Task list'}
-                </Button>
-            </DropdownTrigger>
+            <TooltipElement title='Add to list'>
+                <div>
+                    <DropdownTrigger>
+                        <Button
+                            variant='bordered'
+                            className='task-details-btn'
+                            fullWidth
+                            radius='sm'
+                            startContent={
+                                <Icon
+                                    iconName='list-check'
+                                    color={list ? 'text-foreground' : ''}
+                                />
+                            }
+                        >
+                            {list.list_title || 'Task list'}
+                        </Button>
+                    </DropdownTrigger>
+                </div>
+            </TooltipElement>
             <DropdownMenu
                 variant='flat'
                 selectionMode='single'
@@ -101,4 +106,4 @@ const TodoDetailsListBtn = () => {
     );
 };
 
-export default TodoDetailsListBtn;
+export default TaskDetailsListBtn;

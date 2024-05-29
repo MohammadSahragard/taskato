@@ -19,6 +19,7 @@ import { setSelectedList } from '@/redux/features/todoSlice';
 
 //* hooks
 import useUserLists from '@/hooks/use-user-lists';
+import TooltipElement from '../texts/tooltip-element';
 
 const AddToListBtn = () => {
     const dispatch = useDispatch();
@@ -35,26 +36,32 @@ const AddToListBtn = () => {
 
     return (
         <Dropdown className='bg-primary-100'>
-            <DropdownTrigger>
-                <Button
-                    variant='light'
-                    className='capitalize'
-                    radius='sm'
-                    startContent={
-                        <Icon
-                            iconName='list-check'
-                            color={
-                                taskSelectedList.list_title
-                                    ? 'text-foreground'
-                                    : ''
+            <TooltipElement title='Add to list'>
+                <div>
+                    <DropdownTrigger>
+                        <Button
+                            variant='light'
+                            className='capitalize'
+                            radius='sm'
+                            startContent={
+                                <Icon
+                                    iconName='list-check'
+                                    color={
+                                        taskSelectedList.list_title
+                                            ? 'text-foreground'
+                                            : ''
+                                    }
+                                />
                             }
-                        />
-                    }
-                    isIconOnly={taskSelectedList.list_title ? false : true}
-                >
-                    {taskSelectedList.list_title}
-                </Button>
-            </DropdownTrigger>
+                            isIconOnly={
+                                taskSelectedList.list_title ? false : true
+                            }
+                        >
+                            {taskSelectedList.list_title}
+                        </Button>
+                    </DropdownTrigger>
+                </div>
+            </TooltipElement>
             <DropdownMenu
                 variant='flat'
                 selectionMode='single'

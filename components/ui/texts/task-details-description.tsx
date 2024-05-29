@@ -8,8 +8,7 @@ import { Textarea } from '@nextui-org/react';
 
 //* redux
 import { setTaskDescription } from '@/redux/features/selectedTaskSlice';
-
-const TodoDetailsTaskDescription = () => {
+const TaskDetailsDescription = () => {
     const dispatch = useDispatch();
     // states and variables
     const description = useSelector(
@@ -34,4 +33,4 @@ const TodoDetailsTaskDescription = () => {
     );
 };
 
-export default TodoDetailsTaskDescription;
+export default TaskDetailsDescription;

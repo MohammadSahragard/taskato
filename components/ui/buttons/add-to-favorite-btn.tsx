@@ -1,6 +1,7 @@
 //* components
-import { Button } from '@nextui-org/react';
+import { Button, Tooltip } from '@nextui-org/react';
 import Icon from '../texts/icon';
+import TooltipElement from '../texts/tooltip-element';
 
 const AddToFavoriteBtn = ({
     isInFavorite,
@@ -10,17 +11,19 @@ const AddToFavoriteBtn = ({
     const iconStyle = isInFavorite ? 'fas' : 'far';
 
     return (
-        <Button
-            startContent={
-                <Icon
-                    iconName='star'
-                    style={iconStyle}
-                />
-            }
-            isIconOnly
-            radius='sm'
-            variant='light'
-        />
+        <TooltipElement title='Add to important'>
+            <Button
+                startContent={
+                    <Icon
+                        iconName='star'
+                        style={iconStyle}
+                    />
+                }
+                isIconOnly
+                radius='sm'
+                variant='light'
+            />
+        </TooltipElement>
     );
 };
 

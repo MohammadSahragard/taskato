@@ -1,7 +1,7 @@
 // public
 import {
     AddTaskListTypes,
-    TodoContent,
+    TaskContent,
     selectedTaskTypes,
 } from '@/types/types';
 
@@ -56,7 +56,7 @@ export const renameTaskList = async (id: string, listTitle: string) => {
 };
 
 //* add task
-export const addTask = async (taskData: TodoContent, userEmail: string) => {
+export const addTask = async (taskData: TaskContent, userEmail: string) => {
     // data
     const { taskTitle, taskDate, taskList, taskReminder } = taskData;
 

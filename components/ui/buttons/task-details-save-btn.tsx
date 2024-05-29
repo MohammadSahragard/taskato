@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Button } from '@nextui-org/react';
 
 //* functions
-import { updateTask } from '@/helper/functions/todo-functions';
+import { updateTask } from '@/helper/functions/task-functions';
 
 //* toastify
 import { toast } from 'react-toastify';
@@ -16,7 +16,7 @@ import { toast } from 'react-toastify';
 //* redux
 import { getTasksByEmail } from '@/redux/features/tasksSlice';
 
-const TodoDetailsSaveBtn = () => {
+const TaskDetailsSaveBtn = () => {
     const dispatch = useDispatch();
     // states and variables
     const taskData = useSelector((state: any) => state.selectedTask);
@@ -45,4 +45,4 @@ const TodoDetailsSaveBtn = () => {
     );
 };
 
-export default TodoDetailsSaveBtn;
+export default TaskDetailsSaveBtn;

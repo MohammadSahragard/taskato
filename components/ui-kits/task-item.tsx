@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 //* components
 import Divider from '../ui/texts/divider';
 import AddToFavoriteBtn from '../ui/buttons/add-to-favorite-btn';
-import CheckTodoBtn from '../ui/buttons/check-todo-btn';
+import CheckTaskBtn from '../ui/buttons/check-task-btn';
 import Icon from '../ui/texts/icon';
 import Subtitle from '../ui/texts/subtitle';
 import Title from '../ui/texts/title';
@@ -14,14 +14,14 @@ import Title from '../ui/texts/title';
 //* functions
 import {
     getLocalDateString,
-    toggleTodoDetailPanel,
+    toggleTaskDetailsSidebar,
 } from '@/helper/functions/functions';
 
 const TaskItem = ({ taskData }: { taskData: any }) => {
     const dispatch = useDispatch();
     // state and variables
     const completedStyles = 'line-through text-primary-200';
-    const completedTodo = taskData?.task_completion ? completedStyles : '';
+    const completedTask = taskData?.task_completion ? completedStyles : '';
     const haveSubDetails =
         taskData?.task_due_date ||
         taskData?.subtasks?.length ||
@@ -29,26 +29,26 @@ const TaskItem = ({ taskData }: { taskData: any }) => {
 
     return (
         <div
-            className='todo-item'
-            onClick={() => toggleTodoDetailPanel(dispatch, taskData)}
+            className='task-item'
+            onClick={() => toggleTaskDetailsSidebar(dispatch, taskData)}
         >
             <section>
-                <CheckTodoBtn
+                <CheckTaskBtn
                     isCompleted={taskData?.task_completion}
                     taskId={taskData?._id}
                 />
             </section>
 
-            <div className='todo-content'>
+            <div className='task-content'>
                 <div className='flex items-center px-2'>
                     <Title
                         title={taskData?.task_title}
-                        additionalClasses={completedTodo}
+                        additionalClasses={completedTask}
                     />
                 </div>
                 {/* sub detail section */}
                 {haveSubDetails ? (
-                    <div className='todo-sub-detail'>
+                    <div className='task-sub-detail'>
                         {taskData?.task_due_date ? (
                             <>
                                 <Subtitle additionalClasses='text-xs'>
