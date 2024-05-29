@@ -13,6 +13,7 @@ import CheckTaskBtn from '../ui/buttons/check-task-btn';
 
 //* functions
 import {
+    checkDueDate,
     getLocalDateString,
     toggleTaskDetailsSidebar,
 } from '@/helper/functions/functions';
@@ -26,6 +27,11 @@ const TaskItem = ({ taskData }: { taskData: any }) => {
         taskData?.task_due_date ||
         taskData?.subtasks?.length ||
         taskData?.task_list?.list_title;
+    const isDueDatePassed = taskData?.task_due_date
+        ? checkDueDate(taskData?.task_due_date)
+            ? 'text-xs text-danger'
+            : 'text-xs'
+        : 'text-xs';
 
     return (
         <div
@@ -51,10 +57,17 @@ const TaskItem = ({ taskData }: { taskData: any }) => {
                     <div className='task-sub-detail'>
                         {taskData?.task_due_date ? (
                             <>
-                                <Subtitle additionalClasses='text-xs'>
+                                <Subtitle additionalClasses={isDueDatePassed}>
                                     <Icon
                                         iconName='calendar-days'
                                         size='sm'
+                                        color={
+                                            checkDueDate(
+                                                taskData?.task_due_date
+                                            )
+                                                ? 'text-danger'
+                                                : ''
+                                        }
                                     />{' '}
                                     <span>
                                         {getLocalDateString(
