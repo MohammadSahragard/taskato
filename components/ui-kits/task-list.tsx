@@ -4,6 +4,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 //* components
 import { Button } from '@nextui-org/react';
@@ -14,7 +15,12 @@ import ListItemOptions from './list-item-options';
 
 const TaskList = ({ id, userEmail, href, label, listColor }: TaskListTypes) => {
     const pathname = usePathname();
+    // states and variables
     const [isOpenOptions, setIsOpenOptions] = useState(false);
+    const tasks = useSelector((state: any) => state.tasks.data);
+    const listCounter = tasks.filter(
+        (task: any) => task.task_list.list_title === label
+    );
 
     // functions
     const openOptions = (event: any) => {
@@ -46,7 +52,9 @@ const TaskList = ({ id, userEmail, href, label, listColor }: TaskListTypes) => {
                             style='fas'
                         />
                     }
-                    endContent={<ItemsCounter value={5} />}
+                    endContent={
+                        <ItemsCounter value={listCounter?.length ?? 0} />
+                    }
                     onContextMenu={(event: any) => openOptions(event)}
                 >
                     <span className='flex-1 text-start'>{label}</span>
