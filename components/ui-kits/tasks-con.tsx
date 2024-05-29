@@ -1,11 +1,11 @@
 'use client';
 
 //* components
-import Icon from '../ui/texts/icon';
 import Subtitle from '../ui/texts/subtitle';
 import EmptyStateTasks from './empty-state-tasks';
 import TaskItem from './task-item';
 import Divider from '../ui/texts/divider';
+import TaskLoadingSkeleton from './task-loading-skeleton';
 
 //* hooks
 import useUserTasks from '@/hooks/use-user-tasks';
@@ -15,15 +15,7 @@ const TasksCon = () => {
     const tasks: any = useUserTasks();
     const taskDone = tasks?.data?.find((task: any) => task.task_completion);
 
-    if (tasks.loading && !tasks.data.length)
-        return (
-            <p className='text-center'>
-                <Icon
-                    iconName='spinner-third fa-spin'
-                    style='fad'
-                />
-            </p>
-        );
+    if (tasks.loading && !tasks.data.length) return <TaskLoadingSkeleton />;
 
     return (
         <div>

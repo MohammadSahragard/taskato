@@ -69,3 +69,11 @@
 .empty-state-tasks {
     @apply absolute inset-0 flex flex-col items-center justify-center text-center;
 }
+
+/* task loading skeleton */
+.task-loading-skeleton {
+    @apply absolute inset-0 flex flex-col gap-2 px-5 py-[80px];
+}
+.skeleton-card {
+    @apply !grid grid-cols-[max-content_auto_max-content] gap-x-3 p-2 rounded-xl !bg-primary-100;
+}

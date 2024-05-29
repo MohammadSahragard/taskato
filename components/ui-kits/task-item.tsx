@@ -5,11 +5,11 @@ import { useSelector, useDispatch } from 'react-redux';
 
 //* components
 import Divider from '../ui/texts/divider';
-import AddToFavoriteBtn from '../ui/buttons/add-to-favorite-btn';
-import CheckTaskBtn from '../ui/buttons/check-task-btn';
+import AddToImportantBtn from '../ui/buttons/add-to-important-btn';
 import Icon from '../ui/texts/icon';
 import Subtitle from '../ui/texts/subtitle';
 import Title from '../ui/texts/title';
+import CheckTaskBtn from '../ui/buttons/check-task-btn';
 
 //* functions
 import {
@@ -101,7 +101,10 @@ const TaskItem = ({ taskData }: { taskData: any }) => {
             </div>
 
             <section>
-                <AddToFavoriteBtn isInFavorite={taskData?.is_in_favorite} />
+                <AddToImportantBtn
+                    isImportant={taskData?.is_in_important}
+                    taskId={taskData?._id}
+                />
             </section>
         </div>
     );
