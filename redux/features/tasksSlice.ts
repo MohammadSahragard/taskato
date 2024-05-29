@@ -3,6 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 //* initial state
 const initialState = {
+    beforeLoading: true,
     loading: false,
     data: [],
     error: '',
@@ -32,16 +33,19 @@ const tasksSlice = createSlice({
     extraReducers: (builder: any) => {
         builder.addCase(getTasksByEmail.pending, (state: any) => {
             state.loading = true;
+            state.beforeLoading = false;
         });
         builder.addCase(
             getTasksByEmail.fulfilled,
             (state: any, action: any) => {
+                state.beforeLoading = false;
                 state.loading = false;
                 state.data = action.payload;
                 state.error = '';
             }
         );
         builder.addCase(getTasksByEmail.rejected, (state: any) => {
+            state.beforeLoading = false;
             state.loading = false;
             state.data = [];
             state.error = 'Something went wrong. Please try again later.';
