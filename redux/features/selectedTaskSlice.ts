@@ -25,7 +25,7 @@ const initialState: selectedTaskTypes = {
     },
     subtasks: [],
     task_complete: false,
-    is_in_favorite: false,
+    is_in_important: false,
     createdAt: null,
 };
 
@@ -68,7 +68,7 @@ const selectedTaskSlice = createSlice({
             state.task_reminder_date = reminder_date;
             state.subtasks = subtasks;
             state.task_complete = action.payload.task_complete;
-            state.is_in_favorite = action.payload.is_in_favorite;
+            state.is_in_important = action.payload.is_in_important;
             state.createdAt = action.payload.createdAt;
         },
         setTaskTitle: (state, action) => {

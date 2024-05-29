@@ -34,9 +34,7 @@ const TaskDetailsDeleteBtn = () => {
         toast[messageStatus](data.message);
 
         if (data.status === 200) {
-            const body = document.querySelector('body');
-            body?.classList.remove('isOpenedDetailsBar');
-
+            document.body.classList.remove('isOpenedDetailsSidebar');
             dispatch(getTasksByEmail(taskData.email));
         }
     };

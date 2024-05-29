@@ -46,7 +46,7 @@ const taskSchema = new Schema({
         required: true,
         default: false,
     },
-    is_in_favorite: {
+    is_in_important: {
         type: Boolean,
         required: true,
         default: false,

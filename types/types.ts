@@ -65,7 +65,7 @@ export type TaskReminderTypes = {
 export type TaskItemTypes = {
     todoText: string;
     isCompleted?: boolean;
-    isInFavorite?: boolean;
+    isImportant?: boolean;
     todoSubDetail?: boolean;
 };
 
@@ -164,6 +164,6 @@ export type selectedTaskTypes = {
         subtask_completion: boolean;
     }[];
     task_complete: boolean;
-    is_in_favorite: boolean;
+    is_in_important: boolean;
     createdAt: Date | null;
 };

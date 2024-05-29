@@ -27,7 +27,7 @@ const MenuItem = ({ href, label, iconName }: MenuItemTypes) => {
                 dateToLocalDateString(new Date(task.task_due_date)) ===
                 dateToLocalDateString(new Date())
         ),
-        '/important': tasks?.filter((task: any) => task.is_in_favorite),
+        '/important': tasks?.filter((task: any) => task.is_in_important),
         '/sticky-notes': [],
     };
 
