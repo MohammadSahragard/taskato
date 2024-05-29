@@ -96,6 +96,7 @@ const AddListModal = ({
                                     radius='sm'
                                     placeholder='List Title'
                                     value={listTitle}
+                                    maxLength={20}
                                     onChange={({ target }) =>
                                         setListTitle(target.value)
                                     }

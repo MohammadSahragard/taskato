@@ -89,6 +89,7 @@ const AddSubtaskModal = ({
                                     radius='sm'
                                     placeholder='Subtask'
                                     value={subtaskTitle}
+                                    maxLength={25}
                                     onChange={({ target }) =>
                                         setSubtaskTitle(target.value)
                                     }

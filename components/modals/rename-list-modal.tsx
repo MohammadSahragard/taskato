@@ -94,6 +94,7 @@ const RenameListModal = ({
                                     radius='sm'
                                     placeholder='List Title'
                                     value={newListTitle}
+                                    maxLength={20}
                                     onChange={({ target }) =>
                                         setNewListTitle(target.value)
                                     }
