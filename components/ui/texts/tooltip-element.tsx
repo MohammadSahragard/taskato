@@ -14,7 +14,7 @@ const TooltipElement = ({
     return (
         <Tooltip
             content={title}
-            delay={500}
+            delay={800}
         >
             {children}
         </Tooltip>
