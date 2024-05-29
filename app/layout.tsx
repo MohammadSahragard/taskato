@@ -18,13 +18,13 @@ import 'react-toastify/dist/ReactToastify.css';
 //* components
 import MenuContainer from '@/components/sidebars/menu/menu-container';
 import MainHeader from '@/components/ui-kits/main-header';
-import AddTodoBar from '@/components/ui-kits/add-todo-bar';
-import TodoDetails from '@/components/sidebars/todo-detail/todo-details';
+import AddTaskBar from '@/components/ui-kits/add-task-bar';
+import TaskDetails from '@/components/sidebars/task-details/task-details';
 
 //* metadata
 export const metadata: Metadata = {
     title: 'Taskato',
-    description: 'A task manager app for managing tasks, todo and notes.',
+    description: 'A task manager app for managing tasks, task and notes.',
 };
 
 const RootLayout = async ({
@@ -45,12 +45,12 @@ const RootLayout = async ({
                     {/* main header */}
                     <MainHeader />
 
-                    {/* todo detail bar */}
-                    <TodoDetails />
+                    {/* task detail bar */}
+                    <TaskDetails />
 
-                    {/* todo add bar section */}
-                    <div className='todo-bar-con'>
-                        <AddTodoBar />
+                    {/* task add bar section */}
+                    <div className='task-bar-con'>
+                        <AddTaskBar />
                     </div>
                 </Providers>
             </body>

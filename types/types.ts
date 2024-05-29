@@ -62,7 +62,7 @@ export type TaskReminderTypes = {
     isTrueReminder: boolean;
 };
 
-export type TodoItemTypes = {
+export type TaskItemTypes = {
     todoText: string;
     isCompleted?: boolean;
     isInFavorite?: boolean;
@@ -84,14 +84,14 @@ export type SubtaskOptionsTypes = {
     userEmail: string;
     closeOptionsMenu: (isOpen: boolean) => void;
     children: ReactNode;
-}
+};
 
 // redux slices
-type TodoSubtask = {
+type TaskSubtask = {
     subtaskTitle: string;
     subtaskIsCompleted: boolean;
 };
-export type TodoContent = {
+export type TaskContent = {
     taskTitle: string;
     taskDescription: string;
     taskList: {
@@ -107,7 +107,7 @@ export type TodoContent = {
         date: Date | null;
         isTrueReminder: boolean;
     };
-    taskSubtasks: TodoSubtask[];
+    taskSubtasks: TaskSubtask[];
 };
 
 //* functions helper
@@ -140,7 +140,7 @@ export type AddTaskListTypes = {
     listColor: string;
 };
 
-// types for selected task for details panel
+// types for selected task for details sidebar
 export type selectedTaskTypes = {
     _id: string;
     email: string;

@@ -2,7 +2,10 @@
 
 // public
 import { useSelector } from 'react-redux';
-import TodoDetailsSubtask from '../ui/buttons/subtask-item';
+
+//* components
+import { ScrollShadow } from '@nextui-org/react';
+import TaskDetailsSubtask from '../ui/buttons/subtask-item';
 
 const SubtasksCon = () => {
     // states and variables
@@ -10,10 +13,10 @@ const SubtasksCon = () => {
 
     return (
         <div className='relative'>
-            <div className='absolute inset-0 overflow-auto'>
+            <ScrollShadow className='absolute inset-0 inset-y-1 overflow-auto'>
                 {subtasks.length
                     ? subtasks.map((subtask: any) => (
-                          <TodoDetailsSubtask
+                          <TaskDetailsSubtask
                               key={subtask._id}
                               _id={subtask._id}
                               title={subtask.subtask_title}
@@ -21,7 +24,7 @@ const SubtasksCon = () => {
                           />
                       ))
                     : null}
-            </div>
+            </ScrollShadow>
         </div>
     );
 };

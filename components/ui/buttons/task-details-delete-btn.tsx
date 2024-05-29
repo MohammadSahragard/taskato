@@ -13,7 +13,7 @@ import { toast } from 'react-toastify';
 //* redux
 import { getTasksByEmail } from '@/redux/features/tasksSlice';
 
-const TodoDetailsDeleteBtn = () => {
+const TaskDetailsDeleteBtn = () => {
     const dispatch = useDispatch();
     // states and variables
     const taskData = useSelector((state: any) => state.selectedTask);
@@ -54,4 +54,4 @@ const TodoDetailsDeleteBtn = () => {
     );
 };
 
-export default TodoDetailsDeleteBtn;
+export default TaskDetailsDeleteBtn;

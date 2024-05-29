@@ -22,7 +22,7 @@ import ResultSubmit from '../ui/texts/result-submit';
 import { getListsByEmail } from '@/redux/features/taskListsSlice';
 
 //* functions
-import { renameTaskList } from '@/helper/functions/todo-functions';
+import { renameTaskList } from '@/helper/functions/task-functions';
 import { toast } from 'react-toastify';
 
 const RenameListModal = ({

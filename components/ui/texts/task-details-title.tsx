@@ -9,7 +9,7 @@ import { Input } from '@nextui-org/react';
 //* redux
 import { setTaskTitle } from '@/redux/features/selectedTaskSlice';
 
-const TodoDetailsTaskTitle = () => {
+const TaskDetailsTaskTitle = () => {
     const dispatch = useDispatch();
     // states and variables
     const taskTitle = useSelector(
@@ -30,4 +30,4 @@ const TodoDetailsTaskTitle = () => {
     );
 };
 
-export default TodoDetailsTaskTitle;
+export default TaskDetailsTaskTitle;

@@ -28,6 +28,7 @@ import {
 
 //* redux
 import { setTaskDate } from '@/redux/features/todoSlice';
+import TooltipElement from '../texts/tooltip-element';
 
 const AddDateBtn = () => {
     // hooks and variables
@@ -47,22 +48,26 @@ const AddDateBtn = () => {
             isOpen={isOpenDatePicker}
             onOpenChange={() => setIsOpenDatePicker(!isOpenDatePicker)}
         >
-            <DropdownTrigger>
-                <Button
-                    variant='light'
-                    className='capitalize'
-                    radius='sm'
-                    startContent={
-                        <Icon
-                            iconName='calendar-days'
-                            color={taskDate ? 'text-foreground' : ''}
-                        />
-                    }
-                    isIconOnly={taskDate ? false : true}
-                >
-                    {taskDate ? getLocalDateString(taskDate) : null}
-                </Button>
-            </DropdownTrigger>
+            <TooltipElement title='Add due date'>
+                <div>
+                    <DropdownTrigger>
+                        <Button
+                            variant='light'
+                            className='capitalize'
+                            radius='sm'
+                            startContent={
+                                <Icon
+                                    iconName='calendar-days'
+                                    color={taskDate ? 'text-foreground' : ''}
+                                />
+                            }
+                            isIconOnly={taskDate ? false : true}
+                        >
+                            {taskDate ? getLocalDateString(taskDate) : null}
+                        </Button>
+                    </DropdownTrigger>
+                </div>
+            </TooltipElement>
 
             <DropdownMenu variant='flat'>
                 <DropdownItem

@@ -6,14 +6,14 @@ import { useSelector, useDispatch } from 'react-redux';
 
 //* components
 import { Button } from '@nextui-org/react';
-import CheckTodoSubtaskBtn from './check-todo-subtask-btn';
+import CheckSubtaskBtn from './check-subtask-btn';
 
 //* redux
 import { getTasksByEmail } from '@/redux/features/tasksSlice';
 import { updateSubtasks } from '@/redux/features/selectedTaskSlice';
 import SubtaskOptions from '@/components/ui-kits/subtask-options';
 
-const TodoDetailsSubtask = ({
+const TaskDetailsSubtask = ({
     _id,
     title,
     isCompleted,
@@ -71,11 +71,11 @@ const TodoDetailsSubtask = ({
             closeOptionsMenu={closeOptionsMenu}
         >
             <Button
-                className='todo-details-subtask'
+                className='task-details-subtask'
                 fullWidth
                 radius='sm'
                 startContent={
-                    <CheckTodoSubtaskBtn
+                    <CheckSubtaskBtn
                         isCompleted={isCompleted}
                         isPending={isPending}
                     />
@@ -90,4 +90,4 @@ const TodoDetailsSubtask = ({
     );
 };
 
-export default TodoDetailsSubtask;
+export default TaskDetailsSubtask;

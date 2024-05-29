@@ -21,7 +21,7 @@ import { getTasksByEmail } from '@/redux/features/tasksSlice';
 import { updateSubtasks } from '@/redux/features/selectedTaskSlice';
 
 //* functions
-import { addSubtask } from '@/helper/functions/todo-functions';
+import { addSubtask } from '@/helper/functions/task-functions';
 
 const AddSubtaskModal = ({
     isOpen,

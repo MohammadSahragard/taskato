@@ -3,7 +3,7 @@
 //* components
 import Icon from '../texts/icon';
 
-const CheckTodoSubtaskBtn = ({
+const CheckSubtaskBtn = ({
     isCompleted,
     isPending,
 }: {
@@ -20,4 +20,4 @@ const CheckTodoSubtaskBtn = ({
     );
 };
 
-export default CheckTodoSubtaskBtn;
+export default CheckSubtaskBtn;

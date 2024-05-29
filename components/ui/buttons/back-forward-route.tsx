@@ -4,9 +4,10 @@
 import { useRouter } from 'next/navigation';
 
 //* components
-import { Button } from '@nextui-org/react';
+import { Button, Tooltip } from '@nextui-org/react';
 import Icon from '../texts/icon';
 import { BackForwardRoute } from '@/types/types';
+import TooltipElement from '../texts/tooltip-element';
 
 const BackForwardRoutBtn = ({ route }: BackForwardRoute) => {
     // variables and hooks
@@ -16,18 +17,21 @@ const BackForwardRoutBtn = ({ route }: BackForwardRoute) => {
         back: 'chevron-left',
         forward: 'chevron-right',
     };
+    const tooltipContent = route === 'back' ? 'Go back' : 'Go forward';
 
     // functions
     const go = () => (route === 'back' ? router.back() : router.forward());
 
     return (
-        <Button
-            startContent={<Icon iconName={icon[route]} />}
-            isIconOnly
-            radius='sm'
-            variant='light'
-            onClick={go}
-        />
+        <TooltipElement title={tooltipContent}>
+            <Button
+                startContent={<Icon iconName={icon[route]} />}
+                isIconOnly
+                radius='sm'
+                variant='light'
+                onClick={go}
+            />
+        </TooltipElement>
     );
 };
 

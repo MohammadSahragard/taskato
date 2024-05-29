@@ -19,7 +19,7 @@ import { getTasksByEmail } from '@/redux/features/tasksSlice';
 import { updateSubtasks } from '@/redux/features/selectedTaskSlice';
 
 //* functions
-import { deleteSubtask as sendReq } from '@/helper/functions/todo-functions';
+import { deleteSubtask as sendReq } from '@/helper/functions/task-functions';
 
 const SubtaskOptions = ({
     subtaskId,

@@ -30,6 +30,7 @@ import {
 
 //* redux
 import { setTaskReminder, setShowReminder } from '@/redux/features/todoSlice';
+import TooltipElement from '../texts/tooltip-element';
 
 //* types
 type saveReminderType = {
@@ -66,39 +67,50 @@ const AddReminderBtn = () => {
             isOpen={isOpenPicker}
             onOpenChange={() => setIsOpenPicker(!isOpenPicker)}
         >
-            <DropdownTrigger>
-                <Button
-                    variant='light'
-                    className='text-start leading-none'
-                    radius='sm'
-                    startContent={
-                        <Icon
-                            iconName='alarm-clock'
-                            color={
-                                taskReminder.isTrueReminder
-                                    ? 'text-foreground'
-                                    : ''
+            <TooltipElement title='Add reminder'>
+                <div>
+                    <DropdownTrigger>
+                        <Button
+                            variant='light'
+                            className='text-start leading-none'
+                            radius='sm'
+                            startContent={
+                                <Icon
+                                    iconName='alarm-clock'
+                                    color={
+                                        taskReminder.isTrueReminder
+                                            ? 'text-foreground'
+                                            : ''
+                                    }
+                                />
                             }
-                        />
-                    }
-                    isIconOnly={taskReminder.isTrueReminder ? false : true}
-                >
-                    {taskReminder.isTrueReminder ? (
-                        <section>
-                            <span>
-                                {zeroBeforeSingle(taskReminder.time.hour)}:
-                                {zeroBeforeSingle(taskReminder.time.minute)}
-                            </span>
-                            <Subtitle
-                                subtitle={dateToLocalDateString(
-                                    taskReminder.date
-                                )}
-                                additionalClasses='text-xs'
-                            />
-                        </section>
-                    ) : null}
-                </Button>
-            </DropdownTrigger>
+                            isIconOnly={
+                                taskReminder.isTrueReminder ? false : true
+                            }
+                        >
+                            {taskReminder.isTrueReminder ? (
+                                <section>
+                                    <span>
+                                        {zeroBeforeSingle(
+                                            taskReminder.time.hour
+                                        )}
+                                        :
+                                        {zeroBeforeSingle(
+                                            taskReminder.time.minute
+                                        )}
+                                    </span>
+                                    <Subtitle
+                                        subtitle={dateToLocalDateString(
+                                            taskReminder.date
+                                        )}
+                                        additionalClasses='text-xs'
+                                    />
+                                </section>
+                            ) : null}
+                        </Button>
+                    </DropdownTrigger>
+                </div>
+            </TooltipElement>
             <DropdownMenu
                 variant='flat'
                 selectionMode='single'

@@ -18,6 +18,7 @@ import {
 import Icon from '../texts/icon';
 import Subtitle from '../texts/subtitle';
 import DateTimePicker from '@/components/ui-kits/date-time-picker';
+import TooltipElement from '../texts/tooltip-element';
 
 //* functions
 import {
@@ -38,7 +39,7 @@ type saveReminderType = {
 //* redux
 import { setTaskReminderDate } from '@/redux/features/selectedTaskSlice';
 
-const TodoDetailsReminderBtn = () => {
+const TaskDetailsReminderBtn = () => {
     const dispatch = useDispatch();
     // hooks and variables
     const reminder = useSelector(
@@ -66,37 +67,46 @@ const TodoDetailsReminderBtn = () => {
             isOpen={isOpenPicker}
             onOpenChange={() => setIsOpenPicker(!isOpenPicker)}
         >
-            <DropdownTrigger>
-                <Button
-                    variant='bordered'
-                    className='todo-details-btn text-start leading-none'
-                    fullWidth
-                    radius='sm'
-                    startContent={
-                        <Icon
-                            iconName='alarm-clock'
-                            color={
-                                reminder.isTrueReminder ? 'text-foreground' : ''
+            <TooltipElement title='Add reminder'>
+                <div>
+                    <DropdownTrigger>
+                        <Button
+                            variant='bordered'
+                            className='task-details-btn text-start leading-none'
+                            fullWidth
+                            radius='sm'
+                            startContent={
+                                <Icon
+                                    iconName='alarm-clock'
+                                    color={
+                                        reminder.isTrueReminder
+                                            ? 'text-foreground'
+                                            : ''
+                                    }
+                                />
                             }
-                        />
-                    }
-                >
-                    {reminder.isTrueReminder ? (
-                        <section>
-                            <span>
-                                {zeroBeforeSingle(reminder.time.hour)}:
-                                {zeroBeforeSingle(reminder.time.minute)}
-                            </span>
-                            <Subtitle
-                                subtitle={dateToLocalDateString(reminder.date)}
-                                additionalClasses='text-xs'
-                            />
-                        </section>
-                    ) : (
-                        'Task reminder'
-                    )}
-                </Button>
-            </DropdownTrigger>
+                        >
+                            {reminder.isTrueReminder ? (
+                                <section>
+                                    <span>
+                                        {zeroBeforeSingle(reminder.time.hour)}:
+                                        {zeroBeforeSingle(reminder.time.minute)}
+                                    </span>
+                                    <Subtitle
+                                        subtitle={dateToLocalDateString(
+                                            reminder.date
+                                        )}
+                                        additionalClasses='text-xs'
+                                    />
+                                </section>
+                            ) : (
+                                'Task reminder'
+                            )}
+                        </Button>
+                    </DropdownTrigger>
+                </div>
+            </TooltipElement>
+
             <DropdownMenu
                 variant='flat'
                 selectionMode='single'
@@ -204,4 +214,4 @@ const TodoDetailsReminderBtn = () => {
     );
 };
 
-export default TodoDetailsReminderBtn;
+export default TaskDetailsReminderBtn;

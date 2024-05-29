@@ -11,7 +11,7 @@ const AddSubtaskBtn = () => {
     return (
         <>
             <Button
-                className='todo-details-btn'
+                className='task-details-btn'
                 variant='bordered'
                 fullWidth
                 onPress={onOpen}
