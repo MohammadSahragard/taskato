@@ -79,3 +79,12 @@ export const checkAuthPage = (pathname: string) => {
         mainSection?.classList.add('auth-page');
     }
 };
+
+// checking if the due date has passed or not
+export const checkDueDate = (date: Date) => {
+    const today = dateToLocalDateString(getDate().today);
+    const taskDueDate = dateToLocalDateString(new Date(date));
+
+    const result = taskDueDate < today;
+    return result;
+};
