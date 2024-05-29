@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { MouseEventHandler, ReactNode } from 'react';
 
 // public
 export type children = { children: React.ReactNode };
@@ -82,7 +82,9 @@ export type SubtaskOptionsTypes = {
     subtaskId: string;
     isOpenOptions: boolean;
     userEmail: string;
+    isCompleted: boolean;
     closeOptionsMenu: (isOpen: boolean) => void;
+    checkHandler: MouseEventHandler,
     children: ReactNode;
 };
 
