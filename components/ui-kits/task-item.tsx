@@ -21,8 +21,10 @@ import {
 const TaskItem = ({ taskData }: { taskData: any }) => {
     const dispatch = useDispatch();
     // state and variables
-    const completedStyles = 'line-through text-primary-200';
-    const completedTask = taskData?.task_completion ? completedStyles : '';
+    const completedStyles = 'line-through text-primary-200 break-all';
+    const completedTask = taskData?.task_completion
+        ? completedStyles
+        : 'break-all';
     const haveSubDetails =
         taskData?.task_due_date ||
         taskData?.subtasks?.length ||
@@ -46,7 +48,7 @@ const TaskItem = ({ taskData }: { taskData: any }) => {
             </section>
 
             <div className='task-content'>
-                <div className='flex items-center px-2'>
+                <div className='flex items-center px-2 overflow-x-hidden'>
                     <Title
                         title={taskData?.task_title}
                         additionalClasses={completedTask}

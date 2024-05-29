@@ -39,7 +39,7 @@
             hover:bg-primary-100 rounded-xl transition-all cursor-pointer;
 }
 .task-content {
-    @apply grid grid-rows-[40px_max-content];
+    @apply grid grid-rows-[minmax(40px,_max-content)_max-content];
 }
 .task-sub-detail {
     @apply flex gap-2 px-2 pb-2;
