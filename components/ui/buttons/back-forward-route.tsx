@@ -4,7 +4,7 @@
 import { useRouter } from 'next/navigation';
 
 //* components
-import { Button, Tooltip } from '@nextui-org/react';
+import { Button } from '@nextui-org/react';
 import Icon from '../texts/icon';
 import { BackForwardRoute } from '@/types/types';
 import TooltipElement from '../texts/tooltip-element';

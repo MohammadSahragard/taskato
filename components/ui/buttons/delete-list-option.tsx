@@ -9,6 +9,7 @@ import Icon from '../texts/icon';
 
 //* redux
 import { getListsByEmail } from '@/redux/features/taskListsSlice';
+import { getTasksByEmail } from '@/redux/features/tasksSlice';
 
 const DeleteListOption = ({
     id,
@@ -31,6 +32,10 @@ const DeleteListOption = ({
         const data = await res.json();
         if (data.status === 200) {
             dispatch(getListsByEmail(userEmail));
+
+            if (data.haveTask) {
+                dispatch(getTasksByEmail(userEmail));
+            }
         }
     };
 

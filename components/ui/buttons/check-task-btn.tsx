@@ -5,8 +5,9 @@ import { useTransition } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 //* components
-import { Button, Tooltip } from '@nextui-org/react';
+import { Button } from '@nextui-org/react';
 import Icon from '../texts/icon';
+import TooltipElement from '../texts/tooltip-element';
 
 //* redux
 import { getTasksByEmail } from '@/redux/features/tasksSlice';
@@ -48,7 +49,7 @@ const CheckTaskBtn = ({
     };
 
     return (
-        <Tooltip content={tooltipContent}>
+        <TooltipElement title={tooltipContent}>
             <Button
                 isIconOnly
                 variant='light'
@@ -64,7 +65,7 @@ const CheckTaskBtn = ({
                 isLoading={isPending}
                 onClick={() => startTransition(() => changeCheck())}
             />
-        </Tooltip>
+        </TooltipElement>
     );
 };
 

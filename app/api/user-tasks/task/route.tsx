@@ -37,7 +37,7 @@ export const POST = async (req: Request) => {
             message: `The task was created successfully.`,
             status: 200,
         });
-    } catch (err: any) {
+    } catch {
         return NextResponse.json({
             message: 'Something went wrong. Please try again later.',
             status: 500,

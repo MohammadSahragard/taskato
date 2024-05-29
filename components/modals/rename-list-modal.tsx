@@ -1,7 +1,7 @@
 'use client';
 
 // public
-import { useState, useTransition, useRef, useEffect } from 'react';
+import { useState, useTransition } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 //* components
@@ -13,17 +13,15 @@ import {
     ModalBody,
     Button,
     Input,
-    Tabs,
-    Tab,
 } from '@nextui-org/react';
-import ResultSubmit from '../ui/texts/result-submit';
+import { toast } from 'react-toastify';
 
 //* redux
 import { getListsByEmail } from '@/redux/features/taskListsSlice';
+import { getTasksByEmail } from '@/redux/features/tasksSlice';
 
 //* functions
 import { renameTaskList } from '@/helper/functions/task-functions';
-import { toast } from 'react-toastify';
 
 const RenameListModal = ({
     listId,
@@ -59,6 +57,10 @@ const RenameListModal = ({
             if (res.status === 200) {
                 onOpenChange(!isOpen);
                 dispatch(getListsByEmail(userEmail));
+
+                if (res.haveTask) {
+                    dispatch(getTasksByEmail(userEmail));
+                }
             }
         });
     };
