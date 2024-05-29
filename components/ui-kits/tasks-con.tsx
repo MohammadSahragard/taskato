@@ -16,6 +16,7 @@ const TasksCon = () => {
     const taskDone = tasks?.data?.find((task: any) => task.task_completion);
 
     if (tasks.loading && !tasks.data.length) return <TaskLoadingSkeleton />;
+    if (tasks.beforeLoading) return <TaskLoadingSkeleton />;
 
     return (
         <div>

@@ -11,7 +11,10 @@ const TaskListCon = () => {
     // states and variables
     const taskLists: any = useUserLists();
 
-    if (taskLists.loading && !taskLists.data.length)
+    if (
+        (taskLists.beforeLoading || taskLists.loading) &&
+        !taskLists.data.length
+    )
         return <ListLoadingSkeleton />;
 
     return (
