@@ -1,8 +1,8 @@
 'use client';
 
 //* components
-import Icon from '../ui/texts/icon';
 import TaskList from './task-list';
+import ListLoadingSkeleton from './list-loading-skeleton';
 
 //* hooks
 import useUserLists from '@/hooks/use-user-lists';
@@ -12,14 +12,7 @@ const TaskListCon = () => {
     const taskLists: any = useUserLists();
 
     if (taskLists.loading && !taskLists.data.length)
-        return (
-            <p className='text-center'>
-                <Icon
-                    iconName='spinner-third fa-spin'
-                    style='fad'
-                />
-            </p>
-        );
+        return <ListLoadingSkeleton />;
 
     return (
         <div>
