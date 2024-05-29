@@ -18,15 +18,12 @@ import TooltipElement from '../texts/tooltip-element';
 //* redux
 import { setTaskSelectedList } from '@/redux/features/selectedTaskSlice';
 
-//* hooks
-import useUserLists from '@/hooks/use-user-lists';
-
 const TaskDetailsListBtn = () => {
     const dispatch = useDispatch();
     const pathname = usePathname();
     // hooks and variables
     const list = useSelector((state: any) => state.selectedTask.task_list);
-    const lists = useUserLists();
+    const lists = useSelector((state: any) => state.taskLists);
 
     // conditional rendering
     if (pathname === 'today') return null;
@@ -45,7 +42,11 @@ const TaskDetailsListBtn = () => {
                             startContent={
                                 <Icon
                                     iconName='list-check'
-                                    color={list ? 'text-foreground' : ''}
+                                    color={
+                                        list?.list_title
+                                            ? 'text-foreground'
+                                            : ''
+                                    }
                                 />
                             }
                         >
@@ -88,7 +89,7 @@ const TaskDetailsListBtn = () => {
                             color='text-danger'
                         />
                     }
-                    className={list ? 'text-danger' : 'hidden'}
+                    className={list?.list_title ? 'text-danger' : 'hidden'}
                     color='danger'
                     onClick={() =>
                         dispatch(
