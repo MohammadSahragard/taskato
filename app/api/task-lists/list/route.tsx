@@ -1,5 +1,6 @@
 // public
 import List from '@/models/list';
+import Task from '@/models/task';
 import connectDB from '@/utils/connectDB';
 import { NextResponse } from 'next/server';
 
@@ -100,10 +101,22 @@ export const DELETE = async (req: any) => {
 
     // delete list
     try {
+        // checking if list has some tasks
+        const taskList = await Task.find({
+            'task_list.list_title': list.list_title,
+        });
+        const haveTask = taskList.length ? true : false;
+
+        // deleting list and it tasks
         await List.deleteOne({ _id: id });
+        if (haveTask) {
+            await Task.deleteMany({ 'task_list.list_title': list.list_title });
+        }
+
         return NextResponse.json({
             message: 'The list was deleted successfully.',
             status: 200,
+            haveTask,
         });
     } catch {
         return NextResponse.json({
@@ -153,12 +166,27 @@ export const PUT = async (req: any) => {
 
     // update list
     try {
+        // checking if list has some tasks
+        const taskList = await Task.find({
+            'task_list.list_title': list.list_title,
+        });
+        const haveTask = taskList.length ? true : false;
+
+        // updating list and it tasks
         await List.updateOne({ _id }, { list_title });
+        if (haveTask) {
+            await Task.updateMany(
+                { 'task_list.list_title': list.list_title },
+                { 'task_list.list_title': list_title }
+            );
+        }
+
         return NextResponse.json({
             message: 'The list was updated successfully.',
             status: 200,
+            haveTask,
         });
-    } catch (err: any) {
+    } catch {
         return NextResponse.json({
             message: 'Something went wrong. Please try again later.',
             status: 500,

@@ -3,8 +3,9 @@
 // public
 
 //* components
-import { Button, Tooltip } from '@nextui-org/react';
+import { Button } from '@nextui-org/react';
 import Icon from '../texts/icon';
+import TooltipElement from '../texts/tooltip-element';
 
 const AddTaskBtn = ({
     submitTask,
@@ -16,7 +17,7 @@ const AddTaskBtn = ({
     isPending: boolean;
 }) => {
     return (
-        <Tooltip content='Add task'>
+        <TooltipElement title='Add task'>
             <Button
                 variant='light'
                 startContent={!isPending ? <Icon iconName='plus' /> : null}
@@ -26,7 +27,7 @@ const AddTaskBtn = ({
                 radius='sm'
                 onClick={(event) => startTransition(() => submitTask(event))}
             />
-        </Tooltip>
+        </TooltipElement>
     );
 };
 

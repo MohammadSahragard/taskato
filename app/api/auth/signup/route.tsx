@@ -78,7 +78,7 @@ export const POST = async (req: any) => {
             message: `Thanks for signing up, ${firstName}. Welcome to our application.`,
             status: 200,
         });
-    } catch (err: any) {
+    } catch {
         return NextResponse.json({
             message: 'Something went wrong. Please try again later.',
             status: 500,
