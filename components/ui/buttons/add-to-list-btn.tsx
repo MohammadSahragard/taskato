@@ -13,13 +13,10 @@ import {
     Button,
 } from '@nextui-org/react';
 import Icon from '../texts/icon';
+import TooltipElement from '../texts/tooltip-element';
 
 //* redux
 import { setSelectedList } from '@/redux/features/todoSlice';
-
-//* hooks
-import useUserLists from '@/hooks/use-user-lists';
-import TooltipElement from '../texts/tooltip-element';
 
 const AddToListBtn = () => {
     const dispatch = useDispatch();
@@ -28,7 +25,7 @@ const AddToListBtn = () => {
     const taskSelectedList = useSelector(
         (state: any) => state.taskData.taskList
     );
-    const lists = useUserLists();
+    const lists = useSelector((state: any) => state.taskLists);
 
     // conditional rendering
     if (pathname === 'today') return null;
