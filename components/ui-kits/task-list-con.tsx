@@ -27,7 +27,7 @@ const TaskListCon = () => {
                             id={taskList._id}
                             userEmail={taskList.email}
                             href={`/list/${convertTitleToPathname(
-                                taskList.list_title
+                                taskList?.list_title ?? ''
                             )}`}
                             label={taskList.list_title}
                             listColor={taskList.list_color}

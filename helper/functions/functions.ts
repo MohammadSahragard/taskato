@@ -88,3 +88,10 @@ export const checkDueDate = (date: Date) => {
     const result = taskDueDate < today;
     return result;
 };
+
+// Converting the title to a pathname
+export const convertTitleToPathname = (title: string) => {
+    const titleArray = title.split(' ');
+    const titlePathname = titleArray.join('-').toLowerCase();
+    return titlePathname;
+};
