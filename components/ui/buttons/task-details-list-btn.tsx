@@ -59,28 +59,33 @@ const TaskDetailsListBtn = () => {
                 variant='flat'
                 selectionMode='single'
             >
-                {lists?.data?.map((list: any) => (
-                    <DropdownItem
-                        key={list?._id}
-                        startContent={
-                            <Icon
-                                iconName='square'
-                                style='fas'
-                                forceColor={list?.list_color ?? '#ff0'}
-                            />
-                        }
-                        onClick={() =>
-                            dispatch(
-                                setTaskSelectedList({
-                                    list_title: list?.list_title,
-                                    list_color: list?.list_color,
-                                })
-                            )
-                        }
-                    >
-                        {list?.list_title ?? 'List item'}
-                    </DropdownItem>
-                )) ?? null}
+                {lists?.data?.length ? (
+                    lists?.data?.map((list: any) => (
+                        <DropdownItem
+                            key={list?.list_title}
+                            className='capitalize'
+                            startContent={
+                                <Icon
+                                    iconName='square'
+                                    style='fas'
+                                    forceColor={list?.list_color ?? '#ff0'}
+                                />
+                            }
+                            onClick={() =>
+                                dispatch(
+                                    setTaskSelectedList({
+                                        title_title: list?.list_title,
+                                        color_color: list?.list_color,
+                                    })
+                                )
+                            }
+                        >
+                            {list?.list_title ?? 'List item'}
+                        </DropdownItem>
+                    ))
+                ) : (
+                    <DropdownItem isReadOnly>There is no list</DropdownItem>
+                )}
 
                 <DropdownItem
                     startContent={

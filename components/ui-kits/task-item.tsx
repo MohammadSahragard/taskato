@@ -119,7 +119,7 @@ const TaskItem = ({ taskData }: { taskData: any }) => {
                             {taskData?.task_list?.list_title ? (
                                 <>
                                     <Divider orientation='vertical' />
-                                    <Subtitle additionalClasses='text-xs'>
+                                    <Subtitle additionalClasses='text-xs capitalize'>
                                         <Icon
                                             iconName='square'
                                             size='sm'

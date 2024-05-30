@@ -34,7 +34,10 @@ export const POST = async (req: any) => {
     }
 
     // check if list already exists
-    const list = await List.findOne({ list_title, email });
+    const list = await List.findOne({
+        list_title: list_title.toLowerCase(),
+        email,
+    });
     if (list) {
         return NextResponse.json({
             message: 'List already exists!',
@@ -46,11 +49,11 @@ export const POST = async (req: any) => {
     try {
         await List.create({
             email,
-            list_title,
+            list_title: list_title.toLowerCase(),
             list_color,
         });
         return NextResponse.json({
-            message: `The list was created successfully.`,
+            message: 'The list was created successfully.',
             status: 200,
         });
     } catch {
@@ -168,12 +171,12 @@ export const PUT = async (req: any) => {
     try {
         // checking if list has some tasks
         const taskList = await Task.find({
-            'task_list.list_title': list.list_title,
+            'task_list.list_title': list.list_title.toLowerCase(),
         });
         const haveTask = taskList.length ? true : false;
 
         // updating list and it tasks
-        await List.updateOne({ _id }, { list_title });
+        await List.updateOne({ _id }, { list_title: list_title.toLowerCase() });
         if (haveTask) {
             await Task.updateMany(
                 { 'task_list.list_title': list.list_title },
