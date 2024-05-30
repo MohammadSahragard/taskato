@@ -24,20 +24,20 @@ import { getTasksByEmail } from '@/redux/features/tasksSlice';
 import { renameTaskList } from '@/helper/functions/task-functions';
 
 const RenameListModal = ({
-    listId,
-    listTitle,
+    neededId,
+    neededTitle,
     isOpen,
     onOpenChange,
 }: {
-    listId: string;
-    listTitle: string;
+    neededId: string;
+    neededTitle?: string;
     isOpen: boolean;
     onOpenChange: (isOpen: boolean) => void;
 }) => {
     const dispatch = useDispatch();
     // states and variables
     const userEmail = useSelector((state: any) => state.options.userEmail);
-    const [newListTitle, setNewListTitle] = useState(listTitle);
+    const [newListTitle, setNewListTitle] = useState(neededTitle);
     const [isPending, startTransition] = useTransition();
 
     // functions
@@ -49,7 +49,7 @@ const RenameListModal = ({
     const submitList = async (event: any) => {
         event.preventDefault();
 
-        await renameTaskList(listId, newListTitle).then((res: any) => {
+        await renameTaskList(neededId, newListTitle ?? '').then((res: any) => {
             // set result message to toastify
             const messageStatus = res.status === 200 ? 'success' : 'error';
             toast[messageStatus](res.message);
