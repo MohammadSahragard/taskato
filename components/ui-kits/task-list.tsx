@@ -57,7 +57,7 @@ const TaskList = ({ id, userEmail, href, label, listColor }: TaskListTypes) => {
                     }
                     onContextMenu={(event: any) => openOptions(event)}
                 >
-                    <span className='flex-1 text-start'>{label}</span>
+                    <span className='flex-1 text-start capitalize'>{label}</span>
                 </Button>
             </Link>
         </ListItemOptions>

@@ -24,6 +24,9 @@
 .task-details-subtask {
     @apply !bg-transparent hover:!bg-primary-200/10 !justify-start;
 }
+.task-details-btn {
+    @apply !border-opacity-40 capitalize hover:!border-opacity-100 !justify-start !p-3;
+}
 
 /* buttons */
 .fw-btn {

@@ -49,9 +49,6 @@
 .task-details-header {
     @apply flex justify-between items-center mb-3;
 }
-.task-details-btn {
-    @apply !border-opacity-40 hover:!border-opacity-100 !justify-start !p-3;
-}
 .task-details-main {
     @apply grid grid-rows-[max-content_auto_max-content];
 }
