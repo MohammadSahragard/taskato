@@ -1,32 +1,34 @@
 'use client';
 
+// public
+import { useSelector } from 'react-redux';
+
 //* components
 import TaskList from './task-list';
 import ListLoadingSkeleton from './list-loading-skeleton';
 
-//* hooks
-import useUserLists from '@/hooks/use-user-lists';
+//* functions
+import { convertTitleToPathname } from '@/helper/functions/functions';
 
 const TaskListCon = () => {
     // states and variables
-    const taskLists: any = useUserLists();
+    const lists = useSelector((state: any) => state.taskLists);
 
-    if (
-        (taskLists.beforeLoading || taskLists.loading) &&
-        !taskLists.data.length
-    )
+    if ((lists.beforeLoading || lists.loading) && !lists.data.length)
         return <ListLoadingSkeleton />;
 
     return (
         <div>
-            {!taskLists.error ? (
-                taskLists?.data?.length ? (
-                    taskLists?.data?.map((taskList: any) => (
+            {!lists.error ? (
+                lists?.data?.length ? (
+                    lists?.data?.map((taskList: any) => (
                         <TaskList
                             key={taskList._id}
                             id={taskList._id}
                             userEmail={taskList.email}
-                            href='/hey'
+                            href={`/list/${convertTitleToPathname(
+                                taskList.list_title
+                            )}`}
                             label={taskList.list_title}
                             listColor={taskList.list_color}
                         />

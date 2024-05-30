@@ -25,7 +25,7 @@ const AddToListBtn = () => {
     const taskSelectedList = useSelector(
         (state: any) => state.taskData.taskList
     );
-    const lists = useSelector((state: any) => state.taskLists);
+    const lists = useSelector((state: any) => state.taskLists.data);
 
     // conditional rendering
     if (pathname === 'today') return null;
@@ -63,8 +63,8 @@ const AddToListBtn = () => {
                 variant='flat'
                 selectionMode='single'
             >
-                {lists?.data?.length ? (
-                    lists?.data?.map((list: any) => (
+                {lists?.length ? (
+                    lists?.map((list: any) => (
                         <DropdownItem
                             key={list?.list_title}
                             className='capitalize'

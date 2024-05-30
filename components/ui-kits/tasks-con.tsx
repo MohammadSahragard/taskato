@@ -1,5 +1,8 @@
 'use client';
 
+// public
+import { useSelector } from 'react-redux';
+
 //* components
 import Subtitle from '../ui/texts/subtitle';
 import EmptyStateTasks from './empty-state-tasks';
@@ -7,12 +10,9 @@ import TaskItem from './task-item';
 import Divider from '../ui/texts/divider';
 import TaskLoadingSkeleton from './task-loading-skeleton';
 
-//* hooks
-import useUserTasks from '@/hooks/use-user-tasks';
-
 const TasksCon = () => {
     // states and variables
-    const tasks: any = useUserTasks();
+    const tasks = useSelector((state: any) => state.tasks);
     const taskDone = tasks?.data?.find((task: any) => task.task_completion);
 
     if (tasks.loading && !tasks.data.length) return <TaskLoadingSkeleton />;
