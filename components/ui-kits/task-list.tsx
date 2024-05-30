@@ -38,7 +38,10 @@ const TaskList = ({ id, userEmail, href, label, listColor }: TaskListTypes) => {
             isOpenOptions={isOpenOptions}
             closeOptionsMenu={closeOptionsMenu}
         >
-            <Link href={href}>
+            <Link
+                href={href}
+                legacyBehavior
+            >
                 <Button
                     radius='sm'
                     variant={pathname === href ? 'solid' : 'light'}
@@ -57,7 +60,9 @@ const TaskList = ({ id, userEmail, href, label, listColor }: TaskListTypes) => {
                     }
                     onContextMenu={(event: any) => openOptions(event)}
                 >
-                    <span className='flex-1 text-start capitalize'>{label}</span>
+                    <span className='flex-1 text-start capitalize'>
+                        {label}
+                    </span>
                 </Button>
             </Link>
         </ListItemOptions>
