@@ -5,6 +5,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     searchValue: '',
     userEmail: '',
+    userName: '',
 };
 
 //* reducer
@@ -18,8 +19,11 @@ const optionsSlice = createSlice({
         setUserEmail: (state, action) => {
             state.userEmail = action.payload;
         },
+        setUserName: (state, action) => {
+            state.userName = action.payload;
+        },
     },
 });
 
-export const { setSearch, setUserEmail } = optionsSlice.actions;
+export const { setSearch, setUserEmail, setUserName } = optionsSlice.actions;
 export default optionsSlice.reducer;

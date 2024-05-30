@@ -3,9 +3,16 @@
 // public
 import { useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import { useDispatch } from 'react-redux';
+
+//* functions
 import { isUserLoggedIn } from '@/helper/functions/auth-functions';
 
+//* redux
+import { setUserEmail, setUserName } from '@/redux/features/optionsSlice';
+
 export const useUserLoggedIn = (url: string) => {
+    const dispatch = useDispatch();
     const [user, setUser] = useState<any>();
     const router = useRouter();
     const pathname = usePathname();
@@ -15,7 +22,13 @@ export const useUserLoggedIn = (url: string) => {
             const res = await fetch(url);
             const user = await res.json();
             const condition = user.status === 200;
-            condition ? setUser(user) : setUser(false);
+            if (condition) {
+                setUser(user);
+                dispatch(setUserEmail(user?.message?.email ?? ''));
+                dispatch(setUserName(user?.message?.name ?? ''));
+            } else {
+                setUser(false);
+            }
             isUserLoggedIn({ condition, pathname, router });
         };
 
