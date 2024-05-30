@@ -69,24 +69,37 @@ export type TaskItemTypes = {
     todoSubDetail?: boolean;
 };
 
-export type ListItemOptionsTypes = {
-    listId: string;
-    listTitle: string;
+export type SubtaskOptionsTypes = {
+    neededId: string;
     userEmail: string;
+    neededTitle?: string;
+    isImportant?: boolean;
+    isCompleted: boolean;
     isOpenOptions: boolean;
     closeOptionsMenu: (isOpen: boolean) => void;
+    checkHandler: MouseEventHandler;
     children: ReactNode;
 };
 
-export type SubtaskOptionsTypes = {
-    subtaskId: string;
-    isOpenOptions: boolean;
-    userEmail: string;
-    isCompleted: boolean;
-    closeOptionsMenu: (isOpen: boolean) => void;
-    checkHandler: MouseEventHandler,
-    children: ReactNode;
-};
+export type ListItemOptionsTypes = Pick<
+    SubtaskOptionsTypes,
+    | 'neededId'
+    | 'neededTitle'
+    | 'userEmail'
+    | 'closeOptionsMenu'
+    | 'isOpenOptions'
+    | 'children'
+>;
+
+export type TaskOptionsTypes = Pick<
+    SubtaskOptionsTypes,
+    | 'neededId'
+    | 'isCompleted'
+    | 'isImportant'
+    | 'isOpenOptions'
+    | 'closeOptionsMenu'
+    | 'children'
+>;
 
 // redux slices
 type TaskSubtask = {

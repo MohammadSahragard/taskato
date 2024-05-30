@@ -14,8 +14,8 @@ import RenameListOption from '../ui/buttons/rename-list-option';
 import RenameListModal from '../modals/rename-list-modal';
 
 const ListItemOptions = ({
-    listId,
-    listTitle,
+    neededId,
+    neededTitle,
     userEmail,
     isOpenOptions,
     closeOptionsMenu,
@@ -39,7 +39,7 @@ const ListItemOptions = ({
                     </DropdownItem>
                     <DropdownItem className='p-0 rounded'>
                         <DeleteListOption
-                            id={listId}
+                            id={neededId}
                             userEmail={userEmail}
                         />
                     </DropdownItem>
@@ -48,8 +48,8 @@ const ListItemOptions = ({
 
             {/* modal for rename list */}
             <RenameListModal
-                listId={listId}
-                listTitle={listTitle}
+                neededId={neededId}
+                neededTitle={neededTitle}
                 isOpen={isOpen}
                 onOpenChange={onOpenChange}
             />

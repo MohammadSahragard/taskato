@@ -32,8 +32,8 @@ const TaskList = ({ id, userEmail, href, label, listColor }: TaskListTypes) => {
 
     return (
         <ListItemOptions
-            listId={id}
-            listTitle={label}
+            neededId={id}
+            neededTitle={label}
             userEmail={userEmail}
             isOpenOptions={isOpenOptions}
             closeOptionsMenu={closeOptionsMenu}

@@ -35,8 +35,8 @@
 
 /* :task item */
 .task-item {
-    @apply grid grid-cols-[max-content_auto_max-content] p-1 
-            hover:bg-primary-100 rounded-xl transition-all cursor-pointer;
+    @apply grid grid-cols-[max-content_auto_max-content] w-full p-1 
+            hover:bg-primary-100 rounded-xl outline-none transition-all;
 }
 .task-content {
     @apply grid grid-rows-[minmax(40px,_max-content)_max-content];

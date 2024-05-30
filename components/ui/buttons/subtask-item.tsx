@@ -67,7 +67,7 @@ const TaskDetailsSubtask = ({
     return (
         <SubtaskOptions
             userEmail={userEmail}
-            subtaskId={_id}
+            neededId={_id}
             isCompleted={isCompleted}
             checkHandler={checkHandler}
             isOpenOptions={isOpenOptions}

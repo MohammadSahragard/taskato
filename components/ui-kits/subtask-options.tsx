@@ -10,7 +10,6 @@ import {
     DropdownMenu,
     DropdownItem,
 } from '@nextui-org/react';
-import { SubtaskOptionsTypes } from '@/types/types';
 import Icon from '../ui/texts/icon';
 import { toast } from 'react-toastify';
 
@@ -21,8 +20,11 @@ import { updateSubtasks } from '@/redux/features/selectedTaskSlice';
 //* functions
 import { deleteSubtask as sendReq } from '@/helper/functions/task-functions';
 
+//* types
+import { SubtaskOptionsTypes } from '@/types/types';
+
 const SubtaskOptions = ({
-    subtaskId,
+    neededId,
     userEmail,
     isOpenOptions,
     isCompleted,
@@ -39,7 +41,7 @@ const SubtaskOptions = ({
 
     // functions
     const deleteSubtask = async () => {
-        await sendReq(subtaskId).then((res: any) => {
+        await sendReq(neededId).then((res: any) => {
             // set result message to toastify
             const messageStatus = res.status === 200 ? 'success' : 'error';
             toast[messageStatus](res.message);
