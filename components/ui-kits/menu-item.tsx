@@ -32,7 +32,7 @@ const MenuItem = ({ href, label, iconName }: MenuItemTypes) => {
     };
 
     return (
-        <Link href={href}>
+        <Link href={href} legacyBehavior>
             <Button
                 radius='sm'
                 variant={pathname === href ? 'solid' : 'light'}
