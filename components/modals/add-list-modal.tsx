@@ -16,7 +16,6 @@ import {
     Tabs,
     Tab,
 } from '@nextui-org/react';
-import ResultSubmit from '../ui/texts/result-submit';
 
 //* data
 import { listColorItems } from '@/helper/data/data';
@@ -41,6 +40,7 @@ const AddListModal = ({
     const [listColor, setListColor] = useState('#e11d48');
     const [listTitle, setListTitle] = useState('Untitled list');
     const [isPending, startTransition] = useTransition();
+    const isInvalid = !/^[\w\d-\s]+$/.test(listTitle);
 
     // functions
     const openModal = () => {
@@ -50,6 +50,7 @@ const AddListModal = ({
 
     const submitList = async (event: any) => {
         event.preventDefault();
+        if (isInvalid) return;
 
         await addTaskList({ email: userEmail, listTitle, listColor }).then(
             (res: any) => {
@@ -104,6 +105,12 @@ const AddListModal = ({
                                     onFocus={(event: any) =>
                                         event.target.select()
                                     }
+                                    isInvalid={isInvalid}
+                                    errorMessage={
+                                        isInvalid
+                                            ? 'You can use a-z,0-9 and hyper.'
+                                            : null
+                                    }
                                 />
                                 <Tabs
                                     fullWidth
@@ -138,6 +145,7 @@ const AddListModal = ({
                                     color='primary'
                                     type='submit'
                                     isLoading={isPending}
+                                    isDisabled={isInvalid}
                                 >
                                     Add
                                 </Button>

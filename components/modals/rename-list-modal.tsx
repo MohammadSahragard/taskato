@@ -37,8 +37,9 @@ const RenameListModal = ({
     const dispatch = useDispatch();
     // states and variables
     const userEmail = useSelector((state: any) => state.options.userEmail);
-    const [newListTitle, setNewListTitle] = useState(neededTitle);
+    const [newListTitle, setNewListTitle] = useState<any>(neededTitle);
     const [isPending, startTransition] = useTransition();
+    const isInvalid = !/^[\w\d-\s]+$/.test(newListTitle);
 
     // functions
     const openModal = () => {
@@ -48,6 +49,7 @@ const RenameListModal = ({
 
     const submitList = async (event: any) => {
         event.preventDefault();
+        if (isInvalid) return;
 
         await renameTaskList(neededId, newListTitle ?? '').then((res: any) => {
             // set result message to toastify
@@ -102,6 +104,12 @@ const RenameListModal = ({
                                     onFocus={(event: any) =>
                                         event.target.select()
                                     }
+                                    isInvalid={isInvalid}
+                                    errorMessage={
+                                        isInvalid
+                                            ? 'You can use a-z,0-9 and hyper.'
+                                            : null
+                                    }
                                 />
                             </ModalBody>
 
@@ -117,6 +125,7 @@ const RenameListModal = ({
                                     color='primary'
                                     type='submit'
                                     isLoading={isPending}
+                                    isDisabled={isInvalid}
                                 >
                                     Save
                                 </Button>
