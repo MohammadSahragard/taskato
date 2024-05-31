@@ -1,10 +1,12 @@
 //* components
 import TasksCon from '@/components/ui-kits/tasks-con';
 
-export default function Home() {
+const Important = () => {
     return (
         <div>
-            <TasksCon pathname='all' />
+            <TasksCon pathname='important' />
         </div>
     );
-}
+};
+
+export default Important;

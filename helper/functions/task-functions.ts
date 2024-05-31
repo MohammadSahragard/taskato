@@ -1,9 +1,12 @@
-// public
+// types
 import {
     AddTaskListTypes,
     TaskContent,
     selectedTaskTypes,
 } from '@/types/types';
+
+// needed functions
+import { convertTitleToPathname, dateToLocalDateString } from './functions';
 
 //* add task list
 export const addTaskList = async ({
@@ -176,4 +179,33 @@ export const deleteSubtask = async (_id: string) => {
     const data = await res.json();
 
     return data;
+};
+
+//* get tasks by pathname
+export const getTasksByPathname = (tasks: any, pathname: string) => {
+    switch (pathname) {
+        case 'all':
+            return tasks;
+            break;
+
+        case 'today':
+            return tasks?.filter(
+                (task: any) =>
+                    dateToLocalDateString(new Date(task.task_due_date)) ===
+                    dateToLocalDateString(new Date())
+            );
+            break;
+
+        case 'important':
+            return tasks?.filter((task: any) => task.is_in_important);
+            break;
+
+        default:
+            return tasks?.filter(
+                (task: any) =>
+                    convertTitleToPathname(task.task_list.list_title) ===
+                    convertTitleToPathname(pathname)
+            );
+            break;
+    }
 };
