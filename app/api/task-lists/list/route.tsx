@@ -8,6 +8,7 @@ import { NextResponse } from 'next/server';
 export const POST = async (req: any) => {
     // variables
     const { email, list_title, list_color } = await req.json();
+    const trimmed_list_title = list_title.replace(/  +/g, ' ');
 
     // database connection
     try {
@@ -35,7 +36,7 @@ export const POST = async (req: any) => {
 
     // check if list already exists
     const list = await List.findOne({
-        list_title: list_title.toLowerCase(),
+        list_title: trimmed_list_title.toLowerCase(),
         email,
     });
     if (list) {
@@ -49,7 +50,7 @@ export const POST = async (req: any) => {
     try {
         await List.create({
             email,
-            list_title: list_title.toLowerCase(),
+            list_title: trimmed_list_title.toLowerCase(),
             list_color,
         });
         return NextResponse.json({
@@ -133,6 +134,7 @@ export const DELETE = async (req: any) => {
 export const PUT = async (req: any) => {
     // variables
     const { _id, list_title } = await req.json();
+    const trimmed_list_title = list_title.replace(/  +/g, ' ');
 
     // database connection
     try {
@@ -171,16 +173,19 @@ export const PUT = async (req: any) => {
     try {
         // checking if list has some tasks
         const taskList = await Task.find({
-            'task_list.list_title': list.list_title.toLowerCase(),
+            'task_list.list_title': list.list_title,
         });
         const haveTask = taskList.length ? true : false;
 
         // updating list and it tasks
-        await List.updateOne({ _id }, { list_title: list_title.toLowerCase() });
+        await List.updateOne(
+            { _id },
+            { list_title: trimmed_list_title.toLowerCase() }
+        );
         if (haveTask) {
             await Task.updateMany(
                 { 'task_list.list_title': list.list_title },
-                { 'task_list.list_title': list_title }
+                { 'task_list.list_title': trimmed_list_title }
             );
         }
 
