@@ -4,7 +4,7 @@ import { Card, Skeleton } from '@nextui-org/react';
 const ListLoadingSkeleton = () => {
     return (
         <div className='space-y-2 pb-2'>
-            <Card className='skeleton-card rounded-lg p-[6px]'>
+            <Card className='skeleton-card rounded-lg p-[6px]' shadow='none'>
                 <Skeleton className='w-7 h-7 rounded' />
 
                 <div className='h-full w-full flex items-center'>

@@ -20,8 +20,8 @@ const TasksCon = ({ pathname }: { pathname: string }) => {
     const taskDone = matchTasks?.find((task: any) => task.task_completion);
 
     // conditional rendering
-    if (tasks.loading && !tasks.data.length) return <TaskLoadingSkeleton />;
-    if (tasks.beforeLoading) return <TaskLoadingSkeleton />;
+    if ((tasks.loading || tasks.beforeLoading) && !tasks.data.length)
+        return <TaskLoadingSkeleton />;
     return (
         <div>
             {!tasks.error ? (

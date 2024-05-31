@@ -38,33 +38,27 @@ const TaskList = ({ id, userEmail, href, label, listColor }: TaskListTypes) => {
             isOpenOptions={isOpenOptions}
             closeOptionsMenu={closeOptionsMenu}
         >
-            <Link
-                href={href}
-                legacyBehavior
+            <Button
+                radius='sm'
+                variant={pathname === href ? 'solid' : 'light'}
+                className={`fw-btn pr-2 pl-3 relative ${
+                    pathname === href ? 'bg-background' : ''
+                }`}
+                startContent={
+                    <Icon
+                        iconName='square'
+                        forceColor={listColor}
+                        style='fas'
+                    />
+                }
+                endContent={<ItemsCounter value={listCounter?.length ?? 0} />}
+                onContextMenu={(event: any) => openOptions(event)}
             >
-                <Button
-                    radius='sm'
-                    variant={pathname === href ? 'solid' : 'light'}
-                    className={`fw-btn pr-2 pl-3 ${
-                        pathname === href ? 'bg-background' : ''
-                    }`}
-                    startContent={
-                        <Icon
-                            iconName='square'
-                            forceColor={listColor}
-                            style='fas'
-                        />
-                    }
-                    endContent={
-                        <ItemsCounter value={listCounter?.length ?? 0} />
-                    }
-                    onContextMenu={(event: any) => openOptions(event)}
-                >
-                    <span className='flex-1 text-start capitalize'>
-                        {label}
-                    </span>
-                </Button>
-            </Link>
+                <span className='flex-1 text-start capitalize'>{label}</span>
+                <Link href={href}>
+                    <div className='absolute inset-0'></div>
+                </Link>
+            </Button>
         </ListItemOptions>
     );
 };

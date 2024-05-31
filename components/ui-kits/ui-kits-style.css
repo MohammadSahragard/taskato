@@ -72,5 +72,5 @@
     @apply absolute inset-0 flex flex-col gap-2 px-5 py-[80px];
 }
 .skeleton-card {
-    @apply !grid grid-cols-[max-content_auto_max-content] gap-x-3 p-2 rounded-xl !bg-primary-100;
+    @apply !grid grid-cols-[max-content_auto_max-content] gap-x-3 p-2 rounded-xl !bg-primary-100 !shadow-none border border-primary-300;
 }
