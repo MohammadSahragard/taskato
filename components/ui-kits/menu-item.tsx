@@ -32,26 +32,27 @@ const MenuItem = ({ href, label, iconName }: MenuItemTypes) => {
     };
 
     return (
-        <Link href={href} legacyBehavior>
-            <Button
-                radius='sm'
-                variant={pathname === href ? 'solid' : 'light'}
-                className={`fw-btn pr-2 pl-3 ${
-                    pathname === href ? 'bg-background' : ''
-                }`}
-                startContent={
-                    <Icon
-                        iconName={iconName}
-                        style='far'
-                    />
-                }
-                endContent={
-                    <ItemsCounter value={tasksCounter[href]?.length ?? 0} />
-                }
-            >
-                <span className='flex-1 text-start'>{label}</span>
-            </Button>
-        </Link>
+        <Button
+            radius='sm'
+            variant={pathname === href ? 'solid' : 'light'}
+            className={`fw-btn pr-2 pl-3 relative ${
+                pathname === href ? 'bg-background' : ''
+            }`}
+            startContent={
+                <Icon
+                    iconName={iconName}
+                    style='far'
+                />
+            }
+            endContent={
+                <ItemsCounter value={tasksCounter[href]?.length ?? 0} />
+            }
+        >
+            <span className='flex-1 text-start'>{label}</span>
+            <Link href={href}>
+                <div className='absolute inset-0'></div>
+            </Link>
+        </Button>
     );
 };
 
