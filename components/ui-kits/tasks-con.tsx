@@ -10,21 +10,25 @@ import TaskItem from './task-item';
 import Divider from '../ui/texts/divider';
 import TaskLoadingSkeleton from './task-loading-skeleton';
 
-const TasksCon = () => {
+//* functions
+import { getTasksByPathname } from '@/helper/functions/task-functions';
+
+const TasksCon = ({ pathname }: { pathname: string }) => {
     // states and variables
     const tasks = useSelector((state: any) => state.tasks);
-    const taskDone = tasks?.data?.find((task: any) => task.task_completion);
+    const matchTasks = getTasksByPathname(tasks?.data ?? [], pathname);
+    const taskDone = matchTasks?.find((task: any) => task.task_completion);
 
+    // conditional rendering
     if (tasks.loading && !tasks.data.length) return <TaskLoadingSkeleton />;
     if (tasks.beforeLoading) return <TaskLoadingSkeleton />;
-
     return (
         <div>
             {!tasks.error ? (
-                tasks?.data?.length ? (
+                matchTasks?.length ? (
                     <>
                         <div>
-                            {tasks?.data?.map(
+                            {matchTasks?.map(
                                 (task: any) =>
                                     !task?.task_completion && (
                                         <TaskItem
@@ -45,7 +49,7 @@ const TasksCon = () => {
                                 </section>
                             ) : null}
 
-                            {tasks?.data?.map(
+                            {matchTasks?.map(
                                 (task: any) =>
                                     task?.task_completion && (
                                         <TaskItem
