@@ -50,7 +50,7 @@ export const POST = async (req: any) => {
     }
 
     // check if user don't exists
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email: email.toLowerCase() });
     if (!user) {
         return NextResponse.json({
             message: "User don't exists!",
@@ -69,7 +69,9 @@ export const POST = async (req: any) => {
 
     // generate token
     const expirationToken = 24 * 7 * 60 * 60;
-    const token = sign({ email }, secretKey, { expiresIn: expirationToken });
+    const token = sign({ email: email.toLowerCase() }, secretKey, {
+        expiresIn: expirationToken,
+    });
 
     // create new user
     try {

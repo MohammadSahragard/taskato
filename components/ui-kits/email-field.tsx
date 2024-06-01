@@ -10,7 +10,7 @@ import Icon from '../ui/texts/icon';
 //* redux
 import { setEmail } from '@/redux/features/formSlice';
 
-const EmailField = () => {
+const EmailField = ({ validation }: { validation: boolean }) => {
     const dispatch = useDispatch();
 
     // hooks and variables
@@ -23,6 +23,10 @@ const EmailField = () => {
             value={email}
             onChange={({ target }) => dispatch(setEmail(target.value))}
             isRequired
+            isInvalid={validation && email}
+            errorMessage={
+                validation && email ? 'Please enter a valid email address' : null
+            }
         />
     );
 };

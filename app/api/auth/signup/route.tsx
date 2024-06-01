@@ -58,7 +58,7 @@ export const POST = async (req: any) => {
     }
 
     // check if user already exists
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email: email.toLowerCase() });
     if (user) {
         return NextResponse.json({
             message: 'User already exists!',
@@ -71,7 +71,7 @@ export const POST = async (req: any) => {
         await User.create({
             firstName,
             lastName,
-            email,
+            email: email.toLowerCase(),
             password: hashedPass,
         });
         return NextResponse.json({

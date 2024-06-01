@@ -27,7 +27,9 @@ const SignupForm = () => {
     const firstName = useSelector((state: any) => state.formValues.firstName);
     const lastName = useSelector((state: any) => state.formValues.lastName);
     const email = useSelector((state: any) => state.formValues.email);
-    const password = useSelector((state: any) => state.formValues.password);
+    const password: string = useSelector(
+        (state: any) => state.formValues.password
+    );
     const confirmPassword = useSelector(
         (state: any) => state.formValues.confirmPassword
     );
@@ -38,9 +40,17 @@ const SignupForm = () => {
         status: 200,
     });
 
+    // validation
+    const emailValidation = !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email);
+    const passwordValidation =
+        !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password);
+
     // functions
     const formSubmit = async (event: any) => {
         event.preventDefault();
+
+        // first validation
+        if (emailValidation || passwordValidation) return;
 
         await signupSubmit({
             firstName,
@@ -76,8 +86,8 @@ const SignupForm = () => {
             onSubmit={(event: any) => startTransition(() => formSubmit(event))}
         >
             <NameField />
-            <EmailField />
-            <PassField />
+            <EmailField validation={emailValidation} />
+            <PassField validation={passwordValidation} />
             <ConfirmPassField />
 
             <section className='form-CTA'>
