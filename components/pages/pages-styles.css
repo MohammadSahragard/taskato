@@ -1,8 +1,12 @@
 /** ----- auth pages */
 /* signup */
 .form-con {
-    @apply relative bg-white/25 backdrop-blur-sm p-7 px-10 rounded-2xl
-            flex flex-col gap-7;
+    @apply relative bg-white/25 backdrop-blur-sm p-10 rounded-2xl
+            flex flex-col gap-7 border mx-5 max-w-96;
+}
+
+.form-con-logo {
+    @apply absolute left-2/4 top-0 -translate-y-2/4 -translate-x-2/4 rounded-full;
 }
 
 .form-header {

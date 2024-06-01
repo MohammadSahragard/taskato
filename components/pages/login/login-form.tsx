@@ -31,9 +31,17 @@ const LoginForm = () => {
         status: 200,
     });
 
+    // validation
+    const emailValidation = !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email);
+    const passwordValidation =
+        !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password);
+
     // functions
     const formSubmit = async (event: any) => {
         event.preventDefault();
+
+        // first validation
+        if (emailValidation || passwordValidation) return;
 
         await loginSubmit({
             email,
@@ -65,8 +73,8 @@ const LoginForm = () => {
             className='signup-form'
             onSubmit={(event: any) => startTransition(() => formSubmit(event))}
         >
-            <EmailField />
-            <PassField />
+            <EmailField validation={emailValidation} />
+            <PassField validation={passwordValidation} />
 
             <section className='form-CTA'>
                 {showResult ? (
