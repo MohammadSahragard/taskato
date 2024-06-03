@@ -1,7 +1,7 @@
 'use client';
 
 // public
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useTransition } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 
@@ -9,17 +9,22 @@ import { useDispatch } from 'react-redux';
 import { isUserLoggedIn } from '@/helper/functions/auth-functions';
 
 //* redux
-import { setUserEmail, setUserName } from '@/redux/features/optionsSlice';
+import {
+    setUserEmail,
+    setUserLoading,
+    setUserName,
+} from '@/redux/features/optionsSlice';
 
-export const useUserLoggedIn = (url: string) => {
+export const useUserLoggedIn = () => {
     const dispatch = useDispatch();
+    const [isPending, startTransition] = useTransition();
     const [user, setUser] = useState<any>();
     const router = useRouter();
     const pathname = usePathname();
 
     useEffect(() => {
         const getUser = async () => {
-            const res = await fetch(url);
+            const res = await fetch('/api/user');
             const user = await res.json();
             const condition = user.status === 200;
             if (condition) {
@@ -32,9 +37,14 @@ export const useUserLoggedIn = (url: string) => {
             isUserLoggedIn({ condition, pathname, router });
         };
 
-        getUser();
+        startTransition(() => getUser());
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [url]);
+    }, []);
+
+    useEffect(() => {
+        dispatch(setUserLoading());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isPending]);
 
     return user;
 };
