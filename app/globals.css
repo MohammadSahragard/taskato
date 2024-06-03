@@ -34,15 +34,15 @@ body {
 
 /** main section */
 .main-section {
-    @apply fixed inset-[0_0_0_300px] bg-background px-5 py-[80px] transition-all z-50 overflow-auto;
-}
-.main-section.auth-page {
-    @apply z-auto;
+    @apply fixed inset-[0_0_0_300px] bg-background px-5 py-[80px] transition-all overflow-auto;
 }
 
 /** add task bar section */
 .task-bar-con {
     @apply fixed inset-[auto_0_0_300px] p-5 transition-all;
+}
+.auth-page .task-bar-con {
+    @apply hidden;
 }
 
 /** task detail section */
@@ -51,16 +51,37 @@ body {
             translate-x-[150%] transition-all
             grid grid-rows-[max-content_auto];
 }
-.isOpenedDetailsSidebar .task-details-bar {
-    @apply translate-x-0;
-}
 
-/** sidebar toggle styles (task details & menu) */
-.isOpenedDetailsSidebar :is(.main-header, .main-section, .task-bar-con) {
-    @apply right-[300px];
+/** logo loading */
+.logo-loading {
+    @apply fixed inset-0 bg-black grid place-items-center z-[999];
 }
 
 /** sign up */
 .form-page {
     @apply fixed inset-0 bg-white grid place-items-center;
+}
+
+/****** conditional classes */
+/* menu container */
+.auth-page .menu-container {
+    @apply hidden;
+}
+
+/* main header */
+.auth-page .main-header {
+    @apply hidden;
+}
+
+/* task details bar */
+.is-opened-details-sidebar .task-details-bar {
+    @apply translate-x-0;
+}
+.auth-page .task-details-bar {
+    @apply hidden;
+}
+
+/* sidebar toggle styles (task details & menu) */
+.is-opened-details-sidebar :is(.main-header, .main-section, .task-bar-con) {
+    @apply right-[300px];
 }

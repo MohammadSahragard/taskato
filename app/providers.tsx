@@ -12,20 +12,13 @@ import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import { Provider } from 'react-redux';
 import store from '@/redux/app/store';
 
-//* functions
-import { checkAuthPage } from '@/helper/functions/functions';
+//* toastify container
 import { ToastContainer } from 'react-toastify';
 
 //* data receiver
 import DataReceiver from './data-receiver';
 
 export function Providers({ children }: { children: React.ReactNode }) {
-    const pathname = usePathname();
-
-    useEffect(() => {
-        checkAuthPage(pathname);
-    }, [pathname]);
-
     return (
         <NextUIProvider>
             <NextThemesProvider
@@ -34,8 +27,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
             >
                 <ToastContainer theme='colored' />
                 <Provider store={store}>
-                    <DataReceiver />
-                    <div>{children}</div>
+                    <DataReceiver>{children}</DataReceiver>
                 </Provider>
             </NextThemesProvider>
         </NextUIProvider>

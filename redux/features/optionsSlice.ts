@@ -6,6 +6,8 @@ const initialState = {
     searchValue: '',
     userEmail: '',
     userName: '',
+    userLoading: true,
+    isOpenedDetailsSidebar: false,
 };
 
 //* reducer
@@ -22,8 +24,20 @@ const optionsSlice = createSlice({
         setUserName: (state, action) => {
             state.userName = action.payload;
         },
+        setUserLoading: (state) => {
+            state.userLoading = false;
+        },
+        setIsOpenedDetailsSidebar: (state, action) => {
+            state.isOpenedDetailsSidebar = action.payload;
+        },
     },
 });
 
-export const { setSearch, setUserEmail, setUserName } = optionsSlice.actions;
+export const {
+    setSearch,
+    setUserEmail,
+    setUserName,
+    setUserLoading,
+    setIsOpenedDetailsSidebar,
+} = optionsSlice.actions;
 export default optionsSlice.reducer;

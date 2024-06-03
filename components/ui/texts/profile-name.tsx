@@ -2,12 +2,12 @@
 import Title from './title';
 import { Skeleton } from '@nextui-org/react';
 
-const ProfileName = ({name}:{name: string}) => {
-    if (!name) return <Skeleton className='w-3/4 h-4 rounded' />
+const ProfileName = ({ name }: { name: string }) => {
+    if (!name) return <Skeleton className='w-3/4 h-4 rounded' />;
     return (
         <Title
             title={name || 'Not Found'}
-            additionalClasses='font-medium capitalize'
+            additionalClasses='font-medium truncate capitalize'
         />
     );
 };
