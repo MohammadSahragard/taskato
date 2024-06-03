@@ -12,6 +12,7 @@ import { toast } from 'react-toastify';
 
 //* redux
 import { getTasksByEmail } from '@/redux/features/tasksSlice';
+import { setIsOpenedDetailsSidebar } from '@/redux/features/optionsSlice';
 
 const TaskDetailsDeleteBtn = () => {
     const dispatch = useDispatch();
@@ -34,7 +35,7 @@ const TaskDetailsDeleteBtn = () => {
         toast[messageStatus](data.message);
 
         if (data.status === 200) {
-            document.body.classList.remove('isOpenedDetailsSidebar');
+            dispatch(setIsOpenedDetailsSidebar(false));
             dispatch(getTasksByEmail(taskData.email));
         }
     };

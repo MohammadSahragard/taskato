@@ -20,6 +20,7 @@ import MenuContainer from '@/components/sidebars/menu/menu-container';
 import MainHeader from '@/components/ui-kits/main-header';
 import AddTaskBar from '@/components/ui-kits/add-task-bar';
 import TaskDetails from '@/components/sidebars/task-details/task-details';
+import LogoLoading from '@/components/ui-kits/logo-loading';
 
 //* metadata
 export const metadata: Metadata = {
@@ -36,9 +37,6 @@ const RootLayout = async ({
         <html lang='en'>
             <body className={inter.className}>
                 <Providers>
-                    {/* menu section */}
-                    <MenuContainer />
-
                     {/* main section */}
                     <main className='main-section'>{children}</main>
 
@@ -52,6 +50,12 @@ const RootLayout = async ({
                     <div className='task-bar-con'>
                         <AddTaskBar />
                     </div>
+
+                    {/* menu section */}
+                    <MenuContainer />
+
+                    {/* preloading state (logo loading motion) */}
+                    <LogoLoading />
                 </Providers>
             </body>
         </html>

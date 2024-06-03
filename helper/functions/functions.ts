@@ -3,6 +3,7 @@ import { days } from '../data/data';
 
 //* redux
 import { updateSelectedTask } from '@/redux/features/selectedTaskSlice';
+import { setIsOpenedDetailsSidebar } from '@/redux/features/optionsSlice';
 
 // date to local date string
 export const dateToLocalDateString = (date: Date): string =>
@@ -63,21 +64,8 @@ export const wordsSeparator = (content: string): string =>
 
 // close-open task details sidebar
 export const toggleTaskDetailsSidebar = (dispatch: Function, data: any) => {
-    document.body.classList.add('isOpenedDetailsSidebar');
+    dispatch(setIsOpenedDetailsSidebar(true));
     dispatch(updateSelectedTask(data));
-};
-export const toggleTaskDetailsSidebarBtn = () => {
-    document.body.classList.remove('isOpenedDetailsSidebar');
-};
-
-// checking to page is a auth page or not (for z-indexing page)
-export const checkAuthPage = (pathname: string) => {
-    const mainSection = document.querySelector('main');
-    if (pathname.includes('auth')) {
-        mainSection?.classList.remove('auth-page');
-    } else {
-        mainSection?.classList.add('auth-page');
-    }
 };
 
 // checking if the due date has passed or not
