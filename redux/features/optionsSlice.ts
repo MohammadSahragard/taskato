@@ -8,6 +8,8 @@ const initialState = {
     userName: '',
     userLoading: true,
     isOpenedDetailsSidebar: false,
+    // responsive section
+    isOpenedMobileMenu: false,
 };
 
 //* reducer
@@ -30,6 +32,10 @@ const optionsSlice = createSlice({
         setIsOpenedDetailsSidebar: (state, action) => {
             state.isOpenedDetailsSidebar = action.payload;
         },
+        // responsive section
+        setIsOpenedMobileMenu: (state, action) => {
+            state.isOpenedMobileMenu = action.payload;
+        },
     },
 });
 
@@ -39,5 +45,6 @@ export const {
     setUserName,
     setUserLoading,
     setIsOpenedDetailsSidebar,
+    setIsOpenedMobileMenu,
 } = optionsSlice.actions;
 export default optionsSlice.reducer;

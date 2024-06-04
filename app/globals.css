@@ -23,23 +23,26 @@ body {
 
 /** menu section */
 .menu-container {
-    @apply fixed inset-[0_calc(100%-300px)_0_0] bg-primary-100 p-5 overflow-auto
+    @apply fixed inset-[0_calc(100%-300px)_0_0] hidden md:block;
+}
+.menu-components {
+    @apply h-full w-full bg-primary-100 p-5 overflow-auto
             grid grid-rows-[repeat(2,max-content)_auto_max-content] gap-2;
 }
 
 /** main header */
 .main-header {
-    @apply fixed inset-[0_0_auto_300px] bg-background/65 backdrop-blur-sm px-5 h-[80px] flex items-center gap-5 transition-all;
+    @apply fixed inset-[0_0_auto_0] md:inset-[0_0_auto_300px] bg-background/65 backdrop-blur-sm px-5 h-[80px] flex items-center gap-5 transition-all;
 }
 
 /** main section */
 .main-section {
-    @apply fixed inset-[0_0_0_300px] bg-background px-5 py-[80px] transition-all overflow-auto;
+    @apply fixed inset-0 md:inset-[0_0_0_300px] bg-background px-5 py-[80px] transition-all overflow-auto;
 }
 
 /** add task bar section */
 .task-bar-con {
-    @apply fixed inset-[auto_0_0_300px] p-5 transition-all;
+    @apply fixed inset-[auto_0_0_0] md:inset-[auto_0_0_300px] p-5 transition-all;
 }
 .auth-page .task-bar-con {
     @apply hidden;
