@@ -29,9 +29,6 @@
 .task-bar {
     @apply bg-primary-100/65 backdrop-blur-sm border-none !rounded-xl !px-1 !transition-all;
 }
-.task-options {
-    @apply flex;
-}
 
 /* :task item */
 .task-item {
@@ -42,7 +39,7 @@
     @apply grid grid-rows-[minmax(40px,_max-content)_max-content];
 }
 .task-sub-detail {
-    @apply flex gap-2 px-2 pb-2;
+    @apply flex items-start flex-col sm:flex-row gap-2 px-2 pb-2;
 }
 
 /* :task details section */
@@ -50,7 +47,7 @@
     @apply flex justify-between items-center mb-3;
 }
 .task-details-main {
-    @apply grid grid-rows-[max-content_auto_max-content];
+    @apply grid grid-rows-[max-content_minmax(150px,auto)_max-content];
 }
 .task-details-CTA {
     @apply grid grid-cols-2 gap-2;
