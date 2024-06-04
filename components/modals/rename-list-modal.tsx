@@ -78,6 +78,7 @@ const RenameListModal = ({
             onOpenChange={openModal}
             backdrop='blur'
             placement='center'
+            className='bg-primary-100'
         >
             <form
                 onSubmit={(event: any) =>
