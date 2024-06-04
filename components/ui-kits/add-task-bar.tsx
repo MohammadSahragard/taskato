@@ -10,6 +10,7 @@ import AddDateBtn from '../ui/buttons/add-date-btn';
 import AddToListBtn from '../ui/buttons/add-to-list-btn';
 import AddReminderBtn from '../ui/buttons/add-reminder-btn';
 import AddTaskBtn from '../ui/buttons/add-task-btn';
+import MobileMoreTaskOPtions from '../ui/buttons/mobile-more-task-options';
 
 //* redux
 import { setTaskTitle, setClearFields } from '@/redux/features/todoSlice';
@@ -63,10 +64,13 @@ const AddTaskBar = () => {
                     inputWrapper: 'task-bar',
                 }}
                 endContent={
-                    <div className='task-options'>
-                        <AddDateBtn />
-                        <AddToListBtn />
-                        <AddReminderBtn />
+                    <div>
+                        <MobileMoreTaskOPtions />
+                        <section className='hidden md:flex'>
+                            <AddDateBtn />
+                            <AddToListBtn />
+                            <AddReminderBtn />
+                        </section>
                     </div>
                 }
             />

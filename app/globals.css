@@ -55,7 +55,7 @@ body {
 }
 .task-details-components {
     @apply h-full w-full bg-primary-100 p-3 rounded-xl 
-            grid grid-rows-[max-content_auto];
+            grid grid-rows-[max-content_auto] overflow-auto;
 }
 
 /** logo loading */

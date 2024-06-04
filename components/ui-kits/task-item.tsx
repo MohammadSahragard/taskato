@@ -2,7 +2,7 @@
 
 // public
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 //* components
 import Divider from '../ui/texts/divider';
@@ -105,7 +105,9 @@ const TaskItem = ({ taskData }: { taskData: any }) => {
 
                             {taskData?.subtasks?.length ? (
                                 <>
-                                    <Divider orientation='vertical' />
+                                    <div className='hidden sm:block'>
+                                        <Divider orientation='vertical' />
+                                    </div>
                                     <Subtitle additionalClasses='text-xs flex gap-px'>
                                         <div className='subtask-counter'>
                                             {taskData?.subtasks?.length > 9
@@ -118,7 +120,9 @@ const TaskItem = ({ taskData }: { taskData: any }) => {
                             ) : null}
                             {taskData?.task_list?.list_title ? (
                                 <>
-                                    <Divider orientation='vertical' />
+                                    <div className='hidden sm:block'>
+                                        <Divider orientation='vertical' />
+                                    </div>
                                     <Subtitle additionalClasses='text-xs capitalize'>
                                         <Icon
                                             iconName='square'

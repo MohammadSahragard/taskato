@@ -40,3 +40,7 @@
 .time-btn.active {
     @apply !bg-foreground text-background;
 }
+
+.more-task-options {
+    @apply !bg-primary-100 !min-w-max;
+}
