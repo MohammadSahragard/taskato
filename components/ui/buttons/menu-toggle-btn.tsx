@@ -19,7 +19,7 @@ const MenuToggleBtn = () => {
     );
 
     // functions
-    const toggleMenu = () => dispatch(setIsOpenedMobileMenu(!isOpenMenu))
+    const toggleMenu = () => dispatch(setIsOpenedMobileMenu(!isOpenMenu));
 
     return (
         <>
@@ -34,7 +34,10 @@ const MenuToggleBtn = () => {
             </Button>
 
             {/* mobile menu */}
-            <MobileMenuContainer isOpenMenu={isOpenMenu} toggleMenu={toggleMenu} />
+            <MobileMenuContainer
+                isOpenMenu={isOpenMenu}
+                toggleMenu={toggleMenu}
+            />
         </>
     );
 };
