@@ -8,7 +8,6 @@ const initialState = {
     userName: '',
     userLoading: true,
     isOpenedDetailsSidebar: false,
-    // responsive section
     isOpenedMobileMenu: false,
 };
 
@@ -32,7 +31,6 @@ const optionsSlice = createSlice({
         setIsOpenedDetailsSidebar: (state, action) => {
             state.isOpenedDetailsSidebar = action.payload;
         },
-        // responsive section
         setIsOpenedMobileMenu: (state, action) => {
             state.isOpenedMobileMenu = action.payload;
         },

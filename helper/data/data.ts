@@ -70,3 +70,23 @@ export const mobileMenuMotionProps = {
         },
     },
 };
+export const mobileTaskDetailsProps = {
+    variants: {
+        enter: {
+            x: 0,
+            opacity: 1,
+            transition: {
+                duration: 0.3,
+                ease: 'easeOut',
+            },
+        },
+        exit: {
+            x: 20,
+            opacity: 0,
+            transition: {
+                duration: 0.2,
+                ease: 'easeIn',
+            },
+        },
+    },
+};
