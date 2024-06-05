@@ -5,7 +5,7 @@ const ProfilePicture = ({ email }: { email: string }) => {
     if (!email) return <Skeleton className='w-10 h-10 rounded-full' />;
     return (
         <Avatar
-            src='/images/taskato-logo.png'
+            src='/taskato-user.png'
             classNames={{ icon: 'text-primary-200' }}
         />
     );

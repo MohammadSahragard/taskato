@@ -8,7 +8,7 @@ const LoginCon = () => {
     return (
         <div className='form-con'>
             <Image
-                src='/images/taskato-logo.png'
+                src='/taskato-logo.png'
                 alt='taskato logo'
                 width={60}
                 height={60}
