@@ -9,26 +9,23 @@ import TaskDetailsComponents from './task-details-components';
 
 //* data
 import { mobileTaskDetailsProps } from '@/helper/data/data';
-import { setIsOpenedDetailsSidebar } from '@/redux/features/optionsSlice';
+import { setIsOpenedMobileDetailsSidebar } from '@/redux/features/optionsSlice';
 
 const MobileTaskDetails = () => {
     const dispatch = useDispatch();
     // states and variables
     const isOpenSidebar = useSelector(
-        (state: any) => state.options.isOpenedDetailsSidebar
+        (state: any) => state.options.isOpenedMobileDetailsSidebar
     );
 
     return (
         <Modal
-            className='lg:hidden'
+            className='rounded-e-none lg:hidden w-[300px]'
             isOpen={isOpenSidebar}
             hideCloseButton
             onOpenChange={() =>
-                dispatch(setIsOpenedDetailsSidebar(!isOpenSidebar))
+                dispatch(setIsOpenedMobileDetailsSidebar(!isOpenSidebar))
             }
-            classNames={{
-                base: 'rounded-e-none w-[300px]',
-            }}
             motionProps={mobileTaskDetailsProps}
         >
             <ModalContent className='fixed right-0 h-full !m-0'>

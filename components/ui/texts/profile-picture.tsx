@@ -1,5 +1,3 @@
-'use client';
-
 //* components
 import { Avatar, Skeleton } from '@nextui-org/react';
 
