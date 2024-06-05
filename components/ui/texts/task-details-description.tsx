@@ -19,6 +19,7 @@ const TaskDetailsDescription = () => {
         <Textarea
             label='Description'
             value={description ?? null}
+            placeholder='Enter your description'
             variant='bordered'
             radius='sm'
             size='sm'
