@@ -44,6 +44,9 @@ const AddTaskBar = () => {
         }
     };
 
+    // conditional rendering
+    if (!fullPathname.includes('list') && fullPathname.includes('sticky-notes'))
+        return null;
     return (
         <form
             onSubmit={(event: any) => startTransition(() => submitTask(event))}

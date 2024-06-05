@@ -14,7 +14,7 @@ const LogoLoading = () => {
     return (
         <div className={`logo-loading ${conditionClass}`}>
             <Image
-                src='/images/taskato-logo.gif'
+                src='/taskato-logo.gif'
                 alt='Logo loading image'
                 width='250'
                 height='250'

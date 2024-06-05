@@ -6,7 +6,7 @@ const EmptyStateTasks = () => {
     return (
         <div className='empty-state-tasks'>
             <Image
-                src='/images/empty-state-tasks.svg'
+                src='/empty-state-tasks.svg'
                 width='150'
                 height='150'
                 alt='Empty state tasks'
