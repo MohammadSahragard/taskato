@@ -1,6 +1,7 @@
 'use client';
 
 // public
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -31,6 +32,7 @@ import { setTaskDate } from '@/redux/features/todoSlice';
 import TooltipElement from '../texts/tooltip-element';
 
 const AddDateBtn = () => {
+    const pathname = usePathname();
     // hooks and variables
     const dispatch = useDispatch();
     const taskDate = useSelector((state: any) => state.taskData.taskDate);
@@ -42,6 +44,8 @@ const AddDateBtn = () => {
         setIsOpenDatePicker(false);
     };
 
+    // conditional rendering
+    if (pathname.includes('today')) return null;
     return (
         <Dropdown
             className='bg-primary-100'

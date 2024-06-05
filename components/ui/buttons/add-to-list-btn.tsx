@@ -28,9 +28,7 @@ const AddToListBtn = () => {
     const lists = useSelector((state: any) => state.taskLists.data);
 
     // conditional rendering
-    if (pathname === 'today') return null;
-    if (pathname === 'important') return null;
-
+    if (pathname.includes('list')) return null;
     return (
         <Dropdown className='bg-primary-100'>
             <TooltipElement title='Add to list'>
