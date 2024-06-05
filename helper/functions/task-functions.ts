@@ -6,7 +6,11 @@ import {
 } from '@/types/types';
 
 // needed functions
-import { convertTitleToPathname, dateToLocalDateString } from './functions';
+import {
+    convertTitleToPathname,
+    dateToLocalDateString,
+    getDate,
+} from './functions';
 
 //* add task list
 export const addTaskList = async ({
@@ -59,7 +63,15 @@ export const renameTaskList = async (id: string, listTitle: string) => {
 };
 
 //* add task
-export const addTask = async (taskData: TaskContent, userEmail: string) => {
+export const addTask = async (
+    taskData: TaskContent,
+    userEmail: string,
+    fullPathname: string,
+    lists: any
+) => {
+    // variables
+    const pathname = fullPathname.split('/').slice(-1)[0];
+
     // data
     const { taskTitle, taskDate, taskList, taskReminder } = taskData;
 
@@ -79,6 +91,27 @@ export const addTask = async (taskData: TaskContent, userEmail: string) => {
         task_list: taskList || {},
         task_reminder_date: taskReminder || {},
     };
+
+    //---- Adding tasks depending on the route
+    // due date
+    if (pathname === 'today') {
+        reqData.task_due_date = getDate().today;
+    }
+    // list
+    if (fullPathname.includes('list')) {
+        const foundList = lists?.find(
+            (list: any) => convertTitleToPathname(list.list_title) === pathname
+        );
+
+        reqData.task_list = {
+            list_title: foundList.list_title,
+            list_color: foundList.list_color,
+        };
+    }
+    // important
+    if (pathname === 'important') {
+        reqData.is_in_important = true;
+    }
 
     // post data
     const res = await fetch('/api/user-tasks/task', {

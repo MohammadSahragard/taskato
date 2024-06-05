@@ -1,6 +1,7 @@
 'use client';
 
 // public
+import { usePathname } from 'next/navigation';
 import { useTransition } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -21,18 +22,20 @@ import { getTasksByEmail } from '@/redux/features/tasksSlice';
 import { toast } from 'react-toastify';
 
 const AddTaskBar = () => {
+    const fullPathname = usePathname();
     // states and variables
     const dispatch = useDispatch();
     const [isPending, startTransition] = useTransition();
     const userEmail = useSelector((state: any) => state.options.userEmail);
     const taskTitle = useSelector((state: any) => state.taskData.taskTitle);
     const taskData = useSelector((state: any) => state.taskData);
+    const lists = useSelector((state: any) => state.taskLists.data);
 
     // submit task
     const submitTask = async (event: any) => {
         event.preventDefault();
 
-        const task = await addTask(taskData, userEmail);
+        const task = await addTask(taskData, userEmail, fullPathname, lists);
         const messageStatus = task.status === 200 ? 'success' : 'error';
         toast[messageStatus](task.message);
         if (task.status === 200) {
