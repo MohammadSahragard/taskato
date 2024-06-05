@@ -16,6 +16,7 @@ const LogoLoading = () => {
             <Image
                 src='/taskato-logo.gif'
                 alt='Logo loading image'
+                priority
                 width='250'
                 height='250'
             />

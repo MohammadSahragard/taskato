@@ -16,6 +16,7 @@ import {
     Tabs,
     Tab,
 } from '@nextui-org/react';
+import { toast } from 'react-toastify';
 
 //* data
 import { listColorItems } from '@/helper/data/data';
@@ -25,7 +26,6 @@ import { addTaskList } from '@/helper/functions/task-functions';
 
 //* redux
 import { getListsByEmail } from '@/redux/features/taskListsSlice';
-import { toast } from 'react-toastify';
 
 const AddListModal = ({
     isOpen,

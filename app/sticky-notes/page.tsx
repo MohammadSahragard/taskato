@@ -1,5 +1,12 @@
+//* components
+import StickyNotesCon from '@/components/ui-kits/sticky-notes-con';
+
 const StickyNotes = () => {
-    return <div>Sticky Notes</div>;
+    return (
+        <div>
+            <StickyNotesCon />
+        </div>
+    );
 };
 
 export default StickyNotes;
