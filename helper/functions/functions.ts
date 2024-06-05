@@ -3,7 +3,10 @@ import { days } from '../data/data';
 
 //* redux
 import { updateSelectedTask } from '@/redux/features/selectedTaskSlice';
-import { setIsOpenedDetailsSidebar } from '@/redux/features/optionsSlice';
+import {
+    setIsOpenedDetailsSidebar,
+    setIsOpenedMobileDetailsSidebar,
+} from '@/redux/features/optionsSlice';
 
 // date to local date string
 export const dateToLocalDateString = (date: Date): string =>
@@ -66,6 +69,9 @@ export const wordsSeparator = (content: string): string =>
 export const toggleTaskDetailsSidebar = (dispatch: Function, data: any) => {
     dispatch(setIsOpenedDetailsSidebar(true));
     dispatch(updateSelectedTask(data));
+    if (window.innerWidth < 1024) {
+        dispatch(setIsOpenedMobileDetailsSidebar(true));
+    }
 };
 
 // checking if the due date has passed or not
