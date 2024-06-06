@@ -9,6 +9,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import useUserLists from '@/hooks/use-user-lists';
 import { useUserLoggedIn } from '@/hooks/use-user-logged-in';
 import useUserTasks from '@/hooks/use-user-tasks';
+import useUserNotes from '@/hooks/use-user-notes';
+
+//* redux
 import { setIsOpenedMobileMenu } from '@/redux/features/optionsSlice';
 
 const DataReceiver = ({ children }: { children: React.ReactNode }) => {
@@ -16,6 +19,7 @@ const DataReceiver = ({ children }: { children: React.ReactNode }) => {
     const dispatch = useDispatch();
     // data receiver hooks
     const tasks = useUserTasks();
+    const notes = useUserNotes();
     const taskLists = useUserLists();
     const getUser = useUserLoggedIn();
 

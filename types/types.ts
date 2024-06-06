@@ -69,6 +69,7 @@ export type TaskItemTypes = {
     todoSubDetail?: boolean;
 };
 
+//* redux slices
 export type SubtaskOptionsTypes = {
     neededId: string;
     userEmail: string;
@@ -101,7 +102,6 @@ export type TaskOptionsTypes = Pick<
     | 'children'
 >;
 
-// redux slices
 type TaskSubtask = {
     subtaskTitle: string;
     subtaskIsCompleted: boolean;
@@ -125,7 +125,6 @@ export type TaskContent = {
     taskSubtasks: TaskSubtask[];
 };
 
-//* functions helper
 // signup submit
 export type SignupSubmitTypes = {
     firstName: string;
@@ -182,3 +181,15 @@ export type selectedTaskTypes = {
     is_in_important: boolean;
     createdAt: Date | null;
 };
+
+// types for notes data
+export type NoteData = {
+    _id: string;
+    note_title: string;
+    note_content: string;
+    note_color: string;
+};
+export type NoteTypes = Pick<
+    NoteData,
+    'note_title' | 'note_content' | 'note_color'
+>;

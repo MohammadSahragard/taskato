@@ -21,14 +21,10 @@ const AddStickyNoteBtn = ({ titleBtn }: { titleBtn?: string }) => {
                 onPress={onOpen}
             />
 
-            <Modal
+            <AddStickyNoteModal
                 isOpen={isOpen}
                 onOpenChange={onOpenChange}
-                backdrop='blur'
-                className='bg-primary-100'
-            >
-                <AddStickyNoteModal />
-            </Modal>
+            />
         </>
     );
 };

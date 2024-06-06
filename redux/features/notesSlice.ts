@@ -3,17 +3,16 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 //* initial state
 const initialState = {
-    beforeLoading: true,
     loading: false,
     data: [],
     error: '',
 };
 
 //* async functions
-const getTasksByEmail: any = createAsyncThunk(
-    'tasks/getTasksByEmail',
+const getNotesByEmail: any = createAsyncThunk(
+    'notes/getNotesByEmail',
     async (email: string) => {
-        const res = await fetch('/api/user-tasks/tasks', {
+        const res = await fetch('/api/sticky-notes/notes', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -26,26 +25,23 @@ const getTasksByEmail: any = createAsyncThunk(
 );
 
 //* reducer
-const tasksSlice = createSlice({
-    name: 'tasks',
+const notesSlice = createSlice({
+    name: 'notes',
     initialState,
     reducers: {},
     extraReducers: (builder: any) => {
-        builder.addCase(getTasksByEmail.pending, (state: any) => {
+        builder.addCase(getNotesByEmail.pending, (state: any) => {
             state.loading = true;
-            state.beforeLoading = false;
         });
         builder.addCase(
-            getTasksByEmail.fulfilled,
+            getNotesByEmail.fulfilled,
             (state: any, action: any) => {
-                state.beforeLoading = false;
                 state.loading = false;
                 state.data = action.payload;
                 state.error = '';
             }
         );
-        builder.addCase(getTasksByEmail.rejected, (state: any) => {
-            state.beforeLoading = false;
+        builder.addCase(getNotesByEmail.rejected, (state: any) => {
             state.loading = false;
             state.data = [];
             state.error = 'Something went wrong. Please try again later.';
@@ -53,5 +49,5 @@ const tasksSlice = createSlice({
     },
 });
 
-export default tasksSlice.reducer;
-export { getTasksByEmail };
+export default notesSlice.reducer;
+export { getNotesByEmail };

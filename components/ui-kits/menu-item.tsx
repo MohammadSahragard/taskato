@@ -20,7 +20,8 @@ const MenuItem = ({ href, label, iconName }: MenuItemTypes) => {
     const pathname = usePathname();
     // states and variables
     const tasks = useSelector((state: any) => state.tasks.data);
-    const tasksCounter: any = {
+    const notes = useSelector((state: any) => state.notes.data);
+    const itemsCounter: any = {
         '/': tasks,
         '/today': tasks?.filter(
             (task: any) =>
@@ -28,7 +29,7 @@ const MenuItem = ({ href, label, iconName }: MenuItemTypes) => {
                 dateToLocalDateString(new Date())
         ),
         '/important': tasks?.filter((task: any) => task.is_in_important),
-        '/sticky-notes': [],
+        '/sticky-notes': notes,
     };
 
     return (
@@ -45,7 +46,7 @@ const MenuItem = ({ href, label, iconName }: MenuItemTypes) => {
                 />
             }
             endContent={
-                <ItemsCounter value={tasksCounter[href]?.length ?? 0} />
+                <ItemsCounter value={itemsCounter[href]?.length ?? 0} />
             }
         >
             <span className='flex-1 text-start'>{label}</span>

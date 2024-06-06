@@ -74,5 +74,5 @@
 
 /* sticky notes style */
 .sticky-note {
-    @apply grid grid-rows-[max-content_auto] !shadow-none;
+    @apply grid grid-rows-[max-content_auto] aspect-square !shadow-none;
 }

@@ -8,6 +8,7 @@ import formSlice from '../features/formSlice';
 import taskListsSlice from '../features/taskListsSlice';
 import tasksSlice from '../features/tasksSlice';
 import selectedTaskSlice from '../features/selectedTaskSlice';
+import notesSlice from '../features/notesSlice';
 
 const store = configureStore({
     reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
         formValues: formSlice,
         taskLists: taskListsSlice,
         tasks: tasksSlice,
+        notes: notesSlice,
         selectedTask: selectedTaskSlice,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
