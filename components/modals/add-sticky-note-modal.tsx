@@ -27,7 +27,7 @@ const AddStickyNoteModal = () => {
     const userEmail = useSelector((state: any) => state.options.userEmail);
     const [noteColor, setNoteColor] = useState('#e11d48');
     const [noteTitle, setNoteTitle] = useState('Untitled note');
-    const [noteDescription, setNoteDescription] = useState('');
+    const [noteContent, setNoteContent] = useState('');
     const [isPending, startTransition] = useTransition();
 
     return (
@@ -53,12 +53,12 @@ const AddStickyNoteModal = () => {
                             <Textarea
                                 variant='bordered'
                                 radius='sm'
-                                label='Description'
-                                value={noteDescription}
+                                label='Note'
+                                value={noteContent}
                                 onChange={({ target }) =>
-                                    setNoteDescription(target.value)
+                                    setNoteContent(target.value)
                                 }
-                                placeholder='Enter your description'
+                                placeholder='Enter your note content'
                             />
                             <Tabs
                                 fullWidth
