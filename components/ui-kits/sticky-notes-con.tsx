@@ -17,6 +17,7 @@ const StickyNotesCon = () => {
 
     // states and variables
     const [columns, setColumns] = useState(0);
+    const notes = useSelector((state: any) => state.notes);
 
     // functions
     const getColumn = () => {
@@ -39,9 +40,26 @@ const StickyNotesCon = () => {
             ref={conRef}
             style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}
         >
-            <AddStickyNoteBtn />
-            <StickyNoteItem />
-            {/* <EmptyStateNotes /> */}
+            {!notes.error ? (
+                notes?.data?.length ? (
+                    <>
+                        {notes?.data?.map((note: any) => (
+                            <StickyNoteItem
+                                key={note._id}
+                                _id={note._id}
+                                note_title={note.note_title}
+                                note_content={note.note_content}
+                                note_color={note.note_color}
+                            />
+                        ))}
+                        <AddStickyNoteBtn />
+                    </>
+                ) : (
+                    <EmptyStateNotes />
+                )
+            ) : (
+                <p>{notes.error}</p>
+            )}
         </div>
     );
 };
