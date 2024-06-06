@@ -6,6 +6,8 @@ import { useSelector } from 'react-redux';
 
 //* components
 import AddStickyNoteBtn from '../ui/buttons/add-sticky-note-btn';
+import StickyNoteItem from './sticky-note-item';
+import EmptyStateNotes from './empty-state-notes';
 
 //* components
 
@@ -38,6 +40,8 @@ const StickyNotesCon = () => {
             style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}
         >
             <AddStickyNoteBtn />
+            <StickyNoteItem />
+            {/* <EmptyStateNotes /> */}
         </div>
     );
 };
