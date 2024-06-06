@@ -4,11 +4,11 @@ import Heading from '../ui/texts/heading';
 
 const EmptyStateTasks = () => {
     return (
-        <div className='empty-state-tasks'>
+        <div className='empty-state'>
             <Image
                 src='/empty-state-tasks.svg'
-                width='150'
-                height='150'
+                width='200'
+                height='200'
                 alt='Empty state tasks'
             />
 
