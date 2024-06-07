@@ -3,41 +3,33 @@
 // public
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 //* components
-import { Button } from '@nextui-org/react';
+import { Button, useDisclosure } from '@nextui-org/react';
 import Icon from '../ui/texts/icon';
 import { TaskListTypes } from '@/types/types';
 import ItemsCounter from '../ui/texts/items-counter';
-import ListItemOptions from './list-item-options';
+import { setContextMenuData } from '@/helper/functions/functions';
+import RenameListModal from '../modals/rename-list-modal';
 
-const TaskList = ({ id, userEmail, href, label, listColor }: TaskListTypes) => {
+const TaskList = ({ id, href, label, listColor }: TaskListTypes) => {
     const pathname = usePathname();
+    const dispatch = useDispatch();
     // states and variables
-    const [isOpenOptions, setIsOpenOptions] = useState(false);
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const tasks = useSelector((state: any) => state.tasks.data);
     const listCounter = tasks.filter(
         (task: any) => task.task_list.list_title === label
     );
 
-    // functions
-    const openOptions = (event: any) => {
-        event.preventDefault();
-        setIsOpenOptions(!isOpenOptions);
+    const data = {
+        id,
+        onOpen,
     };
 
-    const closeOptionsMenu = () => setIsOpenOptions(false);
-
     return (
-        <ListItemOptions
-            neededId={id}
-            neededTitle={label}
-            userEmail={userEmail}
-            isOpenOptions={isOpenOptions}
-            closeOptionsMenu={closeOptionsMenu}
-        >
+        <>
             <Button
                 radius='sm'
                 variant={pathname === href ? 'solid' : 'light'}
@@ -52,14 +44,22 @@ const TaskList = ({ id, userEmail, href, label, listColor }: TaskListTypes) => {
                     />
                 }
                 endContent={<ItemsCounter value={listCounter?.length ?? 0} />}
-                onContextMenu={(event: any) => openOptions(event)}
+                onContextMenu={(event: any) =>
+                    setContextMenuData(event, 'lists', data, dispatch)
+                }
             >
                 <span className='flex-1 text-start capitalize'>{label}</span>
                 <Link href={href}>
                     <div className='absolute inset-0'></div>
                 </Link>
             </Button>
-        </ListItemOptions>
+
+            {/* modal for rename list */}
+            <RenameListModal
+                isOpen={isOpen}
+                onOpenChange={onOpenChange}
+            />
+        </>
     );
 };
 

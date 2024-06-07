@@ -44,3 +44,13 @@
 .more-task-options {
     @apply !bg-primary-100 !min-w-max;
 }
+
+/* context menu options */
+.context-menu-options {
+    @apply !min-h-8 !min-w-full p-2 !rounded 
+            !bg-transparent hover:!bg-default/40 
+            cursor-pointer transition-all;
+}
+.delete-options {
+    @apply !text-danger hover:!bg-danger/20;
+}

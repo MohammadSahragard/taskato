@@ -16,10 +16,7 @@ const SignupCon = () => {
             />
 
             <header className='form-header'>
-                <Heading
-                    heading='Join us today!'
-                    additionalClasses='text-black'
-                />
+                <Heading heading='Join us today!' />
                 <Subtitle subtitle='Sign up now to become a member' />
             </header>
             <SignupForm />

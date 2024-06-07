@@ -1,7 +1,7 @@
 'use client';
 
 // public
-import { useTransition } from 'react';
+import { TransitionStartFunction, useTransition } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 //* components
@@ -15,13 +15,16 @@ import { getTasksByEmail } from '@/redux/features/tasksSlice';
 const CheckTaskBtn = ({
     isCompleted,
     taskId,
+    isPending,
+    startTransition,
 }: {
-    isCompleted?: boolean;
+    isCompleted: boolean;
     taskId: string;
+    isPending: boolean;
+    startTransition: TransitionStartFunction;
 }) => {
     const dispatch = useDispatch();
     // states and variables
-    const [isPending, startTransition] = useTransition();
     const userEmail = useSelector((state: any) => state.options.userEmail);
     const iconName = isCompleted ? 'check-square' : 'square';
     const iconStyle = isCompleted ? 'fas' : 'far';

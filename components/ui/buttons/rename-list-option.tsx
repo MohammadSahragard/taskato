@@ -4,17 +4,15 @@
 import { Chip } from '@nextui-org/react';
 import Icon from '../texts/icon';
 
-const RenameListOption = ({ onOpenModal }: { onOpenModal: any }) => {
+const RenameListOption = ({ onOpen }: { onOpen: () => void }) => {
     return (
-        <>
-            <Chip
-                className='bg-transparent !min-h-8 !min-w-full p-2'
-                startContent={<Icon iconName='pen-to-square' />}
-                onClick={onOpenModal}
-            >
-                Rename list
-            </Chip>
-        </>
+        <Chip
+            className='context-menu-options'
+            startContent={<Icon iconName='pen-to-square' />}
+            onClick={onOpen}
+        >
+            Rename list
+        </Chip>
     );
 };
 

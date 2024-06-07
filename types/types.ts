@@ -1,6 +1,7 @@
-import { MouseEventHandler, ReactNode } from 'react';
-
 // public
+import { MouseEventHandler, ReactNode, TransitionStartFunction } from 'react';
+
+//* children
 export type children = { children: React.ReactNode };
 
 //*------ specials (components and ...)
@@ -193,3 +194,26 @@ export type NoteTypes = Pick<
     NoteData,
     'note_title' | 'note_content' | 'note_color'
 >;
+
+// context menu slice
+export type ItemDataTypes = {
+    id: string;
+    isCompleted?: boolean;
+    isImportant?: boolean;
+    checkHandler?: Function;
+    onOpen?: () => void;
+    completionTransition?: TransitionStartFunction;
+    importantTransition?: TransitionStartFunction;
+};
+export type MenuPositionTypes = {
+    x: number;
+    y: number;
+    XAxisSide: 'left' | 'right';
+    YAxisSide: 'top' | 'bottom';
+};
+export type ContextMenuTypes = {
+    menuName: 'tasks' | 'lists' | 'subtasks';
+    itemData: ItemDataTypes;
+    isShownMenu: boolean;
+    menuPosition: MenuPositionTypes;
+};

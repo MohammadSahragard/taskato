@@ -46,6 +46,7 @@ const AddStickyNoteModal = ({
     // functions
     const openModal = () => {
         setNoteTitle('Untitled note');
+        setNoteContent('');
         onOpenChange(isOpen);
     };
 
@@ -67,6 +68,7 @@ const AddStickyNoteModal = ({
             if (res.status === 200) {
                 onOpenChange(!isOpen);
                 setNoteTitle('Untitled note');
+                setNoteContent('');
                 setNoteColor('#e11d48');
                 dispatch(getNotesByEmail(userEmail));
             }

@@ -1,7 +1,7 @@
 'use client';
 
 // public
-import { useTransition } from 'react';
+import { TransitionStartFunction, useTransition } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 //* components
@@ -13,13 +13,16 @@ import { getTasksByEmail } from '@/redux/features/tasksSlice';
 const AddToImportantBtn = ({
     isImportant,
     taskId,
+    isPending,
+    startTransition,
 }: {
-    isImportant: boolean | undefined;
+    isImportant: boolean;
     taskId: string;
+    isPending: boolean;
+    startTransition: TransitionStartFunction;
 }) => {
     const dispatch = useDispatch();
     // states and variables
-    const [isPending, startTransition] = useTransition();
     const userEmail = useSelector((state: any) => state.options.userEmail);
     const iconStyle = isImportant ? 'fas' : 'far';
     const tooltipContent = isImportant

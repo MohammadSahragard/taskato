@@ -16,10 +16,7 @@ const LoginCon = () => {
             />
 
             <header className='form-header'>
-                <Heading
-                    heading='Welcome back!'
-                    additionalClasses='text-black'
-                />
+                <Heading heading='Welcome back!' />
                 <Subtitle subtitle='Login to access your account' />
             </header>
             <LoginForm />

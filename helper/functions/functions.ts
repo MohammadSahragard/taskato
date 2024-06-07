@@ -7,6 +7,15 @@ import {
     setIsOpenedDetailsSidebar,
     setIsOpenedMobileDetailsSidebar,
 } from '@/redux/features/optionsSlice';
+import {
+    setIsShownMenu,
+    setItemData,
+    setMenuName,
+    setMenuPosition,
+} from '@/redux/features/contextMenuSlice';
+
+//* types
+import { ItemDataTypes } from '@/types/types';
 
 // date to local date string
 export const dateToLocalDateString = (date: Date): string =>
@@ -88,4 +97,47 @@ export const convertTitleToPathname = (title: string) => {
     const titleArray = title.split(' ');
     const titlePathname = titleArray.join('-').toLowerCase();
     return titlePathname;
+};
+
+// set context menu data
+export const setContextMenuData = (
+    event: any,
+    menuName: string,
+    itemData: any,
+    dispatch: any
+) => {
+    event.preventDefault();
+    
+    // variables
+    const position = {
+        x: event.pageX,
+        y: event.pageY,
+        innerWidth: event.view.innerWidth,
+        innerHeight: event.view.innerHeight,
+    };
+
+    let data: ItemDataTypes = {
+        id: itemData?.id,
+    };
+
+    // set data depending on the menu name
+    if (menuName === 'tasks') {
+        data.isCompleted = itemData?.isCompleted;
+        data.isImportant = itemData?.isImportant;
+        data.completionTransition = itemData?.completionTransition;
+        data.importantTransition = itemData?.importantTransition;
+    }
+    if (menuName === 'lists') {
+        data.onOpen = itemData?.onOpen;
+    }
+    if (menuName === 'subtasks') {
+        data.isCompleted = itemData?.isCompleted;
+        data.checkHandler = itemData?.checkHandler;
+    }
+
+    // dispatches
+    dispatch(setMenuName(menuName));
+    dispatch(setMenuPosition(position));
+    dispatch(setIsShownMenu(true));
+    dispatch(setItemData(data));
 };
