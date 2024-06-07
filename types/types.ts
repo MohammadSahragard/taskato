@@ -198,6 +198,7 @@ export type NoteTypes = Pick<
 // context menu slice
 export type ItemDataTypes = {
     id: string;
+    listTitle?: string
     isCompleted?: boolean;
     isImportant?: boolean;
     checkHandler?: MouseEventHandler;

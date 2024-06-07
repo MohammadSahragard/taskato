@@ -33,7 +33,7 @@ const RenameListModal = ({
     const dispatch = useAppDispatch();
     // states and variables
     const userEmail = useAppSelector((state) => state.options.userEmail);
-    const listData = useAppSelector((state) => state.contextMenu);
+    const listData = useAppSelector((state) => state.contextMenu.itemData);
     const [newListTitle, setNewListTitle] = useState<any>(listData.listTitle);
     const [isPending, startTransition] = useTransition();
     const isInvalid = !/^[\w\d-\s]+$/.test(newListTitle);
