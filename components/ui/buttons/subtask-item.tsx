@@ -1,7 +1,7 @@
 'use client';
 
 // public
-import { useState, useTransition } from 'react';
+import { useTransition } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 //* components
@@ -11,9 +11,9 @@ import CheckSubtaskBtn from './check-subtask-btn';
 //* redux
 import { getTasksByEmail } from '@/redux/features/tasksSlice';
 import { updateSubtasks } from '@/redux/features/selectedTaskSlice';
-import SubtaskOptions from '@/components/ui-kits/subtask-options';
+import { setContextMenuData } from '@/helper/functions/functions';
 
-const TaskDetailsSubtask = ({
+const SubtaskItem = ({
     _id,
     title,
     isCompleted,
@@ -26,7 +26,6 @@ const TaskDetailsSubtask = ({
     // states and variables
     const userEmail = useSelector((state: any) => state.options.userEmail);
     const [isPending, startTransition] = useTransition();
-    const [isOpenOptions, setIsOpenOptions] = useState(false);
 
     // functions
     const changeCheck = async () => {
@@ -56,41 +55,33 @@ const TaskDetailsSubtask = ({
     };
     const checkHandler = () => startTransition(() => changeCheck());
 
-    // context menu functions
-    const openOptions = (event: any) => {
-        event.preventDefault();
-        setIsOpenOptions(!isOpenOptions);
+    // context menu data
+    const data = {
+        id: _id,
+        isCompleted,
+        checkHandler: checkHandler,
     };
 
-    const closeOptionsMenu = () => setIsOpenOptions(false);
-
     return (
-        <SubtaskOptions
-            userEmail={userEmail}
-            neededId={_id}
-            isCompleted={isCompleted}
-            checkHandler={checkHandler}
-            isOpenOptions={isOpenOptions}
-            closeOptionsMenu={closeOptionsMenu}
+        <Button
+            className='task-details-subtask'
+            fullWidth
+            radius='sm'
+            startContent={
+                <CheckSubtaskBtn
+                    isCompleted={isCompleted}
+                    isPending={isPending}
+                />
+            }
+            onClick={checkHandler}
+            onContextMenu={(event: any) =>
+                setContextMenuData(event, 'subtasks', data, dispatch)
+            }
+            isLoading={isPending}
         >
-            <Button
-                className='task-details-subtask'
-                fullWidth
-                radius='sm'
-                startContent={
-                    <CheckSubtaskBtn
-                        isCompleted={isCompleted}
-                        isPending={isPending}
-                    />
-                }
-                onClick={checkHandler}
-                onContextMenu={(event: any) => openOptions(event)}
-                isLoading={isPending}
-            >
-                {title}
-            </Button>
-        </SubtaskOptions>
+            {title}
+        </Button>
     );
 };
 
-export default TaskDetailsSubtask;
+export default SubtaskItem;

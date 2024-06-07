@@ -6,37 +6,37 @@ import { useDispatch, useSelector } from 'react-redux';
 //* components
 import { Chip } from '@nextui-org/react';
 import Icon from '../texts/icon';
+import { toast } from 'react-toastify';
 
 //* redux
-import { getListsByEmail } from '@/redux/features/taskListsSlice';
 import { getTasksByEmail } from '@/redux/features/tasksSlice';
+import { updateSubtasks } from '@/redux/features/selectedTaskSlice';
 
-const DeleteListOption = ({ id }: { id: string }) => {
+//* functions
+import { deleteSubtask as sendReq } from '@/helper/functions/task-functions';
+
+const DeleteSubtaskOption = ({ neededId }: { neededId: string }) => {
     const dispatch = useDispatch();
     // states and variables
     const userEmail = useSelector((state: any) => state.options.userEmail);
 
     // functions
-    const deleteList = async () => {
-        const res = await fetch('/api/task-lists/list', {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ id }),
-        });
-        const data = await res.json();
-        if (data.status === 200) {
-            dispatch(getListsByEmail(userEmail));
+    const deleteSubtask = async () => {
+        await sendReq(neededId).then((res: any) => {
+            // set result message to toastify
+            const messageStatus = res.status === 200 ? 'success' : 'error';
+            toast[messageStatus](res.message);
 
-            if (data.haveTask) {
+            if (res.status === 200) {
                 dispatch(getTasksByEmail(userEmail));
+                dispatch(updateSubtasks(res?.data));
             }
-        }
+        });
     };
 
     return (
         <Chip
+            variant='light'
             className='context-menu-options delete-options'
             startContent={
                 <Icon
@@ -44,11 +44,11 @@ const DeleteListOption = ({ id }: { id: string }) => {
                     color='text-danger'
                 />
             }
-            onClick={deleteList}
+            onClick={deleteSubtask}
         >
-            Delete list
+            Delete subtask
         </Chip>
     );
 };
 
-export default DeleteListOption;
+export default DeleteSubtaskOption;

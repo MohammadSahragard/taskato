@@ -38,20 +38,19 @@ const DeleteTaskOption = ({ neededId }: { neededId: string }) => {
     };
 
     return (
-        <>
-            <Chip
-                className='bg-transparent text-danger !min-h-8 !min-w-full p-2'
-                startContent={
-                    <Icon
-                        iconName='trash'
-                        color='text-danger'
-                    />
-                }
-                onClick={deleteTask}
-            >
-                Delete task
-            </Chip>
-        </>
+        <Chip
+            variant='light'
+            className='context-menu-options delete-options'
+            startContent={
+                <Icon
+                    iconName='trash'
+                    color='text-danger'
+                />
+            }
+            onClick={deleteTask}
+        >
+            Delete task
+        </Chip>
     );
 };
 

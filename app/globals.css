@@ -65,7 +65,12 @@ body {
 
 /** sign up */
 .form-page {
-    @apply fixed inset-0 bg-white grid place-items-center;
+    @apply fixed inset-0 bg-background grid place-items-center;
+}
+
+/** context menu */
+.context-menu {
+    @apply fixed rounded-lg bg-primary-100 w-[200px] z-[999];
 }
 
 /****** conditional classes */

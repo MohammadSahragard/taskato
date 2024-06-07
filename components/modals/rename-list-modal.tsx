@@ -24,20 +24,17 @@ import { getTasksByEmail } from '@/redux/features/tasksSlice';
 import { renameTaskList } from '@/helper/functions/task-functions';
 
 const RenameListModal = ({
-    neededId,
-    neededTitle,
     isOpen,
     onOpenChange,
 }: {
-    neededId: string;
-    neededTitle?: string;
     isOpen: boolean;
     onOpenChange: (isOpen: boolean) => void;
 }) => {
     const dispatch = useDispatch();
     // states and variables
     const userEmail = useSelector((state: any) => state.options.userEmail);
-    const [newListTitle, setNewListTitle] = useState<any>(neededTitle);
+    const listData = useSelector((state: any) => state.contextMenu);
+    const [newListTitle, setNewListTitle] = useState<any>(listData.listTitle);
     const [isPending, startTransition] = useTransition();
     const isInvalid = !/^[\w\d-\s]+$/.test(newListTitle);
 
@@ -51,20 +48,22 @@ const RenameListModal = ({
         event.preventDefault();
         if (isInvalid) return;
 
-        await renameTaskList(neededId, newListTitle ?? '').then((res: any) => {
-            // set result message to toastify
-            const messageStatus = res.status === 200 ? 'success' : 'error';
-            toast[messageStatus](res.message);
+        await renameTaskList(listData.id, listData.listTitle ?? '').then(
+            (res: any) => {
+                // set result message to toastify
+                const messageStatus = res.status === 200 ? 'success' : 'error';
+                toast[messageStatus](res.message);
 
-            if (res.status === 200) {
-                onOpenChange(!isOpen);
-                dispatch(getListsByEmail(userEmail));
+                if (res.status === 200) {
+                    onOpenChange(!isOpen);
+                    dispatch(getListsByEmail(userEmail));
 
-                if (res.haveTask) {
-                    dispatch(getTasksByEmail(userEmail));
+                    if (res.haveTask) {
+                        dispatch(getTasksByEmail(userEmail));
+                    }
                 }
             }
-        });
+        );
     };
     const onEnterDown = (event: any) => {
         if (event.key === 'Enter') {

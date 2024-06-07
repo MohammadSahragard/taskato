@@ -21,6 +21,7 @@ import MainHeader from '@/components/ui-kits/main-header';
 import AddTaskBar from '@/components/ui-kits/add-task-bar';
 import TaskDetails from '@/components/sidebars/task-details/task-details';
 import LogoLoading from '@/components/ui-kits/logo-loading';
+import ContextMenu from '@/components/context-menus/context-menu';
 
 //* metadata
 export const metadata: Metadata = {
@@ -56,6 +57,9 @@ const RootLayout = async ({
 
                     {/* preloading state (logo loading motion) */}
                     <LogoLoading />
+
+                    {/* context menu */}
+                    <ContextMenu />
                 </Providers>
             </body>
         </html>

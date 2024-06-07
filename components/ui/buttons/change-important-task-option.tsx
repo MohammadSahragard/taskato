@@ -8,12 +8,17 @@ import { Chip } from '@nextui-org/react';
 import Icon from '../texts/icon';
 import { getTasksByEmail } from '@/redux/features/tasksSlice';
 
+//* types
+import { TransitionStartFunction } from 'react';
+
 const ChangeImportantTaskOption = ({
     neededId,
     isImportant,
+    importantTransition,
 }: {
     neededId: string;
     isImportant?: boolean;
+    importantTransition: TransitionStartFunction;
 }) => {
     const dispatch = useDispatch();
     // states and variables
@@ -45,20 +50,18 @@ const ChangeImportantTaskOption = ({
     };
 
     return (
-        <>
-            <Chip
-                className='bg-transparent !min-h-8 !min-w-full p-2'
-                startContent={
-                    <Icon
-                        iconName='star'
-                        style={changeImportantIcon}
-                    />
-                }
-                onClick={changeImportant}
-            >
-                {changeImportantTitle}
-            </Chip>
-        </>
+        <Chip
+            className='context-menu-options'
+            startContent={
+                <Icon
+                    iconName='star'
+                    style={changeImportantIcon}
+                />
+            }
+            onClick={() => importantTransition(() => changeImportant())}
+        >
+            {changeImportantTitle}
+        </Chip>
     );
 };
 

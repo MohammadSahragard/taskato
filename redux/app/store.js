@@ -9,6 +9,7 @@ import taskListsSlice from '../features/taskListsSlice';
 import tasksSlice from '../features/tasksSlice';
 import selectedTaskSlice from '../features/selectedTaskSlice';
 import notesSlice from '../features/notesSlice';
+import contextMenuSlice from '../features/contextMenuSlice';
 
 const store = configureStore({
     reducer: {
@@ -19,6 +20,7 @@ const store = configureStore({
         tasks: tasksSlice,
         notes: notesSlice,
         selectedTask: selectedTaskSlice,
+        contextMenu: contextMenuSlice,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
 })
