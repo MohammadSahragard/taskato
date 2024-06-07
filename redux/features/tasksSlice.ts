@@ -31,7 +31,7 @@ const tasksSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder: any) => {
-        builder.addCase(getTasksByEmail.pending, (state: any) => {
+        builder.addCase(getTasksByEmail.pending, (state) => {
             state.loading = true;
             state.beforeLoading = false;
         });
@@ -44,7 +44,7 @@ const tasksSlice = createSlice({
                 state.error = '';
             }
         );
-        builder.addCase(getTasksByEmail.rejected, (state: any) => {
+        builder.addCase(getTasksByEmail.rejected, (state) => {
             state.beforeLoading = false;
             state.loading = false;
             state.data = [];

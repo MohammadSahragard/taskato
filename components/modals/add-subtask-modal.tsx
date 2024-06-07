@@ -2,7 +2,7 @@
 
 // public
 import { useState, useTransition } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
 //* components
 import {
@@ -30,11 +30,11 @@ const AddSubtaskModal = ({
     isOpen: boolean;
     onOpenChange: (isOpen: boolean) => void;
 }) => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     // states and variables
-    const selectedTask = useSelector((state: any) => state.selectedTask);
+    const selectedTask = useAppSelector((state) => state.selectedTask);
     const [subtaskTitle, setSubtaskTitle] = useState('Untitled subtask');
-    const userEmail = useSelector((state: any) => state.options.userEmail);
+    const userEmail = useAppSelector((state) => state.options.userEmail);
     const [isPending, startTransition] = useTransition();
 
     // functions

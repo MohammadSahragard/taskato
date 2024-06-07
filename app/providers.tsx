@@ -1,9 +1,5 @@
 'use client';
 
-// public
-import { useEffect } from 'react';
-import { usePathname } from 'next/navigation';
-
 //* next ui provider
 import { NextUIProvider } from '@nextui-org/react';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';

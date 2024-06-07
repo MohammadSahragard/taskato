@@ -5,12 +5,12 @@ import { Input } from '@nextui-org/react';
 import Icon from '../ui/texts/icon';
 
 //* redux
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 import { setSearch } from '@/redux/features/optionsSlice';
 
 const Searchbar = () => {
-    const searchValue = useSelector((state: any) => state.options.searchValue);
-    const dispatch = useDispatch();
+    const searchValue = useAppSelector((state) => state.options.searchValue);
+    const dispatch = useAppDispatch();
 
     return (
         <Input

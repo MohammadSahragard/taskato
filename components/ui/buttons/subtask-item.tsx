@@ -2,7 +2,7 @@
 
 // public
 import { useTransition } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
 //* components
 import { Button } from '@nextui-org/react';
@@ -22,9 +22,9 @@ const SubtaskItem = ({
     title: string;
     isCompleted: boolean;
 }) => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     // states and variables
-    const userEmail = useSelector((state: any) => state.options.userEmail);
+    const userEmail = useAppSelector((state) => state.options.userEmail);
     const [isPending, startTransition] = useTransition();
 
     // functions

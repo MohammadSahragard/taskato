@@ -2,7 +2,7 @@
 
 // public
 import { useTransition } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
 //* components
 import { Button } from '@nextui-org/react';
@@ -15,9 +15,9 @@ import { getTasksByEmail } from '@/redux/features/tasksSlice';
 import { setIsOpenedDetailsSidebar } from '@/redux/features/optionsSlice';
 
 const TaskDetailsDeleteBtn = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     // states and variables
-    const taskData = useSelector((state: any) => state.selectedTask);
+    const taskData = useAppSelector((state) => state.selectedTask);
     const [isPending, startTransition] = useTransition();
 
     // functions

@@ -1,7 +1,7 @@
 'use client';
 
 // public
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '@/redux/app/hook';
 import { useEffect } from 'react';
 
 //* components
@@ -13,7 +13,7 @@ import TooltipElement from '../texts/tooltip-element';
 import { setIsOpenedDetailsSidebar } from '@/redux/features/optionsSlice';
 
 const CloseTaskDetails = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     // close sidebar with 'Escape' key
     useEffect(() => {

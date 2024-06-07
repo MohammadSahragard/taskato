@@ -2,7 +2,7 @@
 
 // public
 import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
 //* components
 import { Card, CardBody } from '@nextui-org/react';
@@ -19,9 +19,9 @@ import DeleteSubtaskOption from '../ui/buttons/delete-subtask-option';
 import ChangeCheckSubtaskOption from '../ui/buttons/change-check-subtask-option';
 
 const ContextMenu = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     // states and variables
-    const menuData = useSelector((state: any) => state.contextMenu);
+    const menuData = useAppSelector((state) => state.contextMenu);
     const { menuName, itemData, isShownMenu, menuPosition } = menuData;
     const position = {
         [menuPosition['XAxisSide']]: menuPosition.x,

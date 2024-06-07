@@ -2,7 +2,7 @@
 
 // public
 import { usePathname } from 'next/navigation';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
 //* components
 import {
@@ -19,11 +19,11 @@ import TooltipElement from '../texts/tooltip-element';
 import { setTaskSelectedList } from '@/redux/features/selectedTaskSlice';
 
 const TaskDetailsListBtn = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const pathname = usePathname();
     // hooks and variables
-    const list = useSelector((state: any) => state.selectedTask.task_list);
-    const lists = useSelector((state: any) => state.taskLists);
+    const list = useAppSelector((state) => state.selectedTask.task_list);
+    const lists = useAppSelector((state) => state.taskLists);
 
     // conditional rendering
     if (pathname === 'today') return null;

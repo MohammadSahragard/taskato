@@ -3,7 +3,7 @@
 // public
 import { usePathname } from 'next/navigation';
 import { useTransition } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
 //* components
 import { Input } from '@nextui-org/react';
@@ -24,12 +24,12 @@ import { toast } from 'react-toastify';
 const AddTaskBar = () => {
     const fullPathname = usePathname();
     // states and variables
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const [isPending, startTransition] = useTransition();
-    const userEmail = useSelector((state: any) => state.options.userEmail);
-    const taskTitle = useSelector((state: any) => state.taskData.taskTitle);
-    const taskData = useSelector((state: any) => state.taskData);
-    const lists = useSelector((state: any) => state.taskLists.data);
+    const userEmail = useAppSelector((state) => state.options.userEmail);
+    const taskTitle = useAppSelector((state) => state.taskData.taskTitle);
+    const taskData = useAppSelector((state) => state.taskData);
+    const lists = useAppSelector((state) => state.taskLists.data);
 
     // submit task
     const submitTask = async (event: any) => {
@@ -44,9 +44,6 @@ const AddTaskBar = () => {
         }
     };
 
-    // conditional rendering
-    if (!fullPathname.includes('list') && fullPathname.includes('sticky-notes'))
-        return null;
     return (
         <form
             onSubmit={(event: any) => startTransition(() => submitTask(event))}

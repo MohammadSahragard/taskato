@@ -30,7 +30,7 @@ const notesSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder: any) => {
-        builder.addCase(getNotesByEmail.pending, (state: any) => {
+        builder.addCase(getNotesByEmail.pending, (state) => {
             state.loading = true;
         });
         builder.addCase(
@@ -41,7 +41,7 @@ const notesSlice = createSlice({
                 state.error = '';
             }
         );
-        builder.addCase(getNotesByEmail.rejected, (state: any) => {
+        builder.addCase(getNotesByEmail.rejected, (state) => {
             state.loading = false;
             state.data = [];
             state.error = 'Something went wrong. Please try again later.';

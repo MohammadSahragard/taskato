@@ -3,7 +3,7 @@
 // public
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
 //* components
 import {
@@ -34,8 +34,8 @@ import TooltipElement from '../texts/tooltip-element';
 const AddDateBtn = () => {
     const pathname = usePathname();
     // hooks and variables
-    const dispatch = useDispatch();
-    const taskDate = useSelector((state: any) => state.taskData.taskDate);
+    const dispatch = useAppDispatch();
+    const taskDate = useAppSelector((state) => state.taskData.taskDate);
     const [isOpenDatePicker, setIsOpenDatePicker] = useState(false);
 
     // functions

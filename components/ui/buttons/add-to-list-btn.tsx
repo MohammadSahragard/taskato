@@ -2,7 +2,7 @@
 
 // public
 import { usePathname } from 'next/navigation';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
 //* components
 import {
@@ -19,13 +19,11 @@ import TooltipElement from '../texts/tooltip-element';
 import { setSelectedList } from '@/redux/features/todoSlice';
 
 const AddToListBtn = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const pathname = usePathname();
     // hooks and variables
-    const taskSelectedList = useSelector(
-        (state: any) => state.taskData.taskList
-    );
-    const lists = useSelector((state: any) => state.taskLists.data);
+    const taskSelectedList = useAppSelector((state) => state.taskData.taskList);
+    const lists = useAppSelector((state) => state.taskLists.data);
 
     // conditional rendering
     if (pathname.includes('list')) return null;

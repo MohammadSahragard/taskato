@@ -2,7 +2,7 @@
 
 // public
 import { useState, useTransition, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
 //* components
 import { Button } from '@nextui-org/react';
@@ -19,11 +19,11 @@ import { loginSubmit } from '@/helper/functions/auth-functions';
 import { setClearFields } from '@/redux/features/formSlice';
 
 const LoginForm = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     // hooks, states and variables
-    const email = useSelector((state: any) => state.formValues.email);
-    const password = useSelector((state: any) => state.formValues.password);
+    const email = useAppSelector((state) => state.formValues.email);
+    const password = useAppSelector((state) => state.formValues.password);
     const [isPending, startTransition] = useTransition();
     const [showResult, setShowResult] = useState(false);
     const [resultSubmit, setResultSubmit] = useState({

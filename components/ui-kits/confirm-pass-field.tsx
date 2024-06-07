@@ -2,7 +2,7 @@
 
 // public
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
 //* components
 import { Input } from '@nextui-org/react';
@@ -13,11 +13,13 @@ import PassVisibilityBtn from '../ui/buttons/pass-visibility-btn';
 import { setConfirmPassword } from '@/redux/features/formSlice';
 
 const ConfirmPassField = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     // states
     const [passVisibility, setPassVisibility] = useState(false);
-    const password = useSelector((state: any) => state.formValues.confirmPassword);
+    const password = useAppSelector(
+        (state) => state.formValues.confirmPassword
+    );
 
     return (
         <Input

@@ -1,14 +1,14 @@
 'use client';
 
 // public
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/redux/app/hook';
 
 //* components
 import Image from 'next/image';
 
 const LogoLoading = () => {
     // states and variables
-    const isPreloading = useSelector((state: any) => state.options.userLoading);
+    const isPreloading = useAppSelector((state) => state.options.userLoading);
     const conditionClass = isPreloading ? '' : '!hidden';
 
     return (

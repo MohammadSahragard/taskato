@@ -3,7 +3,7 @@
 // public
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
 //* components
 import { Button, useDisclosure } from '@nextui-org/react';
@@ -15,10 +15,10 @@ import RenameListModal from '../modals/rename-list-modal';
 
 const TaskList = ({ id, href, label, listColor }: TaskListTypes) => {
     const pathname = usePathname();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     // states and variables
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
-    const tasks = useSelector((state: any) => state.tasks.data);
+    const tasks = useAppSelector((state) => state.tasks.data);
     const listCounter = tasks.filter(
         (task: any) => task.task_list.list_title === label
     );

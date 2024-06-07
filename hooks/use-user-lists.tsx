@@ -2,17 +2,17 @@
 
 // public
 import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
 //* redux
 import { getListsByEmail } from '@/redux/features/taskListsSlice';
 
 const useUserLists = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     // states and variables
-    const userEmail = useSelector((state: any) => state.options.userEmail);
-    const taskLists = useSelector((state: any) => state.taskLists);
-    
+    const userEmail = useAppSelector((state) => state.options.userEmail);
+    const taskLists = useAppSelector((state) => state.taskLists);
+
     useEffect(() => {
         if (userEmail) {
             dispatch(getListsByEmail(userEmail));

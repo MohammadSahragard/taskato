@@ -1,7 +1,7 @@
 'use client';
 
 // public
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
 //* components
 import { Input } from '@nextui-org/react';
@@ -10,11 +10,9 @@ import { Input } from '@nextui-org/react';
 import { setTaskTitle } from '@/redux/features/selectedTaskSlice';
 
 const TaskDetailsTaskTitle = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     // states and variables
-    const taskTitle = useSelector(
-        (state: any) => state.selectedTask.task_title
-    );
+    const taskTitle = useAppSelector((state) => state.selectedTask.task_title);
 
     return (
         <Input

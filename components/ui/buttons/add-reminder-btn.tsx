@@ -2,7 +2,7 @@
 
 // public
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
 //* components
 import {
@@ -41,10 +41,8 @@ type saveReminderType = {
 
 const AddReminderBtn = () => {
     // hooks and variables
-    const dispatch = useDispatch();
-    const taskReminder = useSelector(
-        (state: any) => state.taskData.taskReminder
-    );
+    const dispatch = useAppDispatch();
+    const taskReminder = useAppSelector((state) => state.taskData.taskReminder);
     const [isOpenPicker, setIsOpenPicker] = useState(false);
 
     // functions

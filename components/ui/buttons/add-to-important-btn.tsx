@@ -2,7 +2,7 @@
 
 // public
 import { TransitionStartFunction, useTransition } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
 //* components
 import { Button } from '@nextui-org/react';
@@ -21,9 +21,9 @@ const AddToImportantBtn = ({
     isPending: boolean;
     startTransition: TransitionStartFunction;
 }) => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     // states and variables
-    const userEmail = useSelector((state: any) => state.options.userEmail);
+    const userEmail = useAppSelector((state) => state.options.userEmail);
     const iconStyle = isImportant ? 'fas' : 'far';
     const tooltipContent = isImportant
         ? 'Remove from Important'

@@ -1,7 +1,7 @@
 'use client';
 
 // public
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/redux/app/hook';
 
 //* components
 import TaskList from './task-list';
@@ -12,7 +12,7 @@ import { convertTitleToPathname } from '@/helper/functions/functions';
 
 const TaskListCon = () => {
     // states and variables
-    const lists = useSelector((state: any) => state.taskLists);
+    const lists = useAppSelector((state) => state.taskLists);
 
     if ((lists.beforeLoading || lists.loading) && !lists.data.length)
         return <ListLoadingSkeleton />;
