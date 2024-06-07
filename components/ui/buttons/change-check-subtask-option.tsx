@@ -11,8 +11,8 @@ const ChangeCheckSubtaskOption = ({
     isCompleted,
     changeCheck,
 }: {
-    isCompleted: boolean;
-    changeCheck: MouseEventHandler;
+    isCompleted?: boolean;
+    changeCheck?: MouseEventHandler;
 }) => {
     // states and variables
     const changeCheckTitle = isCompleted

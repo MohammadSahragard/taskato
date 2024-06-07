@@ -4,7 +4,7 @@
 import { Chip } from '@nextui-org/react';
 import Icon from '../texts/icon';
 
-const RenameListOption = ({ onOpen }: { onOpen: () => void }) => {
+const RenameListOption = ({ onOpen }: { onOpen?: () => void }) => {
     return (
         <Chip
             className='context-menu-options'
