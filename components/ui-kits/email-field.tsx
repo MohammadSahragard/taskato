@@ -15,6 +15,7 @@ const EmailField = ({ validation }: { validation: boolean }) => {
 
     // hooks and variables
     const email = useAppSelector((state) => state.formValues.email);
+    const isInvalid = validation && email ? true : false;
 
     return (
         <Input
@@ -23,11 +24,9 @@ const EmailField = ({ validation }: { validation: boolean }) => {
             value={email}
             onChange={({ target }) => dispatch(setEmail(target.value))}
             isRequired
-            isInvalid={validation && email}
+            isInvalid={isInvalid}
             errorMessage={
-                validation && email
-                    ? 'Please enter a valid email address'
-                    : null
+                isInvalid ? 'Please enter a valid email address' : null
             }
         />
     );

@@ -18,6 +18,7 @@ const PassField = ({ validation }: { validation: boolean }) => {
     // states
     const [passVisibility, setPassVisibility] = useState(false);
     const password = useAppSelector((state) => state.formValues.password);
+    const isInvalid = validation && password ? true : false;
 
     return (
         <Input
@@ -33,11 +34,21 @@ const PassField = ({ validation }: { validation: boolean }) => {
                     setVisibility={setPassVisibility}
                 />
             }
-            isInvalid={validation && password}
+            isInvalid={isInvalid}
             errorMessage={
-                validation && password
-                    ? 'Password must be at least 8 characters and include a mix of uppercase letters, lowercase letters, numbers, and one special symbol among @#$%.'
-                    : null
+                isInvalid ? (
+                    <div>
+                        <p>Password must be:</p>
+                        <ul className='list-disc ps-5'>
+                            <li>t least 8 characters</li>
+                            <li>
+                                include a mix of uppercase letters, lowercase
+                                letters, and numbers
+                            </li>
+                            <li>and one special symbol among @#$%.</li>
+                        </ul>
+                    </div>
+                ) : null
             }
         />
     );
