@@ -2,7 +2,7 @@
 
 // public
 import { useTransition } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
 //* components
 import { Button } from '@nextui-org/react';
@@ -17,9 +17,9 @@ import { toast } from 'react-toastify';
 import { getTasksByEmail } from '@/redux/features/tasksSlice';
 
 const TaskDetailsSaveBtn = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     // states and variables
-    const taskData = useSelector((state: any) => state.selectedTask);
+    const taskData = useAppSelector((state) => state.selectedTask);
     const [isPending, startTransition] = useTransition();
 
     // submit data

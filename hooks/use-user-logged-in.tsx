@@ -3,7 +3,7 @@
 // public
 import { useState, useEffect, useTransition } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '@/redux/app/hook';
 
 //* functions
 import { isUserLoggedIn } from '@/helper/functions/auth-functions';
@@ -16,7 +16,7 @@ import {
 } from '@/redux/features/optionsSlice';
 
 export const useUserLoggedIn = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const [isPending, startTransition] = useTransition();
     const [user, setUser] = useState<any>();
     const router = useRouter();

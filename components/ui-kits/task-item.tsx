@@ -2,7 +2,7 @@
 
 // public
 import { useTransition } from 'react';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '@/redux/app/hook';
 
 //* components
 import Divider from '../ui/texts/divider';
@@ -21,7 +21,7 @@ import {
 } from '@/helper/functions/functions';
 
 const TaskItem = ({ taskData }: { taskData: any }) => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     // state and variables
     const [completionPending, completionTransition] = useTransition();
     const [importantPending, importantTransition] = useTransition();

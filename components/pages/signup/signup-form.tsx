@@ -2,7 +2,7 @@
 
 // public
 import { useEffect, useState, useTransition } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 import { useRouter } from 'next/navigation';
 
 //* components
@@ -20,18 +20,18 @@ import { signupSubmit } from '@/helper/functions/auth-functions';
 import { setClearFields } from '@/redux/features/formSlice';
 
 const SignupForm = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const router = useRouter();
 
     // hooks, states and variables
-    const firstName = useSelector((state: any) => state.formValues.firstName);
-    const lastName = useSelector((state: any) => state.formValues.lastName);
-    const email = useSelector((state: any) => state.formValues.email);
-    const password: string = useSelector(
-        (state: any) => state.formValues.password
+    const firstName = useAppSelector((state) => state.formValues.firstName);
+    const lastName = useAppSelector((state) => state.formValues.lastName);
+    const email = useAppSelector((state) => state.formValues.email);
+    const password: string = useAppSelector(
+        (state) => state.formValues.password
     );
-    const confirmPassword = useSelector(
-        (state: any) => state.formValues.confirmPassword
+    const confirmPassword = useAppSelector(
+        (state) => state.formValues.confirmPassword
     );
     const [isPending, startTransition] = useTransition();
     const [showResult, setShowResult] = useState(false);

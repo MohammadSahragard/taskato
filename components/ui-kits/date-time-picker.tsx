@@ -2,7 +2,7 @@
 
 // public
 import { useState, useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '@/redux/app/hook';
 
 //* components
 import Calendar from './calendar';
@@ -18,7 +18,11 @@ import { setTaskReminder } from '@/redux/features/todoSlice';
 //* types
 import { TaskReminderTypes } from '@/types/types';
 
-const DateTimePicker = ({ taskReminder }: { taskReminder: TaskReminderTypes }) => {
+const DateTimePicker = ({
+    taskReminder,
+}: {
+    taskReminder: TaskReminderTypes;
+}) => {
     // refs
     const selectedHour = useRef<HTMLButtonElement | null>(null);
     const selectedMinute = useRef<HTMLButtonElement | null>(null);
@@ -28,7 +32,7 @@ const DateTimePicker = ({ taskReminder }: { taskReminder: TaskReminderTypes }) =
     const [minutes, setMinutes] = useState<number[]>([]);
 
     // states and variables
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const hour = 'hour';
     const minute = 'minute';
     const [mounted, setMounted] = useState(false);

@@ -1,7 +1,7 @@
 'use client';
 
 // public
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
 //* components
 import { Chip } from '@nextui-org/react';
@@ -20,9 +20,9 @@ const ChangeCheckTaskOption = ({
     isCompleted: boolean;
     completionTransition: TransitionStartFunction;
 }) => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     // states and variables
-    const userEmail = useSelector((state: any) => state.options.userEmail);
+    const userEmail = useAppSelector((state) => state.options.userEmail);
     const changeCheckTitle = isCompleted
         ? 'Mark as not completed'
         : 'Mark as completed';

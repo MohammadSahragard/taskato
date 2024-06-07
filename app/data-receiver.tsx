@@ -3,7 +3,7 @@
 // public
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
 //* hooks
 import useUserLists from '@/hooks/use-user-lists';
@@ -16,7 +16,7 @@ import { setIsOpenedMobileMenu } from '@/redux/features/optionsSlice';
 
 const DataReceiver = ({ children }: { children: React.ReactNode }) => {
     const pathname = usePathname();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     // data receiver hooks
     const tasks = useUserTasks();
     const notes = useUserNotes();
@@ -24,19 +24,22 @@ const DataReceiver = ({ children }: { children: React.ReactNode }) => {
     const getUser = useUserLoggedIn();
 
     // states and variables
-    const options = useSelector((state: any) => state.options);
-    const pathnameAssessment = pathname.includes('auth');
-    const isOpenedDetailsSidebar = useSelector(
-        (state: any) => state.options.isOpenedDetailsSidebar
+    const options = useAppSelector((state) => state.options);
+    const authPageAssessment = pathname.includes('auth');
+    const stickyNotesAssessment =
+        !pathname.includes('list') && pathname.includes('sticky-notes');
+    const isOpenedDetailsSidebar = useAppSelector(
+        (state) => state.options.isOpenedDetailsSidebar
     );
 
     // condition classes
     const preloading = options.userLoading ? 'preloading' : '';
-    const authPage = pathnameAssessment ? 'auth-page' : '';
+    const authPage = authPageAssessment ? 'auth-page' : '';
+    const notesPage = stickyNotesAssessment ? 'notes-page' : '';
     const detailsSidebar = isOpenedDetailsSidebar
         ? 'is-opened-details-sidebar'
         : '';
-    const finallyClass = `main-container ${preloading} ${authPage} ${detailsSidebar}`;
+    const finallyClass = `main-container ${preloading} ${authPage} ${notesPage} ${detailsSidebar}`;
 
     // functions
     useEffect(() => {

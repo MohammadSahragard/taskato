@@ -3,7 +3,7 @@
 // public
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/redux/app/hook';
 
 //* components
 import { Button } from '@nextui-org/react';
@@ -19,8 +19,8 @@ import { dateToLocalDateString } from '@/helper/functions/functions';
 const MenuItem = ({ href, label, iconName }: MenuItemTypes) => {
     const pathname = usePathname();
     // states and variables
-    const tasks = useSelector((state: any) => state.tasks.data);
-    const notes = useSelector((state: any) => state.notes.data);
+    const tasks = useAppSelector((state) => state.tasks.data);
+    const notes = useAppSelector((state) => state.notes.data);
     const itemsCounter: any = {
         '/': tasks,
         '/today': tasks?.filter(

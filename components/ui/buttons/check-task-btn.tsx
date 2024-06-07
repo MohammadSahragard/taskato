@@ -2,7 +2,7 @@
 
 // public
 import { TransitionStartFunction, useTransition } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
 //* components
 import { Button } from '@nextui-org/react';
@@ -23,9 +23,9 @@ const CheckTaskBtn = ({
     isPending: boolean;
     startTransition: TransitionStartFunction;
 }) => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     // states and variables
-    const userEmail = useSelector((state: any) => state.options.userEmail);
+    const userEmail = useAppSelector((state) => state.options.userEmail);
     const iconName = isCompleted ? 'check-square' : 'square';
     const iconStyle = isCompleted ? 'fas' : 'far';
     const tooltipContent = isCompleted ? 'Incomplete task' : 'Complete task';

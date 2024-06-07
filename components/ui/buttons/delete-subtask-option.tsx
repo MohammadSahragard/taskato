@@ -1,7 +1,7 @@
 'use client';
 
 // public
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
 //* components
 import { Chip } from '@nextui-org/react';
@@ -16,9 +16,9 @@ import { updateSubtasks } from '@/redux/features/selectedTaskSlice';
 import { deleteSubtask as sendReq } from '@/helper/functions/task-functions';
 
 const DeleteSubtaskOption = ({ neededId }: { neededId: string }) => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     // states and variables
-    const userEmail = useSelector((state: any) => state.options.userEmail);
+    const userEmail = useAppSelector((state) => state.options.userEmail);
 
     // functions
     const deleteSubtask = async () => {

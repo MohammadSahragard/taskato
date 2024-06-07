@@ -2,7 +2,7 @@
 
 // public
 import { useRef, useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/redux/app/hook';
 
 //* components
 import AddStickyNoteBtn from '../ui/buttons/add-sticky-note-btn';
@@ -17,7 +17,7 @@ const StickyNotesCon = () => {
 
     // states and variables
     const [columns, setColumns] = useState(0);
-    const notes = useSelector((state: any) => state.notes);
+    const notes = useAppSelector((state) => state.notes);
 
     // functions
     const getColumn = () => {

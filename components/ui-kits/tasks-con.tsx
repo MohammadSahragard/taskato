@@ -1,7 +1,7 @@
 'use client';
 
 // public
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/redux/app/hook';
 
 //* components
 import Subtitle from '../ui/texts/subtitle';
@@ -15,7 +15,7 @@ import { getTasksByPathname } from '@/helper/functions/task-functions';
 
 const TasksCon = ({ pathname }: { pathname: string }) => {
     // states and variables
-    const tasks = useSelector((state: any) => state.tasks);
+    const tasks = useAppSelector((state) => state.tasks);
     const matchTasks = getTasksByPathname(tasks?.data ?? [], pathname);
     const taskDone = matchTasks?.find((task: any) => task.task_completion);
 

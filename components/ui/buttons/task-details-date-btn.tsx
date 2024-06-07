@@ -2,7 +2,7 @@
 
 // public
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
 //* components
 import {
@@ -31,9 +31,9 @@ import {
 import { setTaskDueDate } from '@/redux/features/selectedTaskSlice';
 
 const TaskDetailsDateBtn = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     // hooks and variables
-    const date = useSelector((state: any) => state.selectedTask.task_due_date);
+    const date = useAppSelector((state) => state.selectedTask.task_due_date);
     const [isOpenDatePicker, setIsOpenDatePicker] = useState(false);
 
     // functions

@@ -2,7 +2,7 @@
 
 // public
 import { useState, useTransition } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
 //* components
 import {
@@ -30,10 +30,10 @@ const RenameListModal = ({
     isOpen: boolean;
     onOpenChange: (isOpen: boolean) => void;
 }) => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     // states and variables
-    const userEmail = useSelector((state: any) => state.options.userEmail);
-    const listData = useSelector((state: any) => state.contextMenu);
+    const userEmail = useAppSelector((state) => state.options.userEmail);
+    const listData = useAppSelector((state) => state.contextMenu);
     const [newListTitle, setNewListTitle] = useState<any>(listData.listTitle);
     const [isPending, startTransition] = useTransition();
     const isInvalid = !/^[\w\d-\s]+$/.test(newListTitle);

@@ -1,7 +1,7 @@
 'use client';
 
 // public
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 import { useState } from 'react';
 
 //* components
@@ -40,10 +40,10 @@ type saveReminderType = {
 import { setTaskReminderDate } from '@/redux/features/selectedTaskSlice';
 
 const TaskDetailsReminderBtn = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     // hooks and variables
-    const reminder = useSelector(
-        (state: any) => state.selectedTask.task_reminder_date
+    const reminder = useAppSelector(
+        (state) => state.selectedTask.task_reminder_date
     );
     const [isOpenPicker, setIsOpenPicker] = useState(false);
 

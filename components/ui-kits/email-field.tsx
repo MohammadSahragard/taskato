@@ -1,7 +1,7 @@
 'use client';
 
 // public
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
 //* components
 import { Input } from '@nextui-org/react';
@@ -11,10 +11,10 @@ import Icon from '../ui/texts/icon';
 import { setEmail } from '@/redux/features/formSlice';
 
 const EmailField = ({ validation }: { validation: boolean }) => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     // hooks and variables
-    const email = useSelector((state: any) => state.formValues.email);
+    const email = useAppSelector((state) => state.formValues.email);
 
     return (
         <Input
@@ -25,7 +25,9 @@ const EmailField = ({ validation }: { validation: boolean }) => {
             isRequired
             isInvalid={validation && email}
             errorMessage={
-                validation && email ? 'Please enter a valid email address' : null
+                validation && email
+                    ? 'Please enter a valid email address'
+                    : null
             }
         />
     );
