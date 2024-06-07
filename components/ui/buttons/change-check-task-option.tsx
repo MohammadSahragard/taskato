@@ -17,8 +17,8 @@ const ChangeCheckTaskOption = ({
     completionTransition,
 }: {
     neededId: string;
-    isCompleted: boolean;
-    completionTransition: TransitionStartFunction;
+    isCompleted?: boolean;
+    completionTransition?: TransitionStartFunction;
 }) => {
     const dispatch = useAppDispatch();
     // states and variables
@@ -53,7 +53,7 @@ const ChangeCheckTaskOption = ({
         <Chip
             className='context-menu-options'
             startContent={<Icon iconName={changeCheckIcon} />}
-            onClick={() => completionTransition(() => changeCheck())}
+            onClick={() => completionTransition?.(() => changeCheck())}
         >
             {changeCheckTitle}
         </Chip>

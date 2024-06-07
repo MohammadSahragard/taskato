@@ -39,6 +39,9 @@ body {
 .main-section {
     @apply fixed inset-0 md:inset-[0_0_0_300px] bg-background px-5 py-[80px] transition-all overflow-auto;
 }
+.notes-page .main-section {
+    @apply pb-0;
+}
 
 /** add task bar section */
 .task-bar-con {
@@ -52,6 +55,9 @@ body {
 .task-details {
     @apply fixed inset-[20px_20px_20px_calc(100%-300px)] 
             hidden lg:block translate-x-[150%] transition-all;
+}
+.is-opened-details-sidebar .task-details {
+    @apply translate-x-0;
 }
 .task-details-components {
     @apply h-full w-full bg-primary-100 p-3 rounded-xl 
@@ -74,22 +80,14 @@ body {
 }
 
 /****** conditional classes */
-/* menu container */
-.auth-page .menu-container {
+/* auth page styles & notes page styles */
+.auth-page :is(.menu-container, .main-header, .task-details),
+.notes-page :is(.task-details, .task-bar-con) {
     @apply hidden;
 }
-
-/* main header */
-.auth-page .main-header {
-    @apply hidden;
-}
-
-/* task details bar */
-.is-opened-details-sidebar .task-details {
-    @apply translate-x-0;
-}
-.auth-page .task-details {
-    @apply hidden;
+.auth-page :is(.main-header, .main-section, .task-bar-con),
+.notes-page :is(.main-header, .main-section, .task-bar-con) {
+    @apply lg:!right-0;
 }
 
 /* sidebar toggle styles (task details & menu) */

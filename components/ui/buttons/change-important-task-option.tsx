@@ -18,7 +18,7 @@ const ChangeImportantTaskOption = ({
 }: {
     neededId: string;
     isImportant?: boolean;
-    importantTransition: TransitionStartFunction;
+    importantTransition?: TransitionStartFunction;
 }) => {
     const dispatch = useAppDispatch();
     // states and variables
@@ -58,7 +58,7 @@ const ChangeImportantTaskOption = ({
                     style={changeImportantIcon}
                 />
             }
-            onClick={() => importantTransition(() => changeImportant())}
+            onClick={() => importantTransition?.(() => changeImportant())}
         >
             {changeImportantTitle}
         </Chip>

@@ -200,7 +200,7 @@ export type ItemDataTypes = {
     id: string;
     isCompleted?: boolean;
     isImportant?: boolean;
-    checkHandler?: Function;
+    checkHandler?: MouseEventHandler;
     onOpen?: () => void;
     completionTransition?: TransitionStartFunction;
     importantTransition?: TransitionStartFunction;
