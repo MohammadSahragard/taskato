@@ -14,8 +14,8 @@ const SubtasksCon = () => {
     return (
         <div className='relative min-h-28'>
             <ScrollShadow className='absolute inset-0 inset-y-1 overflow-auto'>
-                {subtasks.length
-                    ? subtasks.map((subtask: any) => (
+                {subtasks?.length
+                    ? subtasks?.map((subtask: any) => (
                         <SubtaskItem
                             key={subtask._id}
                             _id={subtask._id}
