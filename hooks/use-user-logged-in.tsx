@@ -1,7 +1,7 @@
 'use client';
 
 // public
-import { useState, useEffect, useTransition } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useAppDispatch } from '@/redux/app/hook';
 
@@ -17,7 +17,6 @@ import {
 
 export const useUserLoggedIn = () => {
     const dispatch = useAppDispatch();
-    const [isPending, startTransition] = useTransition();
     const [user, setUser] = useState<any>();
     const router = useRouter();
     const pathname = usePathname();
@@ -31,20 +30,16 @@ export const useUserLoggedIn = () => {
                 setUser(user);
                 dispatch(setUserEmail(user?.message?.email ?? ''));
                 dispatch(setUserName(user?.message?.name ?? ''));
+                dispatch(setUserLoading());
             } else {
                 setUser(false);
             }
             isUserLoggedIn({ condition, pathname, router });
         };
 
-        startTransition(() => getUser());
+        getUser();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
-    useEffect(() => {
-        dispatch(setUserLoading());
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isPending]);
 
     return user;
 };

@@ -36,7 +36,7 @@ const TaskDetailsDeleteBtn = () => {
 
         if (data.status === 200) {
             dispatch(setIsOpenedDetailsSidebar(false));
-            dispatch(getTasksByEmail(taskData.email));
+            dispatch(getTasksByEmail(taskData?.email ?? ''));
         }
     };
 
