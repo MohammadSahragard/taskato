@@ -29,7 +29,7 @@ import {
 } from '@/helper/functions/functions';
 
 //* redux
-import { setTaskReminder, setShowReminder } from '@/redux/features/todoSlice';
+import { setTaskReminder, setShowReminder } from '@/redux/features/task-data/taskDataSlice';
 import TooltipElement from '../texts/tooltip-element';
 
 //* types
@@ -40,9 +40,9 @@ type saveReminderType = {
 };
 
 const AddReminderBtn = () => {
-    // hooks and variables
     const dispatch = useAppDispatch();
-    const taskReminder = useAppSelector((state) => state.taskData.taskReminder);
+    // hooks and variables
+    const taskReminder = useAppSelector((state) => state.taskData.task_reminder_date);
     const [isOpenPicker, setIsOpenPicker] = useState(false);
 
     // functions

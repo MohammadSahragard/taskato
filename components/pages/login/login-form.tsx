@@ -16,7 +16,7 @@ import ResultSubmit from '@/components/ui/texts/result-submit';
 import { loginSubmit } from '@/helper/functions/auth-functions';
 
 //* redux
-import { setClearFields } from '@/redux/features/formSlice';
+import { setClearFields } from '@/redux/features/form/formSlice';
 
 const LoginForm = () => {
     const dispatch = useAppDispatch();

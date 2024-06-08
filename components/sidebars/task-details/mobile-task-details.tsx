@@ -9,7 +9,7 @@ import TaskDetailsComponents from './task-details-components';
 
 //* data
 import { mobileTaskDetailsProps } from '@/helper/data/data';
-import { setIsOpenedMobileDetailsSidebar } from '@/redux/features/optionsSlice';
+import { setIsOpenedMobileDetailsSidebar } from '@/redux/features/options/optionsSlice';
 
 const MobileTaskDetails = () => {
     const dispatch = useAppDispatch();

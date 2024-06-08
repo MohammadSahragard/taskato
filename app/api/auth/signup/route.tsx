@@ -4,7 +4,7 @@ import User from '@/models/user';
 import connectDB from '@/utils/connectDB';
 import { NextResponse } from 'next/server';
 
-export const POST = async (req: any) => {
+export const POST = async (req: Request) => {
     // variables
     const { firstName, lastName, email, password, confirmPassword } =
         await req.json();

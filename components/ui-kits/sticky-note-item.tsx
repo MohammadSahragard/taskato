@@ -3,9 +3,9 @@ import { Card, CardBody } from '@nextui-org/react';
 import Title from '../ui/texts/title';
 
 //* types
-import { NoteData } from '@/types/types';
+import { NoteDataTypes } from '@/types/types';
 
-const StickyNoteItem = (props: NoteData) => {
+const StickyNoteItem = (props: NoteDataTypes) => {
     return (
         <Card
             className='sticky-note'
@@ -13,7 +13,10 @@ const StickyNoteItem = (props: NoteData) => {
             style={{ backgroundColor: props.note_color }}
         >
             <CardBody>
-                <Title title={props.note_title} additionalClasses='text-white mb-2' />
+                <Title
+                    title={props.note_title}
+                    additionalClasses='text-white mb-2'
+                />
                 <p className='text-white/70 text-sm'>{props.note_content}</p>
             </CardBody>
         </Card>

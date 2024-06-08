@@ -13,7 +13,7 @@ import Divider from '../ui/texts/divider';
 import { zeroBeforeSingle } from '@/helper/functions/functions';
 
 //* redux
-import { setTaskReminder } from '@/redux/features/todoSlice';
+import { setTaskReminder } from '@/redux/features/task-data/taskDataSlice';
 
 //* types
 import { TaskReminderTypes } from '@/types/types';

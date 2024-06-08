@@ -7,7 +7,7 @@ import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 import { Textarea } from '@nextui-org/react';
 
 //* redux
-import { setTaskDescription } from '@/redux/features/selectedTaskSlice';
+import { setTaskDescription } from '@/redux/features/selected-task/selectedTaskSlice';
 const TaskDetailsDescription = () => {
     const dispatch = useAppDispatch();
     // states and variables

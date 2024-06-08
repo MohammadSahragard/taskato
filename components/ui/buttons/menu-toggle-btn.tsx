@@ -8,7 +8,7 @@ import { Button } from '@nextui-org/react';
 import Icon from '../texts/icon';
 
 //* redux
-import { setIsOpenedMobileMenu } from '@/redux/features/optionsSlice';
+import { setIsOpenedMobileMenu } from '@/redux/features/options/optionsSlice';
 import MobileMenuContainer from '@/components/sidebars/menu/mobile-menu-container';
 
 const MenuToggleBtn = () => {

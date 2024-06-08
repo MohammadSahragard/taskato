@@ -6,7 +6,7 @@ import Icon from '../ui/texts/icon';
 
 //* redux
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
-import { setSearch } from '@/redux/features/optionsSlice';
+import { setSearch } from '@/redux/features/options/optionsSlice';
 
 const Searchbar = () => {
     const searchValue = useAppSelector((state) => state.options.searchValue);

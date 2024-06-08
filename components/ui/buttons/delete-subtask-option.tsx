@@ -9,8 +9,8 @@ import Icon from '../texts/icon';
 import { toast } from 'react-toastify';
 
 //* redux
-import { getTasksByEmail } from '@/redux/features/tasksSlice';
-import { updateSubtasks } from '@/redux/features/selectedTaskSlice';
+import { getTasksByEmail } from '@/redux/features/tasks/tasksSlice';
+import { updateSubtasks } from '@/redux/features/selected-task/selectedTaskSlice';
 
 //* functions
 import { deleteSubtask as sendReq } from '@/helper/functions/task-functions';

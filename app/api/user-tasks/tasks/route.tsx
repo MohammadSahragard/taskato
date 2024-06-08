@@ -3,7 +3,7 @@ import Task from '@/models/task';
 import connectDB from '@/utils/connectDB';
 import { NextResponse } from 'next/server';
 
-export const POST = async (req: any) => {
+export const POST = async (req: Request) => {
     // variables
     const { email } = await req.json();
 

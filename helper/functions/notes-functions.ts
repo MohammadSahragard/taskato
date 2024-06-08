@@ -1,7 +1,7 @@
-import { NoteTypes } from '@/types/types';
+import { NoteDataTypes } from '@/types/types';
 
 //* add task
-export const addNote = async (taskData: NoteTypes, userEmail: string) => {
+export const addNote = async (taskData: NoteDataTypes, userEmail: string) => {
     // data
     const { note_title, note_content, note_color } = taskData;
 

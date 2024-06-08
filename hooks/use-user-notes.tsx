@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
 //* redux
-import { getNotesByEmail } from '@/redux/features/notesSlice';
+import { getNotesByEmail } from '@/redux/features/notes/notesSlice';
 
 const useUserNotes = () => {
     const dispatch = useAppDispatch();

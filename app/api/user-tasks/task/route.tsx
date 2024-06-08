@@ -46,7 +46,7 @@ export const POST = async (req: Request) => {
 };
 
 //* update task
-export const PUT = async (req: any) => {
+export const PUT = async (req: Request) => {
     // variables
     const { _id, reqData } = await req.json();
 
@@ -94,7 +94,7 @@ export const PUT = async (req: any) => {
 };
 
 //* delete task
-export const DELETE = async (req: any) => {
+export const DELETE = async (req: Request) => {
     // variables
     const { _id } = await req.json();
 

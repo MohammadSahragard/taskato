@@ -1,6 +1,3 @@
-// public
-import { ReactNode } from 'react';
-
 //* components
 import { Tooltip } from '@nextui-org/react';
 
@@ -9,7 +6,7 @@ const TooltipElement = ({
     children,
 }: {
     title: string;
-    children: ReactNode;
+    children: React.ReactNode;
 }) => {
     return (
         <Tooltip

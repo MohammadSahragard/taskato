@@ -28,7 +28,7 @@ import {
 } from '@/helper/functions/functions';
 
 //* redux
-import { setTaskDueDate } from '@/redux/features/selectedTaskSlice';
+import { setTaskDueDate } from '@/redux/features/selected-task/selectedTaskSlice';
 
 const TaskDetailsDateBtn = () => {
     const dispatch = useAppDispatch();

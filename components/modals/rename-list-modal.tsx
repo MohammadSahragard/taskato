@@ -1,7 +1,7 @@
 'use client';
 
 // public
-import { useState, useTransition } from 'react';
+import { useState, useEffect, useTransition } from 'react';
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
 //* components
@@ -17,8 +17,8 @@ import {
 import { toast } from 'react-toastify';
 
 //* redux
-import { getListsByEmail } from '@/redux/features/taskListsSlice';
-import { getTasksByEmail } from '@/redux/features/tasksSlice';
+import { getListsByEmail } from '@/redux/features/lists/listsSlice';
+import { getTasksByEmail } from '@/redux/features/tasks/tasksSlice';
 
 //* functions
 import { renameTaskList } from '@/helper/functions/task-functions';
@@ -34,9 +34,9 @@ const RenameListModal = ({
     // states and variables
     const userEmail = useAppSelector((state) => state.options.userEmail);
     const listData = useAppSelector((state) => state.contextMenu.itemData);
-    const [newListTitle, setNewListTitle] = useState<any>(listData.listTitle);
+    const [newListTitle, setNewListTitle] = useState('');
     const [isPending, startTransition] = useTransition();
-    const isInvalid = !/^[\w\d-\s]+$/.test(newListTitle);
+    const isInvalid = !/^[\w\d-\s]+$/.test(newListTitle ?? '');
 
     // functions
     const openModal = () => {
@@ -44,11 +44,15 @@ const RenameListModal = ({
         onOpenChange(isOpen);
     };
 
+    useEffect(() => {
+        setNewListTitle(listData?.listTitle ?? '');
+    }, [listData.listTitle]);
+
     const submitList = async (event: any) => {
         event.preventDefault();
         if (isInvalid) return;
 
-        await renameTaskList(listData.id, listData.listTitle ?? '').then(
+        await renameTaskList(userEmail, listData.id, newListTitle).then(
             (res: any) => {
                 // set result message to toastify
                 const messageStatus = res.status === 200 ? 'success' : 'error';

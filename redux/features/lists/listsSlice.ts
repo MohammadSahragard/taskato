@@ -1,8 +1,11 @@
 // public
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+// types
+import { GetDataTypes } from '@/types/types';
+
 //* initial state
-const initialState = {
+const initialState: GetDataTypes = {
     beforeLoading: true,
     loading: false,
     data: [],
@@ -10,10 +13,10 @@ const initialState = {
 };
 
 //* async functions
-const getTasksByEmail: any = createAsyncThunk(
-    'tasks/getTasksByEmail',
+const getListsByEmail = createAsyncThunk(
+    'lists/getListsByEmail',
     async (email: string) => {
-        const res = await fetch('/api/user-tasks/tasks', {
+        const res = await fetch('/api/task-lists/lists', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -26,25 +29,25 @@ const getTasksByEmail: any = createAsyncThunk(
 );
 
 //* reducer
-const tasksSlice = createSlice({
-    name: 'tasks',
+const listsSlice = createSlice({
+    name: 'taskLists',
     initialState,
     reducers: {},
     extraReducers: (builder: any) => {
-        builder.addCase(getTasksByEmail.pending, (state) => {
+        builder.addCase(getListsByEmail.pending, (state: GetDataTypes) => {
             state.loading = true;
             state.beforeLoading = false;
         });
         builder.addCase(
-            getTasksByEmail.fulfilled,
-            (state: any, action: any) => {
+            getListsByEmail.fulfilled,
+            (state: GetDataTypes, action: any) => {
                 state.beforeLoading = false;
                 state.loading = false;
                 state.data = action.payload;
                 state.error = '';
             }
         );
-        builder.addCase(getTasksByEmail.rejected, (state) => {
+        builder.addCase(getListsByEmail.rejected, (state: GetDataTypes) => {
             state.beforeLoading = false;
             state.loading = false;
             state.data = [];
@@ -53,5 +56,5 @@ const tasksSlice = createSlice({
     },
 });
 
-export default tasksSlice.reducer;
-export { getTasksByEmail };
+export default listsSlice.reducer;
+export { getListsByEmail };

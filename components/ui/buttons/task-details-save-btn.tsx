@@ -14,7 +14,7 @@ import { updateTask } from '@/helper/functions/task-functions';
 import { toast } from 'react-toastify';
 
 //* redux
-import { getTasksByEmail } from '@/redux/features/tasksSlice';
+import { getTasksByEmail } from '@/redux/features/tasks/tasksSlice';
 
 const TaskDetailsSaveBtn = () => {
     const dispatch = useAppDispatch();

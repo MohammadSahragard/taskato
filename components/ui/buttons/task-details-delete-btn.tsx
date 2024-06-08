@@ -11,8 +11,8 @@ import { Button } from '@nextui-org/react';
 import { toast } from 'react-toastify';
 
 //* redux
-import { getTasksByEmail } from '@/redux/features/tasksSlice';
-import { setIsOpenedDetailsSidebar } from '@/redux/features/optionsSlice';
+import { getTasksByEmail } from '@/redux/features/tasks/tasksSlice';
+import { setIsOpenedDetailsSidebar } from '@/redux/features/options/optionsSlice';
 
 const TaskDetailsDeleteBtn = () => {
     const dispatch = useAppDispatch();

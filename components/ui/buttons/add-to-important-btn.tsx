@@ -1,14 +1,14 @@
 'use client';
 
 // public
-import { TransitionStartFunction, useTransition } from 'react';
+import { TransitionStartFunction } from 'react';
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
 //* components
 import { Button } from '@nextui-org/react';
 import Icon from '../texts/icon';
 import TooltipElement from '../texts/tooltip-element';
-import { getTasksByEmail } from '@/redux/features/tasksSlice';
+import { getTasksByEmail } from '@/redux/features/tasks/tasksSlice';
 
 const AddToImportantBtn = ({
     isImportant,

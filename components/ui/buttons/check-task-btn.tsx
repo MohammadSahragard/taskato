@@ -1,7 +1,7 @@
 'use client';
 
 // public
-import { TransitionStartFunction, useTransition } from 'react';
+import { TransitionStartFunction } from 'react';
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
 //* components
@@ -10,7 +10,7 @@ import Icon from '../texts/icon';
 import TooltipElement from '../texts/tooltip-element';
 
 //* redux
-import { getTasksByEmail } from '@/redux/features/tasksSlice';
+import { getTasksByEmail } from '@/redux/features/tasks/tasksSlice';
 
 const CheckTaskBtn = ({
     isCompleted,

@@ -8,7 +8,7 @@ import { Input } from '@nextui-org/react';
 import Icon from '../ui/texts/icon';
 
 //* redux
-import { setEmail } from '@/redux/features/formSlice';
+import { setEmail } from '@/redux/features/form/formSlice';
 
 const EmailField = ({ validation }: { validation: boolean }) => {
     const dispatch = useAppDispatch();

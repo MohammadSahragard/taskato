@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
 //* redux
-import { getTasksByEmail } from '@/redux/features/tasksSlice';
+import { getTasksByEmail } from '@/redux/features/tasks/tasksSlice';
 
 const useUserTasks = () => {
     const dispatch = useAppDispatch();

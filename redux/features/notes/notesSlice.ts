@@ -1,19 +1,21 @@
 // public
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+// types
+import { GetDataTypes } from '@/types/types';
+
 //* initial state
-const initialState = {
-    beforeLoading: true,
+const initialState: GetDataTypes = {
     loading: false,
     data: [],
     error: '',
 };
 
 //* async functions
-const getListsByEmail: any = createAsyncThunk(
-    'lists/getListsByEmail',
+const getNotesByEmail: any = createAsyncThunk(
+    'notes/getNotesByEmail',
     async (email: string) => {
-        const res = await fetch('/api/task-lists/lists', {
+        const res = await fetch('/api/sticky-notes/notes', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -26,26 +28,23 @@ const getListsByEmail: any = createAsyncThunk(
 );
 
 //* reducer
-const taskListsSlice = createSlice({
-    name: 'taskLists',
+const notesSlice = createSlice({
+    name: 'notes',
     initialState,
     reducers: {},
     extraReducers: (builder: any) => {
-        builder.addCase(getListsByEmail.pending, (state) => {
+        builder.addCase(getNotesByEmail.pending, (state: GetDataTypes) => {
             state.loading = true;
-            state.beforeLoading = false;
         });
         builder.addCase(
-            getListsByEmail.fulfilled,
+            getNotesByEmail.fulfilled,
             (state: any, action: any) => {
-                state.beforeLoading = false;
                 state.loading = false;
                 state.data = action.payload;
                 state.error = '';
             }
         );
-        builder.addCase(getListsByEmail.rejected, (state) => {
-            state.beforeLoading = false;
+        builder.addCase(getNotesByEmail.rejected, (state: GetDataTypes) => {
             state.loading = false;
             state.data = [];
             state.error = 'Something went wrong. Please try again later.';
@@ -53,5 +52,5 @@ const taskListsSlice = createSlice({
     },
 });
 
-export default taskListsSlice.reducer;
-export { getListsByEmail };
+export default notesSlice.reducer;
+export { getNotesByEmail };

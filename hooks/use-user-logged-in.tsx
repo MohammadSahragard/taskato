@@ -13,7 +13,7 @@ import {
     setUserEmail,
     setUserLoading,
     setUserName,
-} from '@/redux/features/optionsSlice';
+} from '@/redux/features/options/optionsSlice';
 
 export const useUserLoggedIn = () => {
     const dispatch = useAppDispatch();

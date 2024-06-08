@@ -26,7 +26,7 @@ import { listColorItems } from '@/helper/data/data';
 import { addNote } from '@/helper/functions/notes-functions';
 
 //* redux
-import { getNotesByEmail } from '@/redux/features/notesSlice';
+import { getNotesByEmail } from '@/redux/features/notes/notesSlice';
 
 const AddStickyNoteModal = ({
     isOpen,

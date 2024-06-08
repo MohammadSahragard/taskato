@@ -37,7 +37,7 @@ type saveReminderType = {
 };
 
 //* redux
-import { setTaskReminderDate } from '@/redux/features/selectedTaskSlice';
+import { setTaskReminderDate } from '@/redux/features/selected-task/selectedTaskSlice';
 
 const TaskDetailsReminderBtn = () => {
     const dispatch = useAppDispatch();

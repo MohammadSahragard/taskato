@@ -5,7 +5,7 @@ import connectDB from '@/utils/connectDB';
 import { NextResponse } from 'next/server';
 import { verifyToken } from '@/helper/functions/auth-functions';
 
-export const GET = async (req: any) => {
+export const GET = async (req: Request) => {
     // variables
     const cookiesStore = cookies();
     const token: any = cookiesStore.get('token')?.value;

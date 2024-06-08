@@ -1,16 +1,16 @@
 // public
 import { createSlice } from '@reduxjs/toolkit';
 
-//* types
-import { selectedTaskTypes } from '@/types/types';
+// types
+import { TaskContentTypes } from '@/types/types';
 
 //* initial state
-const initialState: selectedTaskTypes = {
+const initialState: TaskContentTypes = {
     _id: '',
     email: '',
     task_title: '',
     task_description: '',
-    task_due_date: null,
+    task_due_date: undefined,
     task_list: {
         list_title: '',
         list_color: '',
@@ -20,13 +20,13 @@ const initialState: selectedTaskTypes = {
             hour: 0,
             minute: 0,
         },
-        date: null,
+        date: undefined,
         isTrueReminder: false,
     },
     subtasks: [],
     task_complete: false,
     is_in_important: false,
-    createdAt: null,
+    createdAt: undefined,
 };
 
 //* reducer
@@ -89,9 +89,6 @@ const selectedTaskSlice = createSlice({
         updateSubtasks: (state, action) => {
             state.subtasks = action.payload;
         },
-        setTaskComplete: (state, action) => {
-            state.task_complete = action.payload;
-        },
     },
 });
 
@@ -103,6 +100,5 @@ export const {
     setTaskSelectedList,
     setTaskReminderDate,
     updateSubtasks,
-    setTaskComplete,
 } = selectedTaskSlice.actions;
 export default selectedTaskSlice.reducer;

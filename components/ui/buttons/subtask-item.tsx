@@ -9,8 +9,8 @@ import { Button } from '@nextui-org/react';
 import CheckSubtaskBtn from './check-subtask-btn';
 
 //* redux
-import { getTasksByEmail } from '@/redux/features/tasksSlice';
-import { updateSubtasks } from '@/redux/features/selectedTaskSlice';
+import { getTasksByEmail } from '@/redux/features/tasks/tasksSlice';
+import { updateSubtasks } from '@/redux/features/selected-task/selectedTaskSlice';
 import { setContextMenuData } from '@/helper/functions/functions';
 
 const SubtaskItem = ({

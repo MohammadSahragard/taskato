@@ -1,69 +1,65 @@
 'use client';
 
 // public
-import { TaskContent } from '@/types/types';
+import { TaskContentTypes } from '@/types/types';
 
 //* types
 import { createSlice } from '@reduxjs/toolkit';
 
 //* initial state
-const initialState: TaskContent = {
-    taskTitle: '',
-    taskDescription: '',
-    taskList: {
+const initialState: TaskContentTypes = {
+    task_title: '',
+    task_description: '',
+    task_list: {
         list_title: '',
         list_color: '',
     },
-    taskDate: null,
-    taskReminder: {
+    task_due_date: undefined,
+    task_reminder_date: {
         time: {
             hour: new Date().getHours(),
             minute: new Date().getMinutes(),
         },
         date: new Date(),
         isTrueReminder: false,
-    },
-    taskSubtasks: [],
+    }
 };
 
 //* reducer
-const todoSlice = createSlice({
+const taskDataSlice = createSlice({
     name: 'taskData',
     initialState,
     reducers: {
         setTaskTitle: (state, action) => {
-            state.taskTitle = action.payload;
+            state.task_title = action.payload;
         },
         setTaskDescription: (state, action) => {
-            state.taskDescription = action.payload;
+            state.task_description = action.payload;
         },
         setSelectedList: (state, action) => {
-            state.taskList = {
+            state.task_list = {
                 list_title: action.payload.title,
                 list_color: action.payload.color,
             };
         },
         setTaskDate: (state, action) => {
-            state.taskDate = action.payload;
+            state.task_due_date = action.payload;
         },
         setTaskReminder: (state, action) => {
-            state.taskReminder = action.payload;
+            state.task_reminder_date = action.payload;
         },
         setShowReminder: (state, action) => {
-            state.taskReminder.isTrueReminder = action.payload;
-        },
-        setTaskSubtasks: (state, action) => {
-            state.taskSubtasks.push(action.payload);
+            state.task_reminder_date.isTrueReminder = action.payload;
         },
         setClearFields: (state) => {
-            state.taskTitle = '';
-            state.taskDescription = '';
-            state.taskList = {
+            state.task_title = '';
+            state.task_description = '';
+            state.task_list = {
                 list_title: '',
                 list_color: '',
             };
-            state.taskDate = null;
-            state.taskReminder = {
+            state.task_due_date = undefined;
+            state.task_reminder_date = {
                 time: {
                     hour: new Date().getHours(),
                     minute: new Date().getMinutes(),
@@ -71,7 +67,6 @@ const todoSlice = createSlice({
                 date: new Date(),
                 isTrueReminder: false,
             };
-            state.taskSubtasks = [];
         },
     },
 });
@@ -83,7 +78,6 @@ export const {
     setTaskDate,
     setTaskReminder,
     setShowReminder,
-    setTaskSubtasks,
     setClearFields,
-} = todoSlice.actions;
-export default todoSlice.reducer;
+} = taskDataSlice.actions;
+export default taskDataSlice.reducer;

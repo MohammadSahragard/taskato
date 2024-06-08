@@ -25,7 +25,7 @@ import { listColorItems } from '@/helper/data/data';
 import { addTaskList } from '@/helper/functions/task-functions';
 
 //* redux
-import { getListsByEmail } from '@/redux/features/taskListsSlice';
+import { getListsByEmail } from '@/redux/features/lists/listsSlice';
 
 const AddListModal = ({
     isOpen,
@@ -52,20 +52,22 @@ const AddListModal = ({
         event.preventDefault();
         if (isInvalid) return;
 
-        await addTaskList({ email: userEmail, listTitle, listColor }).then(
-            (res: any) => {
-                // set result message to toastify
-                const messageStatus = res.status === 200 ? 'success' : 'error';
-                toast[messageStatus](res.message);
+        await addTaskList({
+            email: userEmail,
+            list_title: listTitle,
+            list_color: listColor,
+        }).then((res: any) => {
+            // set result message to toastify
+            const messageStatus = res.status === 200 ? 'success' : 'error';
+            toast[messageStatus](res.message);
 
-                if (res.status === 200) {
-                    onOpenChange(!isOpen);
-                    setListTitle('Untitled list');
-                    setListColor('#e11d48');
-                    dispatch(getListsByEmail(userEmail));
-                }
+            if (res.status === 200) {
+                onOpenChange(!isOpen);
+                setListTitle('Untitled list');
+                setListColor('#e11d48');
+                dispatch(getListsByEmail(userEmail));
             }
-        );
+        });
     };
     const onEnterDown = (event: any) => {
         if (event.key === 'Enter') {
