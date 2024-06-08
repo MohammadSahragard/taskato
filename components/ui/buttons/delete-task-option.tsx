@@ -9,8 +9,8 @@ import Icon from '../texts/icon';
 import { toast } from 'react-toastify';
 
 //* redux
-import { getTasksByEmail } from '@/redux/features/tasksSlice';
-import { setIsOpenedDetailsSidebar } from '@/redux/features/optionsSlice';
+import { getTasksByEmail } from '@/redux/features/tasks/tasksSlice';
+import { setIsOpenedDetailsSidebar } from '@/redux/features/options/optionsSlice';
 
 const DeleteTaskOption = ({ neededId }: { neededId: string }) => {
     const dispatch = useAppDispatch();

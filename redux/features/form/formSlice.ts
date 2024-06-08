@@ -1,8 +1,11 @@
 // public
 import { createSlice } from '@reduxjs/toolkit';
 
+// types
+import { SignupSubmitTypes } from '@/types/types';
+
 //* initial state
-const initialState = {
+const initialState: SignupSubmitTypes = {
     firstName: '',
     lastName: '',
     email: '',

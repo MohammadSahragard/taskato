@@ -16,14 +16,14 @@ const SubtasksCon = () => {
             <ScrollShadow className='absolute inset-0 inset-y-1 overflow-auto'>
                 {subtasks.length
                     ? subtasks.map((subtask: any) => (
-                          <SubtaskItem
-                              key={subtask._id}
-                              _id={subtask._id}
-                              title={subtask.subtask_title}
-                              isCompleted={subtask.subtask_completion}
-                          />
-                      ))
-                    : null}
+                        <SubtaskItem
+                            key={subtask._id}
+                            _id={subtask._id}
+                            title={subtask.subtask_title}
+                            isCompleted={subtask.subtask_completion}
+                        />
+                    ))
+                : null}
             </ScrollShadow>
         </div>
     );

@@ -16,14 +16,16 @@ import Icon from '../texts/icon';
 import TooltipElement from '../texts/tooltip-element';
 
 //* redux
-import { setSelectedList } from '@/redux/features/todoSlice';
+import { setSelectedList } from '@/redux/features/task-data/taskDataSlice';
 
 const AddToListBtn = () => {
     const dispatch = useAppDispatch();
     const pathname = usePathname();
     // hooks and variables
-    const taskSelectedList = useAppSelector((state) => state.taskData.taskList);
-    const lists = useAppSelector((state) => state.taskLists.data);
+    const taskSelectedList = useAppSelector(
+        (state) => state.taskData.task_list
+    );
+    const lists: any = useAppSelector((state) => state.taskLists.data);
 
     // conditional rendering
     if (pathname.includes('list')) return null;
@@ -59,7 +61,7 @@ const AddToListBtn = () => {
                 variant='flat'
                 selectionMode='single'
             >
-                {lists?.length ? (
+                {lists.length ? (
                     lists?.map((list: any) => (
                         <DropdownItem
                             key={list?.list_title}

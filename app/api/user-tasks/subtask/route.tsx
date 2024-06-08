@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 import Task from '@/models/task';
 
 //* update subtask
-export const PUT = async (req: any) => {
+export const PUT = async (req: Request) => {
     // variables
     const { _id, reqData } = await req.json();
 
@@ -51,7 +51,7 @@ export const PUT = async (req: any) => {
 };
 
 //* delete subtask
-export const DELETE = async (req: any) => {
+export const DELETE = async (req: Request) => {
     // variables
     const { _id, reqData } = await req.json();
 

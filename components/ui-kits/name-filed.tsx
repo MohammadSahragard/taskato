@@ -8,7 +8,7 @@ import { Input } from '@nextui-org/react';
 import Icon from '../ui/texts/icon';
 
 //* redux
-import { setFirstName, setLastName } from '@/redux/features/formSlice';
+import { setFirstName, setLastName } from '@/redux/features/form/formSlice';
 
 const NameField = () => {
     const dispatch = useAppDispatch();

@@ -14,9 +14,9 @@ import AddTaskBtn from '../ui/buttons/add-task-btn';
 import MobileMoreTaskOPtions from '../ui/buttons/mobile-more-task-options';
 
 //* redux
-import { setTaskTitle, setClearFields } from '@/redux/features/todoSlice';
+import { setTaskTitle, setClearFields } from '@/redux/features/task-data/taskDataSlice';
 import { addTask } from '@/helper/functions/task-functions';
-import { getTasksByEmail } from '@/redux/features/tasksSlice';
+import { getTasksByEmail } from '@/redux/features/tasks/tasksSlice';
 
 //* toastify
 import { toast } from 'react-toastify';
@@ -27,7 +27,6 @@ const AddTaskBar = () => {
     const dispatch = useAppDispatch();
     const [isPending, startTransition] = useTransition();
     const userEmail = useAppSelector((state) => state.options.userEmail);
-    const taskTitle = useAppSelector((state) => state.taskData.taskTitle);
     const taskData = useAppSelector((state) => state.taskData);
     const lists = useAppSelector((state) => state.taskLists.data);
 
@@ -52,7 +51,7 @@ const AddTaskBar = () => {
                 size='lg'
                 variant='bordered'
                 placeholder='Type here'
-                value={taskTitle}
+                value={taskData.task_title}
                 autoComplete='off'
                 isDisabled={isPending}
                 onChange={(event) => dispatch(setTaskTitle(event.target.value))}

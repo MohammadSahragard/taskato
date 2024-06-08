@@ -5,7 +5,7 @@ import connectDB from '@/utils/connectDB';
 import { sign } from 'jsonwebtoken';
 import { NextResponse } from 'next/server';
 
-export const POST = async (req: any) => {
+export const POST = async (req: Request) => {
     // variables
     const { email, password } = await req.json();
     const secretKey: any = process.env.SECRET_KEY;

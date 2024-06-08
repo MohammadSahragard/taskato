@@ -17,8 +17,8 @@ import {
 import { toast } from 'react-toastify';
 
 //* redux
-import { getTasksByEmail } from '@/redux/features/tasksSlice';
-import { updateSubtasks } from '@/redux/features/selectedTaskSlice';
+import { getTasksByEmail } from '@/redux/features/tasks/tasksSlice';
+import { updateSubtasks } from '@/redux/features/selected-task/selectedTaskSlice';
 
 //* functions
 import { addSubtask } from '@/helper/functions/task-functions';
@@ -46,18 +46,20 @@ const AddSubtaskModal = ({
     const submitSubtask = async (event: any) => {
         event.preventDefault();
 
-        await addSubtask(selectedTask._id, subtaskTitle).then((res: any) => {
-            // set result message to toastify
-            const messageStatus = res.status === 200 ? 'success' : 'error';
-            toast[messageStatus](res.message);
+        await addSubtask(selectedTask._id ?? '', subtaskTitle).then(
+            (res: any) => {
+                // set result message to toastify
+                const messageStatus = res.status === 200 ? 'success' : 'error';
+                toast[messageStatus](res.message);
 
-            if (res.status === 200) {
-                onOpenChange(!isOpen);
-                dispatch(getTasksByEmail(userEmail));
-                setSubtaskTitle('Untitled subtask');
-                dispatch(updateSubtasks(res?.data?.subtasks));
+                if (res.status === 200) {
+                    onOpenChange(!isOpen);
+                    dispatch(getTasksByEmail(userEmail));
+                    setSubtaskTitle('Untitled subtask');
+                    dispatch(updateSubtasks(res?.data?.subtasks));
+                }
             }
-        });
+        );
     };
     const onEnterDown = (event: any) => {
         if (event.key === 'Enter') {

@@ -23,8 +23,10 @@ const TaskList = ({ id, href, label, listColor }: TaskListTypes) => {
         (task: any) => task.task_list.list_title === label
     );
 
+    // context menu data
     const data = {
         id,
+        listTitle: label,
         onOpen,
     };
 

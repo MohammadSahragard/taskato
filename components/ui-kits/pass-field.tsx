@@ -10,7 +10,7 @@ import Icon from '../ui/texts/icon';
 import PassVisibilityBtn from '../ui/buttons/pass-visibility-btn';
 
 //* redux
-import { setPassword } from '@/redux/features/formSlice';
+import { setPassword } from '@/redux/features/form/formSlice';
 
 const PassField = ({ validation }: { validation: boolean }) => {
     const dispatch = useAppDispatch();

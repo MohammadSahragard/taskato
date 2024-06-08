@@ -8,8 +8,8 @@ import { Chip } from '@nextui-org/react';
 import Icon from '../texts/icon';
 
 //* redux
-import { getListsByEmail } from '@/redux/features/taskListsSlice';
-import { getTasksByEmail } from '@/redux/features/tasksSlice';
+import { getListsByEmail } from '@/redux/features/lists/listsSlice';
+import { getTasksByEmail } from '@/redux/features/tasks/tasksSlice';
 
 const DeleteListOption = ({ id }: { id: string }) => {
     const dispatch = useAppDispatch();

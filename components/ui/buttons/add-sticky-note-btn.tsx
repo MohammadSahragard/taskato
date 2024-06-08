@@ -1,7 +1,7 @@
 'use client';
 
 //* components
-import { Button, Modal, useDisclosure } from '@nextui-org/react';
+import { Button, useDisclosure } from '@nextui-org/react';
 import Icon from '../texts/icon';
 import AddStickyNoteModal from '@/components/modals/add-sticky-note-modal';
 

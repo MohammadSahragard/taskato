@@ -12,7 +12,7 @@ import useUserTasks from '@/hooks/use-user-tasks';
 import useUserNotes from '@/hooks/use-user-notes';
 
 //* redux
-import { setIsOpenedMobileMenu } from '@/redux/features/optionsSlice';
+import { setIsOpenedMobileMenu } from '@/redux/features/options/optionsSlice';
 
 const DataReceiver = ({ children }: { children: React.ReactNode }) => {
     const pathname = usePathname();

@@ -12,7 +12,7 @@ import ChangeImportantTaskOption from '../ui/buttons/change-important-task-optio
 import Divider from '../ui/texts/divider';
 
 //* redux
-import { setIsShownMenu } from '@/redux/features/contextMenuSlice';
+import { setIsShownMenu } from '@/redux/features/context-menu/contextMenuSlice';
 import DeleteListOption from '../ui/buttons/delete-list-option';
 import RenameListOption from '../ui/buttons/rename-list-option';
 import DeleteSubtaskOption from '../ui/buttons/delete-subtask-option';
@@ -29,14 +29,20 @@ const ContextMenu = () => {
     };
 
     // functions
-    const closeMenu = () => {
-        if (isShownMenu) {
-            dispatch(setIsShownMenu(false));
+    const closeMenu = (event: any) => {
+        const keydownCondition =
+            event.type === 'keydown' && event.key === 'Escape' ? true : false;
+
+        if (event.type === 'click' || keydownCondition) {
+            if (isShownMenu) {
+                dispatch(setIsShownMenu(false));
+            }
         }
     };
 
     useEffect(() => {
         window.addEventListener('click', closeMenu);
+        window.addEventListener('keydown', closeMenu);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isShownMenu]);
 

@@ -10,7 +10,7 @@ import Icon from '../texts/icon';
 
 //* functions
 import TooltipElement from '../texts/tooltip-element';
-import { setIsOpenedDetailsSidebar } from '@/redux/features/optionsSlice';
+import { setIsOpenedDetailsSidebar } from '@/redux/features/options/optionsSlice';
 
 const CloseTaskDetails = () => {
     const dispatch = useAppDispatch();

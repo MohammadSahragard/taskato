@@ -1,7 +1,7 @@
 // public
 import { NextResponse } from 'next/server';
 
-export const GET = (req: any) => {
+export const GET = (req: Request) => {
     if (req.method === 'GET') {
         const response = NextResponse.json({
             message: 'Log out successfully!',

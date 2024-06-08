@@ -16,14 +16,14 @@ import Icon from '../texts/icon';
 import TooltipElement from '../texts/tooltip-element';
 
 //* redux
-import { setTaskSelectedList } from '@/redux/features/selectedTaskSlice';
+import { setTaskSelectedList } from '@/redux/features/selected-task/selectedTaskSlice';
 
 const TaskDetailsListBtn = () => {
     const dispatch = useAppDispatch();
     const pathname = usePathname();
     // hooks and variables
     const list = useAppSelector((state) => state.selectedTask.task_list);
-    const lists = useAppSelector((state) => state.taskLists);
+    const lists: any = useAppSelector((state) => state.taskLists);
 
     // conditional rendering
     if (pathname === 'today') return null;

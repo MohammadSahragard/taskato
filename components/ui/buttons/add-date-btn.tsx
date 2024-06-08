@@ -28,18 +28,18 @@ import {
 } from '@/helper/functions/functions';
 
 //* redux
-import { setTaskDate } from '@/redux/features/todoSlice';
+import { setTaskDate } from '@/redux/features/task-data/taskDataSlice';
 import TooltipElement from '../texts/tooltip-element';
 
 const AddDateBtn = () => {
     const pathname = usePathname();
     // hooks and variables
     const dispatch = useAppDispatch();
-    const taskDate = useAppSelector((state) => state.taskData.taskDate);
+    const taskDate = useAppSelector((state) => state.taskData.task_due_date);
     const [isOpenDatePicker, setIsOpenDatePicker] = useState(false);
 
     // functions
-    const confirmDatePicked = (date: Date | null) => {
+    const confirmDatePicked = (date: Date | undefined) => {
         dispatch(setTaskDate(date));
         setIsOpenDatePicker(false);
     };
@@ -124,7 +124,7 @@ const AddDateBtn = () => {
                         />
                     }
                     className={taskDate ? 'text-danger' : 'hidden'}
-                    onClick={() => confirmDatePicked(null)}
+                    onClick={() => confirmDatePicked(undefined)}
                     color='danger'
                 >
                     Remove due date

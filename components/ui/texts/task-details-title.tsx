@@ -7,7 +7,7 @@ import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 import { Input } from '@nextui-org/react';
 
 //* redux
-import { setTaskTitle } from '@/redux/features/selectedTaskSlice';
+import { setTaskTitle } from '@/redux/features/selected-task/selectedTaskSlice';
 
 const TaskDetailsTaskTitle = () => {
     const dispatch = useAppDispatch();

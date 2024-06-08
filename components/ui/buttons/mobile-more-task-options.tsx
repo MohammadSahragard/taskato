@@ -1,9 +1,3 @@
-'use client';
-
-// public
-import { useState } from 'react';
-import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
-
 //* components
 import {
     Dropdown,

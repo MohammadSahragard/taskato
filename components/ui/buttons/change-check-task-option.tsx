@@ -6,7 +6,7 @@ import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 //* components
 import { Chip } from '@nextui-org/react';
 import Icon from '../texts/icon';
-import { getTasksByEmail } from '@/redux/features/tasksSlice';
+import { getTasksByEmail } from '@/redux/features/tasks/tasksSlice';
 
 //* types
 import { TransitionStartFunction } from 'react';

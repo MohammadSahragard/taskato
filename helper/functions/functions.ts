@@ -2,24 +2,24 @@
 import { days } from '../data/data';
 
 //* redux
-import { updateSelectedTask } from '@/redux/features/selectedTaskSlice';
+import { updateSelectedTask } from '@/redux/features/selected-task/selectedTaskSlice';
 import {
     setIsOpenedDetailsSidebar,
     setIsOpenedMobileDetailsSidebar,
-} from '@/redux/features/optionsSlice';
+} from '@/redux/features/options/optionsSlice';
 import {
     setIsShownMenu,
     setItemData,
     setMenuName,
     setMenuPosition,
-} from '@/redux/features/contextMenuSlice';
+} from '@/redux/features/context-menu/contextMenuSlice';
 
 //* types
 import { ItemDataTypes } from '@/types/types';
 
 // date to local date string
-export const dateToLocalDateString = (date: Date): string =>
-    date.toLocaleDateString().split('/').join('-');
+export const dateToLocalDateString = (date: Date | undefined) =>
+    date?.toLocaleDateString()?.split('/')?.join('-') ?? '';
 
 // get day of the week (today and tomorrow)
 export const getDayOfWeek = () => {
@@ -98,6 +98,11 @@ export const convertTitleToPathname = (title: string) => {
     const titlePathname = titleArray.join('-').toLowerCase();
     return titlePathname;
 };
+export const convertPathnameToTitle = (pathname: string) => {
+    const pathnameArray = pathname.split('-');
+    const pathnameTitle = pathnameArray.join(' ').toLowerCase();
+    return pathnameTitle;
+};
 
 // set context menu data
 export const setContextMenuData = (
@@ -107,7 +112,7 @@ export const setContextMenuData = (
     dispatch: any
 ) => {
     event.preventDefault();
-    
+
     // variables
     const position = {
         x: event.pageX,
@@ -128,6 +133,7 @@ export const setContextMenuData = (
         data.importantTransition = itemData?.importantTransition;
     }
     if (menuName === 'lists') {
+        data.listTitle = itemData?.listTitle;
         data.onOpen = itemData?.onOpen;
     }
     if (menuName === 'subtasks') {

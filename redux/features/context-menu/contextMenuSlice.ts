@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 // types
 import { ContextMenuTypes } from '@/types/types';
-import { MenuPositionTypes } from './../../types/types';
+import { MenuPositionTypes } from '@/types/types';
 
 //* initial state
 const initialState: ContextMenuTypes = {

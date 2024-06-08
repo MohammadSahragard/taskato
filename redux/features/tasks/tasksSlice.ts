@@ -1,18 +1,22 @@
 // public
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+// types
+import { GetDataTypes } from '@/types/types';
+
 //* initial state
-const initialState = {
+const initialState: GetDataTypes = {
+    beforeLoading: true,
     loading: false,
     data: [],
     error: '',
 };
 
 //* async functions
-const getNotesByEmail: any = createAsyncThunk(
-    'notes/getNotesByEmail',
+const getTasksByEmail = createAsyncThunk(
+    'tasks/getTasksByEmail',
     async (email: string) => {
-        const res = await fetch('/api/sticky-notes/notes', {
+        const res = await fetch('/api/user-tasks/tasks', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -25,23 +29,26 @@ const getNotesByEmail: any = createAsyncThunk(
 );
 
 //* reducer
-const notesSlice = createSlice({
-    name: 'notes',
+const tasksSlice = createSlice({
+    name: 'tasks',
     initialState,
     reducers: {},
     extraReducers: (builder: any) => {
-        builder.addCase(getNotesByEmail.pending, (state) => {
+        builder.addCase(getTasksByEmail.pending, (state: GetDataTypes) => {
             state.loading = true;
+            state.beforeLoading = false;
         });
         builder.addCase(
-            getNotesByEmail.fulfilled,
+            getTasksByEmail.fulfilled,
             (state: any, action: any) => {
+                state.beforeLoading = false;
                 state.loading = false;
                 state.data = action.payload;
                 state.error = '';
             }
         );
-        builder.addCase(getNotesByEmail.rejected, (state) => {
+        builder.addCase(getTasksByEmail.rejected, (state: GetDataTypes) => {
+            state.beforeLoading = false;
             state.loading = false;
             state.data = [];
             state.error = 'Something went wrong. Please try again later.';
@@ -49,5 +56,5 @@ const notesSlice = createSlice({
     },
 });
 
-export default notesSlice.reducer;
-export { getNotesByEmail };
+export default tasksSlice.reducer;
+export { getTasksByEmail };
