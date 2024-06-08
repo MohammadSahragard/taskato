@@ -28,7 +28,7 @@ const TaskDetailsSaveBtn = () => {
         const messageStatus = res.status === 200 ? 'success' : 'error';
         toast[messageStatus](res.message);
         if (res.status === 200) {
-            dispatch(getTasksByEmail(taskData.email));
+            dispatch(getTasksByEmail(taskData?.email ?? ''));
         }
     };
 
