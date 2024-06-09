@@ -5,7 +5,9 @@
 }
 
 .form-con-logo {
-    @apply absolute left-2/4 top-0 -translate-y-2/4 -translate-x-2/4 rounded-full;
+    @apply absolute left-2/4 top-0 -translate-y-2/4 -translate-x-2/4
+            w-16 aspect-square rounded-full bg-black
+            grid place-items-center;
 }
 
 .form-header {

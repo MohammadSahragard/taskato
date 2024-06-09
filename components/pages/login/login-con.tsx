@@ -7,13 +7,14 @@ import LoginForm from './login-form';
 const LoginCon = () => {
     return (
         <div className='form-con'>
-            <Image
-                src='/taskato-logo.png'
-                alt='taskato logo'
-                width={60}
-                height={60}
-                className='form-con-logo'
-            />
+            <div className='form-con-logo'>
+                <Image
+                    src='/taskato-logo.svg'
+                    alt='taskato logo'
+                    width={35}
+                    height={35}
+                />
+            </div>
 
             <header className='form-header'>
                 <Heading heading='Welcome back!' />
