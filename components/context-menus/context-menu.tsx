@@ -10,13 +10,16 @@ import DeleteTaskOption from '../ui/buttons/delete-task-option';
 import ChangeCheckTaskOption from '../ui/buttons/change-check-task-option';
 import ChangeImportantTaskOption from '../ui/buttons/change-important-task-option';
 import Divider from '../ui/texts/divider';
-
-//* redux
-import { setIsShownMenu } from '@/redux/features/context-menu/contextMenuSlice';
+// options
 import DeleteListOption from '../ui/buttons/delete-list-option';
 import RenameListOption from '../ui/buttons/rename-list-option';
 import DeleteSubtaskOption from '../ui/buttons/delete-subtask-option';
 import ChangeCheckSubtaskOption from '../ui/buttons/change-check-subtask-option';
+import DeleteNoteOption from '../ui/buttons/delete-note-option';
+import UpdateNoteOption from '../ui/buttons/update-note-option';
+
+//* redux
+import { setIsShownMenu } from '@/redux/features/context-menu/contextMenuSlice';
 
 const ContextMenu = () => {
     const dispatch = useAppDispatch();
@@ -87,6 +90,14 @@ const ContextMenu = () => {
                             changeCheck={itemData.checkHandler}
                         />
                         <DeleteSubtaskOption neededId={itemData.id} />
+                    </>
+                ) : null}
+
+                {/* menu for notes */}
+                {menuName === 'notes' ? (
+                    <>
+                        <UpdateNoteOption onOpen={itemData.onOpen} />
+                        <DeleteNoteOption neededId={itemData.id} />
                     </>
                 ) : null}
             </CardBody>

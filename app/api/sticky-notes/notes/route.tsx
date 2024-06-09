@@ -28,7 +28,7 @@ export const POST = async (req: Request) => {
         });
     }
 
-    // get lists
+    // get notes
     try {
         const notes = await StickyNote.find({ email });
 

@@ -2,7 +2,7 @@
 
 // public
 import { useTransition } from 'react';
-import { useAppDispatch } from '@/redux/app/hook';
+import { useAppDispatch, useAppSelector } from '@/redux/app/hook';
 
 //* components
 import Divider from '../ui/texts/divider';
@@ -25,6 +25,7 @@ const TaskItem = ({ taskData }: { taskData: any }) => {
     // state and variables
     const [completionPending, completionTransition] = useTransition();
     const [importantPending, importantTransition] = useTransition();
+    const contextMenuData = useAppSelector((state) => state.contextMenu);
 
     // styles
     const completedStyles = 'line-through text-primary-200 break-all';
@@ -40,6 +41,11 @@ const TaskItem = ({ taskData }: { taskData: any }) => {
             ? 'text-xs text-danger'
             : 'text-xs'
         : 'text-xs';
+    const isActiveContextMenu =
+        contextMenuData.itemData.id === taskData._id &&
+        contextMenuData.isShownMenu
+            ? 'opacity-80 scale-95'
+            : '';
 
     // context menu data
     const data = {
@@ -52,7 +58,7 @@ const TaskItem = ({ taskData }: { taskData: any }) => {
 
     return (
         <div
-            className='task-item'
+            className={`task-item ${isActiveContextMenu}`}
             onClick={() => toggleTaskDetailsSidebar(dispatch, taskData)}
             onContextMenu={(event: any) =>
                 setContextMenuData(event, 'tasks', data, dispatch)

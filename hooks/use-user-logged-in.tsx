@@ -25,12 +25,12 @@ export const useUserLoggedIn = () => {
         const getUser = async () => {
             const res = await fetch('/api/user');
             const user = await res.json();
+            dispatch(setUserLoading());
             const condition = user.status === 200;
             if (condition) {
                 setUser(user);
                 dispatch(setUserEmail(user?.message?.email ?? ''));
                 dispatch(setUserName(user?.message?.name ?? ''));
-                dispatch(setUserLoading());
             } else {
                 setUser(false);
             }
