@@ -61,7 +61,7 @@
 
 /* Empty state tasks */
 .empty-state {
-    @apply absolute inset-0 flex flex-col items-center justify-center text-center;
+    @apply absolute inset-0 flex flex-col items-center justify-center text-center p-10;
 }
 
 /* Task loading skeleton */
