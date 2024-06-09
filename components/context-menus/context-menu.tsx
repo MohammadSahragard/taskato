@@ -1,16 +1,16 @@
 'use client';
 
-// public
+// Public
 import { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
-//* components
+//* Components
 import { Card, CardBody } from '@nextui-org/react';
 import DeleteTaskOption from '../ui/buttons/delete-task-option';
 import ChangeCheckTaskOption from '../ui/buttons/change-check-task-option';
 import ChangeImportantTaskOption from '../ui/buttons/change-important-task-option';
 import Divider from '../ui/texts/divider';
-// options
+// Options
 import DeleteListOption from '../ui/buttons/delete-list-option';
 import RenameListOption from '../ui/buttons/rename-list-option';
 import DeleteSubtaskOption from '../ui/buttons/delete-subtask-option';
@@ -18,12 +18,12 @@ import ChangeCheckSubtaskOption from '../ui/buttons/change-check-subtask-option'
 import DeleteNoteOption from '../ui/buttons/delete-note-option';
 import UpdateNoteOption from '../ui/buttons/update-note-option';
 
-//* redux
+//* Redux
 import { setIsShownMenu } from '@/redux/features/context-menu/contextMenuSlice';
 
 const ContextMenu = () => {
     const dispatch = useAppDispatch();
-    // states and variables
+    // States and variables
     const menuData = useAppSelector((state) => state.contextMenu);
     const { menuName, itemData, isShownMenu, menuPosition } = menuData;
     const position = {
@@ -31,7 +31,7 @@ const ContextMenu = () => {
         [menuPosition['YAxisSide']]: menuPosition.y,
     };
 
-    // functions
+    // Functions
     const closeMenu = (event: any) => {
         const keydownCondition =
             event.type === 'keydown' && event.key === 'Escape' ? true : false;
@@ -56,7 +56,7 @@ const ContextMenu = () => {
             style={position}
         >
             <CardBody>
-                {/* menu for tasks */}
+                {/* Menu for tasks */}
                 {menuName === 'tasks' ? (
                     <>
                         <ChangeCheckTaskOption
@@ -74,7 +74,7 @@ const ContextMenu = () => {
                     </>
                 ) : null}
 
-                {/* menu for lists */}
+                {/* Menu for lists */}
                 {menuName === 'lists' ? (
                     <>
                         <RenameListOption onOpen={itemData.onOpen} />
@@ -82,7 +82,7 @@ const ContextMenu = () => {
                     </>
                 ) : null}
 
-                {/* menu for subtasks */}
+                {/* Menu for subtasks */}
                 {menuName === 'subtasks' ? (
                     <>
                         <ChangeCheckSubtaskOption
@@ -93,7 +93,7 @@ const ContextMenu = () => {
                     </>
                 ) : null}
 
-                {/* menu for notes */}
+                {/* Menu for notes */}
                 {menuName === 'notes' ? (
                     <>
                         <UpdateNoteOption onOpen={itemData.onOpen} />

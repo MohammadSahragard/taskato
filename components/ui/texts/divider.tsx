@@ -1,12 +1,13 @@
-//* components
+//* Components
 import { Divider as NextUiDivider } from '@nextui-org/react';
 
-const Divider = ({
-    orientation,
-}: {
+//* types
+type DividerTypes = {
     orientation?: 'vertical' | 'horizontal';
-}) => {
-    // default orientation is horizontal
+};
+
+const Divider = ({ orientation }: DividerTypes) => {
+    // Default orientation is horizontal
     return (
         <NextUiDivider
             orientation={orientation}

@@ -1,11 +1,12 @@
+// Types
 import { NoteDataTypes } from '@/types/types';
 
-//* add note
+//* Adding a note
 export const addNote = async (taskData: NoteDataTypes, userEmail: string) => {
-    // data
+    // Variables
     const { note_title, note_content, note_color } = taskData;
 
-    // form validation
+    // Form validation
     if (!note_title) {
         return {
             message: 'Please enter a note title!',
@@ -20,14 +21,14 @@ export const addNote = async (taskData: NoteDataTypes, userEmail: string) => {
         };
     }
 
-    // req data
+    // Req data
     const reqData: NoteDataTypes = {
         note_title,
         note_content,
         note_color,
     };
 
-    // post data
+    // Post data
     const res = await fetch('/api/sticky-notes/note', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -38,12 +39,12 @@ export const addNote = async (taskData: NoteDataTypes, userEmail: string) => {
     return data;
 };
 
-//* update task
+//* Updating a task
 export const updateNote = async (noteData: NoteDataTypes) => {
-    // data
+    // Variables
     const { _id, note_title, note_content, note_color } = noteData;
 
-    // req data
+    // Req data
     const reqData: NoteDataTypes = {
         _id,
         note_title,
@@ -51,7 +52,7 @@ export const updateNote = async (noteData: NoteDataTypes) => {
         note_color,
     };
 
-    // form validation
+    // Form validation
     if (!reqData.note_title) {
         return {
             message: 'Please enter a note title!',
@@ -66,7 +67,7 @@ export const updateNote = async (noteData: NoteDataTypes) => {
         };
     }
 
-    // put data
+    // Put data
     const res = await fetch('/api/sticky-notes/note', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },

@@ -1,4 +1,4 @@
-//* components
+//* Components
 import { Avatar, Skeleton } from '@nextui-org/react';
 
 const ProfilePicture = ({ email }: { email: string }) => {

@@ -1,19 +1,19 @@
 'use client';
 
-// public
+// Public
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
-//* components
+//* Components
 import { Modal, ModalContent } from '@nextui-org/react';
 import TaskDetailsComponents from './task-details-components';
 
-//* data
+//* Data
 import { mobileTaskDetailsProps } from '@/helper/data/data';
 import { setIsOpenedMobileDetailsSidebar } from '@/redux/features/options/optionsSlice';
 
 const MobileTaskDetails = () => {
     const dispatch = useAppDispatch();
-    // states and variables
+    // States and variables
     const isOpenSidebar = useAppSelector(
         (state) => state.options.isOpenedMobileDetailsSidebar
     );

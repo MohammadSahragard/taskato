@@ -1,6 +1,6 @@
-/***** ui components */
+/***** UI components */
 
-/* texts */
+/* Texts */
 .title {
     @apply text-foreground;
 }
@@ -28,9 +28,9 @@
     @apply !border-opacity-40 capitalize hover:!border-opacity-100 !justify-start !p-3;
 }
 
-/* buttons */
+/* Buttons */
 .fw-btn {
-    /* full width buttons */
+    /* Full width buttons */
     @apply w-full !justify-start;
 }
 
@@ -45,7 +45,7 @@
     @apply !bg-primary-100 !min-w-max;
 }
 
-/* context menu options */
+/* Context menu options */
 .context-menu-options {
     @apply !min-h-8 !min-w-full p-2 !rounded 
             !bg-transparent hover:!bg-default/40 

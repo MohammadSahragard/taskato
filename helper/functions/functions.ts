@@ -1,7 +1,7 @@
-//* data needed
+// Data needed
 import { days } from '../data/data';
 
-//* redux
+// Redux
 import { updateSelectedTask } from '@/redux/features/selected-task/selectedTaskSlice';
 import {
     setIsOpenedDetailsSidebar,
@@ -14,14 +14,14 @@ import {
     setMenuPosition,
 } from '@/redux/features/context-menu/contextMenuSlice';
 
-//* types
+// Types
 import { ItemDataTypes } from '@/types/types';
 
-// date to local date string
+//* Converting date to local date string
 export const dateToLocalDateString = (date: Date | undefined) =>
     date?.toLocaleDateString()?.split('/')?.join('-') ?? '';
 
-// get day of the week (today and tomorrow)
+//* Getting day of the week (today and tomorrow)
 export const getDayOfWeek = () => {
     const day = new Date().getDay();
 
@@ -34,7 +34,7 @@ export const getDayOfWeek = () => {
     };
 };
 
-// get date (today, tomorrow, next week and so on)
+//* Getting date (today, tomorrow, next week and so on)
 export const getDate = () => {
     const today = new Date();
 
@@ -55,26 +55,26 @@ export const getDate = () => {
     };
 };
 
-// add zero before the single time
+//* Adding zeros before single-digit times
 export const zeroBeforeSingle = (date: number) =>
     date < 10 ? `0${date}` : date;
 
-// get local date string (mm-dd-yyyy)
+//* Getting local date string (mm-dd-yyyy)
 export const getLocalDateString = (date: Date) =>
     String(dateToLocalDateString(date));
 
-// return later time for reminder
+//* Getting time for later time option of the reminder
 export const laterTime = () => {
     const hour: number = new Date().getHours();
     const finalHour: number = hour > 23 || hour < 6 ? 7 : hour + 2;
     return finalHour;
 };
 
-// words separation (word-word => word word)
+//* Words separation (word-word => word word)
 export const wordsSeparator = (content: string): string =>
     content.replace(/[^A-Za-z0-9]/g, ' ');
 
-// close-open task details sidebar
+//* Close-pen (toggle) task details sidebar
 export const toggleTaskDetailsSidebar = (dispatch: Function, data: any) => {
     dispatch(setIsOpenedDetailsSidebar(true));
     dispatch(updateSelectedTask(data));
@@ -83,7 +83,7 @@ export const toggleTaskDetailsSidebar = (dispatch: Function, data: any) => {
     }
 };
 
-// checking if the due date has passed or not
+//* Checking if the due date has passed or not
 export const checkDueDate = (date: Date) => {
     const today = dateToLocalDateString(getDate().today);
     const taskDueDate = dateToLocalDateString(new Date(date));
@@ -92,7 +92,7 @@ export const checkDueDate = (date: Date) => {
     return result;
 };
 
-// Converting the title to a pathname
+//* Converting the title to a pathname
 export const convertTitleToPathname = (title: string) => {
     const titleArray = title.split(' ');
     const titlePathname = titleArray.join('-').toLowerCase();
@@ -104,7 +104,7 @@ export const convertPathnameToTitle = (pathname: string) => {
     return pathnameTitle;
 };
 
-// set context menu data
+//* Setting context menu data
 export const setContextMenuData = (
     event: any,
     menuName: string,
@@ -113,7 +113,7 @@ export const setContextMenuData = (
 ) => {
     event.preventDefault();
 
-    // variables
+    // Variables
     const position = {
         x: event.pageX,
         y: event.pageY,
@@ -125,7 +125,7 @@ export const setContextMenuData = (
         id: itemData?.id,
     };
 
-    // set data depending on the menu name
+    // Setting data depending on the menu name
     if (menuName === 'tasks') {
         data.isCompleted = itemData?.isCompleted;
         data.isImportant = itemData?.isImportant;
@@ -146,7 +146,7 @@ export const setContextMenuData = (
         data.onOpen = itemData?.onOpen;
     }
 
-    // dispatches
+    // Dispatches
     dispatch(setMenuName(menuName));
     dispatch(setMenuPosition(position));
     dispatch(setIsShownMenu(true));

@@ -1,11 +1,11 @@
-// public
+// Public
 import { createSlice } from '@reduxjs/toolkit';
 
-// types
+// Types
 import { ContextMenuTypes } from '@/types/types';
 import { MenuPositionTypes } from '@/types/types';
 
-//* initial state
+//* Initial state
 const initialState: ContextMenuTypes = {
     menuName: 'tasks',
     itemData: {
@@ -20,7 +20,7 @@ const initialState: ContextMenuTypes = {
     },
 };
 
-//* reducer
+//* Reducer
 const contextMenuSlice = createSlice({
     name: 'contextMenu',
     initialState,
@@ -35,7 +35,7 @@ const contextMenuSlice = createSlice({
             state.isShownMenu = action.payload;
         },
         setMenuPosition: (state, action) => {
-            // data and variables
+            // Variables
             const { x, y, innerWidth, innerHeight } = action.payload;
             const position: MenuPositionTypes = {
                 x,

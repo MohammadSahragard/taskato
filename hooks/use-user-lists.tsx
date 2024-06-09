@@ -1,18 +1,19 @@
 'use client';
 
-// public
+// Public
 import { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
-//* redux
+//* Redux
 import { getListsByEmail } from '@/redux/features/lists/listsSlice';
 
 const useUserLists = () => {
     const dispatch = useAppDispatch();
-    // states and variables
+    // States and variables
     const userEmail = useAppSelector((state) => state.options.userEmail);
     const taskLists = useAppSelector((state) => state.taskLists);
 
+    // Getting the user's task lists
     useEffect(() => {
         if (userEmail) {
             dispatch(getListsByEmail(userEmail));

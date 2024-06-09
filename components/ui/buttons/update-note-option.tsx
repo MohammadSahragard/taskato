@@ -1,6 +1,6 @@
 'use client';
 
-//* components
+//* Components
 import { Chip } from '@nextui-org/react';
 import Icon from '../texts/icon';
 

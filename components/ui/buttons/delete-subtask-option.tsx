@@ -1,29 +1,29 @@
 'use client';
 
-// public
+// Public
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
-//* components
+//* Components
 import { Chip } from '@nextui-org/react';
 import Icon from '../texts/icon';
 import { toast } from 'react-toastify';
 
-//* redux
+//* Redux
 import { getTasksByEmail } from '@/redux/features/tasks/tasksSlice';
 import { updateSubtasks } from '@/redux/features/selected-task/selectedTaskSlice';
 
-//* functions
+//* Functions
 import { deleteSubtask as sendReq } from '@/helper/functions/task-functions';
 
 const DeleteSubtaskOption = ({ neededId }: { neededId: string }) => {
     const dispatch = useAppDispatch();
-    // states and variables
+    // States and variables
     const userEmail = useAppSelector((state) => state.options.userEmail);
 
-    // functions
+    // Functions
     const deleteSubtask = async () => {
         await sendReq(neededId).then((res: any) => {
-            // set result message to toastify
+            // Set result message to toastify
             const messageStatus = res.status === 200 ? 'success' : 'error';
             toast[messageStatus](res.message);
 

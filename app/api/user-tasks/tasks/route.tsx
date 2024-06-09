@@ -1,10 +1,10 @@
-// public
+// Public
 import Task from '@/models/task';
 import connectDB from '@/utils/connectDB';
 import { NextResponse } from 'next/server';
 
 export const POST = async (req: Request) => {
-    // variables
+    // Variables
     const { email } = await req.json();
 
     if (req.method !== 'POST')
@@ -12,13 +12,8 @@ export const POST = async (req: Request) => {
             message: 'Something went wrong. Please try again later.',
             status: 401,
         });
-    if (!email)
-        return NextResponse.json({
-            message: 'Email is required.',
-            status: 401,
-        });
 
-    // database connection
+    // Database connection
     try {
         await connectDB();
     } catch {
@@ -28,7 +23,13 @@ export const POST = async (req: Request) => {
         });
     }
 
-    // get lists
+    if (!email)
+        return NextResponse.json({
+            message: "The email doesn't exist.",
+            status: 401,
+        });
+
+    // Getting all lists
     try {
         const lists = await Task.find({ email });
 

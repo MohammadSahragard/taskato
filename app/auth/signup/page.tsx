@@ -1,4 +1,4 @@
-//* components
+//* Components
 import SignupCon from '@/components/pages/signup/signup-con';
 
 const Page = () => {

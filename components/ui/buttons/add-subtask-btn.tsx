@@ -1,6 +1,6 @@
 'use client';
 
-//* components
+//* Components
 import { Button, useDisclosure } from '@nextui-org/react';
 import Icon from '../texts/icon';
 import AddSubtaskModal from '@/components/modals/add-subtask-modal';
@@ -21,6 +21,7 @@ const AddSubtaskBtn = () => {
                 Add new subtask
             </Button>
 
+            {/* The subtask adder modal */}
             <AddSubtaskModal
                 isOpen={isOpen}
                 onOpenChange={onOpenChange}

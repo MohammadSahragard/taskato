@@ -1,9 +1,9 @@
 'use client';
 
-// public
+// Public
 import { useAppSelector } from '@/redux/app/hook';
 
-//* components
+//* Components
 import ProfileName from '../ui/texts/profile-name';
 import ProfileEmail from '../ui/texts/profile-email';
 import ProfilePicture from '../ui/texts/profile-picture';

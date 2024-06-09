@@ -1,10 +1,10 @@
-// public
+// Public
 import { createSlice } from '@reduxjs/toolkit';
 
-// types
+// Types
 import { TaskContentTypes } from '@/types/types';
 
-//* initial state
+//* Initial state
 const initialState: TaskContentTypes = {
     _id: '',
     email: '',
@@ -29,13 +29,13 @@ const initialState: TaskContentTypes = {
     createdAt: undefined,
 };
 
-//* reducer
+//* Reducer
 const selectedTaskSlice = createSlice({
     name: 'selectedTask',
     initialState,
     reducers: {
         updateSelectedTask: (state, action) => {
-            // variables
+            // Variables
             const id = action.payload._id;
             const email = action.payload.email;
             const title = action.payload.task_title;

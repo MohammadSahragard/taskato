@@ -1,17 +1,17 @@
 'use client';
 
-// public
+// Public
 import { useAppSelector } from '@/redux/app/hook';
 
-//* components
+//* Components
 import TaskList from './task-list';
 import ListLoadingSkeleton from './list-loading-skeleton';
 
-//* functions
+//* Functions
 import { convertTitleToPathname } from '@/helper/functions/functions';
 
 const TaskListCon = () => {
-    // states and variables
+    // States and variables
     const lists = useAppSelector((state) => state.taskLists);
 
     if ((lists.beforeLoading || lists.loading) && !lists.data.length)

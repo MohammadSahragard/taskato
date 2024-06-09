@@ -1,28 +1,28 @@
 'use client';
 
-// public
+// Public
 import { useTransition } from 'react';
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
-//* components
+//* Components
 import { Button } from '@nextui-org/react';
 
-//* functions
+//* Functions
 import { updateTask } from '@/helper/functions/task-functions';
 
 //* toastify
 import { toast } from 'react-toastify';
 
-//* redux
+//* Redux
 import { getTasksByEmail } from '@/redux/features/tasks/tasksSlice';
 
 const TaskDetailsSaveBtn = () => {
     const dispatch = useAppDispatch();
-    // states and variables
+    // States and variables
     const taskData = useAppSelector((state) => state.selectedTask);
     const [isPending, startTransition] = useTransition();
 
-    // submit data
+    // Submit data
     const submitUpdateTask = async () => {
         const res = await updateTask(taskData);
         const messageStatus = res.status === 200 ? 'success' : 'error';

@@ -1,14 +1,14 @@
-/* import other styles */
+/* Import other styles */
 @import '../components/ui/ui-components-style.css';
 @import '../components/ui-kits/ui-kits-style.css';
 @import '../components/pages/pages-styles.css';
 
-/* tailwind plugins */
+/* Tailwind plugins */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* public */
+/* Public */
 body {
     @apply bg-background;
 }
@@ -21,7 +21,7 @@ body {
     @apply bg-default-200;
 }
 
-/** menu section */
+/** Menu section */
 .menu-container {
     @apply fixed inset-[0_calc(100%-300px)_0_0] hidden md:block;
 }
@@ -30,12 +30,12 @@ body {
             grid grid-rows-[repeat(2,max-content)_auto_max-content] gap-2;
 }
 
-/** main header */
+/** Main header */
 .main-header {
     @apply fixed inset-[0_0_auto_0] md:inset-[0_0_auto_300px] bg-background/65 backdrop-blur-sm px-5 h-[80px] flex items-center gap-5 transition-all;
 }
 
-/** main section */
+/** Main section */
 .main-section {
     @apply fixed inset-0 md:inset-[0_0_0_300px] bg-background px-5 py-[80px] transition-all overflow-auto;
 }
@@ -43,15 +43,15 @@ body {
     @apply pb-0;
 }
 
-/** add task bar section */
-.task-bar-con {
+/** Task adder bar */
+.task-adder-bar-con {
     @apply fixed inset-[auto_0_0_0] md:inset-[auto_0_0_300px] p-5 transition-all;
 }
-.auth-page .task-bar-con {
+.auth-page .task-adder-bar-con {
     @apply hidden;
 }
 
-/** task detail section */
+/** Task details section */
 .task-details {
     @apply fixed inset-[20px_20px_20px_calc(100%-300px)] 
             hidden lg:block translate-x-[150%] transition-all;
@@ -64,33 +64,34 @@ body {
             grid grid-rows-[max-content_auto] overflow-auto;
 }
 
-/** logo loading */
+/** Logo loading */
 .logo-loading {
     @apply fixed inset-0 bg-black grid place-items-center z-[999];
 }
 
-/** sign up */
+/** Sign up */
 .form-page {
     @apply fixed inset-0 bg-background grid place-items-center;
 }
 
-/** context menu */
+/** Context menu */
 .context-menu {
     @apply fixed rounded-lg bg-primary-100 w-[200px] z-[999];
 }
 
-/****** conditional classes */
-/* auth page styles & notes page styles */
+/****** Condition classes */
+/* Auth page styles & notes page styles */
 .auth-page :is(.menu-container, .main-header, .task-details),
-.notes-page :is(.task-details, .task-bar-con) {
+.notes-page :is(.task-details, .task-adder-bar-con) {
     @apply hidden;
 }
-.auth-page :is(.main-header, .main-section, .task-bar-con),
-.notes-page :is(.main-header, .main-section, .task-bar-con) {
+.auth-page :is(.main-header, .main-section, .task-adder-bar-con),
+.notes-page :is(.main-header, .main-section, .task-adder-bar-con) {
     @apply lg:!right-0;
 }
 
-/* sidebar toggle styles (task details & menu) */
-.is-opened-details-sidebar :is(.main-header, .main-section, .task-bar-con) {
+/* Sidebar toggle styles (task details & menu) */
+.is-opened-details-sidebar
+    :is(.main-header, .main-section, .task-adder-bar-con) {
     @apply lg:right-[300px];
 }

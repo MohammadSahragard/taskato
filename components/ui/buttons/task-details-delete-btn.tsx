@@ -1,26 +1,26 @@
 'use client';
 
-// public
+// Public
 import { useTransition } from 'react';
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
-//* components
+//* Components
 import { Button } from '@nextui-org/react';
 
 //* toastify
 import { toast } from 'react-toastify';
 
-//* redux
+//* Redux
 import { getTasksByEmail } from '@/redux/features/tasks/tasksSlice';
 import { setIsOpenedDetailsSidebar } from '@/redux/features/options/optionsSlice';
 
 const TaskDetailsDeleteBtn = () => {
     const dispatch = useAppDispatch();
-    // states and variables
+    // States and variables
     const taskData = useAppSelector((state) => state.selectedTask);
     const [isPending, startTransition] = useTransition();
 
-    // functions
+    // Functions
     const deleteTask = async () => {
         const res = await fetch('/api/user-tasks/task', {
             method: 'DELETE',

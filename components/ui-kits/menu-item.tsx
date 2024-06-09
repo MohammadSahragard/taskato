@@ -1,24 +1,24 @@
 'use client';
 
-// public
+// Public
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAppSelector } from '@/redux/app/hook';
 
-//* components
+//* Components
 import { Button } from '@nextui-org/react';
 import Icon from '../ui/texts/icon';
 import ItemsCounter from '../ui/texts/items-counter';
 
-//* types
+//* Types
 import { MenuItemTypes } from '@/types/types';
 
-//* functions
+//* Functions
 import { dateToLocalDateString } from '@/helper/functions/functions';
 
 const MenuItem = ({ href, label, iconName }: MenuItemTypes) => {
     const pathname = usePathname();
-    // states and variables
+    // States and variables
     const tasks = useAppSelector((state) => state.tasks.data);
     const notes = useAppSelector((state) => state.notes.data);
     const itemsCounter: any = {

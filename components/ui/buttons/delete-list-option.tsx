@@ -1,22 +1,22 @@
 'use client';
 
-// public
+// Public
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
-//* components
+//* Components
 import { Chip } from '@nextui-org/react';
 import Icon from '../texts/icon';
 
-//* redux
+//* Redux
 import { getListsByEmail } from '@/redux/features/lists/listsSlice';
 import { getTasksByEmail } from '@/redux/features/tasks/tasksSlice';
 
 const DeleteListOption = ({ id }: { id: string }) => {
     const dispatch = useAppDispatch();
-    // states and variables
+    // States and variables
     const userEmail = useAppSelector((state) => state.options.userEmail);
 
-    // functions
+    // Functions
     const deleteList = async () => {
         const res = await fetch('/api/task-lists/list', {
             method: 'DELETE',

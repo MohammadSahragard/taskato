@@ -1,13 +1,14 @@
 'use client';
 
-// public
+// Public
 import { usePathname } from 'next/navigation';
 
-//* components
+//* Components
 import Heading from './heading';
 import { wordsSeparator } from '@/helper/functions/functions';
 
 const TabHeading = () => {
+    // States and variables
     const pathname = usePathname().split('/');
     const tabName = pathname[pathname.length - 1];
 

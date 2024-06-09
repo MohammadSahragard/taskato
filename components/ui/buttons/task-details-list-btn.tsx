@@ -1,10 +1,10 @@
 'use client';
 
-// public
+// Public
 import { usePathname } from 'next/navigation';
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
-//* components
+//* Components
 import {
     Dropdown,
     DropdownTrigger,
@@ -15,22 +15,22 @@ import {
 import Icon from '../texts/icon';
 import TooltipElement from '../texts/tooltip-element';
 
-//* redux
+//* Redux
 import { setTaskSelectedList } from '@/redux/features/selected-task/selectedTaskSlice';
 
 const TaskDetailsListBtn = () => {
     const dispatch = useAppDispatch();
     const pathname = usePathname();
-    // hooks and variables
+    // States and variables
     const list = useAppSelector((state) => state.selectedTask.task_list);
     const lists: any = useAppSelector((state) => state.taskLists);
 
-    // conditional rendering
+    // Conditional rendering
     if (pathname === 'today') return null;
     if (pathname === 'important') return null;
-
     return (
         <Dropdown className='bg-primary-100'>
+            {/* The dropdown trigger */}
             <TooltipElement title='Add to list'>
                 <div>
                     <DropdownTrigger>
@@ -55,6 +55,8 @@ const TaskDetailsListBtn = () => {
                     </DropdownTrigger>
                 </div>
             </TooltipElement>
+            
+            {/* The dropdown menu */}
             <DropdownMenu
                 variant='flat'
                 selectionMode='single'

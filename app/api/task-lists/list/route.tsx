@@ -1,18 +1,25 @@
-// public
+// Public
 import List from '@/models/list';
 import Task from '@/models/task';
 import connectDB from '@/utils/connectDB';
 import { NextResponse } from 'next/server';
-// functions
+
+// Functions
 import { convertPathnameToTitle } from '@/helper/functions/functions';
 
-//* create list
+//* Creating a list
 export const POST = async (req: Request) => {
-    // variables
+    // Variables
     const { email, list_title, list_color } = await req.json();
     const trimmed_list_title = list_title.replace(/  +/g, ' ');
 
-    // database connection
+    if (req.method !== 'POST')
+        return NextResponse.json({
+            message: 'Something went wrong. Please try again later.',
+            status: 401,
+        });
+
+    // Database connection
     try {
         await connectDB();
     } catch {
@@ -22,21 +29,15 @@ export const POST = async (req: Request) => {
         });
     }
 
-    if (req.method !== 'POST')
-        return NextResponse.json({
-            message: 'Something went wrong. Please try again later.',
-            status: 401,
-        });
-
-    // form validation
+    // Form validation
     if (!email || !list_title || !list_color) {
         return NextResponse.json({
-            message: 'List title is required.',
+            message: 'The list title is required!',
             status: 401,
         });
     }
 
-    // check if list already exists
+    // Checking if the list already exists or not
     const list = await List.findOne({
         list_title: trimmed_list_title.toLowerCase(),
         email,
@@ -47,7 +48,7 @@ export const POST = async (req: Request) => {
             status: 400,
         });
     }
-    // Checking if a route with this name exists
+    // Checking if a route with this name exists or not
     const checkingRoute = await List.findOne({
         list_title: convertPathnameToTitle(trimmed_list_title),
         email,
@@ -59,7 +60,7 @@ export const POST = async (req: Request) => {
         });
     }
 
-    // create new list
+    // Creating a new list
     try {
         await List.create({
             email,
@@ -78,13 +79,19 @@ export const POST = async (req: Request) => {
     }
 };
 
-//* update list
+//* Updating a list
 export const PUT = async (req: Request) => {
-    // variables
+    // Variables
     const { email, _id, list_title } = await req.json();
     const trimmed_list_title = list_title.replace(/  +/g, ' ');
 
-    // database connection
+    if (req.method !== 'PUT')
+        return NextResponse.json({
+            message: 'Something went wrong. Please try again later.',
+            status: 401,
+        });
+
+    // Database connection
     try {
         await connectDB();
     } catch {
@@ -94,21 +101,15 @@ export const PUT = async (req: Request) => {
         });
     }
 
-    if (req.method !== 'PUT')
-        return NextResponse.json({
-            message: 'Something went wrong. Please try again later.',
-            status: 401,
-        });
-
-    // form validation
+    // Form validation
     if (!_id || !list_title) {
         return NextResponse.json({
-            message: 'List title is required.',
+            message: 'The list title is required!',
             status: 401,
         });
     }
 
-    // check if list don't exists
+    // Checking if the list exists for updating or not
     const list = await List.findOne({ _id });
     if (!list) {
         return NextResponse.json({
@@ -117,7 +118,7 @@ export const PUT = async (req: Request) => {
         });
     }
 
-    // check if list already exists
+    // Checking if the list already exists or not
     const listChecking = await List.findOne({
         list_title: trimmed_list_title.toLowerCase(),
         email,
@@ -140,15 +141,15 @@ export const PUT = async (req: Request) => {
         });
     }
 
-    // update list
+    // Updating the list
     try {
-        // checking if list has some tasks
+        // Checking if the list has some tasks or not
         const taskList = await Task.find({
             'task_list.list_title': list.list_title,
         });
         const haveTask = taskList.length ? true : false;
 
-        // updating list and it tasks
+        // Updating the list and its tasks
         await List.updateOne(
             { _id },
             { list_title: trimmed_list_title.toLowerCase() }
@@ -173,12 +174,18 @@ export const PUT = async (req: Request) => {
     }
 };
 
-//* delete list
+//* Deleting a list
 export const DELETE = async (req: Request) => {
-    // variables
+    // Variables
     const { id } = await req.json();
 
-    // database connection
+    if (req.method !== 'DELETE')
+        return NextResponse.json({
+            message: 'Something went wrong. Please try again later.',
+            status: 401,
+        });
+
+    // Database connection
     try {
         await connectDB();
     } catch {
@@ -188,13 +195,7 @@ export const DELETE = async (req: Request) => {
         });
     }
 
-    if (req.method !== 'DELETE')
-        return NextResponse.json({
-            message: 'Something went wrong. Please try again later.',
-            status: 401,
-        });
-
-    // id validation
+    // ID validation
     if (!id) {
         return NextResponse.json({
             message: 'ID not found',
@@ -202,24 +203,24 @@ export const DELETE = async (req: Request) => {
         });
     }
 
-    // check if list don't exists
+    // Checking if the list exists for deleting or not
     const list = await List.findOne({ _id: id });
     if (!list) {
         return NextResponse.json({
-            message: "List don't exists!",
+            message: "The list doesn't exist!",
             status: 400,
         });
     }
 
-    // delete list
+    // Deleting the list
     try {
-        // checking if list has some tasks
+        // Checking if the list has some tasks or not
         const taskList = await Task.find({
             'task_list.list_title': list.list_title,
         });
         const haveTask = taskList.length ? true : false;
 
-        // deleting list and it tasks
+        // Deleting the list and its tasks
         await List.deleteOne({ _id: id });
         if (haveTask) {
             await Task.deleteMany({ 'task_list.list_title': list.list_title });

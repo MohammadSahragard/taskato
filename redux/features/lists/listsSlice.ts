@@ -1,10 +1,10 @@
-// public
+// Public
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-// types
+// Types
 import { GetDataTypes } from '@/types/types';
 
-//* initial state
+//* Initial state
 const initialState: GetDataTypes = {
     beforeLoading: true,
     loading: false,
@@ -12,7 +12,7 @@ const initialState: GetDataTypes = {
     error: '',
 };
 
-//* async functions
+//* Async functions
 const getListsByEmail = createAsyncThunk(
     'lists/getListsByEmail',
     async (email: string) => {
@@ -28,7 +28,7 @@ const getListsByEmail = createAsyncThunk(
     }
 );
 
-//* reducer
+//* Reducer
 const listsSlice = createSlice({
     name: 'taskLists',
     initialState,

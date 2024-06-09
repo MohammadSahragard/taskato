@@ -1,11 +1,11 @@
 'use client';
 
-// public
+// Public
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
-//* components
+//* Components
 import {
     Dropdown,
     DropdownTrigger,
@@ -20,31 +20,31 @@ import Icon from '../texts/icon';
 import Subtitle from '../texts/subtitle';
 import Calendar from '@/components/ui-kits/calendar';
 
-//* functions
+//* Functions
 import {
     getDayOfWeek,
     getDate,
     getLocalDateString,
 } from '@/helper/functions/functions';
 
-//* redux
+//* Redux
 import { setTaskDate } from '@/redux/features/task-data/taskDataSlice';
 import TooltipElement from '../texts/tooltip-element';
 
 const AddDateBtn = () => {
     const pathname = usePathname();
-    // hooks and variables
+    // States and variables
     const dispatch = useAppDispatch();
     const taskDate = useAppSelector((state) => state.taskData.task_due_date);
     const [isOpenDatePicker, setIsOpenDatePicker] = useState(false);
 
-    // functions
+    // Functions
     const confirmDatePicked = (date: Date | undefined) => {
         dispatch(setTaskDate(date));
         setIsOpenDatePicker(false);
     };
 
-    // conditional rendering
+    // Conditional rendering
     if (pathname.includes('today')) return null;
     return (
         <Dropdown
@@ -52,6 +52,7 @@ const AddDateBtn = () => {
             isOpen={isOpenDatePicker}
             onOpenChange={() => setIsOpenDatePicker(!isOpenDatePicker)}
         >
+            {/* The dropdown trigger */}
             <TooltipElement title='Add due date'>
                 <div>
                     <DropdownTrigger>
@@ -73,7 +74,9 @@ const AddDateBtn = () => {
                 </div>
             </TooltipElement>
 
+            {/* The dropdown menu */}
             <DropdownMenu variant='flat'>
+                {/* The default options */}
                 <DropdownItem
                     startContent={<Icon iconName='calendar-day' />}
                     endContent={<Subtitle subtitle={getDayOfWeek().today} />}
@@ -97,6 +100,7 @@ const AddDateBtn = () => {
                     Next Week
                 </DropdownItem>
 
+                {/* Optional selection option (calendar popover) */}
                 <DropdownItem
                     startContent={<Icon iconName='calendar-day' />}
                     isReadOnly

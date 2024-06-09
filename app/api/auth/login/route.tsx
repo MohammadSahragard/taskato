@@ -1,4 +1,4 @@
-// public
+// Public
 import { verifyPassword } from '@/helper/functions/auth-functions';
 import User from '@/models/user';
 import connectDB from '@/utils/connectDB';
@@ -6,11 +6,11 @@ import { sign } from 'jsonwebtoken';
 import { NextResponse } from 'next/server';
 
 export const POST = async (req: Request) => {
-    // variables
+    // Variables
     const { email, password } = await req.json();
     const secretKey: any = process.env.SECRET_KEY;
 
-    // database connection
+    // Database connection
     try {
         await connectDB();
     } catch {
@@ -26,7 +26,7 @@ export const POST = async (req: Request) => {
             status: 401,
         });
 
-    // form validation
+    // Form validation
     if (!email || !password) {
         return NextResponse.json({
             message: 'All fields are required!',
@@ -36,7 +36,7 @@ export const POST = async (req: Request) => {
 
     if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
         return NextResponse.json({
-            message: 'Invalid e-mail address format!',
+            message: 'Invalid email address format!',
             status: 403,
         });
     }
@@ -44,40 +44,39 @@ export const POST = async (req: Request) => {
     if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password)) {
         return NextResponse.json({
             message:
-                'Password must be at least 8 characters and include a mix of uppercase letters, lowercase letters, numbers, and special characters.',
+                'The password must be at least 8 characters and include a mix of uppercase letters, lowercase letters, numbers, and special characters.',
             status: 403,
         });
     }
 
-    // check if user don't exists
+    // Checking if the user already exists or not
     const user = await User.findOne({ email: email.toLowerCase() });
     if (!user) {
         return NextResponse.json({
-            message: "User don't exists!",
+            message: "The user doesn't exist!",
             status: 400,
         });
     }
 
-    // checking if password is correct
+    // Checking if the password is correct or not
     const isValidPassword = await verifyPassword(password, user.password);
     if (!isValidPassword) {
         return NextResponse.json({
-            message: 'Username or password is incorrect.',
+            message: 'The username or the password is incorrect.',
             status: 401,
         });
     }
 
-    // generate token
+    // Special token generation
     const expirationToken = 24 * 7 * 60 * 60;
     const token = sign({ email: email.toLowerCase() }, secretKey, {
         expiresIn: expirationToken,
     });
 
-    // create new user
+    // Setting the token to cookies
     try {
-        // return token
         const response = NextResponse.json({
-            message: 'Logged in successfully.',
+            message: 'You logged in successfully.',
             status: 200,
         });
         response.cookies.set({

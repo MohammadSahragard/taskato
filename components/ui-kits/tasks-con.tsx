@@ -1,25 +1,25 @@
 'use client';
 
-// public
+// Public
 import { useAppSelector } from '@/redux/app/hook';
 
-//* components
+//* Components
 import Subtitle from '../ui/texts/subtitle';
 import EmptyStateTasks from './empty-state-tasks';
 import TaskItem from './task-item';
 import Divider from '../ui/texts/divider';
 import TaskLoadingSkeleton from './task-loading-skeleton';
 
-//* functions
+//* Functions
 import { getTasksByPathname } from '@/helper/functions/task-functions';
 
 const TasksCon = ({ pathname }: { pathname: string }) => {
-    // states and variables
+    // States and variables
     const tasks = useAppSelector((state) => state.tasks);
     const matchTasks = getTasksByPathname(tasks?.data ?? [], pathname);
     const taskDone = matchTasks?.find((task: any) => task.task_completion);
 
-    // conditional rendering
+    // Conditional rendering
     if ((tasks.loading || tasks.beforeLoading) && !tasks.data.length)
         return <TaskLoadingSkeleton />;
     return (

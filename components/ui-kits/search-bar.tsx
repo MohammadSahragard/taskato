@@ -1,16 +1,16 @@
 'use client';
 
-//* components
+//* Components
 import { Input } from '@nextui-org/react';
 import Icon from '../ui/texts/icon';
 
-//* redux
+//* Redux
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 import { setSearch } from '@/redux/features/options/optionsSlice';
 
 const Searchbar = () => {
-    const searchValue = useAppSelector((state) => state.options.searchValue);
     const dispatch = useAppDispatch();
+    const searchValue = useAppSelector((state) => state.options.searchValue);
 
     return (
         <Input

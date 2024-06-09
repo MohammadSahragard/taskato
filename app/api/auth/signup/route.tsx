@@ -1,17 +1,16 @@
-// public
+// Public
 import { hashPassword } from '@/helper/functions/auth-functions';
 import User from '@/models/user';
 import connectDB from '@/utils/connectDB';
 import { NextResponse } from 'next/server';
 
 export const POST = async (req: Request) => {
-    // variables
+    // Variables
     const { firstName, lastName, email, password, confirmPassword } =
         await req.json();
-
     const hashedPass = await hashPassword(password);
 
-    // database connection
+    // Database connection
     try {
         await connectDB();
     } catch {
@@ -37,14 +36,14 @@ export const POST = async (req: Request) => {
 
     if (password !== confirmPassword) {
         return NextResponse.json({
-            message: "Passwords don't match!",
+            message: "The Passwords don't match together!",
             status: 401,
         });
     }
 
     if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
         return NextResponse.json({
-            message: 'Invalid e-mail address format!',
+            message: 'Invalid email address format!',
             status: 403,
         });
     }
@@ -52,21 +51,21 @@ export const POST = async (req: Request) => {
     if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password)) {
         return NextResponse.json({
             message:
-                'Password must be at least 8 characters and include a mix of uppercase letters, lowercase letters, numbers, and special characters.',
+                'The password must be at least 8 characters and include a mix of uppercase letters, lowercase letters, numbers, and special characters.',
             status: 403,
         });
     }
 
-    // check if user already exists
+    // Checking if the user already exists or not
     const user = await User.findOne({ email: email.toLowerCase() });
     if (user) {
         return NextResponse.json({
-            message: 'User already exists!',
+            message: 'The user already exists!',
             status: 400,
         });
     }
 
-    // create new user
+    // Creating a new user
     try {
         await User.create({
             firstName,

@@ -1,4 +1,4 @@
-//* components
+//* Components
 import {
     Dropdown,
     DropdownTrigger,

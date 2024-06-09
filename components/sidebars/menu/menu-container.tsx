@@ -1,4 +1,4 @@
-//* components
+//* Components
 import MenuComponents from './menu-components';
 
 const MenuContainer = () => {

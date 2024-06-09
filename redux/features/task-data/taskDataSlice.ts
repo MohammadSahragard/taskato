@@ -1,12 +1,12 @@
 'use client';
 
-// public
+// Public
 import { TaskContentTypes } from '@/types/types';
 
-//* types
+// Types
 import { createSlice } from '@reduxjs/toolkit';
 
-//* initial state
+//* Initial state
 const initialState: TaskContentTypes = {
     task_title: '',
     task_description: '',
@@ -22,10 +22,10 @@ const initialState: TaskContentTypes = {
         },
         date: new Date(),
         isTrueReminder: false,
-    }
+    },
 };
 
-//* reducer
+//* Reducer
 const taskDataSlice = createSlice({
     name: 'taskData',
     initialState,

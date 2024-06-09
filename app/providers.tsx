@@ -1,17 +1,17 @@
 'use client';
 
-//* next ui provider
+//* Next ui provider
 import { NextUIProvider } from '@nextui-org/react';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 
-//* redux provider
+//* Redux provider
 import { Provider } from 'react-redux';
 import store from '@/redux/app/store';
 
-//* toastify container
+//* Toastify container
 import { ToastContainer } from 'react-toastify';
 
-//* data receiver
+//* Data receiver
 import DataReceiver from './data-receiver';
 
 export function Providers({ children }: { children: React.ReactNode }) {

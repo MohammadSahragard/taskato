@@ -1,4 +1,4 @@
-//* types
+//* Types
 import { HeadingTypes } from '@/types/types';
 
 const Heading = ({ heading, additionalClasses }: HeadingTypes) => {

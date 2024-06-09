@@ -1,24 +1,24 @@
 'use client';
 
-// public
+// Public
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
-//* components
+//* Components
 import { Button } from '@nextui-org/react';
 import Icon from '../texts/icon';
 
-//* redux
+//* Redux
 import { setIsOpenedMobileMenu } from '@/redux/features/options/optionsSlice';
 import MobileMenuContainer from '@/components/sidebars/menu/mobile-menu-container';
 
 const MenuToggleBtn = () => {
     const dispatch = useAppDispatch();
-    // states and variables
+    // States and variables
     const isOpenMenu = useAppSelector(
         (state) => state.options.isOpenedMobileMenu
     );
 
-    // functions
+    // Functions
     const toggleMenu = () => dispatch(setIsOpenedMobileMenu(!isOpenMenu));
 
     return (

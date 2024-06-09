@@ -1,6 +1,6 @@
 'use client';
 
-//* components
+//* Components
 import { Button, useDisclosure } from '@nextui-org/react';
 import Icon from '../texts/icon';
 import AddListModal from '@/components/modals/add-list-modal';

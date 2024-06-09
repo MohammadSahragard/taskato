@@ -1,8 +1,5 @@
-//* children
-export type Children = React.ReactNode;
-
 //*------ specials (components and ...)
-// ui components
+// UI components
 export type TitleTypes = {
     title: string;
     additionalClasses?: string;
@@ -11,7 +8,7 @@ export type TitleTypes = {
 export type SubtitleTypes = {
     subtitle?: string;
     additionalClasses?: string;
-    children?: Children;
+    children?: React.ReactNode;
 };
 
 export type HeadingTypes = {
@@ -36,7 +33,7 @@ export type PassVisibilityTypes = {
     setVisibility: Function;
 };
 
-// ui kits components
+// UI kits components
 export type MenuItemTypes = {
     href: string;
     label: string;
@@ -60,7 +57,7 @@ export type TaskReminderTypes = {
     isTrueReminder: boolean;
 };
 
-// signup submit
+// The types of the submitting signup form function
 export type SignupSubmitTypes = {
     firstName: string;
     lastName: string;
@@ -69,17 +66,17 @@ export type SignupSubmitTypes = {
     confirmPassword: string;
 };
 
-// login submit
+// The types of the submitting login form function
 export type LoginSubmitTypes = Pick<SignupSubmitTypes, 'email' | 'password'>;
 
-// types for isUserLoggedIn function
+// The types of the isUserLoggedIn function
 export type IsUserLoggedInTypes = {
     condition: boolean;
     pathname: string;
     router: any;
 };
 
-// types for add task list
+// The types of the task list adder component
 export type AddTaskListTypes = {
     _id?: string;
     email: string;
@@ -88,7 +85,7 @@ export type AddTaskListTypes = {
     createdAt?: Date;
 };
 
-// types for selected task for details sidebar
+// The types of the selected task for details sidebar
 export type TaskContentTypes = {
     _id?: string;
     email?: string;
@@ -109,7 +106,7 @@ export type TaskContentTypes = {
     createdAt?: Date;
 };
 
-// types for notes data
+// The types of the notes data
 export type NoteDataTypes = {
     _id?: string;
     note_title: string;
@@ -117,7 +114,7 @@ export type NoteDataTypes = {
     note_color?: string;
 };
 
-// context menu slice
+// The types of the context menu slice
 export type ItemDataTypes = {
     id: string;
     title?: string;
@@ -142,7 +139,7 @@ export type ContextMenuTypes = {
     menuPosition: MenuPositionTypes;
 };
 
-// data fetches
+// The types of the data fetching
 export type GetDataTypes = {
     beforeLoading?: boolean;
     loading: boolean;

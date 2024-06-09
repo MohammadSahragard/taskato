@@ -1,10 +1,10 @@
 'use client';
 
-// public
+// Public
 import { useState, useTransition } from 'react';
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
-//* components
+//* Components
 import {
     Modal,
     ModalContent,
@@ -18,13 +18,13 @@ import {
 } from '@nextui-org/react';
 import { toast } from 'react-toastify';
 
-//* data
+//* Data
 import { listColorItems } from '@/helper/data/data';
 
-//* functions
+//* Functions
 import { addTaskList } from '@/helper/functions/task-functions';
 
-//* redux
+//* Redux
 import { getListsByEmail } from '@/redux/features/lists/listsSlice';
 
 const AddListModal = ({
@@ -35,14 +35,14 @@ const AddListModal = ({
     onOpenChange: (isOpen: boolean) => void;
 }) => {
     const dispatch = useAppDispatch();
-    // states and variables
+    // States and variables
     const userEmail = useAppSelector((state) => state.options.userEmail);
     const [listColor, setListColor] = useState('#e11d48');
     const [listTitle, setListTitle] = useState('Untitled list');
     const [isPending, startTransition] = useTransition();
     const isInvalid = !/^[\w\d-\s]+$/.test(listTitle);
 
-    // functions
+    // Functions
     const openModal = () => {
         setListTitle('Untitled list');
         onOpenChange(isOpen);
@@ -57,7 +57,7 @@ const AddListModal = ({
             list_title: listTitle,
             list_color: listColor,
         }).then((res: any) => {
-            // set result message to toastify
+            // Set result message to toastify
             const messageStatus = res.status === 200 ? 'success' : 'error';
             toast[messageStatus](res.message);
 

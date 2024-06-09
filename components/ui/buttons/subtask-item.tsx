@@ -1,14 +1,14 @@
 'use client';
 
-// public
+// Public
 import { useTransition } from 'react';
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
-//* components
+//* Components
 import { Button } from '@nextui-org/react';
 import CheckSubtaskBtn from './check-subtask-btn';
 
-//* redux
+//* Redux
 import { getTasksByEmail } from '@/redux/features/tasks/tasksSlice';
 import { updateSubtasks } from '@/redux/features/selected-task/selectedTaskSlice';
 import { setContextMenuData } from '@/helper/functions/functions';
@@ -23,18 +23,18 @@ const SubtaskItem = ({
     isCompleted: boolean;
 }) => {
     const dispatch = useAppDispatch();
-    // states and variables
+    // States and variables
     const userEmail = useAppSelector((state) => state.options.userEmail);
     const [isPending, startTransition] = useTransition();
     const contextMenuData = useAppSelector((state) => state.contextMenu);
 
-    // styles
+    // Classes
     const isActiveContextMenu =
         contextMenuData.itemData.id === _id && contextMenuData.isShownMenu
             ? 'opacity-80 scale-95'
             : '';
 
-    // functions
+    // Functions
     const changeCheck = async () => {
         // req body
         const reqBody = {
@@ -62,7 +62,7 @@ const SubtaskItem = ({
     };
     const checkHandler = () => startTransition(() => changeCheck());
 
-    // context menu data
+    // Context menu data
     const data = {
         id: _id,
         isCompleted,

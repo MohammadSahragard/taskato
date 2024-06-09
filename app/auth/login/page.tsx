@@ -1,4 +1,4 @@
-//* components
+//* Components
 import LoginCon from '@/components/pages/login/login-con';
 
 const Page = () => {

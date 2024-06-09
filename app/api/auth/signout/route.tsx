@@ -1,10 +1,10 @@
-// public
+// Public
 import { NextResponse } from 'next/server';
 
 export const GET = (req: Request) => {
     if (req.method === 'GET') {
         const response = NextResponse.json({
-            message: 'Log out successfully!',
+            message: 'You logged out successfully!',
             status: 200,
         });
         response.cookies.delete('token');

@@ -1,10 +1,10 @@
 'use client';
 
-// public
+// Public
 import { useState } from 'react';
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
-//* components
+//* Components
 import {
     Dropdown,
     DropdownTrigger,
@@ -19,7 +19,7 @@ import Icon from '../texts/icon';
 import Subtitle from '../texts/subtitle';
 import DateTimePicker from '@/components/ui-kits/date-time-picker';
 
-//* functions
+//* Functions
 import {
     laterTime,
     getDate,
@@ -28,11 +28,14 @@ import {
     dateToLocalDateString,
 } from '@/helper/functions/functions';
 
-//* redux
-import { setTaskReminder, setShowReminder } from '@/redux/features/task-data/taskDataSlice';
+//* Redux
+import {
+    setTaskReminder,
+    setShowReminder,
+} from '@/redux/features/task-data/taskDataSlice';
 import TooltipElement from '../texts/tooltip-element';
 
-//* types
+//* Types
 type saveReminderType = {
     hour: number;
     minute: number;
@@ -41,11 +44,13 @@ type saveReminderType = {
 
 const AddReminderBtn = () => {
     const dispatch = useAppDispatch();
-    // hooks and variables
-    const taskReminder = useAppSelector((state) => state.taskData.task_reminder_date);
+    // States and variables
+    const taskReminder = useAppSelector(
+        (state) => state.taskData.task_reminder_date
+    );
     const [isOpenPicker, setIsOpenPicker] = useState(false);
 
-    // functions
+    // Functions
     const saveReminder = ({ hour, minute, date }: saveReminderType) => {
         dispatch(
             setTaskReminder({
@@ -65,6 +70,7 @@ const AddReminderBtn = () => {
             isOpen={isOpenPicker}
             onOpenChange={() => setIsOpenPicker(!isOpenPicker)}
         >
+            {/* The dropdown trigger */}
             <TooltipElement title='Add reminder'>
                 <div>
                     <DropdownTrigger>
@@ -109,10 +115,13 @@ const AddReminderBtn = () => {
                     </DropdownTrigger>
                 </div>
             </TooltipElement>
+
+            {/* The dropdown menu */}
             <DropdownMenu
                 variant='flat'
                 selectionMode='single'
             >
+                {/* The default options */}
                 <DropdownItem
                     startContent={<Icon iconName='calendar-day' />}
                     endContent={
@@ -163,6 +172,7 @@ const AddReminderBtn = () => {
                     Next Week
                 </DropdownItem>
 
+                {/* Optional selection option (calendar and time popover) */}
                 <DropdownItem
                     startContent={<Icon iconName='calendar-day' />}
                     isReadOnly

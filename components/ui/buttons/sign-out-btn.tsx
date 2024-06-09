@@ -1,16 +1,16 @@
 'use client';
 
-// public
+// Public
 import { useTransition } from 'react';
 
-//* components
+//* Components
 import { Button } from '@nextui-org/react';
 import Icon from '../texts/icon';
 
 const SignOutBtn = () => {
     const [isPending, startTransition] = useTransition();
 
-    // logout function
+    // Logout function
     const signoutHandler = async () => {
         const res = await fetch('/api/auth/signout');
         const data = await res.json();

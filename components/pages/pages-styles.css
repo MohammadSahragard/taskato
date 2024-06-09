@@ -1,5 +1,4 @@
-/** ----- auth pages */
-/* signup */
+/** ----- Auth pages */
 .form-con {
     @apply relative p-10 rounded-2xl
             flex flex-col gap-7 border border-primary-300 mx-5 max-w-96;

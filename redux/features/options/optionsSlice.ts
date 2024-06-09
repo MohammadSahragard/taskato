@@ -1,19 +1,19 @@
-// public
+// Public
 import { createSlice } from '@reduxjs/toolkit';
 
-//* initial state
+//* Initial state
 const initialState = {
     searchValue: '',
     userEmail: '',
     userName: '',
     userLoading: true,
     isOpenedDetailsSidebar: false,
-    // responsive options
+    // Responsive options
     isOpenedMobileDetailsSidebar: false,
     isOpenedMobileMenu: false,
 };
 
-//* reducer
+//* Reducer
 const optionsSlice = createSlice({
     name: 'options',
     initialState,
@@ -33,7 +33,7 @@ const optionsSlice = createSlice({
         setIsOpenedDetailsSidebar: (state, action) => {
             state.isOpenedDetailsSidebar = action.payload;
         },
-        // responsive options
+        // Responsive options
         setIsOpenedMobileDetailsSidebar: (state, action) => {
             state.isOpenedMobileDetailsSidebar = action.payload;
         },
