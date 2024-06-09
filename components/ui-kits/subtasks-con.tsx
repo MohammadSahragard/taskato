@@ -1,14 +1,14 @@
 'use client';
 
-// public
+// Public
 import { useAppSelector } from '@/redux/app/hook';
 
-//* components
+//* Components
 import { ScrollShadow } from '@nextui-org/react';
 import SubtaskItem from '../ui/buttons/subtask-item';
 
 const SubtasksCon = () => {
-    // states and variables
+    // States and variables
     const subtasks = useAppSelector((state) => state.selectedTask.subtasks);
 
     return (

@@ -1,20 +1,20 @@
 'use client';
 
-//* components
+//* Components
 import { Chip } from '@nextui-org/react';
 import Icon from '../texts/icon';
 
-//* types
-import { MouseEventHandler } from 'react';
+//* Types
+type ChangeCheckSubtaskTypes = {
+    isCompleted?: boolean;
+    changeCheck?: React.MouseEventHandler;
+};
 
 const ChangeCheckSubtaskOption = ({
     isCompleted,
     changeCheck,
-}: {
-    isCompleted?: boolean;
-    changeCheck?: MouseEventHandler;
-}) => {
-    // states and variables
+}: ChangeCheckSubtaskTypes) => {
+    // States and variables
     const changeCheckTitle = isCompleted
         ? 'Mark as not completed'
         : 'Mark as completed';

@@ -1,4 +1,4 @@
-//* components
+//* Components
 import BackForwardRoutBtn from '../ui/buttons/back-forward-route';
 import MenuToggleBtn from '../ui/buttons/menu-toggle-btn';
 import TabHeading from '../ui/texts/tab-heading';

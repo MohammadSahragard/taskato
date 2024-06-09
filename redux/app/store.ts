@@ -1,7 +1,7 @@
-// public
+// Public
 import { configureStore } from '@reduxjs/toolkit';
 
-//* reducers
+//* Reducers
 import optionsSlice from '../features/options/optionsSlice';
 import taskDataSlice from '../features/task-data/taskDataSlice';
 import formSlice from '../features/form/formSlice';

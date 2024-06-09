@@ -1,4 +1,4 @@
-//* types
+//* Types
 import { IconTypes } from '@/types/types';
 
 const Icon = ({ iconName, style, color, size, forceColor }: IconTypes) => {

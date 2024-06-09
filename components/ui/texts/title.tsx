@@ -1,4 +1,4 @@
-//* types
+//* Types
 import { TitleTypes } from '@/types/types';
 
 const Title = ({ title, additionalClasses }: TitleTypes) => {

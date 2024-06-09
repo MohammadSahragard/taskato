@@ -1,4 +1,4 @@
-// public
+// Public
 import mongoose, { Schema, models, model } from 'mongoose';
 
 const taskSchema = new Schema({

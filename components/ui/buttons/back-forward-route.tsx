@@ -1,25 +1,24 @@
 'use client';
 
-// public
+// Public
 import { useRouter } from 'next/navigation';
 
-//* components
+//* Components
 import { Button } from '@nextui-org/react';
 import Icon from '../texts/icon';
 import { BackForwardRoute } from '@/types/types';
 import TooltipElement from '../texts/tooltip-element';
 
 const BackForwardRoutBtn = ({ route }: BackForwardRoute) => {
-    // variables and hooks
     const router = useRouter();
-
+    // States and variables
     const icon = {
         back: 'chevron-left',
         forward: 'chevron-right',
     };
     const tooltipContent = route === 'back' ? 'Go back' : 'Go forward';
 
-    // functions
+    // Functions
     const go = () => (route === 'back' ? router.back() : router.forward());
 
     return (

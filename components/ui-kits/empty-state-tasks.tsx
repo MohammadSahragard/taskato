@@ -1,3 +1,4 @@
+//* Components
 import Image from 'next/image';
 import Subtitle from '../ui/texts/subtitle';
 import Heading from '../ui/texts/heading';

@@ -1,17 +1,20 @@
 'use client';
 
-//* components
+//* Components
 import { Button } from '@nextui-org/react';
 import Icon from '../texts/icon';
 
-//* types
+//* Types
 import { PassVisibilityTypes } from '@/types/types';
 
-const PassVisibilityBtn = ({ visibility, setVisibility }: PassVisibilityTypes) => {
+const PassVisibilityBtn = ({
+    visibility,
+    setVisibility,
+}: PassVisibilityTypes) => {
     // variables
     const iconName = visibility ? 'eye-slash' : 'eye';
 
-    // functions
+    // Functions
     const changeVisibility = () => setVisibility(!visibility);
 
     return (

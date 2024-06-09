@@ -1,17 +1,17 @@
-// public
+// Public
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-// types
+// Types
 import { GetDataTypes } from '@/types/types';
 
-//* initial state
+//* Initial state
 const initialState: GetDataTypes = {
     loading: false,
     data: [],
     error: '',
 };
 
-//* async functions
+//* Async functions
 const getNotesByEmail: any = createAsyncThunk(
     'notes/getNotesByEmail',
     async (email: string) => {
@@ -27,7 +27,7 @@ const getNotesByEmail: any = createAsyncThunk(
     }
 );
 
-//* reducer
+//* Reducer
 const notesSlice = createSlice({
     name: 'notes',
     initialState,

@@ -1,4 +1,4 @@
-//* components
+//* Components
 import Title from './title';
 import { Skeleton } from '@nextui-org/react';
 

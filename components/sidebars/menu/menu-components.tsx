@@ -1,4 +1,4 @@
-//* components
+//* Components
 import MenuItem from '@/components/ui-kits/menu-item';
 import ProfileAccount from '@/components/ui-kits/profile-account';
 import Searchbar from '@/components/ui-kits/search-bar';
@@ -9,18 +9,18 @@ import ThemeToggleBtn from '@/components/ui/buttons/theme-toggle-btn';
 import Divider from '@/components/ui/texts/divider';
 import Subtitle from '@/components/ui/texts/subtitle';
 
-//* data
+//* Data
 import { menuLinks } from '@/helper/data/data';
 
 const MenuComponents = () => {
     return (
         <div className='menu-components'>
-            {/* menu header (profile section & searchbar) */}
+            {/* Menu header (profile section & searchbar) */}
             <ProfileAccount />
             <Searchbar />
 
             <div className='my-3'>
-                {/* tasks (menu links) */}
+                {/* Menu links */}
                 <section className='mb-2'>
                     <Subtitle
                         subtitle='TASKS'
@@ -39,7 +39,7 @@ const MenuComponents = () => {
 
                 <Divider />
 
-                {/* lists */}
+                {/* Lists */}
                 <section className='mt-2'>
                     <Subtitle
                         subtitle='LISTS'
@@ -52,7 +52,7 @@ const MenuComponents = () => {
                 </section>
             </div>
 
-            {/* menu options (theme & sign out) */}
+            {/* Menu options (theme toggler & sign out button) */}
             <div>
                 <ThemeToggleBtn />
                 <SignOutBtn />

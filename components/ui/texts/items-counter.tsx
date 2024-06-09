@@ -1,4 +1,4 @@
-//* components
+//* Components
 import { Chip } from '@nextui-org/react';
 
 const ItemsCounter = ({ value }: { value: number }) => {

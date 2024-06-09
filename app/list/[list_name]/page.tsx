@@ -1,4 +1,4 @@
-//* components
+//* Components
 import TasksCon from '@/components/ui-kits/tasks-con';
 
 const List = ({ params }: { params: { list_name: string } }) => {

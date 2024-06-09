@@ -1,4 +1,4 @@
-//* components
+//* Components
 import StickyNotesCon from '@/components/ui-kits/sticky-notes-con';
 
 const StickyNotes = () => {

@@ -1,4 +1,4 @@
-//* types
+//* Types
 import { SubtitleTypes } from '@/types/types';
 
 const Subtitle = ({ subtitle, additionalClasses, children }: SubtitleTypes) => {

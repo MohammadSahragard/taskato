@@ -1,4 +1,4 @@
-//* components
+//* Components
 import MobileTaskDetails from './mobile-task-details';
 import TaskDetailsComponents from './task-details-components';
 

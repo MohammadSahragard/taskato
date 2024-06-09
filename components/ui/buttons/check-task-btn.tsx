@@ -1,36 +1,39 @@
 'use client';
 
-// public
+// Public
 import { TransitionStartFunction } from 'react';
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
-//* components
+//* Components
 import { Button } from '@nextui-org/react';
 import Icon from '../texts/icon';
 import TooltipElement from '../texts/tooltip-element';
 
-//* redux
+//* Redux
 import { getTasksByEmail } from '@/redux/features/tasks/tasksSlice';
+
+//* Types
+type CheckTaskTypes = {
+    isCompleted: boolean;
+    taskId: string;
+    isPending: boolean;
+    startTransition: TransitionStartFunction;
+}
 
 const CheckTaskBtn = ({
     isCompleted,
     taskId,
     isPending,
     startTransition,
-}: {
-    isCompleted: boolean;
-    taskId: string;
-    isPending: boolean;
-    startTransition: TransitionStartFunction;
-}) => {
+}: CheckTaskTypes) => {
     const dispatch = useAppDispatch();
-    // states and variables
+    // States and variables
     const userEmail = useAppSelector((state) => state.options.userEmail);
     const iconName = isCompleted ? 'check-square' : 'square';
     const iconStyle = isCompleted ? 'fas' : 'far';
     const tooltipContent = isCompleted ? 'Incomplete task' : 'Complete task';
 
-    // functions
+    // Functions
     const changeCheck = async () => {
         // req body
         const reqBody = {

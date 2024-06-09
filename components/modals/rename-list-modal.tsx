@@ -1,10 +1,10 @@
 'use client';
 
-// public
+// Public
 import { useState, useEffect, useTransition } from 'react';
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
-//* components
+//* Components
 import {
     Modal,
     ModalContent,
@@ -16,11 +16,11 @@ import {
 } from '@nextui-org/react';
 import { toast } from 'react-toastify';
 
-//* redux
+//* Redux
 import { getListsByEmail } from '@/redux/features/lists/listsSlice';
 import { getTasksByEmail } from '@/redux/features/tasks/tasksSlice';
 
-//* functions
+//* Functions
 import { renameTaskList } from '@/helper/functions/task-functions';
 
 const RenameListModal = ({
@@ -31,14 +31,14 @@ const RenameListModal = ({
     onOpenChange: (isOpen: boolean) => void;
 }) => {
     const dispatch = useAppDispatch();
-    // states and variables
+    // States and variables
     const userEmail = useAppSelector((state) => state.options.userEmail);
     const listData = useAppSelector((state) => state.contextMenu.itemData);
     const [newListTitle, setNewListTitle] = useState('');
     const [isPending, startTransition] = useTransition();
     const isInvalid = !/^[\w\d-\s]+$/.test(newListTitle ?? '');
 
-    // functions
+    // Functions
     const openModal = () => {
         setNewListTitle('Untitled list');
         onOpenChange(isOpen);
@@ -54,7 +54,7 @@ const RenameListModal = ({
 
         await renameTaskList(userEmail, listData.id, newListTitle).then(
             (res: any) => {
-                // set result message to toastify
+                // Set result message to toastify
                 const messageStatus = res.status === 200 ? 'success' : 'error';
                 toast[messageStatus](res.message);
 

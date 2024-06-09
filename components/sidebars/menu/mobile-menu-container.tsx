@@ -1,10 +1,10 @@
 'use client';
 
-//* components
+//* Components
 import { Modal, ModalContent } from '@nextui-org/react';
 import MenuComponents from './menu-components';
 
-//* data
+//* Data
 import { mobileMenuMotionProps } from '@/helper/data/data';
 
 const MobileMenuContainer = ({

@@ -1,14 +1,14 @@
 'use client';
 
-// public
+// Public
 import { useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useAppDispatch } from '@/redux/app/hook';
 
-//* functions
+//* Functions
 import { isUserLoggedIn } from '@/helper/functions/auth-functions';
 
-//* redux
+//* Redux
 import {
     setUserEmail,
     setUserLoading,
@@ -17,10 +17,12 @@ import {
 
 export const useUserLoggedIn = () => {
     const dispatch = useAppDispatch();
-    const [user, setUser] = useState<any>();
-    const router = useRouter();
     const pathname = usePathname();
+    const router = useRouter();
+    // States and variables
+    const [user, setUser] = useState<any>();
 
+    // Getting the logged-in user's data
     useEffect(() => {
         const getUser = async () => {
             const res = await fetch('/api/user');

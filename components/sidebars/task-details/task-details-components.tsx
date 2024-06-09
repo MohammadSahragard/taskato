@@ -1,4 +1,4 @@
-//* components
+//* Components
 import SubtasksCon from '@/components/ui-kits/subtasks-con';
 import AddSubtaskBtn from '@/components/ui/buttons/add-subtask-btn';
 import CloseTaskDetails from '@/components/ui/buttons/close-task-details';
@@ -14,7 +14,7 @@ import TaskDetailsTaskTitle from '@/components/ui/texts/task-details-title';
 const TaskDetailsComponents = () => {
     return (
         <div className='task-details-components'>
-            {/* task details header */}
+            {/* The header of task details section */}
             <header className='task-details-header'>
                 <Heading
                     heading='Task'
@@ -23,9 +23,9 @@ const TaskDetailsComponents = () => {
                 <CloseTaskDetails />
             </header>
 
-            {/* task details main content */}
+            {/* The main content of task details section */}
             <div className='task-details-main'>
-                {/* task content section */}
+                {/* The task content section */}
                 <section className='space-y-2'>
                     <TaskDetailsTaskTitle />
                     <TaskDetailsDescription />
@@ -34,7 +34,7 @@ const TaskDetailsComponents = () => {
                     <TaskDetailsReminderBtn />
                 </section>
 
-                {/* subtasks section */}
+                {/* Subtasks section */}
                 <div className='subtasks-con'>
                     <Heading
                         heading='Subtasks'

@@ -1,4 +1,4 @@
-// public
+// Public
 import { cookies } from 'next/headers';
 import User from '@/models/user';
 import connectDB from '@/utils/connectDB';
@@ -6,23 +6,13 @@ import { NextResponse } from 'next/server';
 import { verifyToken } from '@/helper/functions/auth-functions';
 
 export const GET = async (req: Request) => {
-    // variables
+    // Variables
     const cookiesStore = cookies();
     const token: any = cookiesStore.get('token')?.value;
     const secretKey: any = process.env.SECRET_KEY;
     const verifiedToken: any = verifyToken(token, secretKey);
 
     if (req.method !== 'GET')
-        return NextResponse.json({
-            message: 'Something went wrong. Please try again later.',
-            status: 401,
-        });
-    if (!token)
-        return NextResponse.json({
-            message: 'Something went wrong. Please try again later.',
-            status: 401,
-        });
-    if (!verifiedToken)
         return NextResponse.json({
             message: 'Something went wrong. Please try again later.',
             status: 401,
@@ -38,7 +28,19 @@ export const GET = async (req: Request) => {
         });
     }
 
-    // get user
+    // Verifying the user token
+    if (!token)
+        return NextResponse.json({
+            message: 'Something went wrong. Please try again later.',
+            status: 401,
+        });
+    if (!verifiedToken)
+        return NextResponse.json({
+            message: 'Something went wrong. Please try again later.',
+            status: 401,
+        });
+
+    // Getting the user
     try {
         const foundUser = await User.findOne({ email: verifiedToken });
 

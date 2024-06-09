@@ -1,16 +1,17 @@
 'use client';
 
-// public
+// Public
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
-//* components
+//* Components
 import { Textarea } from '@nextui-org/react';
 
-//* redux
+//* Redux
 import { setTaskDescription } from '@/redux/features/selected-task/selectedTaskSlice';
+
 const TaskDetailsDescription = () => {
     const dispatch = useAppDispatch();
-    // states and variables
+    // States and variables
     const description = useAppSelector(
         (state) => state.selectedTask.task_description
     );

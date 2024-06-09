@@ -1,10 +1,10 @@
 'use client';
 
-// public
+// Public
 import { useState, useTransition } from 'react';
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
-//* components
+//* Components
 import {
     Modal,
     ModalContent,
@@ -16,11 +16,11 @@ import {
 } from '@nextui-org/react';
 import { toast } from 'react-toastify';
 
-//* redux
+//* Redux
 import { getTasksByEmail } from '@/redux/features/tasks/tasksSlice';
 import { updateSubtasks } from '@/redux/features/selected-task/selectedTaskSlice';
 
-//* functions
+//* Functions
 import { addSubtask } from '@/helper/functions/task-functions';
 
 const AddSubtaskModal = ({
@@ -31,13 +31,13 @@ const AddSubtaskModal = ({
     onOpenChange: (isOpen: boolean) => void;
 }) => {
     const dispatch = useAppDispatch();
-    // states and variables
+    // States and variables
     const selectedTask = useAppSelector((state) => state.selectedTask);
     const [subtaskTitle, setSubtaskTitle] = useState('Untitled subtask');
     const userEmail = useAppSelector((state) => state.options.userEmail);
     const [isPending, startTransition] = useTransition();
 
-    // functions
+    // Functions
     const openModal = () => {
         setSubtaskTitle('Untitled subtask');
         onOpenChange(isOpen);
@@ -48,7 +48,7 @@ const AddSubtaskModal = ({
 
         await addSubtask(selectedTask._id ?? '', subtaskTitle).then(
             (res: any) => {
-                // set result message to toastify
+                // Set result message to toastify
                 const messageStatus = res.status === 200 ? 'success' : 'error';
                 toast[messageStatus](res.message);
 

@@ -1,37 +1,40 @@
 'use client';
 
-// public
+// Public
 import { TransitionStartFunction } from 'react';
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
-//* components
+//* Components
 import { Button } from '@nextui-org/react';
 import Icon from '../texts/icon';
 import TooltipElement from '../texts/tooltip-element';
 import { getTasksByEmail } from '@/redux/features/tasks/tasksSlice';
+
+//* types
+type AddToImportantTypes = {
+    isImportant: boolean;
+    taskId: string;
+    isPending: boolean;
+    startTransition: TransitionStartFunction;
+};
 
 const AddToImportantBtn = ({
     isImportant,
     taskId,
     isPending,
     startTransition,
-}: {
-    isImportant: boolean;
-    taskId: string;
-    isPending: boolean;
-    startTransition: TransitionStartFunction;
-}) => {
+}: AddToImportantTypes) => {
     const dispatch = useAppDispatch();
-    // states and variables
+    // States and variables
     const userEmail = useAppSelector((state) => state.options.userEmail);
     const iconStyle = isImportant ? 'fas' : 'far';
     const tooltipContent = isImportant
         ? 'Remove from Important'
         : 'Add to important';
 
-    // functions
+    // Functions
     const toggleImportant = async () => {
-        // req body
+        // Req body
         const reqBody = {
             reqData: { is_in_important: !isImportant },
             _id: taskId,

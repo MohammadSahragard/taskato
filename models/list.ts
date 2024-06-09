@@ -1,4 +1,4 @@
-// public
+// Public
 import { Schema, models, model } from 'mongoose';
 
 const listSchema = new Schema({

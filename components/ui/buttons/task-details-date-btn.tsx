@@ -1,10 +1,10 @@
 'use client';
 
-// public
+// Public
 import { useState } from 'react';
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
-//* components
+//* Components
 import {
     Dropdown,
     DropdownTrigger,
@@ -20,23 +20,23 @@ import Subtitle from '../texts/subtitle';
 import Calendar from '@/components/ui-kits/calendar';
 import TooltipElement from '../texts/tooltip-element';
 
-//* functions
+//* Functions
 import {
     getDayOfWeek,
     getDate,
     getLocalDateString,
 } from '@/helper/functions/functions';
 
-//* redux
+//* Redux
 import { setTaskDueDate } from '@/redux/features/selected-task/selectedTaskSlice';
 
 const TaskDetailsDateBtn = () => {
     const dispatch = useAppDispatch();
-    // hooks and variables
+    // States and variables
     const date = useAppSelector((state) => state.selectedTask.task_due_date);
     const [isOpenDatePicker, setIsOpenDatePicker] = useState(false);
 
-    // functions
+    // Functions
     const changeDatePicked = (date: Date | null) => {
         dispatch(setTaskDueDate(date));
         setIsOpenDatePicker(false);
@@ -48,6 +48,7 @@ const TaskDetailsDateBtn = () => {
             isOpen={isOpenDatePicker}
             onOpenChange={() => setIsOpenDatePicker(!isOpenDatePicker)}
         >
+            {/* The dropdown trigger */}
             <TooltipElement title='Add due date'>
                 <div>
                     <DropdownTrigger>
@@ -71,7 +72,9 @@ const TaskDetailsDateBtn = () => {
                 </div>
             </TooltipElement>
 
+            {/* The dropdown menu */}
             <DropdownMenu variant='flat'>
+                {/* The default options */}
                 <DropdownItem
                     startContent={<Icon iconName='calendar-day' />}
                     endContent={<Subtitle subtitle={getDayOfWeek().today} />}
@@ -95,6 +98,7 @@ const TaskDetailsDateBtn = () => {
                     Next Week
                 </DropdownItem>
 
+                {/* Optional selection option (calendar popover) */}
                 <DropdownItem
                     startContent={<Icon iconName='calendar-day' />}
                     isReadOnly

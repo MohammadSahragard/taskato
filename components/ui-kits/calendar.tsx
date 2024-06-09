@@ -1,10 +1,10 @@
 'use client';
 
-//* components
+//* Components
 import { DayPicker } from 'react-day-picker';
 import Icon from '../ui/texts/icon';
 
-//* types
+//* Types
 export type CalendarProps = React.ComponentProps<typeof DayPicker>;
 
 const Calendar = ({

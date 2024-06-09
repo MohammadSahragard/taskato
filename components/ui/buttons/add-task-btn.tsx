@@ -1,21 +1,24 @@
 'use client';
 
-// public
+// Public
 
-//* components
+//* Components
 import { Button } from '@nextui-org/react';
 import Icon from '../texts/icon';
 import TooltipElement from '../texts/tooltip-element';
+
+//* Types
+type AddTaskTypes = {
+    submitTask: any;
+    startTransition: any;
+    isPending: boolean;
+};
 
 const AddTaskBtn = ({
     submitTask,
     startTransition,
     isPending,
-}: {
-    submitTask: any;
-    startTransition: any;
-    isPending: boolean;
-}) => {
+}: AddTaskTypes) => {
     return (
         <TooltipElement title='Add task'>
             <Button

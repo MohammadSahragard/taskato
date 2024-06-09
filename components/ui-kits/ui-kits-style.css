@@ -1,10 +1,10 @@
-/***** kits components */
+/***** Kits components */
 .profile-account {
     @apply grid grid-cols-[max-content_auto] gap-2 
             leading-none items-center;
 }
 
-/* date time picker */
+/* Date and time picker */
 .date-time-picker {
     @apply w-max flex rounded-xl border dark:border-default-300/20;
 }
@@ -25,12 +25,12 @@
             snap-start snap-mandatory;
 }
 
-/* add task bar */
-.task-bar {
+/* Task adder bar */
+.task-adder-bar {
     @apply bg-primary-100/65 backdrop-blur-sm border-none !rounded-xl !px-1 !transition-all;
 }
 
-/* :task item */
+/* Task item */
 .task-item {
     @apply grid grid-cols-[max-content_auto_max-content] w-full p-1 
             hover:bg-primary-100 rounded-xl outline-none transition-all;
@@ -42,7 +42,7 @@
     @apply flex items-start flex-col sm:flex-row gap-2 px-2 pb-2;
 }
 
-/* :task details section */
+/* Task details section */
 .task-details-header {
     @apply flex justify-between items-center mb-3;
 }
@@ -59,12 +59,12 @@
     @apply w-[14px] h-[14px] bg-primary-200 dark:bg-primary-200/60 text-white rounded-[3px] grid place-items-center;
 }
 
-/* empty state tasks */
+/* Empty state tasks */
 .empty-state {
     @apply absolute inset-0 flex flex-col items-center justify-center text-center;
 }
 
-/* task loading skeleton */
+/* Task loading skeleton */
 .task-loading-skeleton {
     @apply absolute inset-0 flex flex-col gap-2 px-5 py-[80px];
 }
@@ -72,7 +72,7 @@
     @apply !grid grid-cols-[max-content_auto_max-content] gap-x-3 p-2 rounded-xl !bg-primary-100 !shadow-none border border-primary-300;
 }
 
-/* sticky notes style */
+/* Sticky notes style */
 .sticky-note {
     @apply grid grid-rows-[max-content_auto] aspect-square !shadow-none;
 }

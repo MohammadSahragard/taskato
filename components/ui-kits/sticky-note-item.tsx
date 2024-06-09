@@ -1,32 +1,32 @@
 'use client';
 
-// public
+// Public
 import { useAppDispatch, useAppSelector } from '@/redux/app/hook';
 
-//* components
+//* Components
 import { Card, CardBody, useDisclosure } from '@nextui-org/react';
 import Title from '../ui/texts/title';
 
-//* types
+//* Types
 import { NoteDataTypes } from '@/types/types';
 
-//* helper
+//* Functions
 import { setContextMenuData } from '@/helper/functions/functions';
 import UpdateStickyNoteModal from '../modals/update-sticky-note-modal';
 
 const StickyNoteItem = (props: NoteDataTypes) => {
     const dispatch = useAppDispatch();
-    // states and variables
+    // States and variables
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const contextMenuData = useAppSelector((state) => state.contextMenu);
 
-    // styles
+    // Classes
     const isActiveContextMenu =
         contextMenuData.itemData.id === props._id && contextMenuData.isShownMenu
             ? 'opacity-80 scale-95'
             : '';
 
-    // context menu data
+    // Context menu data
     const data = {
         id: props._id,
         title: props.note_title,
@@ -55,7 +55,7 @@ const StickyNoteItem = (props: NoteDataTypes) => {
                 </CardBody>
             </Card>
 
-            {/* modal for update note */}
+            {/* The modal of updating a note */}
             <UpdateStickyNoteModal
                 isOpen={isOpen}
                 onOpenChange={onOpenChange}

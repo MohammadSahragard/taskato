@@ -1,11 +1,11 @@
 'use client';
 
-// public
+// Public
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
-//* components
+//* Components
 import { Button, useDisclosure } from '@nextui-org/react';
 import Icon from '../ui/texts/icon';
 import { TaskListTypes } from '@/types/types';
@@ -16,7 +16,7 @@ import RenameListModal from '../modals/rename-list-modal';
 const TaskList = ({ id, href, label, listColor }: TaskListTypes) => {
     const pathname = usePathname();
     const dispatch = useAppDispatch();
-    // states and variables
+    // States and variables
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const tasks = useAppSelector((state) => state.tasks.data);
     const listCounter = tasks.filter(
@@ -24,7 +24,7 @@ const TaskList = ({ id, href, label, listColor }: TaskListTypes) => {
     );
     const contextMenuData = useAppSelector((state) => state.contextMenu);
 
-    // styles
+    // Classes
     const defaultStyles = 'fw-btn pr-2 pl-3 relative';
     const isActiveLink = pathname === href ? 'bg-background' : '';
     const isActiveContextMenu =
@@ -33,7 +33,7 @@ const TaskList = ({ id, href, label, listColor }: TaskListTypes) => {
             : '';
     const finallyClass = `${defaultStyles} ${isActiveLink} ${isActiveContextMenu}`;
 
-    // context menu data
+    // Context menu data
     const data = {
         id,
         title: label,
@@ -64,7 +64,7 @@ const TaskList = ({ id, href, label, listColor }: TaskListTypes) => {
                 </Link>
             </Button>
 
-            {/* modal for rename list */}
+            {/* The modal of renaming a list */}
             <RenameListModal
                 isOpen={isOpen}
                 onOpenChange={onOpenChange}

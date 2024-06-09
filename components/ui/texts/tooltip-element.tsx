@@ -1,13 +1,13 @@
-//* components
+//* Components
 import { Tooltip } from '@nextui-org/react';
 
-const TooltipElement = ({
-    title,
-    children,
-}: {
+//* Types
+type TooltipElementType = {
     title: string;
     children: React.ReactNode;
-}) => {
+};
+
+const TooltipElement = ({ title, children }: TooltipElementType) => {
     return (
         <Tooltip
             content={title}

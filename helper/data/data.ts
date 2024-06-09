@@ -1,4 +1,4 @@
-// menu links
+// Menu links
 export const menuLinks = [
     {
         id: '1tasks',
@@ -26,7 +26,7 @@ export const menuLinks = [
     },
 ];
 
-// date format
+// Date format
 export const days: string[] = [
     'Sunday',
     'Monday',
@@ -37,7 +37,7 @@ export const days: string[] = [
     'Saturday',
 ];
 
-// list color
+// List color
 export const listColorItems: string[] = [
     '#e11d48',
     '#c026d3',
@@ -49,7 +49,7 @@ export const listColorItems: string[] = [
     '#f97316',
 ];
 
-// mobile menu motion props
+// The motion props of mobile sidebars
 export const mobileMenuMotionProps = {
     variants: {
         enter: {

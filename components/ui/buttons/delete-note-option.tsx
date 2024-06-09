@@ -1,22 +1,22 @@
 'use client';
 
-// public
+// Public
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
-//* components
+//* Components
 import { Chip } from '@nextui-org/react';
 import Icon from '../texts/icon';
 import { toast } from 'react-toastify';
 
-//* redux
+//* Redux
 import { getNotesByEmail } from '@/redux/features/notes/notesSlice';
 
 const DeleteNoteOption = ({ neededId }: { neededId: string }) => {
     const dispatch = useAppDispatch();
-    // states and variables
+    // States and variables
     const userEmail = useAppSelector((state) => state.options.userEmail);
 
-    // functions
+    // Functions
     const deleteTask = async () => {
         const res = await fetch('/api/sticky-notes/note', {
             method: 'DELETE',

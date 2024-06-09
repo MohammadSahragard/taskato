@@ -1,29 +1,29 @@
-//* public
+//* Public
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 
-//* provider
+//* Providers
 import { Providers } from './providers';
 
-//* font config
+//* Font config
 const inter = Inter({ subsets: ['latin'] });
 
-//* fontawesome
+//* Fontawesome
 import '/FontAwesome.Pro.6.4.2/css/all.css';
 
-//* toastify styles
+//* Toastify styles
 import 'react-toastify/dist/ReactToastify.css';
 
-//* components
+//* Components
 import MenuContainer from '@/components/sidebars/menu/menu-container';
 import MainHeader from '@/components/ui-kits/main-header';
-import AddTaskBar from '@/components/ui-kits/add-task-bar';
+import TaskAdderBar from '@/components/ui-kits/task-adder-bar';
 import TaskDetails from '@/components/sidebars/task-details/task-details';
 import LogoLoading from '@/components/ui-kits/logo-loading';
 import ContextMenu from '@/components/context-menus/context-menu';
 
-//* metadata
+//* Metadata
 export const metadata: Metadata = {
     title: 'Taskato',
     description: 'A task manager app for managing tasks, task and notes.',
@@ -38,27 +38,27 @@ const RootLayout = async ({
         <html lang='en'>
             <body className={inter.className}>
                 <Providers>
-                    {/* main section */}
+                    {/* Main section */}
                     <main className='main-section'>{children}</main>
 
-                    {/* main header */}
+                    {/* Main header */}
                     <MainHeader />
 
-                    {/* task detail bar */}
+                    {/* Task details bar */}
                     <TaskDetails />
 
-                    {/* task add bar section */}
-                    <div className='task-bar-con'>
-                        <AddTaskBar />
+                    {/* Task adder bar */}
+                    <div className='task-adder-bar-con'>
+                        <TaskAdderBar />
                     </div>
 
-                    {/* menu section */}
+                    {/* Menu section */}
                     <MenuContainer />
 
-                    {/* preloading state (logo loading motion) */}
+                    {/* Preloading state (logo loading motion) */}
                     <LogoLoading />
 
-                    {/* context menu */}
+                    {/* Context menu */}
                     <ContextMenu />
                 </Providers>
             </body>

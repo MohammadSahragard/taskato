@@ -1,10 +1,10 @@
 'use client';
 
-// public
+// Public
 import { useTransition } from 'react';
 import { useAppDispatch, useAppSelector } from '@/redux/app/hook';
 
-//* components
+//* Components
 import Divider from '../ui/texts/divider';
 import AddToImportantBtn from '../ui/buttons/add-to-important-btn';
 import Icon from '../ui/texts/icon';
@@ -12,7 +12,7 @@ import Subtitle from '../ui/texts/subtitle';
 import Title from '../ui/texts/title';
 import CheckTaskBtn from '../ui/buttons/check-task-btn';
 
-//* functions
+//* Functions
 import {
     checkDueDate,
     getLocalDateString,
@@ -22,12 +22,12 @@ import {
 
 const TaskItem = ({ taskData }: { taskData: any }) => {
     const dispatch = useAppDispatch();
-    // state and variables
+    // States and variables
     const [completionPending, completionTransition] = useTransition();
     const [importantPending, importantTransition] = useTransition();
     const contextMenuData = useAppSelector((state) => state.contextMenu);
 
-    // styles
+    // Classes
     const completedStyles = 'line-through text-primary-200 break-all';
     const completedTask = taskData?.task_completion
         ? completedStyles
@@ -47,7 +47,7 @@ const TaskItem = ({ taskData }: { taskData: any }) => {
             ? 'opacity-80 scale-95'
             : '';
 
-    // context menu data
+    // Context menu data
     const data = {
         id: taskData?._id,
         isCompleted: taskData?.task_completion,
@@ -80,7 +80,7 @@ const TaskItem = ({ taskData }: { taskData: any }) => {
                         additionalClasses={completedTask}
                     />
                 </div>
-                {/* sub detail section */}
+                {/* Sub details section */}
                 {haveSubDetails ? (
                     <div className='task-sub-detail'>
                         {taskData?.task_due_date ? (

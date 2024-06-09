@@ -1,15 +1,29 @@
-// public
+// Public
 import StickyNote from '@/models/sticky-note';
 import connectDB from '@/utils/connectDB';
 import { NextResponse } from 'next/server';
 
-//* create note
+//* Creating a note
 export const POST = async (req: Request) => {
     const { reqData, userEmail } = await req.json();
 
-    if (req.method !== 'POST') return;
+    if (req.method !== 'POST')
+        return NextResponse.json({
+            message: 'Something went wrong. Please try again later.',
+            status: 401,
+        });
 
-    // form validation
+    // Database connection
+    try {
+        await connectDB();
+    } catch {
+        return NextResponse.json({
+            message: 'Something went wrong. Please try again later.',
+            status: 401,
+        });
+    }
+
+    // Form validation
     if (!reqData.note_title) {
         return NextResponse.json({
             message: 'Please enter a note title!',
@@ -24,17 +38,7 @@ export const POST = async (req: Request) => {
         });
     }
 
-    // database connection
-    try {
-        await connectDB();
-    } catch {
-        return NextResponse.json({
-            message: 'Something went wrong. Please try again later.',
-            status: 401,
-        });
-    }
-
-    // create new note
+    // Creating a new note
     try {
         await StickyNote.create({
             email: userEmail,
@@ -52,9 +56,9 @@ export const POST = async (req: Request) => {
     }
 };
 
-//* update note
+//* Updating a note
 export const PUT = async (req: Request) => {
-    // variables
+    // Variables
     const { _id, reqData } = await req.json();
 
     if (req.method !== 'PUT')
@@ -63,7 +67,7 @@ export const PUT = async (req: Request) => {
             status: 401,
         });
 
-    // database connection
+    // Database connection
     try {
         await connectDB();
     } catch {
@@ -73,16 +77,16 @@ export const PUT = async (req: Request) => {
         });
     }
 
-    // check if note don't exists
+    // Checking if the note exists for updating or not
     const note = await StickyNote.findOne({ _id });
     if (!note) {
         return NextResponse.json({
-            message: "Note don't exists!",
+            message: "The note doesn't exist!",
             status: 400,
         });
     }
 
-    // update note
+    // Updating the note
     try {
         await StickyNote.updateOne({ _id }, { ...reqData });
 
@@ -98,12 +102,18 @@ export const PUT = async (req: Request) => {
     }
 };
 
-//* delete note
+//* Deleting a note
 export const DELETE = async (req: Request) => {
-    // variables
+    // Variables
     const { _id } = await req.json();
 
-    // database connection
+    if (req.method !== 'DELETE')
+        return NextResponse.json({
+            message: 'Something went wrong. Please try again later.',
+            status: 401,
+        });
+
+    // Database connection
     try {
         await connectDB();
     } catch {
@@ -113,30 +123,24 @@ export const DELETE = async (req: Request) => {
         });
     }
 
-    if (req.method !== 'DELETE')
-        return NextResponse.json({
-            message: 'Something went wrong. Please try again later.',
-            status: 401,
-        });
-
-    // id validation
+    // ID validation
     if (!_id) {
         return NextResponse.json({
-            message: 'ID not found',
+            message: 'ID not found!',
             status: 401,
         });
     }
 
-    // check if note don't exists
+    // Checking if the note exists for deleting or not
     const note = await StickyNote.findOne({ _id });
     if (!note) {
         return NextResponse.json({
-            message: "Note don't exists!",
+            message: "The note doesn't exist!",
             status: 400,
         });
     }
 
-    // delete note
+    // Delete the note
     try {
         await StickyNote.deleteOne({ _id });
         return NextResponse.json({

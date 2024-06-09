@@ -1,36 +1,37 @@
 'use client';
 
-// public
+// Public
 import { usePathname } from 'next/navigation';
 import { useTransition } from 'react';
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
-//* components
+//* Components
 import { Input } from '@nextui-org/react';
 import AddDateBtn from '../ui/buttons/add-date-btn';
 import AddToListBtn from '../ui/buttons/add-to-list-btn';
 import AddReminderBtn from '../ui/buttons/add-reminder-btn';
 import AddTaskBtn from '../ui/buttons/add-task-btn';
 import MobileMoreTaskOPtions from '../ui/buttons/mobile-more-task-options';
+import { toast } from 'react-toastify';
 
-//* redux
-import { setTaskTitle, setClearFields } from '@/redux/features/task-data/taskDataSlice';
+//* Redux
+import {
+    setTaskTitle,
+    setClearFields,
+} from '@/redux/features/task-data/taskDataSlice';
 import { addTask } from '@/helper/functions/task-functions';
 import { getTasksByEmail } from '@/redux/features/tasks/tasksSlice';
 
-//* toastify
-import { toast } from 'react-toastify';
-
-const AddTaskBar = () => {
+const TaskAdderBar = () => {
     const fullPathname = usePathname();
-    // states and variables
+    // States and variables
     const dispatch = useAppDispatch();
     const [isPending, startTransition] = useTransition();
     const userEmail = useAppSelector((state) => state.options.userEmail);
     const taskData = useAppSelector((state) => state.taskData);
     const lists = useAppSelector((state) => state.taskLists.data);
 
-    // submit task
+    // Submit task
     const submitTask = async (event: any) => {
         event.preventDefault();
 
@@ -63,7 +64,7 @@ const AddTaskBar = () => {
                     />
                 }
                 classNames={{
-                    inputWrapper: 'task-bar',
+                    inputWrapper: 'task-adder-bar',
                 }}
                 endContent={
                     <div>
@@ -80,4 +81,4 @@ const AddTaskBar = () => {
     );
 };
 
-export default AddTaskBar;
+export default TaskAdderBar;

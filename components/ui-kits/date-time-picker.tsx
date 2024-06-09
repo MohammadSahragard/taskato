@@ -1,21 +1,21 @@
 'use client';
 
-// public
+// Public
 import { useState, useEffect, useRef } from 'react';
 import { useAppDispatch } from '@/redux/app/hook';
 
-//* components
+//* Components
 import Calendar from './calendar';
 import { Button } from '@nextui-org/react';
 import Divider from '../ui/texts/divider';
 
-//* functions
+//* Functions
 import { zeroBeforeSingle } from '@/helper/functions/functions';
 
-//* redux
+//* Redux
 import { setTaskReminder } from '@/redux/features/task-data/taskDataSlice';
 
-//* types
+//* Types
 import { TaskReminderTypes } from '@/types/types';
 
 const DateTimePicker = ({
@@ -23,21 +23,21 @@ const DateTimePicker = ({
 }: {
     taskReminder: TaskReminderTypes;
 }) => {
-    // refs
+    const dispatch = useAppDispatch();
+    // Refs
     const selectedHour = useRef<HTMLButtonElement | null>(null);
     const selectedMinute = useRef<HTMLButtonElement | null>(null);
 
-    // data
+    // Data
     const [hours, setHours] = useState<number[]>([]);
     const [minutes, setMinutes] = useState<number[]>([]);
 
-    // states and variables
-    const dispatch = useAppDispatch();
+    // States and variables
     const hour = 'hour';
     const minute = 'minute';
     const [mounted, setMounted] = useState(false);
 
-    // pick time (reminder time)
+    // Pick time (reminder time)
     const pickTime = (event: any, item: number, type: string) => {
         event.target.scrollIntoView({
             behavior: 'smooth',
@@ -66,7 +66,7 @@ const DateTimePicker = ({
         }
     };
 
-    //  lifecycle events
+    //  Getting hours and minutes
     useEffect(() => {
         const hoursItem = [];
         const minutes = [];
@@ -77,7 +77,7 @@ const DateTimePicker = ({
         setMounted(true);
     }, []);
 
-    // scroll to selected time
+    // Scrolling to selected time
     const scrollToViewTimeSelected = () => {
         selectedHour?.current?.scrollIntoView();
         selectedMinute?.current?.scrollIntoView();
@@ -102,9 +102,9 @@ const DateTimePicker = ({
                 disabled={{ before: new Date() }}
             />
 
-            {/* time picker */}
+            {/* Time picker */}
             <div className='time-picker'>
-                {/* hours section */}
+                {/* Hours section */}
                 <div className='relative'>
                     <section className='time-section'>
                         {hours.map((item: number) => (
@@ -135,7 +135,7 @@ const DateTimePicker = ({
 
                 <Divider orientation='vertical' />
 
-                {/* minutes section */}
+                {/* Minutes section */}
                 <div className='relative'>
                     <section className='time-section'>
                         {minutes.map((item: number) => (
@@ -164,7 +164,7 @@ const DateTimePicker = ({
                     </section>
                 </div>
 
-                {/* selected area */}
+                {/* Selected area */}
                 <div className='selected-section'>:</div>
             </div>
         </div>

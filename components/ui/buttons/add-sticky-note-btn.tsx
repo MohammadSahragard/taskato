@@ -1,6 +1,6 @@
 'use client';
 
-//* components
+//* Components
 import { Button, useDisclosure } from '@nextui-org/react';
 import Icon from '../texts/icon';
 import AddStickyNoteModal from '@/components/modals/add-sticky-note-modal';
@@ -21,6 +21,7 @@ const AddStickyNoteBtn = ({ titleBtn }: { titleBtn?: string }) => {
                 onPress={onOpen}
             />
 
+            {/* The sticky note adder modal */}
             <AddStickyNoteModal
                 isOpen={isOpen}
                 onOpenChange={onOpenChange}

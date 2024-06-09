@@ -1,18 +1,18 @@
 'use client';
 
-// public
+// Public
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
-//* components
+//* Components
 import { Input } from '@nextui-org/react';
 import Icon from '../ui/texts/icon';
 
-//* redux
+//* Redux
 import { setFirstName, setLastName } from '@/redux/features/form/formSlice';
 
 const NameField = () => {
     const dispatch = useAppDispatch();
-    // hooks and variables
+    // States and variables
     const firstName = useAppSelector((state) => state.formValues.firstName);
     const lastName = useAppSelector((state) => state.formValues.lastName);
 

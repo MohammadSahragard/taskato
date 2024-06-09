@@ -1,10 +1,10 @@
 'use client';
 
-// public
+// Public
 import { useState, useTransition, useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
-//* components
+//* Components
 import { Button } from '@nextui-org/react';
 import Link from 'next/link';
 import Subtitle from '@/components/ui/texts/subtitle';
@@ -12,16 +12,16 @@ import PassField from '@/components/ui-kits/pass-field';
 import EmailField from '@/components/ui-kits/email-field';
 import ResultSubmit from '@/components/ui/texts/result-submit';
 
-//* functions
+//* Functions
 import { loginSubmit } from '@/helper/functions/auth-functions';
 
-//* redux
+//* Redux
 import { setClearFields } from '@/redux/features/form/formSlice';
 
 const LoginForm = () => {
     const dispatch = useAppDispatch();
 
-    // hooks, states and variables
+    // States and variables
     const email = useAppSelector((state) => state.formValues.email);
     const password = useAppSelector((state) => state.formValues.password);
     const [isPending, startTransition] = useTransition();
@@ -31,16 +31,16 @@ const LoginForm = () => {
         status: 200,
     });
 
-    // validation
+    // Validation
     const emailValidation = !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email);
     const passwordValidation =
         !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password);
 
-    // functions
+    // Functions
     const formSubmit = async (event: any) => {
         event.preventDefault();
 
-        // first validation
+        // Initial validation
         if (emailValidation || passwordValidation) return;
 
         await loginSubmit({

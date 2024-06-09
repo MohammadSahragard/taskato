@@ -1,36 +1,36 @@
 'use client';
 
-// public
+// Public
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
-//* components
+//* Components
 import { Chip } from '@nextui-org/react';
 import Icon from '../texts/icon';
 import { getTasksByEmail } from '@/redux/features/tasks/tasksSlice';
 
-//* types
-import { TransitionStartFunction } from 'react';
+//* Types
+type ChangeCheckTaskTypes = {
+    neededId: string;
+    isCompleted?: boolean;
+    completionTransition?: React.TransitionStartFunction;
+};
 
 const ChangeCheckTaskOption = ({
     neededId,
     isCompleted,
     completionTransition,
-}: {
-    neededId: string;
-    isCompleted?: boolean;
-    completionTransition?: TransitionStartFunction;
-}) => {
+}: ChangeCheckTaskTypes) => {
     const dispatch = useAppDispatch();
-    // states and variables
+    // States and variables
     const userEmail = useAppSelector((state) => state.options.userEmail);
     const changeCheckTitle = isCompleted
         ? 'Mark as not completed'
         : 'Mark as completed';
     const changeCheckIcon = isCompleted ? 'square' : 'square-check';
 
-    // functions
+    // Functions
     const changeCheck = async () => {
-        // req body
+        // Req body
         const reqBody = {
             reqData: { task_completion: !isCompleted },
             _id: neededId,

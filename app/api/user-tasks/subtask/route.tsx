@@ -1,11 +1,11 @@
-// public
+// Public
 import connectDB from '@/utils/connectDB';
 import { NextResponse } from 'next/server';
 import Task from '@/models/task';
 
-//* update subtask
+//* Updating a subtask
 export const PUT = async (req: Request) => {
-    // variables
+    // Variables
     const { _id, reqData } = await req.json();
 
     if (req.method !== 'PUT')
@@ -14,7 +14,7 @@ export const PUT = async (req: Request) => {
             status: 401,
         });
 
-    // database connection
+    // Database connection
     try {
         await connectDB();
     } catch {
@@ -24,7 +24,7 @@ export const PUT = async (req: Request) => {
         });
     }
 
-    // check if subtask don't exists
+    // Checking if the subtask exists for updating or not
     const subtask = await Task.findOne({ 'subtasks._id': _id });
     if (!subtask) {
         return NextResponse.json({
@@ -33,7 +33,7 @@ export const PUT = async (req: Request) => {
         });
     }
 
-    // update subtask
+    // Updating the subtask
     try {
         await Task.updateOne({ 'subtasks._id': _id }, { ...reqData });
         const updatedTask = await Task.findOne({ 'subtasks._id': _id });
@@ -50,12 +50,18 @@ export const PUT = async (req: Request) => {
     }
 };
 
-//* delete subtask
+//* Deleting a subtask
 export const DELETE = async (req: Request) => {
-    // variables
+    // Variables
     const { _id, reqData } = await req.json();
 
-    // database connection
+    if (req.method !== 'DELETE')
+        return NextResponse.json({
+            message: 'Something went wrong. Please try again later.',
+            status: 401,
+        });
+
+    // Database connection
     try {
         await connectDB();
     } catch {
@@ -65,21 +71,15 @@ export const DELETE = async (req: Request) => {
         });
     }
 
-    if (req.method !== 'DELETE')
-        return NextResponse.json({
-            message: 'Something went wrong. Please try again later.',
-            status: 401,
-        });
-
-    // id validation
+    // ID validation
     if (!_id) {
         return NextResponse.json({
-            message: 'ID not found',
+            message: 'ID not found!',
             status: 401,
         });
     }
 
-    // check if subtask don't exists
+    // Checking if the subtask exists for deleting or not
     const subtask = await Task.findOne({ 'subtasks._id': _id });
     if (!subtask) {
         return NextResponse.json({
@@ -88,7 +88,7 @@ export const DELETE = async (req: Request) => {
         });
     }
 
-    // delete task
+    // Deleting the subtask
     try {
         await Task.updateOne({ 'subtasks._id': _id }, { ...reqData });
         const updatedTask = await Task.findOne({ _id: subtask._id });

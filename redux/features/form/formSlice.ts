@@ -1,10 +1,10 @@
-// public
+// Public
 import { createSlice } from '@reduxjs/toolkit';
 
-// types
+// Types
 import { SignupSubmitTypes } from '@/types/types';
 
-//* initial state
+//* Initial state
 const initialState: SignupSubmitTypes = {
     firstName: '',
     lastName: '',
@@ -13,7 +13,7 @@ const initialState: SignupSubmitTypes = {
     confirmPassword: '',
 };
 
-//* reducers
+//* Reducers
 const formSlice = createSlice({
     name: 'form-slice',
     initialState,

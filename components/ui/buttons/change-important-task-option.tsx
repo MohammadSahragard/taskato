@@ -1,36 +1,37 @@
 'use client';
 
-// public
+// Public
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
-//* components
+//* Components
 import { Chip } from '@nextui-org/react';
 import Icon from '../texts/icon';
 import { getTasksByEmail } from '@/redux/features/tasks/tasksSlice';
 
-//* types
+//* Types
 import { TransitionStartFunction } from 'react';
+type ChangeImportantTaskTypes = {
+    neededId: string;
+    isImportant?: boolean;
+    importantTransition?: TransitionStartFunction;
+};
 
 const ChangeImportantTaskOption = ({
     neededId,
     isImportant,
     importantTransition,
-}: {
-    neededId: string;
-    isImportant?: boolean;
-    importantTransition?: TransitionStartFunction;
-}) => {
+}: ChangeImportantTaskTypes) => {
     const dispatch = useAppDispatch();
-    // states and variables
+    // States and variables
     const userEmail = useAppSelector((state) => state.options.userEmail);
     const changeImportantTitle = isImportant
         ? 'Mark as not important'
         : 'Mark as important';
     const changeImportantIcon = isImportant ? 'far' : 'fas';
 
-    // functions
+    // Functions
     const changeImportant = async () => {
-        // req body
+        // Req body
         const reqBody = {
             reqData: { is_in_important: !isImportant },
             _id: neededId,

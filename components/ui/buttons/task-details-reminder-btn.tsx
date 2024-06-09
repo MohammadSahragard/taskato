@@ -1,10 +1,10 @@
 'use client';
 
-// public
+// Public
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 import { useState } from 'react';
 
-//* components
+//* Components
 import {
     Dropdown,
     DropdownTrigger,
@@ -20,7 +20,7 @@ import Subtitle from '../texts/subtitle';
 import DateTimePicker from '@/components/ui-kits/date-time-picker';
 import TooltipElement from '../texts/tooltip-element';
 
-//* functions
+//* Functions
 import {
     laterTime,
     getDate,
@@ -29,15 +29,15 @@ import {
     dateToLocalDateString,
 } from '@/helper/functions/functions';
 
-//* types
+//* Redux
+import { setTaskReminderDate } from '@/redux/features/selected-task/selectedTaskSlice';
+
+//* Types
 type saveReminderType = {
     hour: number;
     minute: number;
     date: Date;
 };
-
-//* redux
-import { setTaskReminderDate } from '@/redux/features/selected-task/selectedTaskSlice';
 
 const TaskDetailsReminderBtn = () => {
     const dispatch = useAppDispatch();
@@ -47,7 +47,7 @@ const TaskDetailsReminderBtn = () => {
     );
     const [isOpenPicker, setIsOpenPicker] = useState(false);
 
-    // functions
+    // Functions
     const saveReminder = ({ hour, minute, date }: saveReminderType) => {
         dispatch(
             setTaskReminderDate({
@@ -67,13 +67,13 @@ const TaskDetailsReminderBtn = () => {
             isOpen={isOpenPicker}
             onOpenChange={() => setIsOpenPicker(!isOpenPicker)}
         >
+            {/* The dropdown trigger */}
             <TooltipElement title='Add reminder'>
                 <div>
                     <DropdownTrigger>
                         <Button
                             variant='bordered'
-                            className='task-details-btn text-start leading-none'
-                            fullWidth
+                            className='task-details-btn fw-btn'
                             radius='sm'
                             startContent={
                                 <Icon
@@ -107,10 +107,12 @@ const TaskDetailsReminderBtn = () => {
                 </div>
             </TooltipElement>
 
+            {/* The dropdown menu */}
             <DropdownMenu
                 variant='flat'
                 selectionMode='single'
             >
+                {/* The default options */}
                 <DropdownItem
                     startContent={<Icon iconName='calendar-day' />}
                     endContent={
@@ -161,6 +163,7 @@ const TaskDetailsReminderBtn = () => {
                     Next Week
                 </DropdownItem>
 
+                {/* Optional selection option (calendar and time popover) */}
                 <DropdownItem
                     startContent={<Icon iconName='calendar-day' />}
                     isReadOnly

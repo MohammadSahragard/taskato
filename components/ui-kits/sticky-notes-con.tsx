@@ -1,25 +1,23 @@
 'use client';
 
-// public
+// Public
 import { useRef, useState, useEffect } from 'react';
 import { useAppSelector } from '@/redux/app/hook';
 
-//* components
+//* Components
 import AddStickyNoteBtn from '../ui/buttons/add-sticky-note-btn';
 import StickyNoteItem from './sticky-note-item';
 import EmptyStateNotes from './empty-state-notes';
 
-//* components
-
 const StickyNotesCon = () => {
-    // refs
+    // Refs
     const conRef = useRef<HTMLDivElement | null>(null);
 
-    // states and variables
+    // States and variables
     const [columns, setColumns] = useState(0);
     const notes = useAppSelector((state) => state.notes);
 
-    // functions
+    // Functions
     const getColumn = () => {
         const widthContainer = conRef?.current?.offsetWidth ?? 0;
         const numberOfColumns = Math.round(widthContainer / 250);

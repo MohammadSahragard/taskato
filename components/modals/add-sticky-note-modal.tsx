@@ -1,10 +1,10 @@
 'use client';
 
-// public
+// Public
 import { useState, useTransition } from 'react';
 import { useAppSelector, useAppDispatch } from '@/redux/app/hook';
 
-//* components
+//* Components
 import {
     Modal,
     ModalContent,
@@ -19,13 +19,13 @@ import {
 } from '@nextui-org/react';
 import { toast } from 'react-toastify';
 
-//* data
+//* Data
 import { listColorItems } from '@/helper/data/data';
 
-//* functions
+//* Functions
 import { addNote } from '@/helper/functions/notes-functions';
 
-//* redux
+//* Redux
 import { getNotesByEmail } from '@/redux/features/notes/notesSlice';
 
 const AddStickyNoteModal = ({
@@ -36,14 +36,14 @@ const AddStickyNoteModal = ({
     onOpenChange: (isOpen: boolean) => void;
 }) => {
     const dispatch = useAppDispatch();
-    // states and variables
+    // States and variables
     const userEmail = useAppSelector((state) => state.options.userEmail);
     const [noteColor, setNoteColor] = useState('#e11d48');
     const [noteTitle, setNoteTitle] = useState('Untitled note');
     const [noteContent, setNoteContent] = useState('');
     const [isPending, startTransition] = useTransition();
 
-    // functions
+    // Functions
     const openModal = () => {
         setNoteTitle('Untitled note');
         setNoteContent('');
@@ -61,7 +61,7 @@ const AddStickyNoteModal = ({
             },
             userEmail
         ).then((res: any) => {
-            // set result message to toastify
+            // Set result message to toastify
             const messageStatus = res.status === 200 ? 'success' : 'error';
             toast[messageStatus](res.message);
 

@@ -1,20 +1,20 @@
-// types
+// Types
 import { AddTaskListTypes, TaskContentTypes } from '@/types/types';
 
-// needed functions
+// Functions
 import {
     convertTitleToPathname,
     dateToLocalDateString,
     getDate,
 } from './functions';
 
-//* add task list
+//* Adding a task list
 export const addTaskList = async ({
     email,
     list_title,
     list_color,
 }: AddTaskListTypes) => {
-    // form validation
+    // Form validation
     if (!email || !list_title || !list_color) {
         return {
             message: 'All fields are required!',
@@ -22,7 +22,7 @@ export const addTaskList = async ({
         };
     }
 
-    // post data
+    // Post data
     const res = await fetch('/api/task-lists/list', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -37,13 +37,13 @@ export const addTaskList = async ({
     return data;
 };
 
-//* rename task list
+//* Renaming a task list
 export const renameTaskList = async (
     email: string,
     _id: string,
     list_title: string
 ) => {
-    // form validation
+    // Form validation
     if (!_id || !list_title) {
         return {
             message: 'Something went wrong. Please try again later.',
@@ -51,7 +51,7 @@ export const renameTaskList = async (
         };
     }
 
-    // put data
+    // Put data
     const res = await fetch('/api/task-lists/list', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -62,21 +62,19 @@ export const renameTaskList = async (
     return data;
 };
 
-//* add task
+//* Adding a task
 export const addTask = async (
     taskData: TaskContentTypes,
     userEmail: string,
     fullPathname: string,
     lists: any
 ) => {
-    // variables
+    // Variables
     const pathname = fullPathname.split('/').slice(-1)[0];
-
-    // data
     const { task_title, task_due_date, task_list, task_reminder_date } =
         taskData;
 
-    // form validation
+    // Form validation
     if (!task_title) {
         return {
             message: 'Please enter a task title!',
@@ -84,7 +82,7 @@ export const addTask = async (
         };
     }
 
-    // req data
+    // Req data
     const reqData: any = {
         task_title,
         task_description: '',
@@ -94,11 +92,11 @@ export const addTask = async (
     };
 
     //---- Adding tasks depending on the route
-    // due date
+    // Due date
     if (pathname === 'today') {
         reqData.task_due_date = getDate().today;
     }
-    // list
+    // List
     if (fullPathname.includes('list')) {
         const foundList = lists?.find(
             (list: any) => convertTitleToPathname(list.list_title) === pathname
@@ -109,12 +107,12 @@ export const addTask = async (
             list_color: foundList.list_color,
         };
     }
-    // important
+    // Important
     if (pathname === 'important') {
         reqData.is_in_important = true;
     }
 
-    // post data
+    // Post data
     const res = await fetch('/api/user-tasks/task', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -125,9 +123,9 @@ export const addTask = async (
     return data;
 };
 
-//* update task
+//* Updating a task
 export const updateTask = async (taskData: TaskContentTypes) => {
-    // data
+    // Variables
     const {
         _id,
         task_title,
@@ -137,7 +135,7 @@ export const updateTask = async (taskData: TaskContentTypes) => {
         task_reminder_date,
     } = taskData;
 
-    // req data
+    // Req data
     const reqData: any = {
         task_title,
         task_description,
@@ -146,7 +144,7 @@ export const updateTask = async (taskData: TaskContentTypes) => {
         task_reminder_date,
     };
 
-    // form validation
+    // Form validation
     if (!task_title) {
         return {
             message: 'Task title is required, please enter a title.',
@@ -154,7 +152,7 @@ export const updateTask = async (taskData: TaskContentTypes) => {
         };
     }
 
-    // put data
+    // Put data
     const res = await fetch('/api/user-tasks/task', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -165,8 +163,9 @@ export const updateTask = async (taskData: TaskContentTypes) => {
     return data;
 };
 
-//* add subtask
+//* Adding a subtask
 export const addSubtask = async (_id: string, subtask_title: string) => {
+    // Req data
     const reqData: any = {
         $push: {
             subtasks: {
@@ -175,7 +174,7 @@ export const addSubtask = async (_id: string, subtask_title: string) => {
         },
     };
 
-    // form validation
+    // Form validation
     if (!subtask_title) {
         return {
             message: 'Subtask title is required, please enter a title.',
@@ -183,7 +182,7 @@ export const addSubtask = async (_id: string, subtask_title: string) => {
         };
     }
 
-    // post data
+    // Post data
     const res = await fetch('/api/user-tasks/task', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -194,8 +193,9 @@ export const addSubtask = async (_id: string, subtask_title: string) => {
     return data;
 };
 
-//* delete subtask
+//* Deleting a subtask
 export const deleteSubtask = async (_id: string) => {
+    // Req data
     const reqData: any = {
         $pull: {
             subtasks: {
@@ -204,7 +204,7 @@ export const deleteSubtask = async (_id: string) => {
         },
     };
 
-    // put data
+    // Put data
     const res = await fetch('/api/user-tasks/subtask', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
@@ -215,7 +215,7 @@ export const deleteSubtask = async (_id: string) => {
     return data;
 };
 
-//* get tasks by pathname
+//* Getting the tasks by pathname
 export const getTasksByPathname = (tasks: any, pathname: string) => {
     switch (pathname) {
         case 'all':
