@@ -45,8 +45,8 @@ const RenameListModal = ({
     };
 
     useEffect(() => {
-        setNewListTitle(listData?.listTitle ?? '');
-    }, [listData.listTitle]);
+        setNewListTitle(listData?.title ?? '');
+    }, [listData.title]);
 
     const submitList = async (event: any) => {
         event.preventDefault();

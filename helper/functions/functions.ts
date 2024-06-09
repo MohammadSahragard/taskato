@@ -133,12 +133,17 @@ export const setContextMenuData = (
         data.importantTransition = itemData?.importantTransition;
     }
     if (menuName === 'lists') {
-        data.listTitle = itemData?.listTitle;
+        data.title = itemData?.title;
         data.onOpen = itemData?.onOpen;
     }
     if (menuName === 'subtasks') {
         data.isCompleted = itemData?.isCompleted;
         data.checkHandler = itemData?.checkHandler;
+    }
+    if (menuName === 'notes') {
+        data.title = itemData?.title;
+        data.content = itemData?.content;
+        data.onOpen = itemData?.onOpen;
     }
 
     // dispatches

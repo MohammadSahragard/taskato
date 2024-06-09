@@ -26,6 +26,13 @@ const SubtaskItem = ({
     // states and variables
     const userEmail = useAppSelector((state) => state.options.userEmail);
     const [isPending, startTransition] = useTransition();
+    const contextMenuData = useAppSelector((state) => state.contextMenu);
+
+    // styles
+    const isActiveContextMenu =
+        contextMenuData.itemData.id === _id && contextMenuData.isShownMenu
+            ? 'opacity-80 scale-95'
+            : '';
 
     // functions
     const changeCheck = async () => {
@@ -64,7 +71,7 @@ const SubtaskItem = ({
 
     return (
         <Button
-            className='task-details-subtask'
+            className={`task-details-subtask ${isActiveContextMenu}`}
             fullWidth
             radius='sm'
             startContent={

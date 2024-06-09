@@ -22,11 +22,21 @@ const TaskList = ({ id, href, label, listColor }: TaskListTypes) => {
     const listCounter = tasks.filter(
         (task: any) => task.task_list.list_title === label
     );
+    const contextMenuData = useAppSelector((state) => state.contextMenu);
+
+    // styles
+    const defaultStyles = 'fw-btn pr-2 pl-3 relative';
+    const isActiveLink = pathname === href ? 'bg-background' : '';
+    const isActiveContextMenu =
+        contextMenuData.itemData.id === id && contextMenuData.isShownMenu
+            ? 'opacity-80 scale-95'
+            : '';
+    const finallyClass = `${defaultStyles} ${isActiveLink} ${isActiveContextMenu}`;
 
     // context menu data
     const data = {
         id,
-        listTitle: label,
+        title: label,
         onOpen,
     };
 
@@ -35,9 +45,7 @@ const TaskList = ({ id, href, label, listColor }: TaskListTypes) => {
             <Button
                 radius='sm'
                 variant={pathname === href ? 'solid' : 'light'}
-                className={`fw-btn pr-2 pl-3 relative ${
-                    pathname === href ? 'bg-background' : ''
-                }`}
+                className={finallyClass}
                 startContent={
                     <Icon
                         iconName='square'

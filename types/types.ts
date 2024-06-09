@@ -114,13 +114,14 @@ export type NoteDataTypes = {
     _id?: string;
     note_title: string;
     note_content: string;
-    note_color: string;
+    note_color?: string;
 };
 
 // context menu slice
 export type ItemDataTypes = {
     id: string;
-    listTitle?: string;
+    title?: string;
+    content?: string;
     isCompleted?: boolean;
     isImportant?: boolean;
     checkHandler?: React.MouseEventHandler;
@@ -135,7 +136,7 @@ export type MenuPositionTypes = {
     YAxisSide: 'top' | 'bottom';
 };
 export type ContextMenuTypes = {
-    menuName: 'tasks' | 'lists' | 'subtasks';
+    menuName: 'tasks' | 'lists' | 'subtasks' | 'notes';
     itemData: ItemDataTypes;
     isShownMenu: boolean;
     menuPosition: MenuPositionTypes;
