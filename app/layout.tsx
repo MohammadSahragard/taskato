@@ -20,7 +20,7 @@ import MenuContainer from '@/components/sidebars/menu/menu-container';
 import MainHeader from '@/components/ui-kits/main-header';
 import TaskAdderBar from '@/components/ui-kits/task-adder-bar';
 import TaskDetails from '@/components/sidebars/task-details/task-details';
-import LogoLoading from '@/components/ui-kits/logo-loading';
+import LogoLoading from '@/components/logo-loading/logo-loading';
 import ContextMenu from '@/components/context-menus/context-menu';
 
 //* Metadata
