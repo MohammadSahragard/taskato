@@ -18,10 +18,10 @@ const DataReceiver = ({ children }: { children: React.ReactNode }) => {
     const pathname = usePathname();
     const dispatch = useAppDispatch();
     // Data receiver hooks
+    const user = useUserLoggedIn();
+    const lists = useUserLists();
     const tasks = useUserTasks();
     const notes = useUserNotes();
-    const taskLists = useUserLists();
-    const getUser = useUserLoggedIn();
 
     // States and variables
     const options = useAppSelector((state) => state.options);

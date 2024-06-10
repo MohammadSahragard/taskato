@@ -55,7 +55,7 @@ const TaskDetailsListBtn = () => {
                     </DropdownTrigger>
                 </div>
             </TooltipElement>
-            
+
             {/* The dropdown menu */}
             <DropdownMenu
                 variant='flat'
@@ -64,7 +64,7 @@ const TaskDetailsListBtn = () => {
                 {lists?.data?.length ? (
                     lists?.data?.map((list: any) => (
                         <DropdownItem
-                            key={list?.list_title}
+                            key={list?._id}
                             className='capitalize'
                             startContent={
                                 <Icon
@@ -76,8 +76,8 @@ const TaskDetailsListBtn = () => {
                             onClick={() =>
                                 dispatch(
                                     setTaskSelectedList({
-                                        title_title: list?.list_title,
-                                        color_color: list?.list_color,
+                                        list_title: list?.list_title,
+                                        list_color: list?.list_color,
                                     })
                                 )
                             }

@@ -37,10 +37,7 @@ const taskDataSlice = createSlice({
             state.task_description = action.payload;
         },
         setSelectedList: (state, action) => {
-            state.task_list = {
-                list_title: action.payload.title,
-                list_color: action.payload.color,
-            };
+            state.task_list = action.payload;
         },
         setTaskDate: (state, action) => {
             state.task_due_date = action.payload;
