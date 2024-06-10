@@ -27,7 +27,6 @@ export const useUserLoggedIn = () => {
         const getUser = async () => {
             const res = await fetch('/api/user');
             const user = await res.json();
-            dispatch(setUserLoading());
             const condition = user.status === 200;
             if (condition) {
                 setUser(user);
@@ -37,6 +36,7 @@ export const useUserLoggedIn = () => {
                 setUser(false);
             }
             isUserLoggedIn({ condition, pathname, router });
+            dispatch(setUserLoading());
         };
 
         getUser();

@@ -58,7 +58,7 @@ const AddToListBtn = () => {
                     </DropdownTrigger>
                 </div>
             </TooltipElement>
-            
+
             {/* The dropdown menu */}
             <DropdownMenu
                 variant='flat'
@@ -67,7 +67,7 @@ const AddToListBtn = () => {
                 {lists.length ? (
                     lists?.map((list: any) => (
                         <DropdownItem
-                            key={list?.list_title}
+                            key={list?._id}
                             className='capitalize'
                             startContent={
                                 <Icon
@@ -79,8 +79,8 @@ const AddToListBtn = () => {
                             onClick={() =>
                                 dispatch(
                                     setSelectedList({
-                                        title: list?.list_title,
-                                        color: list?.list_color,
+                                        list_title: list?.list_title,
+                                        list_color: list?.list_color,
                                     })
                                 )
                             }
