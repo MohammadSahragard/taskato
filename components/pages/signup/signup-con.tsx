@@ -9,10 +9,10 @@ const SignupCon = () => {
         <div className='form-con'>
             <div className='form-con-logo'>
                 <Image
-                    src='/taskato-logo.svg'
+                    src='/Taskato-logo.svg'
                     alt='taskato logo'
-                    width={35}
-                    height={35}
+                    width={25}
+                    height={25}
                 />
             </div>
 

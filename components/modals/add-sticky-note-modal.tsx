@@ -91,7 +91,6 @@ const AddStickyNoteModal = ({
                 onSubmit={(event: any) =>
                     startTransition(() => submitNote(event))
                 }
-                onKeyDown={(event: any) => onEnterDown(event)}
             >
                 <ModalContent>
                     {(onClose) => (
@@ -111,6 +110,9 @@ const AddStickyNoteModal = ({
                                     autoFocus
                                     onFocus={(event: any) =>
                                         event.target.select()
+                                    }
+                                    onKeyDown={(event: any) =>
+                                        onEnterDown(event)
                                     }
                                 />
                                 <Textarea
