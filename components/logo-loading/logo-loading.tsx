@@ -9,7 +9,7 @@ import './logo-loading.css';
 const LogoLoading = () => {
     // States and variables
     const isPreloading = useAppSelector((state) => state.options.userLoading);
-    const conditionClass = true ? '' : '!hidden';
+    const conditionClass = isPreloading ? '' : '!hidden';
 
     return (
         <div className={`logo-loading ${conditionClass}`}>
