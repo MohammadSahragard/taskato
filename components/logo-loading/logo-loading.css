@@ -1,6 +1,7 @@
 /** SVG elements */
 #logo-loading-svg {
     height: 250px;
+    width: max-content;
 }
 
 #logo-svg {
