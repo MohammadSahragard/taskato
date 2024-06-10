@@ -19,6 +19,7 @@ const StickyNoteItem = (props: NoteDataTypes) => {
     // States and variables
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const contextMenuData = useAppSelector((state) => state.contextMenu);
+    console.log('contextMenuData: ', contextMenuData);
 
     // Classes
     const isActiveContextMenu =
@@ -49,7 +50,7 @@ const StickyNoteItem = (props: NoteDataTypes) => {
                         title={props.note_title}
                         additionalClasses='text-white mb-2'
                     />
-                    <p className='text-white/70 text-sm'>
+                    <p className='text-white/70 text-sm whitespace-pre'>
                         {props.note_content}
                     </p>
                 </CardBody>
