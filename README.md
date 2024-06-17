@@ -5,6 +5,7 @@ Access my site at [taskato.vercel.app](https://taskato.vercel.app)
 
 ### About the app
 Taskato is a personal work sample for my resume. You can create an account and use it to create tasks and notes for yourself. You can create a task and set its due date, reminder date, and also create sub-tasks for it. Categorize your tasks with custom lists you created and update or delete those lists whenever you want.<br>
+In this project, like the previous projects, I tried to make it look like a real app, so I designed a brand for it. I created the user interface of this project myself.<br>
 #### Challenges I faced for the first time:
 - Working with MongoDB databases professionally
 - Building real APIs and working with back-end
@@ -29,5 +30,5 @@ Taskato is a personal work sample for my resume. You can create an account and u
 ![live demo gif](https://github.com/MohammadSahragard/taskato/assets/77649975/94f12463-40d8-460e-9f49-5cbad253ac20)
 
 ### Lisence
-MIT license [@MohammadSahragard](https://github.com/MohammadSahragard)
+MIT license (UI designer & developer) [@MohammadSahragard](https://github.com/MohammadSahragard)
 
