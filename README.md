@@ -1,10 +1,18 @@
 ![taskato-github-readme](https://github.com/MohammadSahragard/taskato/assets/77649975/49ec3de5-2727-443d-87e6-aa8bc5d9add5)
 
 # Taskato
-Access my site at [taskato.vercel.app](https://taskato.vercel.app)
+> Taskato is an app for managing your tasks and writing notes. You can create a task, set its due date and reminder date, and create subtasks for it. You can categorize your tasks with the custom lists you've created, and update or delete those lists whenever you want.
 
-### About the app
-Taskato is an app for managing your tasks and writing notes. You can create a task, set its due date and reminder date, and create subtasks for it. You can categorize your tasks with the custom lists you've created, and update or delete those lists whenever you want.<br>
+
+### Table of content
+- [Features](#features)
+- [Challenges](#challenges)
+    - [Design challanges](#design-challanges)
+    - [Development challanges](#development-challanges)
+- [Demo account](#demo-account)
+- [Technologies used](#technologies-used)
+- [Screen shots](#screen-shots)
+- [Lisence](#lisence)
 
 #
 ### Features
@@ -15,14 +23,13 @@ Taskato is an app for managing your tasks and writing notes. You can create a ta
 
 #
 ### Challenges:
-**Design challanges**
+#### Design challanges
 - Find a name for the app
 - Logo design for this name
 - User interface design challenges (UI)
 - Vector design for empty states
 - Motion logo design for the brand name
-
-**Development challanges**
+#### Development challanges
 - Working with MongoDB databases professionally (Making models and schema)
 - Building APIs and working with back-end
 - Using TypeScript in a relatively large program
