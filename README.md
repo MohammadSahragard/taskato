@@ -1,40 +1,62 @@
-![taskato logo](https://github.com/MohammadSahragard/taskato/assets/77649975/e8eb9004-fcfa-479d-8bde-103b1051e90a)
+![taskato-github-readme](https://github.com/MohammadSahragard/taskato/assets/77649975/49ec3de5-2727-443d-87e6-aa8bc5d9add5)
 
 # Taskato
 Access my site at [taskato.vercel.app](https://taskato.vercel.app)
 
 ### About the app
-Taskato is a personal work sample for my resume. You can create an account and use it to create tasks and notes for yourself. You can create a task and set its due date, reminder date, and also create sub-tasks for it. Categorize your tasks with custom lists you created and update or delete those lists whenever you want.<br>
-In this project, like the previous projects, I tried to make it look like a real app, so I designed a brand for it. I created the user interface of this project myself.<br>
-#### Challenges I faced for the first time:
-- Working with MongoDB databases professionally
-- Building real APIs and working with back-end
+Taskato is an app for managing your tasks and writing notes. You can create a task, set its due date and reminder date, and create subtasks for it. You can categorize your tasks with the custom lists you've created, and update or delete those lists whenever you want.<br>
+
+#
+### Features
+- Login/Sign up system ([Demo account](#demo-account))
+- Creating tasks with the features of setting the due date, and reminder date and creating a subtask for it
+- Categorization of tasks using lists (ability to rename and delete at any time)
+- Creating sticky notes with the feature of choosing the custom color and the ability to edit and delete at any time
+
+#
+### Challenges:
+**Design challanges**
+- Find a name for the app
+- Logo design for this name
+- User interface design challenges (UI)
+- Vector design for empty states
+- Motion logo design for the brand name
+
+**Development challanges**
+- Working with MongoDB databases professionally (Making models and schema)
+- Building APIs and working with back-end
 - Using TypeScript in a relatively large program
+- Login/sign up system
+- Too many strict validations for forms
+- Working with JWT (Creating tokens and working with cookies professionally)
+- Creating a lot of functions, types, and reusable components (SRP & DRY Principles)
 
-#### Demo account
-**Email:** mohammadsah4481@gmail.com <br>
-**Password:** Ms@123456
+#
+### Demo account
+| Email | Password |
+| ----- | -------- |
+| mohammadsah4481@gmail.com | Ms@123456 |
 
+#
 ### Technologies used
-<p>
-<img src='https://camo.githubusercontent.com/9771a2d4a7366d3c6d4793e17104eba9e88f0aec82f7165bfe6871455c26cb2c/68747470733a2f2f6173736574732e76657263656c2e636f6d2f696d6167652f75706c6f61642f76313636323133303535392f6e6578746a732f49636f6e5f6461726b5f6261636b67726f756e642e706e67' alt='next js' width='30' >
-<img src='https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Typescript.svg/330px-Typescript.svg.png' alt='typescript' width='30' >
-<img src='https://avatars.githubusercontent.com/u/67109815?s=48&v=4' alt='tailwind' width='30' >
-<img src='https://raw.githubusercontent.com/nextui-org/nextui/main/apps/docs/public/isotipo.png' alt='next ui' width='30' >
-<img src='https://avatars.githubusercontent.com/u/13142323?s=48&v=4' alt='redux toolkit' width='30' >
-<img src='https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-1/246656344_10165689418720557_4225476852778908330_n.png?stp=dst-png_p200x200&_nc_cat=1&ccb=1-7&_nc_sid=5f2048&_nc_ohc=I1FcStl5TrAQ7kNvgHy99fN&_nc_ht=scontent-fra5-2.xx&cb_e2o_trans=t&oh=00_AYBR6hP6GeoYtswNt9PuxJntNHSorR5CPaP19TGjsWrv9w&oe=6676326D' alt='mongo db' width='30' >
-</p>
+| Front-end | Back-end | Design |
+| --------- | -------- | ------ |
+| ![typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white) | ![mongodb](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white) | ![figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white) |
+| ![nextjs](https://img.shields.io/badge/Next.js-000?logo=nextdotjs&logoColor=fff&style=for-the-badge) | ![jwt](https://img.shields.io/badge/json%20web%20tokens-323330?style=for-the-badge&logo=json-web-tokens&logoColor=pink) | ![ai](https://img.shields.io/badge/Adobe%20Illustrator-FF9A00?style=for-the-badge&logo=adobe%20illustrator&logoColor=white) |
+| ![tailwind](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white) | ![mongoose](https://github.com/MohammadSahragard/taskato/assets/77649975/b022ed44-9363-443f-8514-73f908a8307e) |
+| ![redux](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white) |
+| ![nextui](https://github.com/MohammadSahragard/taskato/assets/77649975/7977f3e8-4318-42d2-ab8c-6ed10bd62055)
 
----
+
+#
 ### Screen shots
-**Main page:** <br><br>
+**Main page:** <br>
 ![The main page of the Taskato (light theme)](https://github.com/MohammadSahragard/taskato/assets/77649975/1b33071a-2b3f-46be-9403-59e7e30c4b11)
 ![The main page of the Taskato (dark theme)](https://github.com/MohammadSahragard/taskato/assets/77649975/28210611-3548-4182-bb55-c7715d6d26e8)
 
 ### Live demo
 ![live demo gif](https://github.com/MohammadSahragard/taskato/assets/77649975/94f12463-40d8-460e-9f49-5cbad253ac20)
 
----
+#
 ### Lisence
-MIT license (UI designer & developer) [@MohammadSahragard](https://github.com/MohammadSahragard)
-
+MIT license [@MohammadSahragard](https://github.com/MohammadSahragard)
